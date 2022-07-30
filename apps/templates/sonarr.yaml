@@ -13,6 +13,8 @@ spec:
         helm:
             releaseName: sonarr
             values: |
+                nodeSelector:
+                  kubernetes.io/hostname: virtworkerone
                 securityContext:
                     allowPrivilegeEscalation: false
                     capabilities:
@@ -31,19 +33,18 @@ spec:
                 persistence:
                     torrents:
                         enabled: true
-                        hostPath: /media/Torrents
-                        hostPathType: Directory
+                        subPath: Torrents
                         mountPath: /torrents
-                        type: hostPath
+                        existingClaim: nfs
+                        type: pvc
                     media:
                         enabled: true
-                        hostPath: /media
-                        hostPathType: Directory
                         mountPath: /media
-                        type: hostPath
+                        existingClaim: nfs
+                        type: pvc
                     config:
                         enabled: true
-                        hostPath: /work/storage/configs/sonarr
+                        hostPath: /var/mnt/cache/configs/sonarr
                         hostPathType: Directory
                         mountPath: /config
                         type: hostPath

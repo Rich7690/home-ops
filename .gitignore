@@ -6,4 +6,4 @@ terraform.tfstate
 secrets.yaml
 cp*.yaml
 talosconfig
-worker.yaml
+worker*.yaml

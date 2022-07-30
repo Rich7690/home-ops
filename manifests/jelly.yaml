@@ -66,10 +66,10 @@ spec:
                       timeoutSeconds: 1
                   resources:
                       limits:
-                          cpu: '32'
+                          cpu: "32"
                           memory: 4Gi
                       requests:
-                          cpu: '2'
+                          cpu: "2"
                           memory: 2Gi
                   terminationMessagePath: /dev/termination-log
                   terminationMessagePolicy: File
@@ -83,7 +83,7 @@ spec:
             dnsPolicy: ClusterFirst
             enableServiceLinks: true
             nodeSelector:
-                kubernetes.io/hostname: debian-storage
+                kubernetes.io/hostname: virtworkerone
             restartPolicy: Always
             schedulerName: default-scheduler
             securityContext:
@@ -93,13 +93,12 @@ spec:
             terminationGracePeriodSeconds: 30
             volumes:
                 - hostPath:
-                      path: /work/storage/configs/jelly
+                      path: /var/mnt/cache/configs/jelly
                       type: Directory
                   name: config
-                - hostPath:
-                      path: /media
-                      type: Directory
-                  name: media
+                - name: media
+                  persistentVolumeClaim:
+                      claimName: nfs
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -118,7 +117,7 @@ spec:
               - ipBlock:
                     cidr: 0.0.0.0/0 # jellyfin can call out to internet for certain things, but it shouldn't access our local network ever
                     except:
-                        - 10.0.0.0/8
+                        #- 10.0.0.0/8 TODO: this blocks kubernetes subnets
                         - 192.168.0.0/16
                         - 172.16.0.0/12
         - to:
@@ -133,21 +132,21 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: jelly
-  name: jelly
-  namespace: default
+    labels:
+        app: jelly
+    name: jelly
+    namespace: default
 spec:
-  internalTrafficPolicy: Cluster
-  ipFamilies:
-  - IPv4
-  ipFamilyPolicy: SingleStack
-  ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: http
-  selector:
-    app: jelly
-  sessionAffinity: None
-  type: ClusterIP
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+        - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+        - name: http
+          port: 80
+          protocol: TCP
+          targetPort: http
+    selector:
+        app: jelly
+    sessionAffinity: None
+    type: ClusterIP

@@ -13,6 +13,8 @@ spec:
         helm:
             releaseName: prowlarr
             values: |
+                nodeSelector:
+                  kubernetes.io/hostname: virtworkerone
                 env:
                     TZ: America/Los_Angeles
                 image:
@@ -21,7 +23,7 @@ spec:
                 persistence:
                     config:
                         enabled: true
-                        hostPath: /work/storage/configs/prowlarr
+                        hostPath: /var/mnt/cache/configs/prowlarr
                         hostPathType: Directory
                         mountPath: /config
                         type: hostPath

@@ -31,12 +31,6 @@ spec:
                     repository: ghcr.io/k8s-at-home/radarr
                     tag: v4.1.0.6175@sha256:d0a77cbc86f5991809a54626980a829708eb63051a5645bbe170bedc7ddebd6f
                 persistence:
-                    torrents:
-                        enabled: true
-                        subPath: Torrents
-                        mountPath: /torrents
-                        existingClaim: nfs
-                        type: pvc
                     media:
                         enabled: true
                         mountPath: /media
@@ -45,7 +39,6 @@ spec:
                     config:
                         enabled: true
                         hostPath: /var/mnt/cache/configs/radarr
-                        hostPathType: Directory
                         mountPath: /config
                         type: hostPath
                 resources:

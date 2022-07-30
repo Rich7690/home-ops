@@ -24,7 +24,6 @@ spec:
                     config:
                         enabled: true
                         hostPath: /var/mnt/cache/configs/prowlarr
-                        hostPathType: Directory
                         mountPath: /config
                         type: hostPath
                 resources:

@@ -31,12 +31,6 @@ spec:
                     repository: ghcr.io/k8s-at-home/sonarr
                     tag: v3.0.8.1507@sha256:605b635a083c6055382cd0efe729e99f6e0af7f48a35a2406892a50c2221caeb
                 persistence:
-                    torrents:
-                        enabled: true
-                        subPath: Torrents
-                        mountPath: /torrents
-                        existingClaim: nfs
-                        type: pvc
                     media:
                         enabled: true
                         mountPath: /media
@@ -45,7 +39,6 @@ spec:
                     config:
                         enabled: true
                         hostPath: /var/mnt/cache/configs/sonarr
-                        hostPathType: Directory
                         mountPath: /config
                         type: hostPath
                 resources:

@@ -49,7 +49,7 @@ resource "kubernetes_persistent_volume_v1" "vm" {
     }
     persistent_volume_source {
       host_path {
-        path = "/storage/volume/pvc-ebf3d029-0eff-4c3c-9750-96f84a18be93_default_server-volume-vm-victoria-metrics-single-server-0"
+        path = "/var/mnt/cache/configs/vm"
         type = "Directory"
       }
     }

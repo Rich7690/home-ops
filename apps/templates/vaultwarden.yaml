@@ -18,7 +18,7 @@ spec:
                 podAnnotations:
                     vault.security.banzaicloud.io/vault-tls-secret: vault-tls
                 env:
-                  DATA_FOLDER: /work/storage/configs/vaultwarden
+                  DATA_FOLDER: /config/vaultwarden
                   DOMAIN: vault:secret/data/deploy/domain#vaultwarden_domain
                   GROUPID: 997
                   SIGNUPS_ALLOWED: false
@@ -27,7 +27,8 @@ spec:
                 persistence:
                   config:
                     enabled: true
-                    hostPath: /work/storage/configs/vaultwarden
+                    hostPath: /var/mnt/cache/configs/vaultwarden
+                    mountPath: /config/vaultwarden
                     type: hostPath
                 resources:
                   limits:

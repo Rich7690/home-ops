@@ -15,7 +15,6 @@ spec:
     namespace: default
   hostPath:
     path: /var/mnt/cache/configs/influxdb
-    type: Directory
   persistentVolumeReclaimPolicy: Retain
   storageClassName: generic
   volumeMode: Filesystem

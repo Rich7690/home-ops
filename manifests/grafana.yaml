@@ -37,7 +37,7 @@ spec:
                         protocol: TCP
                   resources:
                       limits:
-                          cpu: '4'
+                          cpu: "4"
                           memory: 1G
                       requests:
                           cpu: 250m
@@ -66,8 +66,7 @@ spec:
             terminationGracePeriodSeconds: 30
             volumes:
                 - hostPath:
-                      path: /work/storage/configs/grafana
-                      type: Directory
+                      path: /var/mnt/cache/configs/grafana
                   name: config
 ---
 apiVersion: v1

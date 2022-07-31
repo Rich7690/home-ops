@@ -54,7 +54,6 @@ spec:
     namespace: default
   hostPath:
     path: /var/mnt/cache/configs/loki
-    type: Directory
   persistentVolumeReclaimPolicy: Delete
   storageClassName: generic
   volumeMode: Filesystem

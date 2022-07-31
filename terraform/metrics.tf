@@ -11,7 +11,7 @@ resource "helm_release" "vm" {
   }
 
   set {
-    name = "server.persistentVolume.existingClaim"
+    name  = "server.persistentVolume.existingClaim"
     value = "vm"
   }
 
@@ -23,9 +23,9 @@ resource "kubernetes_persistent_volume_claim_v1" "vm" {
     name = "vm"
   }
   spec {
-    access_modes = [ "ReadWriteOnce" ]
+    access_modes       = ["ReadWriteOnce"]
     storage_class_name = "generic"
-    volume_name = "vm"
+    volume_name        = "vm"
     resources {
       requests = {
         "storage" = "16Gi"
@@ -39,7 +39,7 @@ resource "kubernetes_persistent_volume_v1" "vm" {
     name = "vm"
   }
   spec {
-    access_modes = [ "ReadWriteOnce" ]
+    access_modes       = ["ReadWriteOnce"]
     storage_class_name = "generic"
     claim_ref {
       name = "vm"
@@ -50,7 +50,7 @@ resource "kubernetes_persistent_volume_v1" "vm" {
     persistent_volume_source {
       host_path {
         path = "/var/mnt/cache/configs/vm"
-        type = "Directory"
+        type = ""
       }
     }
 

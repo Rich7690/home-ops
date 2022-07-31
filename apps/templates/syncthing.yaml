@@ -22,13 +22,11 @@ spec:
                 persistence:
                     config:
                         enabled: false
-                        hostPath: /work/storage/configs/syncthing
-                        hostPathType: Directory
+                        hostPath: /var/mnt/cache/configs/syncthing
                         type: hostPath
                     data:
                         enabled: true
-                        hostPath: /work/storage/configs/syncthing
-                        hostPathType: Directory
+                        hostPath: /var/mnt/cache/configs/syncthing
                         type: hostPath
     destination:
         server: https://kubernetes.default.svc

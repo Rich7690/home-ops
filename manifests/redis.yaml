@@ -28,7 +28,7 @@ spec:
                 - command:
                       - redis-server
                       - --appendonly
-                      - 'yes'
+                      - "yes"
                   image: redis:7-alpine@sha256:f23b1e963e2122ce4de6c40ffd105b60ccfa62bf0134585d3109f5caf691b5b3
                   imagePullPolicy: IfNotPresent
                   livenessProbe:
@@ -54,7 +54,7 @@ spec:
                       timeoutSeconds: 1
                   resources:
                       limits:
-                          cpu: '4'
+                          cpu: "4"
                           memory: 512Mi
                       requests:
                           cpu: 100m
@@ -78,7 +78,7 @@ spec:
             dnsPolicy: ClusterFirst
             enableServiceLinks: true
             nodeSelector:
-                kubernetes.io/hostname: debian-storage
+                kubernetes.io/hostname: virtworkerone
             restartPolicy: Always
             schedulerName: default-scheduler
             securityContext: {}
@@ -86,8 +86,8 @@ spec:
             terminationGracePeriodSeconds: 30
             volumes:
                 - name: data
-                  persistentVolumeClaim:
-                      claimName: redis
+                  hostPath:
+                      path: /var/mnt/cache/configs/redis
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -118,38 +118,3 @@ spec:
     policyTypes:
         - Ingress
         - Egress
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-    labels:
-        app: redis
-    name: redis
-    namespace: default
-spec:
-    accessModes:
-        - ReadWriteOnce
-    resources:
-        requests:
-            storage: 5G
-    storageClassName: generic
-    volumeMode: Filesystem
-    volumeName: redis
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-    labels:
-        app: redis
-    name: redis
-spec:
-    accessModes:
-        - ReadWriteOnce
-    capacity:
-        storage: 5G
-    persistentVolumeReclaimPolicy: Retain
-    storageClassName: generic
-    volumeMode: Filesystem
-    hostPath:
-        type: Directory
-        path: /work/storage/configs/redis

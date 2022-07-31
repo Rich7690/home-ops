@@ -67,13 +67,13 @@ spec:
                     dnsConfig:
                         options:
                             - name: ndots
-                              value: '3'
+                              value: "3"
                         searches:
                             - default.svc.cluster.local
                     dnsPolicy: ClusterFirst
                     enableServiceLinks: true
                     nodeSelector:
-                        kubernetes.io/hostname: debian-storage
+                        kubernetes.io/hostname: virtworkerone
                     restartPolicy: Never
                     schedulerName: default-scheduler
                     securityContext: {}
@@ -82,10 +82,9 @@ spec:
                     terminationGracePeriodSeconds: 30
                     volumes:
                         - hostPath:
-                              path: /work/storage/configs/acme
-                              type: Directory
+                              path: /var/mnt/cache/configs/acme
                           name: data
-    schedule: '@daily'
+    schedule: "@daily"
     successfulJobsHistoryLimit: 1
     suspend: false
 ---
@@ -137,13 +136,13 @@ spec:
                     dnsConfig:
                         options:
                             - name: ndots
-                              value: '3'
+                              value: "3"
                         searches:
                             - default.svc.cluster.local
                     dnsPolicy: ClusterFirst
                     enableServiceLinks: true
                     nodeSelector:
-                        kubernetes.io/hostname: debian-storage
+                        kubernetes.io/hostname: virtworkerone
                     restartPolicy: Never
                     schedulerName: default-scheduler
                     securityContext: {}
@@ -152,9 +151,8 @@ spec:
                     terminationGracePeriodSeconds: 30
                     volumes:
                         - hostPath:
-                              path: /work/storage/configs/acme
-                              type: Directory
+                              path: /var/mnt/cache/configs/acme
                           name: data
-    schedule: '@daily'
+    schedule: "@daily"
     successfulJobsHistoryLimit: 1
     suspend: false

@@ -94,7 +94,7 @@ spec:
             volumes:
                 - hostPath:
                       path: /var/mnt/cache/configs/jelly
-                      type: Directory
+                      type: ""
                   name: config
                 - name: media
                   persistentVolumeClaim:

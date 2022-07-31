@@ -30,26 +30,18 @@ spec:
                     main:
                         enabled: false
                 persistence:
-                    config:
-                        enabled: true
-                        hostPath: /cache/configs/paperless/config
-                        hostPathType: Directory
-                        type: hostPath
                     consume:
                         enabled: true
-                        hostPath: /cache/configs/paperless/consume
-                        hostPathType: Directory
+                        hostPath: /var/mnt/cache/configs/paperless/consume
                         type: hostPath
                     data:
                         enabled: true
-                        hostPath: /cache/configs/paperless/data
-                        hostPathType: Directory
+                        hostPath: /var/mnt/cache/configs/paperless/data
                         size: 20Gi
                         type: hostPath
                     media:
                         enabled: true
-                        hostPath: /cache/configs/paperless/media
-                        hostPathType: Directory
+                        hostPath: /var/mnt/cache/configs/paperless/media
                         size: 20Gi
                         type: hostPath
                 resources:

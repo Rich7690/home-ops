@@ -30,7 +30,7 @@ spec:
                       annotations:
                         prometheus.io/port: "10254"
                         prometheus.io/scrape: "true"
-                  replicaCount: 1
+                  replicaCount: 2
                   resources:
                     limits:
                       cpu: 4

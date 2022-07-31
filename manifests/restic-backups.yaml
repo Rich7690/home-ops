@@ -44,17 +44,14 @@ spec:
                           name: restic
                           resources:
                               limits:
-                                  cpu: '16'
+                                  cpu: "16"
                                   memory: 16G
                               requests:
-                                  cpu: '2'
+                                  cpu: "2"
                                   memory: 1G
                           terminationMessagePath: /dev/termination-log
                           terminationMessagePolicy: File
                           volumeMounts:
-                              - mountPath: /media
-                                mountPropagation: None
-                                name: media
                               - mountPath: /storage
                                 mountPropagation: None
                                 name: storage
@@ -73,7 +70,7 @@ spec:
                     dnsConfig:
                         options:
                             - name: ndots
-                              value: '3'
+                              value: "3"
                         searches:
                             - default.svc.cluster.local
                     dnsPolicy: ClusterFirst
@@ -98,10 +95,6 @@ spec:
                               type: Directory
                           name: storage
                         - hostPath:
-                              path: /media
-                              type: Directory
-                          name: media
-                        - hostPath:
                               path: /backup
                               type: Directory
                           name: backup
@@ -116,7 +109,7 @@ spec:
 
     schedule: 0 1 * * SUN
     successfulJobsHistoryLimit: 1
-    suspend: false
+    suspend: true
 ---
 apiVersion: batch/v1
 kind: CronJob
@@ -131,7 +124,7 @@ spec:
     jobTemplate:
         metadata:
             annotations:
-                diun.enable: 'false'
+                diun.enable: "false"
             labels:
                 app: weekly-prune
             name: weekly-prune
@@ -165,10 +158,10 @@ spec:
                           name: restic
                           resources:
                               limits:
-                                  cpu: '16'
+                                  cpu: "16"
                                   memory: 16G
                               requests:
-                                  cpu: '2'
+                                  cpu: "2"
                                   memory: 1G
                           terminationMessagePath: /dev/termination-log
                           terminationMessagePolicy: File
@@ -191,7 +184,7 @@ spec:
                     dnsConfig:
                         options:
                             - name: ndots
-                              value: '3'
+                              value: "3"
                         searches:
                             - default.svc.cluster.local
                     dnsPolicy: ClusterFirst
@@ -225,7 +218,7 @@ spec:
                               type: File
     schedule: 0 1 * * TUE
     successfulJobsHistoryLimit: 1
-    suspend: false
+    suspend: true
 ---
 apiVersion: batch/v1
 kind: CronJob
@@ -272,10 +265,10 @@ spec:
                           name: restic
                           resources:
                               limits:
-                                  cpu: '16'
+                                  cpu: "16"
                                   memory: 16G
                               requests:
-                                  cpu: '2'
+                                  cpu: "2"
                                   memory: 1G
                           terminationMessagePath: /dev/termination-log
                           terminationMessagePolicy: File
@@ -298,7 +291,7 @@ spec:
                     dnsConfig:
                         options:
                             - name: ndots
-                              value: '3'
+                              value: "3"
                         searches:
                             - default.svc.cluster.local
                     dnsPolicy: ClusterFirst
@@ -334,26 +327,25 @@ spec:
                           hostPath:
                               path: /cache/rclone.conf
                               type: File
-    schedule: '@daily'
+    schedule: "@daily"
     successfulJobsHistoryLimit: 1
     suspend: true
 ---
 kind: ServiceAccount
 apiVersion: v1
 metadata:
-  name: cron
-  namespace: cron
-secrets:
-  - name: cron-sa-token
+    name: cron
     namespace: cron
+secrets:
+    - name: cron-sa-token
+      namespace: cron
 automountServiceAccountToken: true
 ---
 apiVersion: v1
 kind: Secret
 metadata:
-  name: cron-sa-token
-  namespace: cron
-  annotations:
-    kubernetes.io/service-account.name: cron
+    name: cron-sa-token
+    namespace: cron
+    annotations:
+        kubernetes.io/service-account.name: cron
 type: kubernetes.io/service-account-token
-

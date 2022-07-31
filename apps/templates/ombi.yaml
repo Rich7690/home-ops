@@ -23,8 +23,7 @@ spec:
                 persistence:
                     config:
                         enabled: true
-                        hostPath: /work/storage/configs/ombi
-                        hostPathType: Directory
+                        hostPath: /var/mnt/cache/configs/ombi
                         mountPath: /config
                         type: hostPath
                 resources:

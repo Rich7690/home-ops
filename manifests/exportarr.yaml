@@ -32,6 +32,13 @@ spec:
                         app.kubernetes.io/name: radarr
           ports:
               - port: 7878
+        - ports:
+              - port: 8200
+                protocol: TCP
+          to:
+              - podSelector:
+                    matchLabels:
+                        app.kubernetes.io/name: vault
         - to:
               - namespaceSelector: {}
                 podSelector:
@@ -48,7 +55,7 @@ metadata:
     namespace: default
     annotations:
         vault.security.banzaicloud.io/vault-tls-secret: vault-tls # optional, the name of the Secret where the Vault CA cert is, if not defined it is not mounted
-        vault.security.banzaicloud.io/vault-agent: 'false'
+        vault.security.banzaicloud.io/vault-agent: "false"
         vault.security.banzaicloud.io/vault-role: exportarr
     labels:
         app.kubernetes.io/name: radarr-exporter
@@ -65,10 +72,10 @@ spec:
                 app.kubernetes.io/name: radarr-exporter
                 app.kubernetes.io/instance: radarr-exporter
             annotations:
-                prometheus.io/scrape: 'true'
-                prometheus.io/port: '9707'
+                prometheus.io/scrape: "true"
+                prometheus.io/port: "9707"
                 vault.security.banzaicloud.io/vault-tls-secret: vault-tls # optional, the name of the Secret where the Vault CA cert is, if not defined it is not mounted
-                vault.security.banzaicloud.io/vault-agent: 'false'
+                vault.security.banzaicloud.io/vault-agent: "false"
                 vault.security.banzaicloud.io/vault-role: exportarr
         spec:
             serviceAccountName: exportarr
@@ -79,18 +86,18 @@ spec:
                   args:
                       - radarr
                   securityContext:
-                            allowPrivilegeEscalation: false
-                            capabilities:
-                                drop:
-                                    - ALL
-                            privileged: false
-                            readOnlyRootFilesystem: true
-                            runAsNonRoot: true
-                            runAsGroup: 65532
-                            runAsUser: 65532
+                      allowPrivilegeEscalation: false
+                      capabilities:
+                          drop:
+                              - ALL
+                      privileged: false
+                      readOnlyRootFilesystem: true
+                      runAsNonRoot: true
+                      runAsGroup: 65532
+                      runAsUser: 65532
                   env:
                       - name: PORT
-                        value: '9707'
+                        value: "9707"
                       - name: URL
                         value: http://radarr.default.svc.cluster.local:7878/radarr
                       - name: APIKEY
@@ -115,5 +122,5 @@ spec:
                           cpu: 500m
                           memory: 64Mi
                       limits:
-                          cpu: '4'
+                          cpu: "4"
                           memory: 256Mi

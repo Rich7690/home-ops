@@ -338,7 +338,6 @@ metadata:
     namespace: cron
 secrets:
     - name: cron-sa-token
-      namespace: cron
 automountServiceAccountToken: true
 ---
 apiVersion: v1

@@ -58,7 +58,7 @@ spec:
             dnsPolicy: ClusterFirst
             enableServiceLinks: true
             nodeSelector:
-                kubernetes.io/hostname: debian-storage
+                kubernetes.io/hostname: virtworkerone
             restartPolicy: Always
             schedulerName: default-scheduler
             securityContext: {}

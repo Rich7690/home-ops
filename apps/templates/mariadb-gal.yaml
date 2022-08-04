@@ -13,17 +13,17 @@ spec:
         helm:
             releaseName: mariadb-galera
             values: |
-            replicaCount: 2
-            priorityClassName: high-priority
-            persistence:
-              storageClass: mayastor-2
-            resources:
-              requests: 
-                cpu: 200m
-                memory: 256Mi
-              limits:
-                cpu: 4
-                memory: 512Mi
+                replicaCount: 2
+                priorityClassName: high-priority
+                persistence:
+                storageClass: mayastor-2
+                resources:
+                requests: 
+                    cpu: 200m
+                    memory: 256Mi
+                limits:
+                    cpu: 4
+                    memory: 512Mi
 
     destination:
         server: https://kubernetes.default.svc

@@ -23,14 +23,13 @@ spec:
                   ingressClassResource:
                     controllerValue: k8s.io/ingress-nginx-external
                     name: nginx-external
-                  kind: Deployment
+                  kind: DaemonSet
                   metrics:
                     enabled: true
                     service:
                       annotations:
                         prometheus.io/port: "10254"
                         prometheus.io/scrape: "true"
-                  replicaCount: 2
                   resources:
                     limits:
                       cpu: 4

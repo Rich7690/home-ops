@@ -17,8 +17,8 @@ spec:
     - proto=tcp
     - nfsvers=4.1
     - port=2049
-    - rsize=4096
-    - wsize=4096
+    - rsize=131072
+    - wsize=131072
     - nocto
     - noatime
     - nodiratime

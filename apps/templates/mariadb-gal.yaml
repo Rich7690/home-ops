@@ -16,7 +16,7 @@ spec:
                 replicaCount: 2
                 priorityClassName: high-priority
                 persistence:
-                storageClass: mayastor-2
+                    storageClass: mayastor-2
                 resources:
                 requests: 
                     cpu: 200m

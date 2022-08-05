@@ -22,8 +22,8 @@ spec:
                 vault:
                   config:
                     cluster_addr: "http://127.0.0.1:8201"
+                    api_addr: http://localhost:8200
                     storage:
-                      api_addr: http://localhost:8200
                       raft:
                         path: "/vault/file"
                      

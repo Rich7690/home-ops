@@ -13,11 +13,19 @@ spec:
         helm:
             releaseName: vault
             values: |
+                replicaCount: 2
                 image:
                   tag: 1.10.3
                 persistence:
-                  enabled: false
-                  hostPath: /work/storage/configs/vault
+                  enabled: true
+                  storageClass: mayastor-2
+                vault:
+                  config:
+                    cluster_addr: "http://127.0.0.1:8201"
+                    storage:
+                      raft:
+                        path: "/vault/file"
+                     
     destination:
         server: https://kubernetes.default.svc
         namespace: default

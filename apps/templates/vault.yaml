@@ -13,9 +13,10 @@ spec:
         helm:
             releaseName: vault
             values: |
-                replicaCount: 2
+                priorityClassName: high-priority
+                replicaCount: 1
                 image:
-                  tag: 1.10.3
+                  tag: 1.11.2
                 persistence:
                   enabled: true
                   storageClass: mayastor-2

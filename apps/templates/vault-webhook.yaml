@@ -13,8 +13,9 @@ spec:
         helm:
             releaseName: vault-secrets-webhook
             values: |
+                priorityClassName: high-priority
                 env:
-                  VAULT_IMAGE: vault:1.10.3
+                  VAULT_IMAGE: vault:1.11.2
     destination:
         server: https://kubernetes.default.svc
         namespace: default

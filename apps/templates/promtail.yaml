@@ -18,4 +18,4 @@ spec:
                     - url: http://loki:3100/loki/api/v1/push
     destination:
         server: https://kubernetes.default.svc
-        namespace: default
+        namespace: metrics

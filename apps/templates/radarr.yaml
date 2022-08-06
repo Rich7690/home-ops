@@ -38,9 +38,9 @@ spec:
                         type: pvc
                     config:
                         enabled: true
-                        hostPath: /var/mnt/cache/configs/radarr
                         mountPath: /config
-                        type: hostPath
+                        type: pvc
+                        storageClass: mayastor-2
                 resources:
                     limits:
                         cpu: 4

@@ -227,3 +227,41 @@ resource "kubernetes_ingress_v1" "qbit" {
   }
 
 }
+
+
+resource "kubernetes_ingress_v1" "appsmith" {
+  metadata {
+    name = "appsmith"
+    annotations = {
+      #"nginx.ingress.kubernetes.io/auth-signin"            = "https://${var.domain_name}/oauth2/sign_in"
+      #"nginx.ingress.kubernetes.io/auth-url"               = "https://${var.domain_name}/oauth2/auth"
+      "nginx.ingress.kubernetes.io/whitelist-source-range" = "192.168.0.0/16,10.0.0.0/8"
+    }
+  }
+  spec {
+    ingress_class_name = "nginx"
+    tls {
+      hosts       = ["*.${var.domain_name}", "${var.domain_name}"]
+      secret_name = "prod-cert"
+    }
+    rule {
+      host = "appsmith.${var.domain_name}"
+      http {
+
+        path {
+          path_type = "ImplementationSpecific"
+          backend {
+            service {
+              name = "appsmith-1659915673"
+              port {
+                name = "http"
+              }
+            }
+          }
+          path = "/"
+        }
+      }
+    }
+  }
+
+}

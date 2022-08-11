@@ -18,8 +18,8 @@ spec:
                 image:
                   tag: 1.11.2
                 persistence:
-                  enabled: true
-                  storageClass: mayastor-2
+                  enabled: false
+                  hostPath: /work/storage/configs/vault
                 vault:
                   config:
                     cluster_addr: "http://127.0.0.1:8201"

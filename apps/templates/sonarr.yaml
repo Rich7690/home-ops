@@ -38,9 +38,9 @@ spec:
                         type: pvc
                     config:
                         enabled: true
+                        hostPath: /var/mnt/cache/configs/sonarr
                         mountPath: /config
-                        type: pvc
-                        storageClass: mayastor-2
+                        type: hostPath
                 resources:
                     limits:
                         cpu: 4

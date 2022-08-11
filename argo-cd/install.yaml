@@ -9730,7 +9730,7 @@ spec:
                       - name: XDG_CONFIG_HOME
                         value: /.config 
                   envFrom:
-                    secretRef:
+                    - secretRef:
                       name: age-key
                       optional: false
                   image: quay.io/argoproj/argocd:v2.4.8@sha256:9d8f521d60b5a9149c18de1c35f31e93ffc708bb21ee13a6c5fa2334d1119bb8

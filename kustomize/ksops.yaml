@@ -5,3 +5,4 @@ metadata:
   name: keycloak
 files:
   - ./secrets/keycloak.enc.yaml
+  - ./secrets/oauth-proxy.enc.yaml

@@ -4,4 +4,4 @@ kind: ksops
 metadata:
   name: keycloak
 files:
-  - ./secrets/keycloak.sops.yaml
+  - ./secrets/keycloak.enc.yaml

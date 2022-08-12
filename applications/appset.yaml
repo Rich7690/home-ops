@@ -9,7 +9,7 @@ spec:
       repoURL: https://github.com/Rich7690/home-server-config.git
       revision: HEAD
       directories:
-      - path: applications/namespaces/*
+      - path: applications/namespaces/default/*
   template:
     metadata:
       name: '{{path.basename}}'

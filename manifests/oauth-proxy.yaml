@@ -8,7 +8,7 @@ metadata:
     namespace: default
 spec:
     progressDeadlineSeconds: 600
-    replicas: 1
+    replicas: 2
     revisionHistoryLimit: 3
     selector:
         matchLabels:
@@ -20,9 +20,6 @@ spec:
         type: RollingUpdate
     template:
         metadata:
-            annotations:
-                vault.security.banzaicloud.io/vault-tls-secret: vault-tls # optional, the name of the Secret where the Vault CA cert is, if not defined it is not mounted
-                vault.security.banzaicloud.io/vault-agent: 'false'
             labels:
                 app: oauth-proxy
         spec:

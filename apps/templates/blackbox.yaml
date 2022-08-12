@@ -16,13 +16,17 @@ spec:
                 persistentVolume:
                  enabled: false
                 resources:
-                 limits:
-                   cpu: "4"
-                   memory: 128Mi
                  requests:
                    cpu: 100m
                    memory: 128Mi
-                runAsUser: 65534
+                securityContext:
+                    runAsUser: 65532
+                    runAsGroup: 65532
+                    readOnlyRootFilesystem: true
+                    runAsNonRoot: true
+                    allowPrivilegeEscalation: false
+                    capabilities:
+                        drop: ["ALL"]
     destination:
         server: https://kubernetes.default.svc
         namespace: metrics

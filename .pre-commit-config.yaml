@@ -12,11 +12,11 @@ repos:
       rev: v8.2.0
       hooks:
           - id: gitleaks
-    - repo: https://github.com/adrienverge/yamllint.git
-      rev: v1.27.1 # or higher tag
-      hooks:
-          - id: yamllint
-            args: [--format, parsable, --strict]
+    # - repo: https://github.com/adrienverge/yamllint.git
+    #   rev: v1.27.1 # or higher tag
+    #   hooks:
+    #       - id: yamllint
+    #         args: [--format, parsable, --strict]
 
  #   - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
  #     rev: 0.2.2 # or other specific tag

@@ -27,7 +27,7 @@ spec:
                     storage:
                       raft:
                         path: "/vault/file"
-                     
+
     destination:
         server: https://kubernetes.default.svc
         namespace: default

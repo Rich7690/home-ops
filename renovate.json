@@ -3,7 +3,10 @@
     ":enableRenovate",
     "config:base",
     ":disableRateLimiting",
-    ":dependencyDashboard"
+    ":dependencyDashboard",
+    ":automergePr",
+    ":automergePatch",
+    "schedule:weekends"
   ],
   "docker": {
     "pinDigests": true

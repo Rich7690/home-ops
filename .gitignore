@@ -7,3 +7,4 @@ secrets.yaml
 cp*.yaml
 talosconfig
 worker*.yaml
+kustomize/secrets/*.sops*

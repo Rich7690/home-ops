@@ -8,3 +8,4 @@ cp*.yaml
 talosconfig
 worker*.yaml
 kustomize/secrets/*.sops*
+pod.yaml

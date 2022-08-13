@@ -17,9 +17,6 @@ spec:
         type: Recreate
     template:
         metadata:
-            annotations:
-                vault.security.banzaicloud.io/vault-tls-secret: vault-tls
-                vault.security.banzaicloud.io/vault-env-from-path: secret/data/deploy/db-secrets
             labels:
                 app: db
         spec:

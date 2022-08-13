@@ -62,11 +62,6 @@ spec:
                                 mountPropagation: None
                                 name: excludes-file
                                 readOnly: true
-                              - mountPath: /secrets/pass_file.txt
-                                name: passfile
-                                readOnly: true
-                              - mountPath: /secrets/rclone.conf
-                                name: rclone
                     dnsConfig:
                         options:
                             - name: ndots
@@ -98,14 +93,6 @@ spec:
                               path: /backup
                               type: Directory
                           name: backup
-                        - name: passfile # TODO: figure out how to actually move this to vault or somewhere. Last time I tried it was painful
-                          hostPath:
-                              path: /cache/pass_file.txt
-                              type: File
-                        - name: rclone
-                          hostPath:
-                              path: /cache/rclone.conf
-                              type: File
 
     schedule: 0 1 * * SUN
     successfulJobsHistoryLimit: 1

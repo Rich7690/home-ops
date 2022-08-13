@@ -38,8 +38,8 @@ spec:
                                 drop:
                                     - ALL
                             privileged: false
-                            readOnlyRootFilesystem: true
-                            runAsNonRoot: true
+                            readOnlyRootFilesystem: false
+                            runAsNonRoot: false
                           resources:
                               limits:
                                   cpu: '4'

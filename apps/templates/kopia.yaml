@@ -13,6 +13,8 @@ spec:
         helm:
             releaseName: kopia
             values: |
+                nodeSelector:
+                  kubernetes.io/hostname: virtworkerone
                 image:
                   repository: ghcr.io/onedr0p/kopia
                   tag: 0.11.3@sha256:46eefda38f842c3f03c4329e68f1f8c3be36ea324f11d458724719d8ab2fb53d

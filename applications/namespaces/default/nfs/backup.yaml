@@ -23,8 +23,8 @@ spec:
     - noatime
     - nodiratime
   nfs:
-    path: /backup
-    server: 192.168.5.7
+    path: /mnt/storage
+    server: 192.168.5.105
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

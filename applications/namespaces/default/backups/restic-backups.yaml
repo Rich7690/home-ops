@@ -35,6 +35,12 @@ spec:
                           env:
                               - name: TZ
                                 value: America/Los_Angeles
+                              - name: CHECK_UUID
+                                valueFrom:
+                                    secretKeyRef:
+                                        key: weekly-script-uuid
+                                        name: backups
+                                        optional: false
                           image: ghcr.io/rich7690/restic-backup-docker:latest@sha256:053b77f7f26a38c770f38a417629615e9d721b809417e65ac8d9c6b99e389136
                           imagePullPolicy: IfNotPresent
                           name: restic
@@ -136,6 +142,12 @@ spec:
                           env:
                               - name: TZ
                                 value: America/Los_Angeles
+                              - name: CHECK_UUID
+                                valueFrom:
+                                    secretKeyRef:
+                                        key: weekly-prune-uuid
+                                        name: backups
+                                        optional: false
                           image: ghcr.io/rich7690/restic-backup-docker:latest@sha256:053b77f7f26a38c770f38a417629615e9d721b809417e65ac8d9c6b99e389136
                           imagePullPolicy: IfNotPresent
                           name: restic

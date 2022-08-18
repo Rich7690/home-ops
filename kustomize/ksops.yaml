@@ -9,4 +9,5 @@ files:
   - ./secrets/oauth-proxy.enc.yaml
   - ./secrets/vaultwarden.enc.yaml
   - ./secrets/backup.enc.yaml
+  - ./secrets/renovate.enc.yaml
   - ./ingress/jelly.enc.yaml

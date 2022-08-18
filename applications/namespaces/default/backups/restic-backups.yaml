@@ -71,7 +71,7 @@ spec:
                     enableServiceLinks: true
                     hostname: debian-server-restic
                     nodeSelector:
-                        kubernetes.io/hostname: debian-storage
+                        kubernetes.io/hostname: virtworkerone
                     restartPolicy: Never
                     schedulerName: default-scheduler
                     securityContext: {}
@@ -173,7 +173,7 @@ spec:
                     enableServiceLinks: true
                     hostname: debian-server-restic
                     nodeSelector:
-                        kubernetes.io/hostname: debian-storage
+                        kubernetes.io/hostname: virtworkerone
                     restartPolicy: Never
                     schedulerName: default-scheduler
                     securityContext: {}

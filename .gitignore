@@ -7,5 +7,5 @@ secrets.yaml
 cp*.yaml
 talosconfig
 worker*.yaml
-kustomize/secrets/*.sops*
+kustomize/**/*.sops*
 pod.yaml

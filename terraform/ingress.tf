@@ -158,8 +158,8 @@ resource "kubernetes_ingress_v1" "theila" {
   metadata {
     name = "theila"
     annotations = {
-      "nginx.ingress.kubernetes.io/auth-signin"            = "https://${var.domain_name}/oauth2/sign_in"
-      "nginx.ingress.kubernetes.io/auth-url"               = "https://${var.domain_name}/oauth2/auth"
+      #"nginx.ingress.kubernetes.io/auth-signin"            = "https://${var.domain_name}/oauth2/sign_in"
+      #"nginx.ingress.kubernetes.io/auth-url"               = "https://${var.domain_name}/oauth2/auth"
       "nginx.ingress.kubernetes.io/whitelist-source-range" = "192.168.0.0/16,10.0.0.0/8"
     }
   }
@@ -229,14 +229,9 @@ resource "kubernetes_ingress_v1" "qbit" {
 }
 
 
-resource "kubernetes_ingress_v1" "appsmith" {
+resource "kubernetes_ingress_v1" "kopia" {
   metadata {
-    name = "appsmith"
-    annotations = {
-      #"nginx.ingress.kubernetes.io/auth-signin"            = "https://${var.domain_name}/oauth2/sign_in"
-      #"nginx.ingress.kubernetes.io/auth-url"               = "https://${var.domain_name}/oauth2/auth"
-      "nginx.ingress.kubernetes.io/whitelist-source-range" = "192.168.0.0/16,10.0.0.0/8"
-    }
+    name = "kopia"
   }
   spec {
     ingress_class_name = "nginx"
@@ -245,14 +240,14 @@ resource "kubernetes_ingress_v1" "appsmith" {
       secret_name = "prod-cert"
     }
     rule {
-      host = "appsmith.${var.domain_name}"
+      host = "kopia.${var.domain_name}"
       http {
 
         path {
           path_type = "ImplementationSpecific"
           backend {
             service {
-              name = "appsmith-1659915673"
+              name = "kopia"
               port {
                 name = "http"
               }

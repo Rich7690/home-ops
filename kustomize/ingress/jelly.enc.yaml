@@ -1,0 +1,51 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    annotations:
+        nginx.ingress.kubernetes.io/proxy-body-size: "0"
+        nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+        nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+        nginx.ingress.kubernetes.io/service-upstream: "true"
+        nginx.ingress.kubernetes.io/whitelist-source-range: 192.168.0.0/16,10.0.0.0/8
+    labels:
+        app: jelly
+    name: jelly
+    namespace: default
+spec:
+    ingressClassName: nginx
+    rules:
+        - host: ENC[AES256_GCM,data:V5GpzpC9BCTZmu9EC7c=,iv:MNuhJ9R76hO7AxX6v/cxbCCJbR39e77aSJddZAUalhM=,tag:smG7uEjb1vtlP7BS3kSgfw==,type:str]
+          http:
+            paths:
+                - backend:
+                    service:
+                        name: jelly
+                        port:
+                            name: http
+                  path: /
+                  pathType: ImplementationSpecific
+    tls:
+        - hosts:
+            - ENC[AES256_GCM,data:Gy7BcSgitoA=,iv:BO7vty1Dkw/1UN4WLE3eJRzVPe6ZW2hI1Ib+3IAtWD8=,tag:GcN3dx0P0RlawHKWKZbysA==,type:str]
+            - ENC[AES256_GCM,data:WjFSNej728uN0Q==,iv:LIBIg+u86STGOVDqm88+1wRp88UoIvNgCQtLX10LSRE=,tag:XjRghF1xb1H/B8DjKuH5uA==,type:str]
+          secretName: prod-cert
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age17pzq63nanwarvma9nc7dvp7yy3dalgcr8e958dxrx9nfkkcwuyksw8qsds
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBRclpaeVlTalAwWHk3eFFi
+            NmlMZ3I4M0szcDVMVzJ4SmIzZldhSHg2R1ZJCnZKemFsdzNYWlRsS0toeTlCRFhX
+            RXlqMUlqc2lxUmtxVG5yR28zdmQ0K2MKLS0tIFdkMmsyaEg0OVg2MjZRSXFJWGx0
+            eGFVcHd3Sm8wNDV1U0hGRk8zWThxdFkKYlsuszoMiP/ouNXp2nueMXM56rhL5G0f
+            ccmPaZiyAxBIciP6jiqUDZR8/2zTKOM7k+H9w0UuwwCnjA4lFtncTA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-08-18T05:35:42Z"
+    mac: ENC[AES256_GCM,data:CIjUaLlqdb0L9+A0cccVytx+3LPLL8Q3aqy96JGcGEVPSuKeDOROm58W5jqWK1JuKj9a8aTAA6aRdVWXHP+qBY70vC8emck5+klEUm5FotInycrb4ITzJdttVgtnpNZIveGr+oVP8Ew9FN5S+sVGe8cz0i/wNQG57Btr73ThPRQ=,iv:VEJpTy+67hL5G/158tcVmIxzaMkscVvSmwO2bzvrrY8=,tag:p/nyMBjZ51OUcNzgY+R31w==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData|host|hosts)$
+    version: 3.7.3

@@ -7,3 +7,4 @@ files:
   - ./secrets/keycloak.enc.yaml
   - ./secrets/oauth-proxy.enc.yaml
   - ./secrets/vaultwarden.enc.yaml
+  - ./ingress/* # does this work?

@@ -86,7 +86,6 @@ spec:
                           name: excludes-file
                         - hostPath:
                               path: /var/mnt/cache
-                              type: Directory
                           name: storage
                         - persistentVolumeClaim:
                               claimName: backup-nfs

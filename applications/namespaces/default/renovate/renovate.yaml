@@ -4,7 +4,7 @@ kind: CronJob
 metadata:
     name: renovate
 spec:
-    schedule: '@hourly'
+    schedule: "@hourly"
     concurrencyPolicy: Forbid
     failedJobsHistoryLimit: 1
     successfulJobsHistoryLimit: 1
@@ -26,13 +26,13 @@ spec:
                           tty: true
                           stdin: true
                           securityContext:
-                            allowPrivilegeEscalation: false
-                            capabilities:
-                                drop:
-                                    - ALL
-                            privileged: false
-                            readOnlyRootFilesystem: false
-                            runAsNonRoot: true
+                              allowPrivilegeEscalation: false
+                              capabilities:
+                                  drop:
+                                      - ALL
+                              privileged: false
+                              readOnlyRootFilesystem: false
+                              runAsNonRoot: true
                           command:
                               - bash
                               - -c
@@ -44,20 +44,3 @@ spec:
                               - secretRef:
                                     name: renovate-env
                     restartPolicy: Never
----
-apiVersion: v1
-kind: Secret
-metadata:
-    name: renovate-env
-type: Opaque
-stringData:
-    GITHUB_COM_TOKEN: vault:secret/data/deploy/renovate#pat
-    RENOVATE_TOKEN: vault:secret/data/deploy/renovate#pat
-    RENOVATE_AUTODISCOVER: 'false'
-    RENOVATE_PLATFORM: github
-    RENOVATE_GIT_PRIVATE_KEY: vault:secret/data/deploy/renovate#gpg-key
-    RENOVATE_ONBOARDING: 'false'
-    RENOVATE_REDIS_URL: redis://redis:6379
-    RENOVATE_USERNAME: Rich7690
-    RENOVATE_GIT_AUTHOR: Rich7690 Self-Hosted Renovate <11451714+Rich7690@users.noreply.github.com>
-    RENOVATE_PLATFORM_COMMIT: 'false'

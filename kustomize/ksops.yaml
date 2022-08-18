@@ -1,4 +1,5 @@
 ---
+# This encryption thing works ok, but having to list the files one by one is rough. TODO: figure out how to get globbing to work
 apiVersion: viaduct.ai/v1
 kind: ksops
 metadata:
@@ -7,4 +8,5 @@ files:
   - ./secrets/keycloak.enc.yaml
   - ./secrets/oauth-proxy.enc.yaml
   - ./secrets/vaultwarden.enc.yaml
+  - ./secrets/backup.enc.yaml
   - ./ingress/jelly.enc.yaml

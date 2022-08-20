@@ -1,0 +1,21 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+    name: cilium
+    namespace: argocd
+spec:
+    project: remote-apps
+    source:
+        chart: cilium
+        repoURL: https://helm.cilium.io/
+        targetRevision: 1.12.1
+        helm:
+            releaseName: cilium
+            values: |
+                bgp:
+                  enabled: true
+                  loadBalancerIP: true
+    destination:
+        server: https://kubernetes.default.svc
+        namespace: kube-system

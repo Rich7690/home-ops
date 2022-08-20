@@ -16,7 +16,7 @@ spec:
                 bgp:
                   enabled: true
                   announce:
-                    loadBalancerIP: true
+                    loadbalancerIP: true
     destination:
         server: https://kubernetes.default.svc
         namespace: kube-system

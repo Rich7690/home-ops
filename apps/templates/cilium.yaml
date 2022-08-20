@@ -13,6 +13,7 @@ spec:
         helm:
             releaseName: cilium
             values: |
+                rollOutCiliumPods: true
                 ipam:
                   mode: "kubernetes"
                 securityContext:
@@ -21,6 +22,15 @@ spec:
                   enabled: true
                   announce:
                     loadbalancerIP: true
+                hubble:
+                  tls:
+                    auto:
+                      enabled: true
+                      method: helm #TODO: cronjob?
+                  relay:
+                    enabled: true
+                  ui:
+                    enabled: true
     destination:
         server: https://kubernetes.default.svc
         namespace: kube-system

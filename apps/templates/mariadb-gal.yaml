@@ -9,7 +9,7 @@ spec:
     source:
         chart: mariadb-galera
         repoURL: https://charts.bitnami.com/bitnami
-        targetRevision: 7.3.9
+        targetRevision: 7.3.12
         helm:
             releaseName: mariadb-galera
             values: |

@@ -34,7 +34,7 @@ spec:
                     media:
                         enabled: true
                         mountPath: /media
-                        existingClaim: transfer-nfs
+                        existingClaim: nfs
                         type: pvc
                     config:
                         enabled: true

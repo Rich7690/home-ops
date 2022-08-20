@@ -9,10 +9,14 @@ spec:
     source:
         chart: cilium
         repoURL: https://helm.cilium.io/
-        targetRevision: 1.12.1
+        targetRevision: 1.12.0
         helm:
             releaseName: cilium
             values: |
+                ipam:
+                  mode: "kubernetes"
+                securityContext:
+                  privileged: true
                 bgp:
                   enabled: true
                   announce:

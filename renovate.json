@@ -6,7 +6,8 @@
     ":dependencyDashboard",
     ":automergePr",
     ":automergePatch",
-    "schedule:weekends"
+    "schedule:weekends",
+    ":skipStatusChecks"
   ],
   "docker": {
     "pinDigests": true

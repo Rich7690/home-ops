@@ -14,11 +14,11 @@ spec:
             releaseName: vm
             values: |
                 server:
-                    scrape:
-                        enabled: true
-                        configMap: metrics-scrapeconfig
-                    persistentVolume:
-                        existingClaim: vm
+                  scrape:
+                    enabled: true
+                    configMap: "metrics-scrapeconfig"
+                  persistentVolume:
+                    existingClaim: vm
 
     destination:
         server: https://kubernetes.default.svc

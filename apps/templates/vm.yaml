@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-    name: victoria-metrics-single
+    name: vm
     namespace: argocd
 spec:
     project: remote-apps
@@ -17,8 +17,8 @@ spec:
                     scrape:
                         enabled: true
                         configMap: metrics-scrapeconfig
-                persistentVolume:
-                    existingClaim: vm
+                    persistentVolume:
+                        existingClaim: vm
 
     destination:
         server: https://kubernetes.default.svc

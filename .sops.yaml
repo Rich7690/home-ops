@@ -10,3 +10,8 @@ creation_rules:
     key_groups:
       - age:
           - age17pzq63nanwarvma9nc7dvp7yy3dalgcr8e958dxrx9nfkkcwuyksw8qsds
+  - path_regex: .*prometheus.ya?ml
+    encrypted_regex: "^(data)$"
+    key_groups:
+      - age:
+          - age17pzq63nanwarvma9nc7dvp7yy3dalgcr8e958dxrx9nfkkcwuyksw8qsds

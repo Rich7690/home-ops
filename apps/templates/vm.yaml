@@ -1,0 +1,50 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+    name: victoria-metrics-single
+    namespace: argocd
+spec:
+    project: remote-apps
+    source:
+        chart: victoria-metrics-single
+        repoURL: https://victoriametrics.github.io/helm-charts/
+        targetRevision: 0.8.34
+        helm:
+            releaseName: vm
+            values: |
+                server:
+                    scrape:
+                        enabled: true
+                        configMap: metrics-scrapeconfig
+                persistentVolume:
+                    existingClaim: vm
+
+    destination:
+        server: https://kubernetes.default.svc
+        namespace: metrics
+---
+apiVersion: v1
+kind: Service
+metadata:
+    labels:
+        app: prom
+    name: prom
+    namespace: default
+spec:
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+        - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+        - name: http
+          port: 9090
+          protocol: TCP
+          targetPort: http
+          ports:
+    selector: # We replace anything pointing at prom to VM-single instead
+        app: server
+        app.kubernetes.io/instance: vm
+        app.kubernetes.io/name: victoria-metrics-single
+    sessionAffinity: None
+    type: ClusterIP

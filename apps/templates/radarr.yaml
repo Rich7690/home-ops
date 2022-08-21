@@ -22,6 +22,7 @@ spec:
                         - ALL
                     privileged: false
                     readOnlyRootFilesystem: false
+                    runAsNonRoot: true
                 podSecurityContext:
                     runAsUser: 998
                     runAsGroup: 997

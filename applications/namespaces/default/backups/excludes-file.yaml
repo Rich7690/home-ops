@@ -28,6 +28,8 @@ data:
         /storage/configs/jelly/transcodes
         /storage/configs/jelly/People
         /storage/configs/radarr/MediaCover
+        /storage/configs/loki
+        /storage/configs/vm
         **.terraform**
         */dist*
         **/_test/**

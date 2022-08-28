@@ -35,7 +35,7 @@ spec:
                       memory: 200Mi
                   service:
                     externalTrafficPolicy: Cluster
-                    loadBalancerIP: 192.168.6.10
+                    loadBalancerIP: 192.168.5.10
     destination:
         server: https://kubernetes.default.svc
         namespace: default

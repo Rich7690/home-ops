@@ -19,9 +19,9 @@ spec:
                 securityContext:
                   privileged: true
                 bgp:
-                  enabled: true
+                  enabled: false
                   announce:
-                    loadbalancerIP: true
+                    loadbalancerIP: false
                 hubble:
                   tls:
                     auto:

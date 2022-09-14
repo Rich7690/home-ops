@@ -21,7 +21,7 @@ spec:
                     automountServiceAccountToken: true
                     containers:
                         - name: renovate
-                          image: renovate/renovate:32.171.0@sha256:17316dbdb54cd88fb982f4ea407f7375c50ef35a2a0b249fa284e6238a8b4ccd
+                          image: renovate/renovate:32.195.5@sha256:52ac6f209a4c2a3c5d78cf7b966a7b97b914db6b5fa6a895fb24060141a40d14
                           imagePullPolicy: IfNotPresent
                           tty: true
                           stdin: true

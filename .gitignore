@@ -9,3 +9,5 @@ talosconfig
 worker*.yaml
 kustomize/**/*.sops*
 pod.yaml
+# temporary exclude until I decide how to handle this
+kustomize/ingress/*

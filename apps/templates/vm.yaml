@@ -9,7 +9,7 @@ spec:
     source:
         chart: victoria-metrics-single
         repoURL: https://victoriametrics.github.io/helm-charts/
-        targetRevision: 0.8.36
+        targetRevision: 0.8.37
         helm:
             releaseName: vm
             values: |

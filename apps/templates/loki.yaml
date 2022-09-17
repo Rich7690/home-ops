@@ -13,6 +13,11 @@ spec:
         helm:
             releaseName: loki
             values: |
+                loki:
+                  commonConfig:
+                    replication_factor: 1
+                  storage:
+                    type: 'filesystem'
                 persistence:
                   enabled: true
                   existingClaim: storage-loki-0

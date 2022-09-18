@@ -122,7 +122,7 @@ spec:
                           name: acme
                           envFrom:
                             - secretRef:
-                                name: njalla
+                                name: njalla-udev
                                 optional: false
                           resources:
                               limits:

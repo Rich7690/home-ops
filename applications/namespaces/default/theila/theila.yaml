@@ -41,9 +41,11 @@ spec:
          - "--address"
          - "0.0.0.0"
         resources:
+          requests:
+            cpu: 200m
+            memory: "1G"
           limits:
             memory: "1G"
-            cpu: "500m"
         env:
           - name: TALOSCONFIG
             value: /config/talosconfig

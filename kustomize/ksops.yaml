@@ -12,3 +12,4 @@ files:
   - ./secrets/renovate.enc.yaml
   - ./ingress/jelly.enc.yaml
   - ./configmap/prometheus.enc.yaml
+  - ./secrets/njalla.enc.yaml

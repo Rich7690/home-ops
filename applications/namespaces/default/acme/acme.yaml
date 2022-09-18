@@ -40,9 +40,6 @@ spec:
             parallelism: 1
             template:
                 metadata:
-                    annotations:
-                        vault.security.banzaicloud.io/vault-env-from-path: secret/data/deploy/acme-r
-                        vault.security.banzaicloud.io/vault-tls-secret: vault-tls
                     labels:
                         app: acme
                 spec:
@@ -53,6 +50,10 @@ spec:
                           image: ghcr.io/rich7690/acme-resolver:latest@sha256:98c7693bd4f541e7272cbffd4a2024df94440f3cad122305cffe6def21c5fc2d
                           imagePullPolicy: IfNotPresent
                           name: acme
+                          envFrom:
+                            - secretRef:
+                                name: njalla
+                                optional: false
                           resources:
                               limits:
                                   memory: 512Mi
@@ -109,9 +110,6 @@ spec:
             parallelism: 1
             template:
                 metadata:
-                    annotations:
-                        vault.security.banzaicloud.io/vault-env-from-path: secret/data/deploy/acme-udev
-                        vault.security.banzaicloud.io/vault-tls-secret: vault-tls
                     labels:
                         app: acme-udev
                 spec:
@@ -122,6 +120,10 @@ spec:
                           image: ghcr.io/rich7690/acme-resolver:latest@sha256:98c7693bd4f541e7272cbffd4a2024df94440f3cad122305cffe6def21c5fc2d
                           imagePullPolicy: IfNotPresent
                           name: acme
+                          envFrom:
+                            - secretRef:
+                                name: njalla
+                                optional: false
                           resources:
                               limits:
                                   memory: 512Mi

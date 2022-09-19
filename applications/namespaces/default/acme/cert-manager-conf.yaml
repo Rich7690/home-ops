@@ -1,0 +1,47 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-staging
+spec:
+  acme:
+    # You must replace this email address with your own.
+    # Let's Encrypt will use this to contact you about expiring
+    # certificates, and issues related to your account.
+    email: 11451714+Rich7690@users.noreply.github.com
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      # Secret resource that will be used to store the account's private key.
+      name: le-staging-issuer-account-key
+    solvers:
+      - dns01:
+          webhook:
+            groupName: acme.balzanel.li
+            solverName: njalla
+            config:
+              apiKeySecretRef:
+                name: njalla-credentials
+                key: NJALLA_TOKEN
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    # You must replace this email address with your own.
+    # Let's Encrypt will use this to contact you about expiring
+    # certificates, and issues related to your account.
+    email: 11451714+Rich7690@users.noreply.github.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      # Secret resource that will be used to store the account's private key.
+      name: le-prod-issuer-account-key
+    solvers:
+      - dns01:
+          webhook:
+            groupName: acme.balzanel.li
+            solverName: njalla
+            config:
+              apiKeySecretRef:
+                name: njalla-credentials
+                key: NJALLA_TOKEN

@@ -1,0 +1,53 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    annotations:
+        nginx.ingress.kubernetes.io/limit-connections: "5"
+        nginx.ingress.kubernetes.io/limit-rps: "5"
+        nginx.ingress.kubernetes.io/limit-whitelist: 192.168.0.0/16
+        nginx.ingress.kubernetes.io/proxy-body-size: "0"
+        nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+        nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+    labels:
+        app: whoami
+    name: whoami
+    namespace: default
+spec:
+    ingressClassName: nginx
+    rules:
+        - host: ENC[AES256_GCM,data:BReTBzOAPY3Tmf+pODmu,iv:AzNTzpUDh/XYTh71OAjMQiKVi4IfO2Xk/81kM3N/9ew=,tag:fLPGIHhW9KRhonkvGKaSqQ==,type:str]
+          http:
+            paths:
+                - backend:
+                    service:
+                        name: whoami
+                        port:
+                            name: http
+                  path: /
+                  pathType: ImplementationSpecific
+    tls:
+        - hosts:
+            - ENC[AES256_GCM,data:luZEthfnjrE=,iv:ubO8ksH+X6jH7PMNwOKO1h7Vcc9JhKg7LFDT8wOmrYE=,tag:tM4adFP/RfMB5AG11tvPlw==,type:str]
+            - ENC[AES256_GCM,data:mxzc3XhmsaGB3Q==,iv:h9V3bupr1n++x1bvBAxfqnAMCfIYENbqLSsrH1YIhDA=,tag:Vh9V6ZkG05oCICRGBruiGQ==,type:str]
+          secretName: prod-cert
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age17pzq63nanwarvma9nc7dvp7yy3dalgcr8e958dxrx9nfkkcwuyksw8qsds
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpeDg5alJvckg2VEZ3a3VG
+            UE5KZ0hUYnVLQjgwaGFzWEhxaTRTK2huakhFCjgyK1pPMnRmcEM5RS9ubkVlNWR3
+            Skw3S0EvL0J1d0NJTStnYVBiVTYwT3MKLS0tIGtTbFlDaWdBdlZyY1QzMldqanFh
+            T2x4akN3cGlaTkQ5MGc3WFN2RUJ2a0kKXtCdqUBAMlDbvIJ3jsWpYee7YoIR93+U
+            9q+nxmcSYG/gRiLdcJqEjn5bBMhLtVxs+G78UAr6UmbyeYWrDEkttw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-09-19T07:13:21Z"
+    mac: ENC[AES256_GCM,data:IeocyJ3p28yXsuYDmniSha/PnnITrasGufM9zfbtmvjnQ6Uh+oWzKktt5WNGZ4iWYolU5ilwpXuPvrfZuJRUIbq0zluEbsOlKf/UJK8zdZ0fdfuzJE1ND8B1Z19INy+cqS08eFMKEK9CdU435cJRiFKv82mmR2xNgRCE/+ggMl0=,iv:8Zwa377a69Ef5dWks2Zz0FfIeju0kLA0S8wNU0QA5+k=,tag:k8kvVBo8A3yu1XfDws0j6A==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData|host|hosts)$
+    version: 3.7.3

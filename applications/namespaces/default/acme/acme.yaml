@@ -51,9 +51,9 @@ spec:
                           imagePullPolicy: IfNotPresent
                           name: acme
                           envFrom:
-                            - secretRef:
-                                name: njalla
-                                optional: false
+                              - secretRef:
+                                    name: njalla
+                                    optional: false
                           resources:
                               limits:
                                   memory: 512Mi
@@ -87,7 +87,7 @@ spec:
                           name: data
     schedule: "@daily"
     successfulJobsHistoryLimit: 1
-    suspend: false
+    suspend: true
 ---
 apiVersion: batch/v1
 kind: CronJob
@@ -121,9 +121,9 @@ spec:
                           imagePullPolicy: IfNotPresent
                           name: acme
                           envFrom:
-                            - secretRef:
-                                name: njalla-udev
-                                optional: false
+                              - secretRef:
+                                    name: njalla-udev
+                                    optional: false
                           resources:
                               limits:
                                   memory: 512Mi
@@ -157,4 +157,4 @@ spec:
                           name: data
     schedule: "@daily"
     successfulJobsHistoryLimit: 1
-    suspend: false
+    suspend: true

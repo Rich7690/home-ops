@@ -29,6 +29,10 @@ spec:
                         - image: ghcr.io/rich7690/go-web-crawl:0.0.3@sha256:72db5cf943216cd9390171548f2867ee06cbe1d671d66ea6dd07add3145c00a5
                           imagePullPolicy: IfNotPresent
                           name: savethespot
+                          envFrom:
+                            - secretRef:
+                                name: savethespot
+                                optional: false
                           securityContext:
                               allowPrivilegeEscalation: false
                               capabilities:

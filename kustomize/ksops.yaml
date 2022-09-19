@@ -10,6 +10,7 @@ files:
   - ./secrets/vaultwarden.enc.yaml
   - ./secrets/backup.enc.yaml
   - ./secrets/renovate.enc.yaml
+  - ./secrets/savethespot.enc.yaml
   - ./ingress/jelly.enc.yaml
   - ./ingress/whoami.enc.yml
   - ./ingress/whoami-udev.enc.yml

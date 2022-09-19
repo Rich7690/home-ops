@@ -11,5 +11,6 @@ files:
   - ./secrets/backup.enc.yaml
   - ./secrets/renovate.enc.yaml
   - ./ingress/jelly.enc.yaml
+  - ./ingress/whoami.enc.yml
   - ./configmap/prometheus.enc.yaml
   - ./secrets/njalla.enc.yaml

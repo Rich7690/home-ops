@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  name: njalla-webhook
+  namespace: argocd
+spec:
+  destination:
+    namespace: cert-manager
+    server: https://kubernetes.default.svc
+  project: default
+  revisionHistoryLimit: 6
+  source:
+    helm:
+      values: |-
+        image:
+          repository: ghcr.io/rich7690/cert-manager-webhook-njalla
+          tag: v0.3.8@sha256:1caf497fbe5a41ebd2ed18da4bd819236e99ca043b41c5d3b6da527c4d6ca6ad
+          pullPolicy: IfNotPresent
+    path: deploy/cert-manager-webhook-njalla
+    repoURL: https://github.com/Rich7690/cert-manager-webhook-njalla.git
+    targetRevision: HEAD
+  syncPolicy:
+    retry:
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m0s
+      limit: 2
+    syncOptions:
+    - PruneLast=true

@@ -1,0 +1,47 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    annotations:
+        # This is somewhat of a sentinal ingress to generate TLS certs from cert-manager. Other ingress records will use that cert as its a wildcard one
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        cert-manager.io/private-key-algorithm: ECDSA
+    name: whoami-udev
+    namespace: default
+spec:
+    ingressClassName: nginx-external
+    rules:
+        - host: ENC[AES256_GCM,data:kYZSQZ1zsbvkHsfdjwG+VSrXNrKG,iv:nStJp9CAbQUPNDtDniTT0yICT3k3y5J2G2wkNhFJM0g=,tag:W1I15rXnti+n4S4IjuvYfg==,type:str]
+          http:
+            paths:
+                - backend:
+                    service:
+                        name: whoami
+                        port:
+                            name: http
+                  path: /
+                  pathType: ImplementationSpecific
+    tls:
+        - hosts:
+            - ENC[AES256_GCM,data:crzCAobY5bKOlLWUU+CkpA==,iv:6rrkhAE0/9HLA2lhUwhDxeKlZTfCXLnha7E4nCwDmbs=,tag:DPT4DROufnHBCupoVEUn8w==,type:str]
+            - ENC[AES256_GCM,data:0c5z6qLN6tNDvzV24pU=,iv:/N4y3Ykh1Q404aJuAQlkRenkD5sadBnRV7qL4Gc7iss=,tag:wIarQx39LST+rtZZB7A/lQ==,type:str]
+          secretName: udev-cert
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age17pzq63nanwarvma9nc7dvp7yy3dalgcr8e958dxrx9nfkkcwuyksw8qsds
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBsNC9qcDFhT1QzLy9jYk1H
+            MHpleUxja3lhczB5WlBlSjNnNTBDNlhxcWhnCmZRQ0pnaG9aTzg4V0hQTjBkT01x
+            ZHQ5ZGtPYXFUbHBuSE5UUkhwYkdCcXMKLS0tIHRSVStoOFZNdzVmK2ZBbVFUbFV0
+            cDlMSWU4SXZ4QmJXMjhDZitDMlUvb1kKgwJFbwvsPO73b0StDodkq7xl4lMq4/XU
+            MaZorfnShtZYLmS//UA2TIZtnfT6xLiI0UWxbJfFTd4lEE7ruNaGQA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-09-19T22:37:49Z"
+    mac: ENC[AES256_GCM,data:XR5x5Dl1iTq8Nfw/Dkk1MIuUbFot1juTw2mOGbFS8MTSrVZ8tVmOBEBzwW1m4pseFCojMS9ljQJFePU+axubRrXz9udpQFRcrLSoANk2TicL4rQJgQ5mvmL59VOhWCaK4GnLGtHyh0Qy5monflNBewJKJWWqCwYTdLvqGSk7O1I=,iv:M8GwZhGsS4K2utw7G71T/XsqtoxnqMHrtmocRvD+KBs=,tag:42LiRjFxtwnqo6EhwP8faA==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData|host|hosts)$
+    version: 3.7.3

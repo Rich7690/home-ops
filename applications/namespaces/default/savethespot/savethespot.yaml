@@ -64,7 +64,7 @@ spec:
                     terminationGracePeriodSeconds: 30
     schedule: 0 16 2 * *
     successfulJobsHistoryLimit: 1
-    suspend: false
+    suspend: true
 ---
 apiVersion: v1
 kind: ServiceAccount

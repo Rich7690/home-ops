@@ -5,7 +5,7 @@ metadata:
     name: traefik
     namespace: argocd
 spec:
-    project: remote-apps
+    project: remote-apps-u59
     source:
         chart: traefik
         repoURL: https://helm.traefik.io/traefik

@@ -1,0 +1,19 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+    name: metallb
+    namespace: argocd
+spec:
+    project: remote-apps-u59
+    source:
+        chart: metallb
+        repoURL: https://metallb.github.io/metallb
+        targetRevision: 0.13.4
+        helm:
+            releaseName: metallb
+            values: |
+
+    destination:
+        server: https://192.168.5.4:6443
+        namespace: default

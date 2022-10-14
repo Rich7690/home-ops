@@ -22,7 +22,7 @@ spec:
                     main:
                         enabled: true
                         hosts:
-                            - host: jelly.local
+                            - host: jelly.rtlocal
                         paths:
                             - path: /
                                 pathType: Prefix

@@ -1,0 +1,66 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+    name: jellyfin
+    namespace: argocd
+spec:
+    project: remote-apps-u59
+    source:
+        chart: metallb
+        repoURL: https://k8s-at-home.com/charts/
+        targetRevision: 9.5.3
+        helm:
+            releaseName: jellyfin
+            values: |
+                env:
+                    TZ: America/Los_Angeles
+                image:
+                    pullPolicy: IfNotPresent
+                    repository: jellyfin/jellyfin
+                ingress:
+                    main:
+                        enabled: true
+                        hosts:
+                            - host: jelly.local
+                        paths:
+                            - path: /
+                                pathType: Prefix
+                                service:
+                                name: jellyfin
+                                port: 8096
+                persistence:
+                    cache:
+                        enabled: false
+                        mountPath: /cache
+                    config:
+                        enabled: true
+                    media:
+                        enabled: true
+                        hostPath: /mnt/media
+                        mountPath: /mnt/media
+                        type: hostPath
+                podSecurityContext:
+                    fsGroup: 113
+                    runAsGroup: 113
+                    runAsUser: 108
+                    supplementalGroups:
+                    - 44
+                    - 109
+                resources:
+                    limits:
+                        gpu.intel.com/i915: 1
+                        memory: 4096Mi
+                    requests:
+                        cpu: 200m
+                        gpu.intel.com/i915: 1
+                        memory: 256Mi
+                service:
+                    main:
+                        ports:
+                        http:
+                            port: 8096
+
+    destination:
+        server: https://192.168.5.4:6443
+        namespace: default

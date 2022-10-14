@@ -58,8 +58,8 @@ spec:
                 service:
                     main:
                         ports:
-                        http:
-                            port: 8096
+                            http:
+                                port: 8096
 
     destination:
         server: https://192.168.5.4:6443

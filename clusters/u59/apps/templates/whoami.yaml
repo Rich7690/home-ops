@@ -3,9 +3,9 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: whoami
+  namespace: default
   labels:
     app: whoami
-
 spec:
   replicas: 1
   selector:
@@ -28,6 +28,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: whoami
+  namespace: default
 spec:
   ports:
     - name: web
@@ -40,6 +41,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: whoami-ingress
+  namespace: default
 spec:
   rules:
   - http:

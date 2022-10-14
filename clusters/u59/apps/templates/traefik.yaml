@@ -20,6 +20,10 @@ spec:
                     name: traefik
                     tag: 2.8.0
                     pullPolicy: IfNotPresent
+                providers:
+                  kubernetesIngress:
+                    publishedService:
+                      enabled: true
                 globalArguments:
                   - "--global.checknewversion=false"
                   - "--global.sendanonymoususage=false"

@@ -43,6 +43,7 @@ metadata:
   name: whoami-ingress
   namespace: default
 spec:
+  ingressClassName: traefik
   rules:
   - http:
       paths:

@@ -13,6 +13,9 @@ spec:
         helm:
             releaseName: traefik
             values: |
+                ingressClass:
+                  enabled: true
+                  isDefaultClass: true
                 image:
                     name: traefik
                     tag: 2.8.0

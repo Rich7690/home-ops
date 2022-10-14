@@ -25,10 +25,10 @@ spec:
                             - host: jelly.rtlocal
                         paths:
                             - path: /
-                                pathType: Prefix
-                                service:
-                                name: jellyfin
-                                port: 8096
+                              pathType: Prefix
+                              service:
+                              name: jellyfin
+                              port: 8096
                 persistence:
                     cache:
                         enabled: false

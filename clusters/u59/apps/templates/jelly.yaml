@@ -2,12 +2,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-    name: jellyfin
+    name: jellyfin-u59
     namespace: argocd
 spec:
     project: remote-apps-u59
     source:
-        chart: metallb
+        chart: jellyfin
         repoURL: https://k8s-at-home.com/charts/
         targetRevision: 9.5.3
         helm:

@@ -17,6 +17,9 @@ spec:
                     name: traefik
                     tag: 2.8.0
                     pullPolicy: IfNotPresent
+                globalArguments:
+                  - "--global.checknewversion false"
+                  - "--global.sendanonymoususage false"
     destination:
         server: https://192.168.5.4:6443
         namespace: default

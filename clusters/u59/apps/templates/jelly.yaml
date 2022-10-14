@@ -22,11 +22,11 @@ spec:
                     main:
                         enabled: true
                         hosts:
-                            - host: jelly.rtlocal
-                        paths:
-                            - path: /
-                              pathType: Prefix
-                              service:
+                        - host: jelly.rtlocal
+                          paths:
+                          - path: /
+                            pathType: Prefix
+                            service:
                               name: jellyfin
                               port: 8096
                 persistence:

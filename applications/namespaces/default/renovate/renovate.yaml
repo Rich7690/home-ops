@@ -15,13 +15,11 @@ spec:
                 metadata:
                     labels:
                         app: renovate
-                    annotations:
-                        vault.security.banzaicloud.io/vault-tls-secret: vault-tls
                 spec:
                     automountServiceAccountToken: true
                     containers:
                         - name: renovate
-                          image: renovate/renovate:33.1.0
+                          image: renovate/renovate:34.16.0@sha256:5a0a0a609d4ab8dcff70ac0905beae1405c434545870e6a13f223956f0d40ecb
                           imagePullPolicy: IfNotPresent
                           tty: true
                           stdin: true

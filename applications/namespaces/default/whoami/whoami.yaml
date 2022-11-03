@@ -95,9 +95,9 @@ metadata:
   namespace: default
 spec:
   ports:
-    - name: web
+    - name: http
       port: 80
-      targetPort: web
+      targetPort: http
   selector:
     app: whoami
 ---

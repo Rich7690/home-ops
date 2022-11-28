@@ -37,6 +37,16 @@ spec:
       # Secret resource that will be used to store the account's private key.
       name: le-prod-issuer-account-key
     solvers:
+      - selector:
+        matchLabels:
+          "use-cloudflare-solver": "true"
+        dns01:
+          cloudflare:
+            # !! Remember to create a k8s secret before
+            # kubectl create secret generic cloudflare-api-key-secret
+            apiKeySecretRef:
+              name: cloudflare-api-key-secret
+              key: api-key
       - dns01:
           webhook:
             groupName: acme.balzanel.li

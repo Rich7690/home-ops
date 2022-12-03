@@ -44,7 +44,7 @@ spec:
           cloudflare:
             # !! Remember to create a k8s secret before
             # kubectl create secret generic cloudflare-api-key-secret
-            apiKeySecretRef:
+            apiTokenSecretRef:
               name: cloudflare-api-key-secret
               key: api-key
       - dns01:

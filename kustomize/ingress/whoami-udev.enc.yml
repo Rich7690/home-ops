@@ -7,10 +7,12 @@ metadata:
         cert-manager.io/private-key-algorithm: ECDSA
     name: whoami-udev
     namespace: default
+    labels:
+        use-cloudflare-solver: "true"
 spec:
     ingressClassName: nginx-external
     rules:
-        - host: ENC[AES256_GCM,data:kYZSQZ1zsbvkHsfdjwG+VSrXNrKG,iv:nStJp9CAbQUPNDtDniTT0yICT3k3y5J2G2wkNhFJM0g=,tag:W1I15rXnti+n4S4IjuvYfg==,type:str]
+        - host: ENC[AES256_GCM,data:9dSWYJFj/urn1jZ5776g7YsAJ0c7,iv:O1ThQFSli0ZRDid40rX+KXQdgWm7I5YJ0BPIrUZ4SbE=,tag:dGiUsqA+VwOujgZJ0sjs8A==,type:str]
           http:
             paths:
                 - backend:
@@ -22,8 +24,8 @@ spec:
                   pathType: ImplementationSpecific
     tls:
         - hosts:
-            - ENC[AES256_GCM,data:crzCAobY5bKOlLWUU+CkpA==,iv:6rrkhAE0/9HLA2lhUwhDxeKlZTfCXLnha7E4nCwDmbs=,tag:DPT4DROufnHBCupoVEUn8w==,type:str]
-            - ENC[AES256_GCM,data:0c5z6qLN6tNDvzV24pU=,iv:/N4y3Ykh1Q404aJuAQlkRenkD5sadBnRV7qL4Gc7iss=,tag:wIarQx39LST+rtZZB7A/lQ==,type:str]
+            - ENC[AES256_GCM,data:uK8/CZsRwRev4TAEuEHV+g==,iv:ZhqV+UtHD9tptf0ckppaOKWO0L6LDYbTKT+oWf44M00=,tag:Jz5nwfO9uk4hIcgXODcJIg==,type:str]
+            - ENC[AES256_GCM,data:gQwFcZ0sTeOtUjcGzjQ=,iv:g+A7PdNSfjEyUwd93TpxI7mqVgxdEbNUhns3nuSDEgc=,tag:B2Ck+eHyjt3CD/ilse5k1g==,type:str]
           secretName: udev-cert
 sops:
     kms: []
@@ -34,14 +36,14 @@ sops:
         - recipient: age17pzq63nanwarvma9nc7dvp7yy3dalgcr8e958dxrx9nfkkcwuyksw8qsds
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBsNC9qcDFhT1QzLy9jYk1H
-            MHpleUxja3lhczB5WlBlSjNnNTBDNlhxcWhnCmZRQ0pnaG9aTzg4V0hQTjBkT01x
-            ZHQ5ZGtPYXFUbHBuSE5UUkhwYkdCcXMKLS0tIHRSVStoOFZNdzVmK2ZBbVFUbFV0
-            cDlMSWU4SXZ4QmJXMjhDZitDMlUvb1kKgwJFbwvsPO73b0StDodkq7xl4lMq4/XU
-            MaZorfnShtZYLmS//UA2TIZtnfT6xLiI0UWxbJfFTd4lEE7ruNaGQA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpQU9tYXhneUxselYyK2ZX
+            ZUt3NUoyNEhCc29ZNUNWd2t1K29zVE1sS1dzCldPWGU5WmhaSW9iaDNlSVlmTElv
+            aXFRaldBSWNlZm9Dcm9ZL0o4VGl1dTQKLS0tIGR3NjZ4b1NTN0JLaStEUGtwemdW
+            Mjdmc0gxMklIc2VwTjVsVjFKc04rdjQK7/ghtt2RdJMeFQVUo4sTbDV5Z564DuAC
+            AGLGaLmuymWK7x5NLzi5K2GA3TGml60lJLC/qToKlP2kU7+3lo6Trw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2022-09-19T22:37:49Z"
-    mac: ENC[AES256_GCM,data:XR5x5Dl1iTq8Nfw/Dkk1MIuUbFot1juTw2mOGbFS8MTSrVZ8tVmOBEBzwW1m4pseFCojMS9ljQJFePU+axubRrXz9udpQFRcrLSoANk2TicL4rQJgQ5mvmL59VOhWCaK4GnLGtHyh0Qy5monflNBewJKJWWqCwYTdLvqGSk7O1I=,iv:M8GwZhGsS4K2utw7G71T/XsqtoxnqMHrtmocRvD+KBs=,tag:42LiRjFxtwnqo6EhwP8faA==,type:str]
+    lastmodified: "2022-12-03T01:20:46Z"
+    mac: ENC[AES256_GCM,data:zLA4Ihdo+/pBglgjEjnayqlF8fXx3mQKHAmPOGi9kWGoXdcfJEWINuuEqhJOMjPYM19XZc9gaz9we8mtsiGNE3f0HdMPazKdEhg5l6ZYfJ0hwEL5tJcKeQdJ5juFVFqCqP81gSStxTOCzBD/+2eZTquF+LZipiR7gDCEAsKpIQ0=,iv:B8wgR+0hK8N/2DJibsVGqBzt4JCACht/Pz+2/4T774o=,tag:S7WR3uOKU81cbJ9J/FVXXg==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData|host|hosts)$
     version: 3.7.3

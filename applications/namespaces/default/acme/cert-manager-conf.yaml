@@ -38,8 +38,8 @@ spec:
       name: le-prod-issuer-account-key
     solvers:
       - selector:
-        matchLabels:
-          "use-cloudflare-solver": "true"
+          matchLabels:
+            "use-cloudflare-solver": "true"
         dns01:
           cloudflare:
             # !! Remember to create a k8s secret before

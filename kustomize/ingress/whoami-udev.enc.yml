@@ -12,7 +12,7 @@ metadata:
 spec:
     ingressClassName: nginx-external
     rules:
-        - host: ENC[AES256_GCM,data:9dSWYJFj/urn1jZ5776g7YsAJ0c7,iv:O1ThQFSli0ZRDid40rX+KXQdgWm7I5YJ0BPIrUZ4SbE=,tag:dGiUsqA+VwOujgZJ0sjs8A==,type:str]
+        - host: ENC[AES256_GCM,data:/bfyKC4d3tM0JyT+U9LkD0zpKTtv,iv:N9eM/rdIp9bUQD3xT2ZKOTtIof5o+OFkx6dnfvQJh8M=,tag:t/Ui+yhHFz2xnH150qg4rA==,type:str]
           http:
             paths:
                 - backend:
@@ -24,8 +24,8 @@ spec:
                   pathType: ImplementationSpecific
     tls:
         - hosts:
-            - ENC[AES256_GCM,data:uK8/CZsRwRev4TAEuEHV+g==,iv:ZhqV+UtHD9tptf0ckppaOKWO0L6LDYbTKT+oWf44M00=,tag:Jz5nwfO9uk4hIcgXODcJIg==,type:str]
-            - ENC[AES256_GCM,data:gQwFcZ0sTeOtUjcGzjQ=,iv:g+A7PdNSfjEyUwd93TpxI7mqVgxdEbNUhns3nuSDEgc=,tag:B2Ck+eHyjt3CD/ilse5k1g==,type:str]
+            - ENC[AES256_GCM,data:r2W5YBNNSCtaHS7MYApV2A==,iv:HM1ZBayAeh0OF6WsmVPJRorVw16HUzQ4OOJ4IZKbXpw=,tag:5gIoQwJg85I84S9X8kUM9w==,type:str]
+            - ENC[AES256_GCM,data:7D6e8HGFZ2IBv2KOxY8=,iv:eInsl/x02QSiTgpKc5aPPOBXKRYhRtXLy4vvxsTtIFI=,tag:BjqtlDXLb5DaCnRbEBP4Ug==,type:str]
           secretName: udev-cert
 sops:
     kms: []
@@ -36,14 +36,14 @@ sops:
         - recipient: age17pzq63nanwarvma9nc7dvp7yy3dalgcr8e958dxrx9nfkkcwuyksw8qsds
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpQU9tYXhneUxselYyK2ZX
-            ZUt3NUoyNEhCc29ZNUNWd2t1K29zVE1sS1dzCldPWGU5WmhaSW9iaDNlSVlmTElv
-            aXFRaldBSWNlZm9Dcm9ZL0o4VGl1dTQKLS0tIGR3NjZ4b1NTN0JLaStEUGtwemdW
-            Mjdmc0gxMklIc2VwTjVsVjFKc04rdjQK7/ghtt2RdJMeFQVUo4sTbDV5Z564DuAC
-            AGLGaLmuymWK7x5NLzi5K2GA3TGml60lJLC/qToKlP2kU7+3lo6Trw==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBMM1EzRDR2TzUwU3g1cmZ0
+            Vm5lQS9KaGx2ZkZkTkVUd2xOOW02NC9pdERJCmkxbjBlc0lJOFMxTVJJT29CY0hk
+            d2VzazN4OXFYcXJTTGNFTk10cU0zQXMKLS0tIFZQVEhMbVB6RlFJQWRDdG9LK1Ay
+            QjJ3RDJFbDhoeHhlVCtaUld2QkEveWsKSohxsmb+j3D7EzKI0dzJCQ6neN54dsD8
+            Vtn+myVQzIs+2X7INqUClnAGLwF48t4R0TKTv4EOpQ3+6QKnAnNWVw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2022-12-03T01:20:46Z"
-    mac: ENC[AES256_GCM,data:zLA4Ihdo+/pBglgjEjnayqlF8fXx3mQKHAmPOGi9kWGoXdcfJEWINuuEqhJOMjPYM19XZc9gaz9we8mtsiGNE3f0HdMPazKdEhg5l6ZYfJ0hwEL5tJcKeQdJ5juFVFqCqP81gSStxTOCzBD/+2eZTquF+LZipiR7gDCEAsKpIQ0=,iv:B8wgR+0hK8N/2DJibsVGqBzt4JCACht/Pz+2/4T774o=,tag:S7WR3uOKU81cbJ9J/FVXXg==,type:str]
+    lastmodified: "2022-12-04T00:23:26Z"
+    mac: ENC[AES256_GCM,data:Wumcy/47f3vXr0HVgZrvOCrYz8PxEkWJ/q7ahydcWhHV23JOxa1eR8DaKfq5Gd+kwNJ68siLQI5j90tcqsCwt8OjKHroYjkVzOdvTTlUtjx+u9Zo7qZPRf9f4Yh7BMw10n4mWf9B9XfaK6zzZaEVdqc15euHn6EhZWTHt3F92Cg=,iv:zy+oJMjEPDVUdS3dmvDwl6CSfa39kMu4J1rxghKw3dM=,tag:aPTcohVYyR2ZrU0i47eeGg==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData|host|hosts)$
     version: 3.7.3

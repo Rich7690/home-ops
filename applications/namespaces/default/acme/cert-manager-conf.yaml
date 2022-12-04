@@ -55,3 +55,6 @@ spec:
               apiKeySecretRef:
                 name: njalla-credentials
                 key: NJALLA_TOKEN
+        selector:
+          matchLabels:
+            "use-cloudflare-solver": "false"

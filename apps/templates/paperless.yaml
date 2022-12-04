@@ -45,11 +45,10 @@ spec:
                         size: 20Gi
                         type: hostPath
                 resources:
-                    limits:
-                        cpu: 16
+                    limits:SS
                         memory: 4G
                     requests:
-                        cpu: 2
+                        cpu: 1
                         memory: 4G
     destination:
         server: https://kubernetes.default.svc

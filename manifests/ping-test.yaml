@@ -57,10 +57,9 @@ spec:
                         protocol: TCP
                   resources:
                       limits:
-                          cpu: '4'
                           memory: 64Mi
                       requests:
-                          cpu: 100m
+                          cpu: 50m
                           memory: 64Mi
                   securityContext:
                       allowPrivilegeEscalation: false

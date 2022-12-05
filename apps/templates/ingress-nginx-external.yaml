@@ -23,7 +23,7 @@ spec:
                   ingressClassResource:
                     controllerValue: k8s.io/ingress-nginx-external
                     name: nginx-external
-                  kind: DaemonSet
+                  kind: Deployment
                   metrics:
                     enabled: true
                     service:

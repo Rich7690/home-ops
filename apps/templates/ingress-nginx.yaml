@@ -19,7 +19,7 @@ spec:
                   electionID: ingress-controller-leader
                   image:
                     runAsUser: "101"
-                  kind: DaemonSet
+                  kind: Deployment
                   metrics:
                     enabled: true
                     service:

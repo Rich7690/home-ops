@@ -185,36 +185,3 @@ resource "kubernetes_ingress_v1" "qbit" {
   }
 
 }
-
-
-resource "kubernetes_ingress_v1" "kopia" {
-  metadata {
-    name = "kopia"
-  }
-  spec {
-    ingress_class_name = "nginx"
-    tls {
-      hosts       = ["*.${var.domain_name}", "${var.domain_name}"]
-      secret_name = "prod-cert"
-    }
-    rule {
-      host = "kopia.${var.domain_name}"
-      http {
-
-        path {
-          path_type = "ImplementationSpecific"
-          backend {
-            service {
-              name = "kopia"
-              port {
-                name = "http"
-              }
-            }
-          }
-          path = "/"
-        }
-      }
-    }
-  }
-
-}

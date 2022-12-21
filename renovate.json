@@ -6,7 +6,6 @@
     ":dependencyDashboard",
     ":automergeBranch",
     ":automergePatch",
-    "schedule:weekends",
     ":skipStatusChecks"
   ],
   "docker": {

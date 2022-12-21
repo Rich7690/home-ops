@@ -83,7 +83,7 @@ spec:
                 - effect: NoSchedule
                   key: node-role.kubernetes.io/master
                   operator: Exists
-    updateStrategy:
+    strategy:
         rollingUpdate:
             maxSurge: 1
             maxUnavailable: 0

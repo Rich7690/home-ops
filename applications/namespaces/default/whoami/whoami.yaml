@@ -1,6 +1,6 @@
 ---
 apiVersion: apps/v1
-kind: DaemonSet
+kind: Deployment
 metadata:
     labels:
         app: whoami
@@ -8,6 +8,7 @@ metadata:
     namespace: default
 spec:
     revisionHistoryLimit: 3
+    replicas: 1
     selector:
         matchLabels:
             app: whoami

@@ -8,18 +8,19 @@ spec:
     concurrencyPolicy: Forbid
     failedJobsHistoryLimit: 1
     successfulJobsHistoryLimit: 1
+    suspend: true
     jobTemplate:
         spec:
-            backoffLimit: 3
+            backoffLimit: 1
             template:
                 metadata:
                     labels:
                         app: renovate
                 spec:
                     automountServiceAccountToken: true
-                    containers:
+                    containeFrs:
                         - name: renovate
-                          image: renovate/renovate:34.48.0
+                          image: renovate/renovate:34.70.0
                           imagePullPolicy: IfNotPresent
                           tty: true
                           stdin: true

@@ -14,21 +14,3 @@ spec:
     targetRevision: 2.6.5
     helm:
       releaseName: kyverno
-      values: |
-        resources:
-          # -- Pod resource limits
-          limits:
-            memory: 384Mi
-            cpu: 0
-          # -- Pod resource requests
-          requests:
-            cpu: 100m
-            memory: 128Mi
-
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-      - Replace=true

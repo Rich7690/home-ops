@@ -17,8 +17,8 @@ spec:
                 env:
                     TZ: America/Los_Angeles
                 image:
-                    repository: ghcr.io/k8s-at-home/prowlarr-develop
-                    tag: v0.4.4.1947@sha256:cad7c7dfc204bc3fb5280082e9e589a1d93a96af03d3b7fe2910bab658ea000d
+                    repository: ghcr.io/onedr0p/prowlarr-develop
+                    tag: 0.4.11.2143@sha256:9861a98adde0da75869f86a74726e13eadf4e66949bf07d31054011c7c3429ca
                 persistence:
                     config:
                         enabled: true

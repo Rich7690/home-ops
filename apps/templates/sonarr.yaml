@@ -28,8 +28,8 @@ spec:
                 env:
                     TZ: America/Los_Angeles
                 image:
-                    repository: ghcr.io/k8s-at-home/sonarr
-                    tag: v3.0.9.1549@sha256:6f11e1a769216c576d6073a5288d81f10e08ddd79baf59656f21dbb2fd896e72
+                    repository: ghcr.io/onedr0p/sonarr
+                    tag: v3.0.9.1549@sha256:cd2f0ed265c35baa3b4b1ed1fb0612231f24930d5b1c0165a176fe4fe4f6b126
                 persistence:
                     media:
                         enabled: true

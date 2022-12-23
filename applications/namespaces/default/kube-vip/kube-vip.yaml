@@ -61,7 +61,7 @@ spec:
                         value: '6443'
                       - name: lb_fwdmethod
                         value: local
-                  image: ghcr.io/kube-vip/kube-vip:v0.5.0@sha256:2c62227d7bbe8ee5d4539b4f7d011be71e5ebaf50aa7d6da1ecdea1ff257b5b8
+                  image: ghcr.io/kube-vip/kube-vip:v0.5.7@sha256:cadb65bd34715c87506dd01327f672a7299bd555539d7a4c6fb551dd192e46a2
                   imagePullPolicy: IfNotPresent
                   name: kube-vip
                   resources: {}

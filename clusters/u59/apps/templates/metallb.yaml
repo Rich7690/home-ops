@@ -17,7 +17,6 @@ spec:
     destination:
         server: https://192.168.5.4:6443
         namespace: default
----
 # ## TODO: this only works once the helm chart runs. Fix
 # apiVersion: metallb.io/v1beta1
 # kind: IPAddressPool

@@ -37,7 +37,7 @@ spec:
                         value: /config
                       - name: JELLYFIN_DATA_DIR
                         value: /config/data
-                  image: ghcr.io/onedr0p/jellyfin:10.8.8@sha256:3db9daca5d171089a11369970f83893829c39e95b78bb0253a54ef0ecf69fbe9
+                  image: jellyfin/jellyfin:10.8.8@sha256:148ad54e77edf28f082facd2ca5d4062b8900755c53340b6fa537ac93c5bef61
                   imagePullPolicy: IfNotPresent
                   livenessProbe:
                       failureThreshold: 3

@@ -34,10 +34,10 @@ spec:
                 resources:
                   limits:
                     cpu: 4
-                    memory: 256Mi
+                    memory: 512Mi
                   requests:
                     cpu: 50m
-                    memory: 100Mi
+                    memory: 256Mi
     destination:
         server: https://kubernetes.default.svc
         namespace: default

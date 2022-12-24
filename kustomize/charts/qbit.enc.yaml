@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+    name: qbittorrent
+    namespace: argocd
+spec:
+    project: remote-apps
+    source:
+        chart: qbittorrent
+        repoURL: https://k8s-at-home.com/charts
+        targetRevision: 13.5.2
+        helm:
+            releaseName: qbittorrent
+            values: ENC[AES256_GCM,data:NgXvZ048I9JYma8YOVTxwbbCooFv+z9XsQ2Aqq7BxFeMhGXVSCILGSTKKoKHM0DqXVbkT6d2exQ5eZgceH6J06ZktG0uQz0lP0cYctAQzMT/6tfk3yB2gz6CB30aP1r9XzaM/PTU23FXJU3+vyJe8eHScnMaNj1tliohAO++4f6bKw7IokGuEx3uSPuT4NCG/GZXnbTR8mpU2gOe3V1IBlUbLMfcAAw+sJY63L1wejfcut61BcUm6GzRBPDW3jy1fW0GMH5VM1OY9GlvABseZWUtEwxSEBlAI/LfUXsDTyELCyFEwANKSrywn3Bc17YA3hUUDP8SHIMQZZYicyLcYMwSsGbC6x/KTYUX18dPydzUjXGMEdGJ7TvyKRsFZF86JrwwTRNLbkQAc4ARyVdulVho19vngAFZtb6cKmjohrOgk4n2duDOWGqozKaH+B5C4hAjh6Naac8lmOV4RMO0dVYetZua0HDYZLq1znSrFNiM8njfaaf0/7SX5tuc08nXHj9gg0Gbq4CjV3JV6vzDsVjb8trYlEk9MOvH6BUcW8PhRhQkJgTk8C24s6F1xxIA4Ng0OXcgWTBSQXC1bua9ZQrJEXv16iioUNAROF6IZHuw8hrCg0pv2P7G0FnQB3i8yGnxgTOApntsGAvphd1lvs1GP1TjNpCII/OTK3Y6pebnFXI0rsfBkxi/iudTZW24zDE5pj7LhYkalZwZO3aKwu/Bsl/gRt/ToF8DWRksiNTFLvV3BwDJYBx7iXNWgBNT6TSD0gYLColVGYFWLoOlbhNzvk8DkEVHOzg02e7QqzZOw069H5Z/Z8U9rxlPFQ1uJ637S5vdUOUccJ3P8tmxla90pA9lmDyLOJ5Dl04+adAL7hGQRl2p+m+pA2nWzB9zxtpXcqrNppC6o6/iS9kFN6kJFOevOcXZNU9yXGP/r0VChhw8DLOha7kA0FCzahSetWxF2Iu5afhdgMOCSHtCw1kF8RfwTs5ociwQlVN6kvykQ/iF/iSlZ2+5B7nl5aKhPNG2CKWoavkxIXwW/BM9JdTFB1eu2+vDn7LIqf2wKMnp6wTyPoZgtFXYBWr4Fng6GfVk8OXfoc99L7VnyQ9TPV4/tUabjWhOOGJBUoFkRqIkQ5j3sY0Lf6nwgOzH38WAdfGg47HKPpAx1s2Lz61jG6Tf5/Lw1y1+Dyx85YhE+0pIX2RqVGczqJBK4kP8PeJVCnYmRcAc8XVS12HFOSGSAcC1k3r+CZ1Ua5oKVvkwkmcEQ+lrxwosD0u6h88Jv3iAhGwAuVVH4RsvXeubf3BeXGF1+pmEIf7M5zGwIsfCf4tBniavUPZEZ3/qrpRue77qBK/uEqjBRJT5AHhJluxHaeAffN/6gqOgvebugCb7M85YYNblexrQYVFzPQlG9adEmafhbawTaWtBWQpp8XbWo7fGvK0bMFiyTjW4BQYxhcWawIg2HrHoPEkuc7J2z7Bo7LCBwfXS8NBS0HQ68PGWjsnLELiKowscuGHrmFsD0Xo+ySncERAvEuDtMzVBSC6xj9KSJ9rEASf9Vj0T4dyI8bukhabSIDErjdFeww4Ww11rj1ozH6ETjqaicUFY/lU9H03bncVeK4gyVXG8gXscuS1ARGgtSeOvmChwJEu2GpZBLoOYNLLVKjD6bCMz0JQ4t34h0KuTMU3ufQ8gCFYwda6aizgK9ZHUEyYi4sGpgBjBGH8EMn9xLSIcJV4CbDJccyXNFCaJsjNWZIYRze7kcM3Dnt2Ht1BFqz/5SWdnAIv8SrjM/dZQy19f81l6XfGyVcKBZnLir3hAos8LaZMNZttj8ogucJ6B2uuWi4M/oUo0SUVaVDUXyKNsjbgmdevt497ncLIft9ZgVQMwmJmf/VvbfadIN9Q0giV/T7wXC/0HiOjWvJqi+Irs3nJRspzPialz85CEhtvawEONH4CNEVOLuOQSoDC9mbq9YuFp/6y5PSg/9C+ZWDKCBy7XFyNYTOYgXi1SgI7ZFVJJACYWOllSCODy7ATkQms9OJ9O4/9JH+iAmgIEftYZY800Rd+3OF4+ZY+MWvZM4ikcH3zaQ8dT1xNzdkCoMTrtMNkXMpeu6hutmxMVnffDtY59uCArV5lbdbO85jP6FSGoAnPk11ZZMzd2CrD5yqjiDckt1XbEaP5mSvNRwXTPgFJ7J/xTQMw+0I83i94ROWqtoEh6X/lSuVx394/4ArT/6J8XT/ikOJf1LY3zBvR+wUivJdCVtfvK4KAR0ejEbL/+x0xb8BGBVwRq3VktM3VIiBXbtHte5YH51AGccsMdjwMrUKd0kQ2c8ESWKWCCX66vBcX5lt0prRXc0oFlDAEatVSEjQ6qZnh6ZlZVqT+m5d5uEeTmh5kRUwPU4GZmqcP/IQ==,iv:MzpwELNyBITM6ZVPGFBe1IqdDcLwB0ekizYkoovrkds=,tag:DXxL802PkhypqGZn06mbDQ==,type:str]
+    destination:
+        server: https://kubernetes.default.svc
+        namespace: default
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age17pzq63nanwarvma9nc7dvp7yy3dalgcr8e958dxrx9nfkkcwuyksw8qsds
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBmYlo5eVVYRFZ4WTA5UDI0
+            OGk4Nmx6cW9sK3FGKzNUdmRkUzArOGpXZ1JzCjg2T1RHMGptTHlkWXNHeDRnWmcr
+            RytjdWcwVW1aMHVQYWZSOXFzenJ6QkkKLS0tIFJ0WEg1ak9KUWhlazg5eDBReDcv
+            OGlpc0xiTHdYeURrUjl3d1p5UW14MUEKcROezz13evjCDT9tI876odyy4r4VZW2V
+            ZaAltBZU0nLIYQwvN+U2cqwIuixEbMCRtly2YPWKF4SE1gO/JjbvrQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-12-24T04:40:30Z"
+    mac: ENC[AES256_GCM,data:qPx6AKmro8/dQE86HaezjS+7Ct67r15FZuC8425xxfYxTwRb35LUdG6q6heVT0m4uesfBRCy7qLXtvMhHfSfPVJyVewif5N+g5w2RVG0nIaeYudqCX1aZkkA2BaqIVZzpUJfET7/jzX4+m5Bd7gjVGLF1k34osBjIuhDlPasc24=,iv:edpVDMajabhQamwhZ0E2SyW0ho9OoeFMSc51hK2HB7g=,tag:DURO+uH0ZQyrQNezmk0nyQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData|host|hosts|values)$
+    version: 3.7.3

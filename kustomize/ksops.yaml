@@ -5,12 +5,9 @@ kind: ksops
 metadata:
   name: keycloak
 files:
-  - ./secrets/keycloak.enc.yaml
   - ./secrets/oauth-proxy.enc.yaml
   - ./secrets/vaultwarden.enc.yaml
   - ./secrets/backup.enc.yaml
-  - ./secrets/renovate.enc.yaml
-  - ./secrets/savethespot.enc.yaml
   - ./ingress/jelly.enc.yaml
   - ./ingress/whoami.enc.yml
   - ./ingress/whoami-udev.enc.yml

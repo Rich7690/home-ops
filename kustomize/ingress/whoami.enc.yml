@@ -2,15 +2,16 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
     annotations:
-        nginx.ingress.kubernetes.io/limit-connections: "5"
-        nginx.ingress.kubernetes.io/limit-rps: "5"
-        nginx.ingress.kubernetes.io/limit-whitelist: 192.168.0.0/16
-        nginx.ingress.kubernetes.io/proxy-body-size: "0"
-        nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
-        nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
-        # This is somewhat of a sentinal ingress to generate TLS certs from cert-manager. Other ingress records will use that cert as its a wildcard one
-        cert-manager.io/cluster-issuer: letsencrypt-prod
-        cert-manager.io/private-key-algorithm: ECDSA
+        nginx.ingress.kubernetes.io/limit-connections: ENC[AES256_GCM,data:vA==,iv:eAcs6DDps1UFm6Cb9YE8cvOSc2rSEhcz689N7VxcmAk=,tag:tNQ08FZldS1eGK7e8o6igA==,type:str]
+        nginx.ingress.kubernetes.io/limit-rps: ENC[AES256_GCM,data:hw==,iv:dfkBL/r1t9cVX0Uj/XNzkFMxGa+oVDJHo5UyMuvr4f8=,tag:d6FcbOhLGok7yqyc031Wig==,type:str]
+        nginx.ingress.kubernetes.io/limit-whitelist: ENC[AES256_GCM,data:95Dg779rrZMeNiZjQJg=,iv:jiUodLlCvY8r846F4L9PTKuu45wYNQVS8KZC1FzfJEs=,tag:QXgKkjVH8hVC/sENAf/FDQ==,type:str]
+        nginx.ingress.kubernetes.io/proxy-body-size: ENC[AES256_GCM,data:lA==,iv:DMCOARUU9HfFp4cBnT0+1PDy2tsXpfJ2aDfwhVNnSC4=,tag:+txz++XkXcSOXHENRctS4g==,type:str]
+        nginx.ingress.kubernetes.io/proxy-read-timeout: ENC[AES256_GCM,data:7v9G,iv:suR/nj4cUEK+N9ESRlyArVnOJc9rPFXawZJOvOFTcLE=,tag:NmpDs+4MFM7SHikJSb2cPQ==,type:str]
+        nginx.ingress.kubernetes.io/proxy-send-timeout: ENC[AES256_GCM,data:onC9,iv:Fmo86fcuKWPJq3Mlls17SH34AqGffk3coE3II0KV0kM=,tag:Od8b5OWjVxc4NlOy6NeeIA==,type:str]
+        #ENC[AES256_GCM,data:OfKcFkBdEOtoy4mvYJ/k+0SqU43y9DEpiOHayeb1V233TVdZDjnlJf3/YDnT94vSJjPVmJy6FJzDTy/VRZhp5+CJrmZY/gFNA38Fd/+m/FjDMTden7gQswB+pv5l7TJbCJWUsxnej+Gve+a1unFW1b3+nkwWUysAtXWf+EIFYVcFdvFFTsODyvEI7I+8wsU=,iv:I/TnKtOt7BS/sGi+ggxsr0T94dwBWBxRBjrUrhv0c5s=,tag:HdxRN66ih6ucrGZJg3EHtQ==,type:comment]
+        cert-manager.io/cluster-issuer: ENC[AES256_GCM,data:PGdmBN7LIWP9Xl57n20ecA==,iv:YB061dOuc06WGn94kFfqEO142zcPaxgKguoP71HVPUw=,tag:35Zxlc5JeaJ/kJiMgMHhRw==,type:str]
+        cert-manager.io/private-key-algorithm: ENC[AES256_GCM,data:+77b5o0=,iv:llGyu8ZgdBL2UVJoxpL4yq9HFOBrrP6NyCc0IU57klk=,tag:yDKQgW3uuUdfmOoGq0g7Jg==,type:str]
+        nginx.ingress.kubernetes.io/permanent-redirect: ENC[AES256_GCM,data:s+j8Lwp4ZDEk4KWv6s6YNEIklA6DhMGqrgXwSnaXLxa1J5g=,iv:UTsV0QISxAi4YVqjIselmA3rC2FQzzGUhZvBVy4o5bk=,tag:xMC8T+w0PFZsFf+kbloKsw==,type:str]
     labels:
         app: whoami
         use-cloudflare-solver: "false"
@@ -19,7 +20,7 @@ metadata:
 spec:
     ingressClassName: nginx
     rules:
-        - host: ENC[AES256_GCM,data:tEHoYBt8lt2QAgJrEdwQ,iv:lOv+SUPGATZW3kOPEQLiROlUGEJ798Im+joOGtScBLM=,tag:PlvLWDN3bQ1Rpm1yP4H+Ng==,type:str]
+        - host: ENC[AES256_GCM,data:3gKiOquVnSYK2QSJE8Ux,iv:FsCY3rnmFljtMu+4fYWWw0Tmae1NaWsYEA1OpF5H+2k=,tag:Tl2DJwSzuag136Le1o+IZw==,type:str]
           http:
             paths:
                 - backend:
@@ -31,8 +32,8 @@ spec:
                   pathType: ImplementationSpecific
     tls:
         - hosts:
-            - ENC[AES256_GCM,data:99G5qc1Vz4Q=,iv:obs5y1rUEQD48R5n5XNJyjZDHTMWKfcz9/nR58ldPzA=,tag:kH+KQ+rEyCCYpygypm/FpA==,type:str]
-            - ENC[AES256_GCM,data:xzSYVtvQfhtP6g==,iv:5MC+Wn3L9G7jSqSlDuQU5BDGsQZ0w4xNzLeh1X5bwmc=,tag:QR3JdHdjC86w+ANpD9m8cg==,type:str]
+            - ENC[AES256_GCM,data:atQkzIaFn4M=,iv:sk6ARiuBUxE6Bn0ejK21vrxxeiAhPUIFPA/z9GkTsmA=,tag:q+6qB0wgcE7W+Mt2l5QA3A==,type:str]
+            - ENC[AES256_GCM,data:rW6MbzvUhewQZA==,iv:ftaE6YYXSFHO/CTK4KBH/qx4pMWtZNVehMoIUzWkstU=,tag:jcQRhsdVUWoh0TgW4Bc4qA==,type:str]
           secretName: prod-cert
 sops:
     kms: []
@@ -43,14 +44,14 @@ sops:
         - recipient: age17pzq63nanwarvma9nc7dvp7yy3dalgcr8e958dxrx9nfkkcwuyksw8qsds
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBjdkYwcXpHZjk3cktXYkth
-            Qk9YMENKbGZQR2VlQVNkbzE4SXE4cyt1QkhBCnR1TEZINGxxQ1BWS29IMWJDcVR1
-            ekJPRGJNZVhxbzhBSEtCTThzWXFOM00KLS0tIE84cUhSYU16UmgybEhuM1VTOTlS
-            VHRpMjlnMWJURmttVUFyQ2dXOGxGeVkK/UZRkIEhHtTqeW+jF1rSUMNj3tDQpL1z
-            9bw2hcRVyZeIVKLxdId0uT/uGsfovOs9tL04D2CGNtOQdjoolmsJ8Q==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBrOG4yckpEeVdUVDZ6YUND
+            TC9weUJNMnFSd2cvTHhZd3ZnMHBOcWtCZlNNCmFmNDFkbC91VjBwWEhkUFFjOGZV
+            d1Y5VHpjUWh5cGNzcm9WeTgvZ1VmVEUKLS0tIEpxUDlRWno0N1BReW1xSXo2VVpa
+            V3BuY1k3d082TVlkTHRWNUhkci9QUzQKGcCe/3YxSNyB91YAGedV8ONpqmV0y0HR
+            jB+9YFxJGyWBOi4SaAi6FGUtvMYIJsPoIvR3hkQP7mAMahmSaCaLOg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2022-12-04T00:31:25Z"
-    mac: ENC[AES256_GCM,data:ts42BAFaH6WxCgAYGcaUgl9hYrUvGWj02uttBYgRDsH4xEQlKsXlczMXGQy1YSO94ifzCe2Fo0DY5lC2bMLyhO10AYDg4o1Jzuj52dD95IflQ3c381TnGxjcLsYq/WycAed88z9tzw3Wa4jC8h8rn25ZoYY8fAL39/olY9l/i20=,iv:dM8aXOWjpTxIJrxVvflJcIbFBsCuy6w6C/Q5V7FGJBc=,tag:6o++Vx4BmxKbdvH1cR3WMQ==,type:str]
+    lastmodified: "2022-12-26T00:54:43Z"
+    mac: ENC[AES256_GCM,data:md5W0lpaYjKgJy/yVE45ywxn9A/XND/x0qOlt7npKmcfwuzhM32SYzywrAgCapBV2k8xsoNMb1nvJsWVTpSu3hB21KLIXvUhmfxKmnsWGR6QxyTtPDBOVqoLr/IKTMID0vRqSgROPZAInnsBu0H/P/1cTrdq3Htmdwg3Xn2e208=,iv:Q/+3LOJw8lo4TOItpqU0rLR6zHeISVsTB3hG+8XpXOs=,tag:ujnOPPsF/z3udBW27oVPNQ==,type:str]
     pgp: []
-    encrypted_regex: ^(data|stringData|host|hosts)$
+    encrypted_regex: ^(data|stringData|host|hosts|values|annotations)$
     version: 3.7.3

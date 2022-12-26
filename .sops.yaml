@@ -1,12 +1,12 @@
 ---
 creation_rules:
   - path_regex: .*\.sops\.ya?ml
-    encrypted_regex: "^(data|stringData|host|hosts|values)$"
+    encrypted_regex: "^(data|stringData|host|hosts|values|annotations)$"
     key_groups:
       - age:
           - age17pzq63nanwarvma9nc7dvp7yy3dalgcr8e958dxrx9nfkkcwuyksw8qsds
   - path_regex: .*\.enc\.ya?ml
-    encrypted_regex: "^(data|stringData|host|hosts|values)$"
+    encrypted_regex: "^(data|stringData|host|hosts|values|annotations)$"
     key_groups:
       - age:
           - age17pzq63nanwarvma9nc7dvp7yy3dalgcr8e958dxrx9nfkkcwuyksw8qsds

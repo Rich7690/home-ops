@@ -13,6 +13,8 @@ spec:
             releaseName: ingress-nginx-external
             values: |
                 controller:
+                  config:
+                    use-http2: "true"
                   addHeaders:
                     X-Frame-Options: SAMEORIGIN
                   electionID: ingress-external-controller-leader

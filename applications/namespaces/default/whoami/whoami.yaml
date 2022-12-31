@@ -111,14 +111,8 @@ metadata:
     namespace: default
 spec:
     egress: []
-    ingress:
-        - from:
-              - podSelector:
-                    matchLabels:
-                        app.kubernetes.io/name: ingress-nginx
     podSelector:
         matchLabels:
             app: whoami
     policyTypes:
-        - Ingress
         - Egress

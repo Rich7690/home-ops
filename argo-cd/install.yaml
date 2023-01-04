@@ -9802,7 +9802,7 @@ spec:
                       - mountPath: /var/run/argocd
                         name: var-files
                 - name: install-ksops
-                  image: viaductoss/ksops:v3.0.2@sha256:b61c00a295066ce97c3e6b6e1fc0ddf56a42e9a309a316b01d89726521c1b8aa
+                  image: viaductoss/ksops:v3.1.0@sha256:2d6df4072ed8ba4fd9f0299964452e368657322fbe26703f856e8f0abf157890
                   command: ["/bin/sh", "-c"]
                   args:
                       - echo "Installing KSOPS...";

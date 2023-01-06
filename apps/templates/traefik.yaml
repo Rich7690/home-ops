@@ -33,6 +33,14 @@ spec:
                 globalArguments:
                   - "--global.checknewversion=false"
                   - "--global.sendanonymoususage=false"
+                topologySpreadConstraints:
+                  - labelSelector:
+                      matchLabels:
+                        app.kubernetes.io/instance: traefik-default
+                    maxSkew: 1
+                    topologyKey: kubernetes.io/hostname
+                    whenUnsatisfiable: DoNotSchedule
+
     destination:
         server: https://kubernetes.default.svc
         namespace: default

@@ -13,6 +13,10 @@ metadata:
 spec:
   rules:
   - name: add-default-securitycontext
+    exclude:
+      resources:
+        annotations:
+          "kyverno-skip": "true"
     match:
       resources:
         kinds:

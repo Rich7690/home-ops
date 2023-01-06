@@ -16,7 +16,7 @@ spec:
                   replicas: 2
                 image:
                     name: traefik
-                    tag: 2.9.6
+                    tag: v2.9.6
                     pullPolicy: IfNotPresent
                 hub:
                   enabled: true

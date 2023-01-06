@@ -16,7 +16,7 @@ spec:
                   pspEnabled: false
                 server:
                   podAnnotations:
-                   - kyverno-skip: true
+                   kyverno-skip: 'true'
                   scrape:
                     enabled: true
                     configMap: "metrics-scrapeconfig"

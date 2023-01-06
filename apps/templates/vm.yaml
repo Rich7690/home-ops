@@ -12,6 +12,8 @@ spec:
         helm:
             releaseName: vm
             values: |
+                rbac:
+                  pspEnabled: false
                 server:
                   scrape:
                     enabled: true

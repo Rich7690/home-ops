@@ -12,13 +12,20 @@ spec:
         helm:
             releaseName: traefik
             values: |
-                ingressClass:
-                  enabled: true
-                  isDefaultClass: false
+                deployment:
+                  replicas: 2
                 image:
                     name: traefik
                     tag: 2.9.6
                     pullPolicy: IfNotPresent
+                hub:
+                  enabled: true
+                ingressClass:
+                  enabled: true
+                  isDefaultClass: false
+                logs:
+                  general:
+                    level: INFO
                 providers:
                   kubernetesIngress:
                     publishedService:

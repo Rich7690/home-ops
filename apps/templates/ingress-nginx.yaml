@@ -13,6 +13,7 @@ spec:
             releaseName: ingress-nginx
             values: |
                 controller:
+                  replicaCount: 2
                   config:
                     use-http2: "true"
                   addHeaders:

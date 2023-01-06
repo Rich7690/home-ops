@@ -1,7 +1,0 @@
----
-spec:
-    destination:
-        server: https://192.168.5.4:6443
-    source:
-        repoURL: https://github.com/Rich7690/home-server-config
-        targetRevision: HEAD

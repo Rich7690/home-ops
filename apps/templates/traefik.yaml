@@ -1,24 +1,23 @@
----
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
     name: traefik
     namespace: argocd
 spec:
-    project: remote-apps-u59
+    project: remote-apps
     source:
         chart: traefik
         repoURL: https://helm.traefik.io/traefik
-        targetRevision: 10.24.5
+        targetRevision: 20.8.0
         helm:
             releaseName: traefik
             values: |
                 ingressClass:
                   enabled: true
-                  isDefaultClass: true
+                  isDefaultClass: false
                 image:
                     name: traefik
-                    tag: 2.8.0
+                    tag: 2.9.6
                     pullPolicy: IfNotPresent
                 providers:
                   kubernetesIngress:
@@ -28,5 +27,5 @@ spec:
                   - "--global.checknewversion=false"
                   - "--global.sendanonymoususage=false"
     destination:
-        server: https://192.168.5.4:6443
+        server: https://kubernetes.default.svc
         namespace: default

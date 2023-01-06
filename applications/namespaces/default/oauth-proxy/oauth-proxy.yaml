@@ -24,6 +24,12 @@ spec:
                 app: oauth-proxy
         spec:
             automountServiceAccountToken: true
+            affinity:
+              nodeAffinity:
+                preferredDuringSchedulingIgnoredDuringExecution:
+                  - preference:
+
+                    weight:
             serviceAccount: oauth-proxy
             containers:
                 - envFrom:

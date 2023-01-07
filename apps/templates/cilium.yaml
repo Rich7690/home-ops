@@ -5,6 +5,11 @@ metadata:
     namespace: argocd
 spec:
     project: remote-apps
+    ignoreDifferences:
+      - group: core
+        kind: Secret
+        jsonPointers:
+        - /data
     source:
         chart: cilium
         repoURL: https://helm.cilium.io/

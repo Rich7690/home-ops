@@ -6,10 +6,10 @@ metadata:
 spec:
     project: remote-apps
     ignoreDifferences:
-      - group: core
+      - group: '*'
         kind: Secret
-        jsonPointers:
-        - /data
+        jqPathExpressions:
+          - .data
     source:
         chart: cilium
         repoURL: https://helm.cilium.io/

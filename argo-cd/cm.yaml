@@ -20,3 +20,9 @@ data:
       - "*"
       clusters:
       - "*"
+    - apiGroups:
+      - cert-manager.io
+      kinds:
+      - "Certificate"
+      clusters:
+      - "*"

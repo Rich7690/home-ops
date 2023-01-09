@@ -94,9 +94,9 @@ spec:
                               name: excludes-file
                               optional: false
                           name: excludes-file
-                        - hostPath:
-                              path: /var/mnt/cache
-                          name: storage
+                        - name: storage
+                          persistentVolumeClaim:
+                            claimName: cache-pvc
                         - persistentVolumeClaim:
                               claimName: backup-nfs
                           name: backup

@@ -74,6 +74,7 @@ spec:
                   volumeMounts:
                       - mountPath: /data
                         mountPropagation: None
+                        subPath: configs/redis
                         name: data
             dnsPolicy: ClusterFirst
             enableServiceLinks: true
@@ -86,8 +87,8 @@ spec:
             terminationGracePeriodSeconds: 30
             volumes:
                 - name: data
-                  hostPath:
-                      path: /var/mnt/cache/configs/redis
+                  persistentVolumeClaim:
+                    claimName: cache-pvc
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy

@@ -68,7 +68,7 @@ spec:
             volumes:
                 - name: config
                   persistentVolumeClaim:
-                    claimName: cache-pv
+                    claimName: cache-pvc
 ---
 apiVersion: v1
 kind: Service

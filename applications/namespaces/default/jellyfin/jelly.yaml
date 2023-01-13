@@ -94,7 +94,7 @@ spec:
             terminationGracePeriodSeconds: 30
             volumes:
                 - persistentVolumeClaim:
-                    claimName: cache-pv
+                    claimName: cache-pvc
                   name: config
                 - name: media
                   persistentVolumeClaim:

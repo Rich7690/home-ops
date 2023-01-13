@@ -14,3 +14,5 @@ spec:
     targetRevision: 2.6.5
     helm:
       releaseName: kyverno
+      values: |
+        priorityClassName: system-cluster-critical

@@ -28,12 +28,13 @@ spec:
                 persistence:
                   config:
                     enabled: true
-                    hostPath: /var/mnt/cache/configs/vaultwarden
                     mountPath: /config/vaultwarden
-                    type: hostPath
+                    subPath: configs/vaultwarden
+                    existingClaim: cache-pvc
+                    type: pvc
+                    retain: true
                 resources:
                   limits:
-                    cpu: 4
                     memory: 512Mi
                   requests:
                     cpu: 50m

@@ -38,9 +38,11 @@ spec:
                         type: pvc
                     config:
                         enabled: true
-                        hostPath: /var/mnt/cache/configs/sonarr
                         mountPath: /config
-                        type: hostPath
+                        subPath: configs/sonarr
+                        existingClaim: cache-pvc
+                        type: pvc
+                        retain: true
                 resources:
                     limits:
                         cpu: 4

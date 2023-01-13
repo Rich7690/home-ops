@@ -22,12 +22,13 @@ spec:
                 persistence:
                     config:
                         enabled: true
-                        hostPath: /var/mnt/cache/configs/ombi
+                        subPath: configs/ombi
                         mountPath: /config
-                        type: hostPath
+                        existingClaim: cache-pvc
+                        type: pvc
+                        retain: true
                 resources:
                     limits:
-                        cpu: 4
                         memory: 500Mi
                     requests:
                         cpu: 300m

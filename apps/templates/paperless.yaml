@@ -30,18 +30,22 @@ spec:
                 persistence:
                     consume:
                         enabled: true
-                        hostPath: /var/mnt/cache/configs/paperless/consume
-                        type: hostPath
+                        subPath: configs/paperless/config
+                        existingClaim: cache-pvc
+                        type: pvc
+                        retain: true
                     data:
                         enabled: true
-                        hostPath: /var/mnt/cache/configs/paperless/data
-                        size: 20Gi
-                        type: hostPath
+                        subPath: configs/paperless/data
+                        existingClaim: cache-pvc
+                        type: pvc
+                        retain: true
                     media:
                         enabled: true
-                        hostPath: /var/mnt/cache/configs/paperless/media
-                        size: 20Gi
-                        type: hostPath
+                        subPath: configs/paperless/media
+                        existingClaim: cache-pvc
+                        type: pvc
+                        retain: true
                 resources:
                     limits:
                         memory: 4G

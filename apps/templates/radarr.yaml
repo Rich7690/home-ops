@@ -38,12 +38,13 @@ spec:
                         type: pvc
                     config:
                         enabled: true
-                        hostPath: /var/mnt/cache/configs/radarr
                         mountPath: /config
-                        type: hostPath
+                        subPath: configs/radarr
+                        existingClaim: cache-pvc
+                        type: pvc
+                        retain: true
                 resources:
                     limits:
-                        cpu: 4
                         memory: 1G
                     requests:
                         cpu: 500m

@@ -9581,7 +9581,7 @@ spec:
                       - ''
                       - --appendonly
                       - 'no'
-                  image: redis:7.0.7-alpine@sha256:9dc2499d6c21f869a6e22b170003483d3fca8c03992f4a11f6493c0b392da40f
+                  image: redis:7.0.8-alpine@sha256:5ae5799117d680a13dd35184f26db66549605e220f1af52f4b7557f77830aa17
                   imagePullPolicy: Always
                   name: redis
                   ports:

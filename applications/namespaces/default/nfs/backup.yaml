@@ -24,7 +24,7 @@ spec:
     - noatime
     - nodiratime
   nfs:
-    path: /mnt/backup/backup
+    path: /mnt/storage/backup
     server: 192.168.100.250
 ---
 apiVersion: v1

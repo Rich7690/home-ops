@@ -67,11 +67,11 @@ spec:
                   resources:
                       limits:
                           gpu.intel.com/i915: 1
-                          cpu: "32"
+                          cpu: "12"
                           memory: 4Gi
                       requests:
                           gpu.intel.com/i915: 1
-                          cpu: "2"
+                          cpu: "1"
                           memory: 2Gi
                   terminationMessagePath: /dev/termination-log
                   terminationMessagePolicy: File

@@ -21,6 +21,8 @@ spec:
             parallelism: 1
             template:
                 metadata:
+                    annotations:
+                      kyverno-skip: "true"
                     labels:
                         app: weekly-script
                     name: weekly-script
@@ -121,7 +123,7 @@ spec:
     jobTemplate:
         metadata:
             annotations:
-                diun.enable: "false"
+                kyverno-skip: "true"
             labels:
                 app: weekly-prune
             name: weekly-prune

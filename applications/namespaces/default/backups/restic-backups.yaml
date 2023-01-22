@@ -122,8 +122,6 @@ spec:
     failedJobsHistoryLimit: 1
     jobTemplate:
         metadata:
-            annotations:
-                kyverno-skip: "true"
             labels:
                 app: weekly-prune
             name: weekly-prune
@@ -134,6 +132,8 @@ spec:
             parallelism: 1
             template:
                 metadata:
+                    annotations:
+                      kyverno-skip: "true"
                     labels:
                         app: weekly-prune
                     name: weekly-prune

@@ -1,0 +1,19 @@
+prometheus-blackbox-exporter:
+  image:
+    repository: prom/blackbox-exporter
+    tag: v0.22.0@sha256:608acee5704ad49c3308b900230dfc00b25da0c90425f8fed55cf005e07f521b
+    pullPolicy: IfNotPresent
+  persistentVolume:
+    enabled: false
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  securityContext:
+    runAsUser: 65532
+    runAsGroup: 65532
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop: ["ALL"]

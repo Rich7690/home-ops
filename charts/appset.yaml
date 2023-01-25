@@ -22,7 +22,7 @@ spec:
         path: '{{path}}'
         helm:
           releaseName: '{{path.basename}}'
-          valuesFiles:
+          valueFiles:
             - values.yaml
       destination:
         server: https://kubernetes.default.svc

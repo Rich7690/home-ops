@@ -11,14 +11,14 @@ spec:
         targetRevision: 4.5.2
         helm:
             releaseName: prowlarr
-            values: |
+            values:
                 nodeSelector:
                   kubernetes.io/hostname: virtworkerone
                 env:
                     TZ: America/Los_Angeles
                 image:
                     repository: ghcr.io/onedr0p/prowlarr-develop
-                    tag: 0.4.11.2143@sha256:9861a98adde0da75869f86a74726e13eadf4e66949bf07d31054011c7c3429ca
+                    tag: 1.1.1.2377@sha256:7a7555f9a9630b63bbda3e01cdb9915ae2cffcdad51ab0026c461a25be727627
                 persistence:
                     config:
                         enabled: true

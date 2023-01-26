@@ -1,20 +1,18 @@
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
     labels:
         app: jelly
     name: jelly
     namespace: default
 spec:
-    progressDeadlineSeconds: 600
+    serviceName: jelly
     replicas: 1
     revisionHistoryLimit: 3
     selector:
         matchLabels:
             app: jelly
-    strategy:
-        type: Recreate
     template:
         metadata:
             labels:

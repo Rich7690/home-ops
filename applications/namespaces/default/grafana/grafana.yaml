@@ -1,23 +1,18 @@
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
     labels:
         app: grafana
     name: grafana
     namespace: default
 spec:
-    progressDeadlineSeconds: 600
+    serviceName: grafana
     replicas: 1
     revisionHistoryLimit: 3
     selector:
         matchLabels:
             app: grafana
-    strategy:
-        rollingUpdate:
-            maxSurge: 25%
-            maxUnavailable: 25%
-        type: RollingUpdate
     template:
         metadata:
             labels:

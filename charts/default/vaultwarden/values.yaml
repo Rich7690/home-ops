@@ -1,0 +1,32 @@
+vaultwarden:
+  global:
+    fullnameOverride: vaultwarden
+  controller:
+    type: statefulset
+  image:
+    repository: vaultwarden/server
+    tag: 1.26.0-alpine@sha256:d73b431499dfd9c916f5d820eccdb13752366b1fb5ecdbb2d9ed86119ebc9271
+    pullPolicy: IfNotPresent
+  envFrom:
+    - secretRef:
+        name: vaultwarden
+  env:
+    DATA_FOLDER: /config/vaultwarden
+    GROUPID: 997
+    SIGNUPS_ALLOWED: false
+    TZ: America/Los_Angeles
+    USERID: 998
+  persistence:
+    config:
+      enabled: true
+      mountPath: /config/vaultwarden
+      subPath: configs/vaultwarden
+      existingClaim: cache-pvc
+      type: pvc
+      retain: true
+  resources:
+    limits:
+      memory: 512Mi
+    requests:
+      cpu: 50m
+      memory: 256Mi

@@ -1,0 +1,40 @@
+radarr:
+  global:
+    fullnameOverride: radarr
+  nodeSelector:
+    kubernetes.io/hostname: virtworkerone
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsNonRoot: true
+  podSecurityContext:
+    runAsUser: 998
+    runAsGroup: 997
+  env:
+    TZ: America/Los_Angeles
+  image:
+    repository: ghcr.io/onedr0p/radarr
+    tag: 4.3.2.6857@sha256:f7157a0af6d7ce456491d47603e229d66f07b25593913cf641e0b6d2103e1969
+  persistence:
+    media:
+      enabled: true
+      mountPath: /media
+      existingClaim: nfs
+      type: pvc
+    config:
+      enabled: true
+      mountPath: /config
+      subPath: configs/radarr
+      existingClaim: cache-pvc
+      type: pvc
+      retain: true
+  resources:
+    limits:
+      memory: 1G
+    requests:
+      cpu: 500m
+      memory: 256Mi

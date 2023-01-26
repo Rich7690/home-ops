@@ -1,4 +1,6 @@
 vaultwarden:
+  podAnnotations:
+    kyverno-skip: 'true'
   global:
     fullnameOverride: vaultwarden
   controller:

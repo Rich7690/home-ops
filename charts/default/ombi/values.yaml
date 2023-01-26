@@ -1,6 +1,6 @@
 ombi:
   podAnnotations:
-    kyverno-skip: true
+    kyverno-skip: 'true'
   fullnameOverride: ombi
   controller:
     type: statefulset

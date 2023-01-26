@@ -1,6 +1,8 @@
 radarr:
   global:
     fullnameOverride: radarr
+  controller:
+    type: statefulset
   nodeSelector:
     kubernetes.io/hostname: virtworkerone
   securityContext:

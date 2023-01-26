@@ -1,0 +1,26 @@
+prowlarr:
+  global:
+    fullnameOverride: prowlarr
+  controller:
+    type: statefulset
+  nodeSelector:
+    kubernetes.io/hostname: virtworkerone
+  env:
+    TZ: America/Los_Angeles
+  image:
+    repository: ghcr.io/onedr0p/prowlarr-develop
+    tag: 1.1.1.2377@sha256:7a7555f9a9630b63bbda3e01cdb9915ae2cffcdad51ab0026c461a25be727627
+  persistence:
+    config:
+      enabled: true
+      mountPath: /config
+      subPath: configs/prowlarr
+      existingClaim: cache-pvc
+      type: pvc
+      retain: true
+  resources:
+    limits:
+      memory: 1G
+    requests:
+      cpu: 200m
+      memory: 400Mi

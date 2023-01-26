@@ -1,6 +1,8 @@
 sonarr:
   global:
     fullnameOverride: sonarr
+  controller:
+    type: statefulset
   nodeSelector:
     kubernetes.io/hostname: virtworkerone
   securityContext:

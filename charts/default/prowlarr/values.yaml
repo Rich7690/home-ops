@@ -5,6 +5,17 @@ prowlarr:
     type: statefulset
   nodeSelector:
     kubernetes.io/hostname: virtworkerone
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsNonRoot: true
+  podSecurityContext:
+    runAsUser: 568
+    runAsGroup: 997
   env:
     TZ: America/Los_Angeles
   image:

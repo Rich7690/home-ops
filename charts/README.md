@@ -1,0 +1,1 @@
+The main reasons we create blank helm charts with sub-charts here are because 1) it allows us granular update control on the versioning of both chart and application 2) said updates can be detected and done automatically by renovate and approved on github

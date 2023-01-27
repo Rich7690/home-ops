@@ -11,6 +11,7 @@ spec:
       directories:
       - path: charts/default/*
       - path: charts/metrics/*
+      - path: charts/kube-system/*
   template:
     metadata:
       name: '{{path.basename}}'

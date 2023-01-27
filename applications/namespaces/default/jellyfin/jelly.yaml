@@ -10,6 +10,7 @@ spec:
     serviceName: jelly
     replicas: 1
     revisionHistoryLimit: 3
+    podManagementPolicy: Parallel
     selector:
         matchLabels:
             app: jelly

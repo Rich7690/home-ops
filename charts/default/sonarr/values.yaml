@@ -3,6 +3,7 @@ sonarr:
     fullnameOverride: sonarr
   controller:
     type: statefulset
+    podManagementPolicy: Parallel
   nodeSelector:
     kubernetes.io/hostname: virtworkerone
   securityContext:

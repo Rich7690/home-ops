@@ -3,6 +3,7 @@ prowlarr:
     fullnameOverride: prowlarr
   controller:
     type: statefulset
+    podManagementPolicy: Parallel
   nodeSelector:
     kubernetes.io/hostname: virtworkerone
   securityContext:

@@ -5,6 +5,7 @@ vaultwarden:
     fullnameOverride: vaultwarden
   controller:
     type: statefulset
+    podManagementPolicy: Parallel
   image:
     repository: vaultwarden/server
     tag: 1.26.0-alpine@sha256:d73b431499dfd9c916f5d820eccdb13752366b1fb5ecdbb2d9ed86119ebc9271

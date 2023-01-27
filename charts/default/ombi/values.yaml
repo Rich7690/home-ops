@@ -4,6 +4,7 @@ ombi:
   fullnameOverride: ombi
   controller:
     type: statefulset
+    podManagementPolicy: Parallel
   env:
     GUID: "997"
     PUID: "998"

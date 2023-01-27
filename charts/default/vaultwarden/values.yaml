@@ -8,7 +8,7 @@ vaultwarden:
     podManagementPolicy: Parallel
   image:
     repository: vaultwarden/server
-    tag: 1.26.0-alpine@sha256:d73b431499dfd9c916f5d820eccdb13752366b1fb5ecdbb2d9ed86119ebc9271
+    tag: 1.27.0-alpine@sha256:deec30b3985444c8efc42338717a9b64f3185e1f3e149a7137afc98ebeb815e1
     pullPolicy: IfNotPresent
   envFrom:
     - secretRef:

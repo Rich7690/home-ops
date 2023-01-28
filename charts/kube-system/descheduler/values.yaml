@@ -3,5 +3,5 @@ descheduler:
   image:
     repository: k8s.gcr.io/descheduler/descheduler
     # Overrides the image tag whose default is the chart version
-    tag: "v0.25.1@sha256:1d4028fdd33d3eef8b8e5e2450bb3268bb45fa193daa0723b67ac7b8f0a3be72"
+    tag: "v0.26.0@sha256:083d51d7295b7d4d0fa60c9f634d2877419a5b8fdc3a48590dd14c1e05467971"
     pullPolicy: IfNotPresent

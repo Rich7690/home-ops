@@ -1,4 +1,6 @@
 qbittorrent:
+  global:
+    fullnameOverride: qbittorrent
   podAnnotations:
     kyverno-skip: "true"
   controller:

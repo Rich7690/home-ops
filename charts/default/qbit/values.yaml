@@ -1,0 +1,91 @@
+qbittorrent:
+  podAnnotations:
+    kyverno-skip: "true"
+  controller:
+    type: statefulset
+    podManagementPolicy: Parallel
+  addons:
+    vpn:
+      configFileSecret: vpn-config
+      enabled: true
+      env:
+        KILLSWITCH: "true"
+        KILLSWITCH_EXCLUDEDNETWORKS_IPV4: 10.244.0.0/16;192.168.5.0/24;10.96.0.0/12
+        TZ: America/Los_Angeles
+        IPTABLES_BACKEND: nft
+      networkPolicy:
+        egress:
+          - to:
+              - ipBlock:
+                  cidr: 192.168.100.250/32
+          - ports:
+              - port: 51820
+                protocol: UDP
+            to:
+              - ipBlock:
+                  cidr: 0.0.0.0/0
+          - to:
+              - namespaceSelector: {}
+        enabled: false
+      livenessProbe:
+        exec:
+          command:
+            - sh
+            - -c
+            - if [ $(curl -s https://ipinfo.io/country) == 'CA' ]; then exit 0; else exit $?; fi
+        initialDelaySeconds: 30
+        periodSeconds: 60
+        failureThreshold: 1
+      scripts:
+        down: |-
+          #!/bin/bash
+          set -xe
+          echo "disconnected" > /shared/vpnstatus
+        up: |-
+          #!/bin/bash
+          set -xe
+          echo "connected" > /shared/vpnstatus
+      wireguard:
+        image:
+          repository: ghcr.io/k8s-at-home/wireguard
+          pullPolicy: IfNotPresent
+          tag: v1.0.20210914@sha256:4dd54954cbd06d92d8c8fc6b10871eb07a0c1869edfe7a15029f1a7d3178d432
+      securityContext:
+        runAsUser: 568
+        runAsGroup: 568
+        privileged: true
+        capabilities:
+          add: ["NET_ADMIN", "SYS_MODULE", "CAP_AUDIT_WRITE"]
+      type: wireguard
+  env:
+    QBITTORRENT__BT_PORT: "58118"
+    QBITTORRENT__PORT: "8080"
+    UMASK: "022"
+    WAIT_FOR_VPN: "true"
+    TZ: America/Los_Angeles
+  image:
+    pullPolicy: IfNotPresent
+    repository: ghcr.io/onedr0p/qbittorrent
+    tag: 4.5.0@sha256:26fa8645757f9d7e5ab72620d75fd8752c968c6b8810b8935ce770d7d1303fe9
+  nodeSelector:
+    kubernetes.io/hostname: virtworkerone
+  persistence:
+    config:
+      enabled: true
+      mountPath: /config
+      subPath: configs/qbit
+      existingClaim: cache-pvc
+      type: pvc
+      retain: true
+    media:
+      enabled: true
+      existingClaim: nfs
+      mountPath: /media
+      type: pvc
+    shared:
+      enabled: true
+      mountPath: /shared
+      type: emptyDir
+  securityContext:
+    runAsGroup: 568
+    runAsUser: 998

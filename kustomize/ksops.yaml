@@ -13,5 +13,4 @@ files:
   - ./ingress/whoami-udev.enc.yml
   - ./configmap/prometheus.enc.yaml
   - ./secrets/njalla.enc.yaml
-  - ./charts/qbit.enc.yaml
   - ./secrets/vpn.enc.yaml

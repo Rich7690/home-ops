@@ -1,0 +1,19 @@
+cilium:
+  rollOutCiliumPods: true
+  ipam:
+    mode: "kubernetes"
+  securityContext:
+    privileged: true
+  bgp:
+    enabled: false
+    announce:
+      loadbalancerIP: false
+  hubble:
+    tls:
+      auto:
+        enabled: true
+        method: helm #TODO: cronjob?
+    relay:
+      enabled: true
+    ui:
+      enabled: true

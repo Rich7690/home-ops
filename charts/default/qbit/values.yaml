@@ -37,7 +37,8 @@ qbittorrent:
             - if [ $(curl -s https://ipinfo.io/country) = 'CA' ]; then exit 0; else exit $?; fi
         initialDelaySeconds: 30
         periodSeconds: 60
-        failureThreshold: 1
+        failureThreshold: 3
+        successThreshold: 1
       scripts:
         down: |-
           #!/bin/bash

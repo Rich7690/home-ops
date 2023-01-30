@@ -62,9 +62,12 @@ spec:
                       allowPrivilegeEscalation: false
                       privileged: false
                       readOnlyRootFilesystem: true
-                      runAsGroup: 65534
+                      runAsGroup: 65532
                       runAsNonRoot: true
-                      runAsUser: 65534
+                      runAsUser: 65532
+                      capabilities:
+                        drop:
+                          - "ALL"
                   terminationMessagePath: /dev/termination-log
                   terminationMessagePolicy: File
             dnsPolicy: ClusterFirst
@@ -74,15 +77,6 @@ spec:
             securityContext: {}
             shareProcessNamespace: false
             terminationGracePeriodSeconds: 30
-            tolerations:
-                - key: CriticalAddonsOnly
-                  operator: Exists
-                - effect: NoSchedule
-                  key: node-role.kubernetes.io/control-plane
-                  operator: Exists
-                - effect: NoSchedule
-                  key: node-role.kubernetes.io/master
-                  operator: Exists
     strategy:
         rollingUpdate:
             maxSurge: 1

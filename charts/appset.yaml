@@ -20,6 +20,11 @@ spec:
         - resources-finalizer.argocd.argoproj.io
     spec:
       project: remote-apps
+      ignoreDifferences:
+        - group: '*'
+          kind: '*'
+          managedFieldsManagers:
+            - cilium
       source:
         repoURL: https://github.com/Rich7690/home-server-config.git
         targetRevision: HEAD

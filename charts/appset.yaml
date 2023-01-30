@@ -21,10 +21,11 @@ spec:
     spec:
       project: remote-apps
       ignoreDifferences:
-        - group: '*'
-          kind: '*'
-          managedFieldsManagers:
-            - cilium
+      - group: '*'
+        kind: Secret
+        namespace: kube-system
+        jqPathExpressions:
+          - .data
       source:
         repoURL: https://github.com/Rich7690/home-server-config.git
         targetRevision: HEAD

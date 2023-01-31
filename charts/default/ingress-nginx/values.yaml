@@ -3,8 +3,8 @@ ingress-nginx:
   controller:
     image:
       repository: registry.k8s.io/ingress-nginx/controller
-      tag: v1.5.2
-      digest: sha256:4ba73c697770664c1e00e9f968de14e08f606ff961c76e5d7033a4a9c593c629
+      tag: v1.5.2@sha256:4ba73c697770664c1e00e9f968de14e08f606ff961c76e5d7033a4a9c593c629
+      digest: null
       runAsUser: "101"
     replicaCount: 2
     topologySpreadConstraints:

@@ -29,12 +29,12 @@ qbittorrent:
           - to:
               - namespaceSelector: {}
         enabled: false
-      livenessProbe:
-        exec:
-          command:
-            - sh
-            - -c
-            - if [ $(curl -s https://ipinfo.io/country) = 'CA' ]; then exit 0; else exit $?; fi
+      # livenessProbe: TODO: fix this
+      #   exec:
+      #     command:
+      #       - sh
+      #       - -c
+      #       - "if [ $(curl -s https://ipinfo.io/country) = 'CA' ]; then exit 0; else exit 1; fi"
         initialDelaySeconds: 30
         periodSeconds: 60
         failureThreshold: 3

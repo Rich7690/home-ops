@@ -1,0 +1,38 @@
+ingress-nginx:
+  fullnameOverride: ingress-nginx
+  controller:
+    image:
+      repository: registry.k8s.io/ingress-nginx/controller
+      tag: v1.5.1
+      digest: sha256:4ba73c697770664c1e00e9f968de14e08f606ff961c76e5d7033a4a9c593c629
+      runAsUser: "101"
+    replicaCount: 2
+    topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: ScheduleAnyway
+        labelSelector:
+          matchLabels:
+            app.kubernetes.io/instance: ingress-nginx
+    config:
+      use-http2: "true"
+    addHeaders:
+      X-Frame-Options: SAMEORIGIN
+    electionID: ingress-controller-leader
+    kind: Deployment
+    metrics:
+      enabled: true
+      service:
+        annotations:
+          prometheus.io/port: "10254"
+          prometheus.io/scrape: "true"
+    resources:
+      limits:
+        cpu: 4
+        memory: 2G
+      requests:
+        cpu: 100m
+        memory: 200Mi
+    service:
+      externalTrafficPolicy: Cluster
+      loadBalancerIP: 192.168.5.10

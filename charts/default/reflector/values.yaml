@@ -1,0 +1,6 @@
+reflector:
+  fullnameOverride: reflector
+  image:
+    repository: emberstack/kubernetes-reflector
+    pullPolicy: IfNotPresent
+    tag: 6.1.47@sha256:a0a5c4020f6d2771893f83111d9fc09425cc874d6626208069caf8dcba179e10

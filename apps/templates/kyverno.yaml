@@ -15,4 +15,11 @@ spec:
     helm:
       releaseName: kyverno
       values: |
+        fullnameOverride: kyverno
         priorityClassName: system-cluster-critical
+        image:
+          repository: ghcr.io/kyverno/kyverno  # kyverno: replaced in e2e tests
+          # -- Image tag
+          # Defaults to appVersion in Chart.yaml if omitted
+          tag: v1.8.5@sha256:2f327becb42cb3c89a9457b2fecb9214e0d5242c6ee4b4f660edc1314fbd52f4
+          pullPolicy: IfNotPresent

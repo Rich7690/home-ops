@@ -45,6 +45,9 @@ spec:
                       runAsGroup: 997
                       runAsNonRoot: true
                       runAsUser: 998
+                      capabilities:
+                        drop:
+                          - "ALL"
                   terminationMessagePath: /dev/termination-log
                   terminationMessagePolicy: File
                   volumeMounts:

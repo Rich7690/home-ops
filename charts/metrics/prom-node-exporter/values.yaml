@@ -1,0 +1,17 @@
+prometheus-node-exporter:
+  fullnameOverride: prometheus-node-exporter
+  image:
+    repository: quay.io/prometheus/node-exporter
+    tag: v1.5.0@sha256:39c642b2b337e38c18e80266fb14383754178202f40103646337722a594d984
+  podAnnotations:
+    prometheus.io/scrape: "true"
+  resources:
+    limits:
+      cpu: 4
+      memory: 100Mi
+    requests:
+      cpu: 500m
+      memory: 50Mi
+  service:
+    annotations:
+      prometheus.io/scrape: "false"

@@ -2,9 +2,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
     annotations:
-        # This is somewhat of a sentinal ingress to generate TLS certs from cert-manager. Other ingress records will use that cert as its a wildcard one
-        cert-manager.io/cluster-issuer: letsencrypt-prod
-        cert-manager.io/private-key-algorithm: ECDSA
+        #ENC[AES256_GCM,data:w4VjH3vtW+z8abwXyhOQbkaUhZ8GRUNTFpzOPABlGXBFh1KiYgqKbJnH4hJpqn9Jy5w3CJESffTqw4XbWarPFRGECqfMyN5+SB1tU/TLm5KXu29VxLFpK4R1o/ZEiHziVNxcEUDDJg1uB9wMeSyn/TvJcfpeU9625/SnuNEnDjmpL7zW+tWJ1eLn3kgEcn8=,iv:6iZc3Ezanhwn7B2leIBql2qeGBpmCjIj8xS/V7jnlys=,tag:P4Sz5EKHfM8hd46L2BhuLA==,type:comment]
+        cert-manager.io/cluster-issuer: ENC[AES256_GCM,data:WU57t/oNQRw/Twjfv+Xnvg==,iv:QJi1yQT3SafsqzCbk6seeia342Rw09EHuEWGgMb0u9o=,tag:1VJ2mKcoOZHxZGSMM4ZJtQ==,type:str]
+        cert-manager.io/private-key-algorithm: ENC[AES256_GCM,data:Dcb8JjA=,iv:B5LDaTSpyUhCTtCgB8i52qKu8ic62iHqI5AWXK1zLhM=,tag:m2xK0tmcxFv4TimKOZ0PPw==,type:str]
     name: whoami-udev
     namespace: default
     labels:
@@ -12,7 +12,7 @@ metadata:
 spec:
     ingressClassName: nginx-external
     rules:
-        - host: ENC[AES256_GCM,data:/bfyKC4d3tM0JyT+U9LkD0zpKTtv,iv:N9eM/rdIp9bUQD3xT2ZKOTtIof5o+OFkx6dnfvQJh8M=,tag:t/Ui+yhHFz2xnH150qg4rA==,type:str]
+        - host: ENC[AES256_GCM,data:iuKLdnrUCgPa6lJ55qYeR1d2A8kN,iv:/zVVMX54yY/bEfrGCKUA+J5CriX3FU+WcB4c9QrzzsM=,tag:tf2eAh88wkBHm8pCHrKiHw==,type:str]
           http:
             paths:
                 - backend:
@@ -21,11 +21,11 @@ spec:
                         port:
                             name: http
                   path: /
-                  pathType: ImplementationSpecific
+                  pathType: Prefix
     tls:
         - hosts:
-            - ENC[AES256_GCM,data:r2W5YBNNSCtaHS7MYApV2A==,iv:HM1ZBayAeh0OF6WsmVPJRorVw16HUzQ4OOJ4IZKbXpw=,tag:5gIoQwJg85I84S9X8kUM9w==,type:str]
-            - ENC[AES256_GCM,data:7D6e8HGFZ2IBv2KOxY8=,iv:eInsl/x02QSiTgpKc5aPPOBXKRYhRtXLy4vvxsTtIFI=,tag:BjqtlDXLb5DaCnRbEBP4Ug==,type:str]
+            - ENC[AES256_GCM,data:Ygf3/V9IBO0v8lHki2+2/A==,iv:jDLl/lGEo9z1z9PatnLhmvpYpaCTnPJHHOYahPOf09s=,tag:2wfZjAvpjKTkFRs92NOVeQ==,type:str]
+            - ENC[AES256_GCM,data:sBQpjPLRQ1heX8y+hX0=,iv:GDyrHq8si7l+J2x2f9qp3c1F1HO9J81wvqxAFrfIMWs=,tag:eWqGggDnnq2u5YQ4lGtBsw==,type:str]
           secretName: udev-cert
 sops:
     kms: []
@@ -36,14 +36,14 @@ sops:
         - recipient: age17pzq63nanwarvma9nc7dvp7yy3dalgcr8e958dxrx9nfkkcwuyksw8qsds
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBMM1EzRDR2TzUwU3g1cmZ0
-            Vm5lQS9KaGx2ZkZkTkVUd2xOOW02NC9pdERJCmkxbjBlc0lJOFMxTVJJT29CY0hk
-            d2VzazN4OXFYcXJTTGNFTk10cU0zQXMKLS0tIFZQVEhMbVB6RlFJQWRDdG9LK1Ay
-            QjJ3RDJFbDhoeHhlVCtaUld2QkEveWsKSohxsmb+j3D7EzKI0dzJCQ6neN54dsD8
-            Vtn+myVQzIs+2X7INqUClnAGLwF48t4R0TKTv4EOpQ3+6QKnAnNWVw==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBBK1lVUFdOQ21LUk1CeDN0
+            eU5yOVdWRlVyb0xPdnQyejdlano0YXBta1R3Cm55clJKRW1Hdkxjald2eHE2ZHJ6
+            c0FuaHlUYm9uS1FwUVZBOENVQmZzaUUKLS0tIC9ZcnFhYmFrODZja0dQb0IvMXJS
+            UGliY1U1Ti81YnBqSVhqYzY4TUN5bUEK+zJbRJaa2mD4PCS0SZ0VppwDk2eIpeSR
+            avboxvF3i9VVB9KoTHQrSe4bbPy9C+oiVyYgzcH+HL2PtnQeSOj08w==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2022-12-04T00:23:26Z"
-    mac: ENC[AES256_GCM,data:Wumcy/47f3vXr0HVgZrvOCrYz8PxEkWJ/q7ahydcWhHV23JOxa1eR8DaKfq5Gd+kwNJ68siLQI5j90tcqsCwt8OjKHroYjkVzOdvTTlUtjx+u9Zo7qZPRf9f4Yh7BMw10n4mWf9B9XfaK6zzZaEVdqc15euHn6EhZWTHt3F92Cg=,iv:zy+oJMjEPDVUdS3dmvDwl6CSfa39kMu4J1rxghKw3dM=,tag:aPTcohVYyR2ZrU0i47eeGg==,type:str]
+    lastmodified: "2023-02-03T07:47:12Z"
+    mac: ENC[AES256_GCM,data:0F6TYcxH69kg7ik5Jw6n7e0bKcRQ81+Hi4VSuNSXhGuX3ZFiqCNtF7lXzLJLAw0+GWO0J9ttUTPsE1UyPib3CgP6XU111LsFDx4YOKQrwAJ5J7XBpCI2Whwrxe1J2lNt67rEXb+ljVHvuCkzmIi7G1vJytjeNpJwG6BIM72NUMc=,iv:ITNuI/vV92PAEZaphCu9nikcbm/uazWBiwofrAIWZ+I=,tag:DInDblhGuBrXxim0T9r2jg==,type:str]
     pgp: []
-    encrypted_regex: ^(data|stringData|host|hosts)$
+    encrypted_regex: ^(data|stringData|host|hosts|values|annotations)$
     version: 3.7.3

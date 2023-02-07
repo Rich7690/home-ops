@@ -12,6 +12,7 @@ spec:
       - path: charts/default/*
       - path: charts/metrics/*
       - path: charts/kube-system/*
+      - path: charts/kyverno/*
   template:
     metadata:
       name: '{{path.basename}}'

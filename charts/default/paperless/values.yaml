@@ -1,4 +1,6 @@
 paperless:
+  podAnnotations:
+    kyverno-skip: 'true'
   envFrom:
     - secretRef:
         name: paperless

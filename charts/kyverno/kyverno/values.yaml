@@ -7,3 +7,8 @@ kyverno:
     # Defaults to appVersion in Chart.yaml if omitted
     tag: v1.9.0@sha256:06613f5d66390c74c1794524b9d4ffc18416b8a7e8445df8eafbe4831924e07d
     pullPolicy: IfNotPresent
+  initImage:
+    # -- Image repository
+    repository: ghcr.io/kyverno/kyvernopre  # init: replaced in e2e tests
+    tag: v1.9.0@sha256:3e18bd962aa1875cfcd6f93e44065562cbb3e69b55143127f2efe8260d4a2713
+    pullPolicy: IfNotPresent

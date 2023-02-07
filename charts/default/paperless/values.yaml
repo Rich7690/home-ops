@@ -3,6 +3,7 @@ paperless:
     - secretRef:
         name: paperless
   image:
+    repository: ghcr.io/paperless-ngx/paperless-ngx
     tag: 1.10.1@sha256:5934e3a12d81e23f8b088b3e3843b2990a76eafba760770cae1a18e3287e9167
   controller:
     replicas: 1
@@ -25,18 +26,21 @@ paperless:
       existingClaim: cache-pvc
       type: pvc
       retain: true
+      accessMode: ReadWriteMany
     data:
       enabled: true
       subPath: configs/paperless/data
       existingClaim: cache-pvc
       type: pvc
       retain: true
+      accessMode: ReadWriteMany
     media:
       enabled: true
       subPath: configs/paperless/media
       existingClaim: cache-pvc
       type: pvc
       retain: true
+      accessMode: ReadWriteMany
   resources:
     limits:
       memory: 4G

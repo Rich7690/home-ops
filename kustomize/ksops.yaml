@@ -14,3 +14,4 @@ files:
   - ./configmap/prometheus.enc.yaml
   - ./secrets/njalla.enc.yaml
   - ./secrets/vpn.enc.yaml
+  - ./secrets/paperless.enc.yaml

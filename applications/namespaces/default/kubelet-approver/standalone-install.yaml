@@ -160,7 +160,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: ghcr.io/alex1989hu/kubelet-serving-cert-approver:main@sha256:40afd77fdf453b228daf5c0e47909e2d30a88bb07b527078bb79a83e599b5fa5
+        image: ghcr.io/alex1989hu/kubelet-serving-cert-approver:main@sha256:c56f5968f64c93b61524c56ab1f4bdab2fa4983116cda8c53a5ec795684590b8
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:

@@ -11,7 +11,7 @@ ombi:
     TZ: America/Los_Angeles
   image:
     repository: ghcr.io/linuxserver/ombi
-    tag: 4.22.5@sha256:ca2f5cf79fdcc86bcf4845c85c04e32724bde0dd6957dc4d6144443dbc862e9e
+    tag: amd64-4.22.5@sha256:ce36b217ac5f2e980513690346c4d76516bd996aba0002787191121706376d66
   persistence:
     config:
       enabled: true

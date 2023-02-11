@@ -1,7 +1,7 @@
-ombi:
+overseerr:
   podAnnotations:
     kyverno-skip: 'true'
-  fullnameOverride: ombi
+  fullnameOverride: jellyseerr
   controller:
     type: statefulset
     podManagementPolicy: Parallel
@@ -10,13 +10,13 @@ ombi:
     PUID: "998"
     TZ: America/Los_Angeles
   image:
-    repository: ghcr.io/linuxserver/ombi
-    tag: amd64-4.22.5@sha256:ce36b217ac5f2e980513690346c4d76516bd996aba0002787191121706376d66
+    repository: fallenbagel/jellyseerr
+    tag: 1.4.1@sha256:a1384363937990b52f667598a099d2d550f35a2d3143167d8f3bbcff8db866f9
   persistence:
     config:
       enabled: true
-      subPath: configs/ombi
-      mountPath: /config
+      subPath: configs/jellyseerr
+      mountPath: /app/config
       existingClaim: cache-pvc
       type: pvc
       retain: true

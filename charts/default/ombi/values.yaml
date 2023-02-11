@@ -6,10 +6,12 @@ ombi:
     type: statefulset
     podManagementPolicy: Parallel
   env:
+    GUID: "997"
+    PUID: "998"
     TZ: America/Los_Angeles
   image:
-    repository: ghcr.io/onedr0p/ombi:4.22.5
-    tag: 4.22.5@sha256:2f7a19bcad00734c85416deaea4e260f8738c3fdf311d8b201882d6317c0f4e9
+    repository: ghcr.io/linuxserver/ombi
+    tag: 4.22.5@sha256:ca2f5cf79fdcc86bcf4845c85c04e32724bde0dd6957dc4d6144443dbc862e9e
   persistence:
     config:
       enabled: true

@@ -12,7 +12,7 @@ spec:
       - path: chargs/cert-manager/*
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: '{{path.basename}}-oracle'
       namespace: argocd
       annotations:
         # resolves to the directory

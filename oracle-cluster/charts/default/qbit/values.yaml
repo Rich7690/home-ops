@@ -79,6 +79,8 @@ qbittorrent:
       accessMode: ReadWriteOnce
       size: 10G
       type: pvc
+      retain: true
+      skipuninstall: true
     shared:
       enabled: true
       mountPath: /shared

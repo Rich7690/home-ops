@@ -24,6 +24,10 @@ kind: Ingress
 metadata:
   name: qbit
   namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      proxy_set_header   X-Forwarded-Host   $http_host;
+      proxy_set_header   X-Forwarded-For    $remote_addr;
   labels:
     name: qbit
 spec:

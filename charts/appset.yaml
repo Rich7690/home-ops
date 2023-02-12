@@ -13,7 +13,7 @@ spec:
       - path: charts/metrics/*
       - path: charts/kube-system/*
       - path: charts/kyverno/*
-      - path: chargs/cert-manager/*
+      - path: charts/cert-manager/*
   template:
     metadata:
       name: '{{path.basename}}'

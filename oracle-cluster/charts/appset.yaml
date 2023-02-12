@@ -9,7 +9,7 @@ spec:
       repoURL: https://github.com/Rich7690/home-server-config.git
       revision: HEAD
       directories:
-      - path: chargs/cert-manager/*
+      - path: charts/cert-manager/*
   template:
     metadata:
       name: '{{path.basename}}-oracle'

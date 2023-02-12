@@ -6,8 +6,13 @@ metadata:
   labels:
     name: whoami
 spec:
-  defaultBackend:
-    service:
-      name: whoami
-      port:
-        name: http
+  ingressClassName: nginx
+  rules:
+    - host: whoami.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: whoami
+            pathType: Prefix
+            path: /

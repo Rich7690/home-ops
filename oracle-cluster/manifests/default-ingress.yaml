@@ -18,3 +18,45 @@ spec:
                   name: http
             pathType: Prefix
             path: /
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: qbit
+  namespace: default
+  labels:
+    name: qbit
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: qbit.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: qbittorrent
+                port:
+                  name: http
+            pathType: Prefix
+            path: /
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prowlarr
+  namespace: default
+  labels:
+    name: prowlarr
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: prowlarr.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: prowlarr
+                port:
+                  name: http
+            pathType: Prefix
+            path: /

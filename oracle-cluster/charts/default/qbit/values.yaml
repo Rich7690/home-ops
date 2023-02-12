@@ -66,7 +66,7 @@ qbittorrent:
   image:
     pullPolicy: IfNotPresent
     repository: ghcr.io/onedr0p/qbittorrent
-    tag: 4.5.0@sha256:d02eecc1d4ba992f6523755fde2e29958f218bd3428030b0e6c28c6036ecd52a
+    tag: 4.5.1@sha256:74ef19d7da100cf6edbb6ea6bf2d5112a107f290bb40e839e4a1d63f53e30bc1
   persistence:
     config:
       enabled: true

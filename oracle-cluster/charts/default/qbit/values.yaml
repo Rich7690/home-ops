@@ -76,6 +76,7 @@ qbittorrent:
     media:
       enabled: true
       mountPath: /media
+      accessMode: ReadWriteMany
       type: pvc
     shared:
       enabled: true

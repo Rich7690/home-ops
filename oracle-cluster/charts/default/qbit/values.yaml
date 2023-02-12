@@ -76,7 +76,7 @@ qbittorrent:
     media:
       enabled: true
       mountPath: /media
-      accessMode: ReadWriteOne
+      accessMode: ReadWriteOnce
       size: 10G
       type: pvc
     shared:

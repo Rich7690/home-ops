@@ -37,4 +37,4 @@ spec:
             - values.yaml
       destination:
         server: https://172.16.0.0:6443
-        namespace: '{{path[1]}}'
+        namespace: '{{path[2]}}'

@@ -20,7 +20,7 @@ spec:
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:
-      project: default
+      project: oracle
       ignoreDifferences:
       - group: '*'
         kind: Secret

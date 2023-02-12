@@ -9,10 +9,6 @@ spec:
       repoURL: https://github.com/Rich7690/home-server-config.git
       revision: HEAD
       directories:
-      - path: charts/default/*
-      - path: charts/metrics/*
-      - path: charts/kube-system/*
-      - path: charts/kyverno/*
       - path: chargs/cert-manager/*
   template:
     metadata:
@@ -24,7 +20,7 @@ spec:
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:
-      project: remote-apps
+      project: default
       ignoreDifferences:
       - group: '*'
         kind: Secret
@@ -40,5 +36,5 @@ spec:
           valueFiles:
             - values.yaml
       destination:
-        server: https://kubernetes.default.svc
+        server: https://172.16.0.0:6443
         namespace: '{{path[1]}}'

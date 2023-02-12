@@ -1,0 +1,11 @@
+cert-manager:
+  fullnameOverride: cert-manager
+  installCRDs: true
+  image:
+    repository: quay.io/jetstack/cert-manager-controller
+
+    # Override the image tag to deploy by setting this variable.
+    # If no value is set, the chart's appVersion will be used.
+    tag: v1.11.0@sha256:d429b6d696e0ef47cff1d15241c6ffaac351e38ac22664b82fafa771d615b89a
+
+    pullPolicy: IfNotPresent

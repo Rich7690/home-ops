@@ -7,11 +7,6 @@ metadata:
     name: whoami
 spec:
   ingressClassName: nginx
-  defaultBackend:
-    service:
-      name: whoami
-      port:
-        name: http
   rules:
     - host: whoami.local
       http:

@@ -28,3 +28,6 @@ ingress-nginx:
         memory: 200Mi
     service:
       externalTrafficPolicy: Cluster
+      externalIPs:
+        - "129.159.33.126"
+      loadBalancerIP: "129.159.33.126"

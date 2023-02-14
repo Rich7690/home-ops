@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: applications-oracle
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/Rich7690/home-server-config.git
+      revision: HEAD
+      directories:
+      - path: oracle-cluster/applications/namespaces/default/*
+  template:
+    metadata:
+      name: '{{path.basename}}-oracle'
+      namespace: argocd
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      project: oracle
+      source:
+        repoURL: https://github.com/Rich7690/home-server-config.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://172.16.0.0:6443
+        namespace: '{{path[3]}}'

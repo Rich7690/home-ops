@@ -1,0 +1,24 @@
+overseerr:
+  podAnnotations:
+    kyverno-skip: 'true'
+  fullnameOverride: jellyseerr
+  controller:
+    type: statefulset
+    podManagementPolicy: Parallel
+  env:
+    TZ: America/Los_Angeles
+  image:
+    repository: fallenbagel/jellyseerr
+    tag: 1.4.1@sha256:a1384363937990b52f667598a099d2d550f35a2d3143167d8f3bbcff8db866f9
+  persistence:
+    config:
+      enabled: true
+      type: pvc
+      retain: true
+  resources:
+    limits:
+      cpu: 4
+      memory: 500Mi
+    requests:
+      cpu: 200m
+      memory: 250Mi

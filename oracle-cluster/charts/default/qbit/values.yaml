@@ -88,3 +88,10 @@ qbittorrent:
   securityContext:
     runAsGroup: 568
     runAsUser: 586
+  resources:
+    limits:
+      cpu: 4
+      memory: 4G
+    requests:
+      cpu: 200m
+      memory: 1G

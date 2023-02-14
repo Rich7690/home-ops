@@ -1,0 +1,39 @@
+sonarr:
+  global:
+    fullnameOverride: sonarr
+  controller:
+    type: statefulset
+    podManagementPolicy: Parallel
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsNonRoot: true
+    runAsGroup: 568
+    runAsUser: 586
+  env:
+    TZ: America/Los_Angeles
+  image:
+    repository: ghcr.io/onedr0p/sonarr
+    tag: v3.0.9.1549@sha256:47fd7a9fccb06c95bcf3f92ce2c26f7cd284f735da347cd942039978286edd7e
+  persistence:
+    media:
+      enabled: true
+      mountPath: /media
+      existingClaim: qbittorrent-media
+      type: pvc
+    config:
+      enabled: true
+      mountPath: /config
+      type: pvc
+      retain: true
+  resources:
+    limits:
+      cpu: 4
+      memory: 1G
+    requests:
+      cpu: 200m
+      memory: 256Mi

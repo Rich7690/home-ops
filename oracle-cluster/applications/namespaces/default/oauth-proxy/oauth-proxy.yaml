@@ -33,7 +33,7 @@ spec:
                       - configMapRef:
                             name: oauth-proxy
                             optional: false
-                  image: quay.io/oauth2-proxy/oauth2-proxy:v7.4.0@sha256:f81637250eb3b5d902fba3c4ade3d3b1e34cc7f2350bc30402f1e62adfdf17aa
+                  image: quay.io/oauth2-proxy/oauth2-proxy:v7.4.0-arm64@sha256:9b4d29cf95d7a57a695bf6398f255d2db7657fadf44de2cb39bd4dd2e7de1397
                   imagePullPolicy: IfNotPresent
                   livenessProbe:
                       failureThreshold: 3
@@ -65,7 +65,7 @@ spec:
                           cpu: '4'
                           memory: 64Mi
                       requests:
-                          cpu: 200m
+                          cpu: 50m
                           memory: 64Mi
                   securityContext:
                       allowPrivilegeEscalation: false
@@ -81,8 +81,6 @@ spec:
                   terminationMessagePolicy: File
             dnsPolicy: ClusterFirst
             enableServiceLinks: true
-            nodeSelector:
-                kubernetes.io/arch: amd64
             restartPolicy: Always
             schedulerName: default-scheduler
             shareProcessNamespace: false

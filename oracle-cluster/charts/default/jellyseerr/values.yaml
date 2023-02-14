@@ -9,7 +9,7 @@ overseerr:
     TZ: America/Los_Angeles
   image:
     repository: fallenbagel/jellyseerr
-    tag: 1.4.1@sha256:a1384363937990b52f667598a099d2d550f35a2d3143167d8f3bbcff8db866f9
+    tag: 1.4.1@sha256:80a2ae4cd11d8c65ae428448411f0161b55f31760b9bedbcb4197baf5508b6a9
   persistence:
     config:
       enabled: true

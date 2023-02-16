@@ -51,7 +51,7 @@ spec:
       serviceAccountName: external-dns
       containers:
       - name: external-dns
-        image: registry.k8s.io/external-dns/external-dns:v0.13.2
+        image: registry.k8s.io/external-dns/external-dns:v0.13.2@sha256:d6e0a677f5b685308d45cb0d812423300ee2c6a324910230427fc00f4b449954
         args:
         - --source=ingress # ingress is also possible
         - --provider=cloudflare

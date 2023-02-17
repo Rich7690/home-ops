@@ -76,11 +76,9 @@ qbittorrent:
     media:
       enabled: true
       mountPath: /media
-      accessMode: ReadWriteOnce
-      size: 10G
-      type: pvc
-      retain: true
-      skipuninstall: true
+      hostPathType: Directory
+      hostPath: /mnt/media/media
+      type: hostpath
     shared:
       enabled: true
       mountPath: /shared

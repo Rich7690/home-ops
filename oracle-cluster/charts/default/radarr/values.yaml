@@ -23,8 +23,9 @@ radarr:
     media:
       enabled: true
       mountPath: /media
-      existingClaim: qbittorrent-media
-      type: pvc
+      hostPathType: Directory
+      hostPath: /mnt/media/media
+      type: hostpath
     config:
       enabled: true
       mountPath: /config

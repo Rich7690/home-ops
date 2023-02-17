@@ -78,7 +78,7 @@ qbittorrent:
       mountPath: /media
       hostPathType: Directory
       hostPath: /mnt/media/media
-      type: hostpath
+      type: hostPath
     shared:
       enabled: true
       mountPath: /shared

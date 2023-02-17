@@ -25,7 +25,7 @@ radarr:
       mountPath: /media
       hostPathType: Directory
       hostPath: /mnt/media/media
-      type: hostpath
+      type: hostPath
     config:
       enabled: true
       mountPath: /config

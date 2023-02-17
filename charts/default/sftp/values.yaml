@@ -14,14 +14,11 @@ sftp:
       - Username: oracle
         UID: 998
         GID: 997
-        Chroot:
-          Directory: /media
-          StartPath: ""
         PublicKeys:
           - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDLB9X3jyJYXz24XRuYvpCJb8j60kCThJZWB3pgGM/7OStLg+FrbHc/L6fv0ZMH3ejZlB7WUgmVQc2cPkhwR0RG7bz+QiCM6cEb8+JMNsf0Q8+aJv/WGsQ0mpO1AZapOPe1RfnfcuXbyNwednx8NZZtyeyOP3+1USTDLqMBQ4vXp9KL06x2hT8btDcxaeavUyMquoinHB6s7LuvODY06wkLas/kCMhv5ruIYZkoErju+6KO0wIPimmb7tLulXNWWz2dMgLUt6y+72NmPd1rO0e7jsJOVYUdYZKgu+t1xM62i/HkWvq1m9XI63Vjqmm9dQ7BILWCt2+36P+GRZjpHdmKN9sePiuHN2On6uBBHsd0750q4YRP0m/LpqwUjAariWFPOCihr541CM44hB8+giLaVBxRGqfck7IHs68mHkbtDU8Ff2YNbRNVsWGGOff/pX2+1ALPx8OG0opPVmihrZZPdaUeNoo5ED7nmDl5fJVsFI5ut4sMHkHG33MUQwvTUAU= root@k8s
   storage:
     volumeMounts:
-      - mountPath: /media
+      - mountPath: /home/oracle/media
         name: media
     volumes:
       - name: media

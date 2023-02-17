@@ -15,6 +15,9 @@ overseerr:
       enabled: true
       type: pvc
       retain: true
+  securityContext:
+    runAsGroup: 568
+    runAsUser: 586
   resources:
     limits:
       cpu: 4

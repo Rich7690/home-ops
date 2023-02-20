@@ -63,7 +63,7 @@ spec:
                         value: local
                       - name: enableServicesElection
                         value: "false"
-                  image: ghcr.io/kube-vip/kube-vip:v0.5.9@sha256:86d51c036fbfae50d90e82a73e368265212ef933d6c0b0373ab99efcd4678c84
+                  image: ghcr.io/kube-vip/kube-vip:v0.5.10@sha256:71f0b5018152c60758f19407af7aaa8307e7169b72e8c5699054bdc66feaf880
                   imagePullPolicy: IfNotPresent
                   name: kube-vip
                   resources: {}

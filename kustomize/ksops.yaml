@@ -8,9 +8,6 @@ files:
   - ./secrets/oauth-proxy.enc.yaml
   - ./secrets/vaultwarden.enc.yaml
   - ./secrets/backup.enc.yaml
-  - ./ingress/jelly.enc.yaml
-  - ./ingress/whoami.enc.yml
-  - ./ingress/whoami-udev.enc.yml
   - ./configmap/prometheus.enc.yaml
   - ./secrets/njalla.enc.yaml
   - ./secrets/vpn.enc.yaml

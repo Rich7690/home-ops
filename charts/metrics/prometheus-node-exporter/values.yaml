@@ -1,7 +1,8 @@
 prometheus-node-exporter:
   fullnameOverride: prometheus-node-exporter
   image:
-    repository: quay.io/prometheus/node-exporter
+    registry: "quay.io"
+    repository: prometheus/node-exporter
     tag: v1.5.0
   podAnnotations:
     prometheus.io/scrape: "true"

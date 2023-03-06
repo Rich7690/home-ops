@@ -21,7 +21,7 @@ sonarr:
     TZ: America/Los_Angeles
   image:
     repository: ghcr.io/onedr0p/sonarr
-    tag: 3.0.9.1549@sha256:940337ffe22d30c8bc25f92bd1988127acf0b494aff2ccdc97f3350ac7ab266e
+    tag: 3.0.10.1566@sha256:04a6d31d7acca80b2af598aea019e19b4ac10cf40da04f2b46183e53c064a698
   persistence:
     media:
       enabled: true

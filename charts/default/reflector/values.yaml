@@ -3,4 +3,4 @@ reflector:
   image:
     repository: emberstack/kubernetes-reflector
     pullPolicy: IfNotPresent
-    tag: 6.1.47@sha256:a0a5c4020f6d2771893f83111d9fc09425cc874d6626208069caf8dcba179e10
+    tag: 7.0.147@sha256:d9693cf5e61443ba589d2aeb11267ae9214db0f1f205f5fc86923c5cfb2dde64

@@ -29,7 +29,7 @@ spec:
                       - redis-server
                       - --appendonly
                       - "yes"
-                  image: redis:7-alpine@sha256:5ae5799117d680a13dd35184f26db66549605e220f1af52f4b7557f77830aa17
+                  image: redis:7-alpine@sha256:8201775852e31262823ac8da9d76d0c8f36583f1a028b4800c35fc319c75289f
                   imagePullPolicy: IfNotPresent
                   livenessProbe:
                       failureThreshold: 3

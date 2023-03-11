@@ -2,6 +2,8 @@ overseerr:
   podAnnotations:
     kyverno-skip: 'true'
   fullnameOverride: jellyseerr
+  nodeSelector:
+    feature.node.ceph: "true"
   controller:
     type: statefulset
     podManagementPolicy: Parallel
@@ -15,9 +17,8 @@ overseerr:
   persistence:
     config:
       enabled: true
-      subPath: configs/jellyseerr
       mountPath: /app/config
-      existingClaim: cache-pvc
+      existingClaim: js-config
       type: pvc
       retain: true
   resources:

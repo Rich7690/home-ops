@@ -5,7 +5,7 @@ prowlarr:
     type: statefulset
     podManagementPolicy: Parallel
   nodeSelector:
-    kubernetes.io/hostname: virtworkerone
+    feature.node.ceph: "true"
   securityContext:
     allowPrivilegeEscalation: false
     capabilities:
@@ -26,8 +26,7 @@ prowlarr:
     config:
       enabled: true
       mountPath: /config
-      subPath: configs/prowlarr
-      existingClaim: cache-pvc
+      existingClaim: prowlarr-config
       type: pvc
       retain: true
   resources:

@@ -85,7 +85,8 @@ spec:
             dnsPolicy: ClusterFirst
             enableServiceLinks: true
             nodeSelector:
-                kubernetes.io/hostname: virtworkerone
+                feature.node.ceph: "true"
+                intel.feature.node.kubernetes.io/gpu: "true"
             restartPolicy: Always
             schedulerName: default-scheduler
             securityContext:

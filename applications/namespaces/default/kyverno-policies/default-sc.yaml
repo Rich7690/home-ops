@@ -14,9 +14,14 @@ spec:
   rules:
   - name: add-default-securitycontext
     exclude:
-      resources:
-        annotations:
-          "kyverno-skip": "true"
+      any:
+       - resources:
+          annotations:
+           kyverno-skip: "true"
+       - resources:
+           namespaces:
+            - kube-system
+            - rook-ceph
     match:
       resources:
         kinds:

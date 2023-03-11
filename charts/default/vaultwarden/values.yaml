@@ -1,8 +1,8 @@
 vaultwarden:
-  podAnnotations:
-    kyverno-skip: 'true'
   global:
     fullnameOverride: vaultwarden
+  nodeSelector:
+    feature.node.ceph: "true"
   controller:
     type: statefulset
     podManagementPolicy: Parallel
@@ -15,16 +15,15 @@ vaultwarden:
         name: vaultwarden
   env:
     DATA_FOLDER: /config/vaultwarden
-    GROUPID: 997
+    GROUPID: 65532
     SIGNUPS_ALLOWED: false
     TZ: America/Los_Angeles
-    USERID: 998
+    USERID: 65532
   persistence:
     config:
       enabled: true
       mountPath: /config/vaultwarden
-      subPath: configs/vaultwarden
-      existingClaim: cache-pvc
+      existingClaim: vw-pvc
       type: pvc
       retain: true
   resources:

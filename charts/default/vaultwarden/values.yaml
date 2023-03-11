@@ -23,7 +23,7 @@ vaultwarden:
     config:
       enabled: true
       mountPath: /config/vaultwarden
-      existingClaim: vw-pvc
+      existingClaim: vw-config
       type: pvc
       retain: true
   resources:

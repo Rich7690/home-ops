@@ -71,18 +71,17 @@ qbittorrent:
     repository: ghcr.io/onedr0p/qbittorrent
     tag: 4.5.2@sha256:6d634e1b42fa7b0c8fa98c2f64116539519715c39cd713dbb51331c3a1e02689
   nodeSelector:
-    kubernetes.io/hostname: virtworkerone
+    feature.node.ceph: "true"
   persistence:
     config:
       enabled: true
       mountPath: /config
-      subPath: configs/qbit
-      existingClaim: cache-pvc
+      existingClaim: qbit-config
       type: pvc
       retain: true
     media:
       enabled: true
-      existingClaim: nfs
+      existingClaim: media-pvc
       mountPath: /media
       type: pvc
     shared:

@@ -24,25 +24,22 @@ paperless:
   persistence:
     consume:
       enabled: true
-      subPath: configs/paperless/consume
-      existingClaim: cache-pvc
+      existingClaim: paperless-consume
       type: pvc
       retain: true
       accessMode: ReadWriteMany
     data:
       enabled: true
-      subPath: configs/paperless/data
-      existingClaim: cache-pvc
+      existingClaim: paperless-data
       type: pvc
-      retain: true
-      accessMode: ReadWriteMany
+      retain: false
+      accessMode: ReadWriteOne
     media:
       enabled: true
-      subPath: configs/paperless/media
-      existingClaim: cache-pvc
+      existingClaim: paperless-media
       type: pvc
-      retain: true
-      accessMode: ReadWriteMany
+      retain: false
+      accessMode: ReadWriteOne
   resources:
     limits:
       memory: 4G

@@ -262,6 +262,9 @@ spec:
           #- name: "vdc"
           #- name: "vdd"
           #- name: "vde"
+      - name: "worker-three"
+        devices:
+          - name: nvme0n1
     # when onlyApplyOSDPlacement is false, will merge both placement.All() and placement.osd
     onlyApplyOSDPlacement: false
   # The section for configuring management of daemon disruptions during upgrade or fencing.

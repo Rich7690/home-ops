@@ -5,7 +5,7 @@ radarr:
     type: statefulset
     podManagementPolicy: Parallel
   nodeSelector:
-    kubernetes.io/hostname: virtworkerone
+    feature.node.ceph: "true"
   securityContext:
     allowPrivilegeEscalation: false
     capabilities:
@@ -26,13 +26,12 @@ radarr:
     media:
       enabled: true
       mountPath: /media
-      existingClaim: nfs
+      existingClaim: media-pvc
       type: pvc
     config:
       enabled: true
       mountPath: /config
-      subPath: configs/radarr
-      existingClaim: cache-pvc
+      existingClaim: radarr-config
       type: pvc
       retain: true
   resources:

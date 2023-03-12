@@ -74,7 +74,6 @@ spec:
                   volumeMounts:
                       - mountPath: /data
                         mountPropagation: None
-                        #subPath: configs/redis
                         name: data
             dnsPolicy: ClusterFirst
             enableServiceLinks: true
@@ -88,7 +87,7 @@ spec:
             volumes:
                 - name: data
                   persistentVolumeClaim:
-                    claimName: redis-pvc
+                    claimName: redis
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy

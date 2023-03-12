@@ -53,7 +53,6 @@ spec:
                   volumeMounts:
                       - mountPath: /var/lib/grafana
                         mountPropagation: None
-                        subPath: configs/grafana
                         name: config
             dnsPolicy: ClusterFirst
             enableServiceLinks: true
@@ -67,7 +66,7 @@ spec:
             volumes:
                 - name: config
                   persistentVolumeClaim:
-                    claimName: cache-pvc
+                    claimName: grafana-config
 ---
 apiVersion: v1
 kind: Service

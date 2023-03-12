@@ -77,7 +77,6 @@ spec:
                   volumeMounts:
                       - mountPath: /config
                         mountPropagation: None
-                        subPath: configs/jelly
                         name: config
                       - mountPath: /media
                         mountPropagation: None
@@ -96,7 +95,7 @@ spec:
             terminationGracePeriodSeconds: 30
             volumes:
                 - persistentVolumeClaim:
-                    claimName: cache-pvc
+                    claimName: jelly-config
                   name: config
                 - name: media
                   persistentVolumeClaim:

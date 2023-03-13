@@ -8,4 +8,4 @@ victoria-metrics-single:
       enabled: true
       configMap: "metrics-scrapeconfig"
     persistentVolume:
-      existingClaim: vm
+      existingClaim: vm-config

@@ -505,7 +505,7 @@ data:
 
   # Enable read affinity for RBD volumes. Recommended to
   # set to true if running kernel 5.8 or newer.
-  CSI_ENABLE_READ_AFFINITY: "false"
+  CSI_ENABLE_READ_AFFINITY: "true"
   # CRUSH location labels define which node labels to use
   # as CRUSH location. This should correspond to the values set in
   # the CRUSH map.

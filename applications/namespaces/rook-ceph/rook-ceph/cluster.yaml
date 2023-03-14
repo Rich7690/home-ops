@@ -71,7 +71,7 @@ spec:
     # serve the dashboard at the given port.
     # port: 8443
     # serve the dashboard using SSL
-    ssl: true
+    ssl: false
   # enable prometheus alerting for cluster
   monitoring:
     # requires Prometheus to be pre-installed
@@ -218,8 +218,16 @@ spec:
   #    mon:
   #    osd:
   # For OSD it also is a possible to specify requests/limits based on device class
-  #    osd-hdd:
-  #    osd-ssd:
+     osd-hdd:
+       limits:
+         memory: 4Gi
+       requests:
+         memory: 1Gi
+     osd-ssd:
+       limits:
+         memory: 4Gi
+       requests:
+         memory: 1Gi
   #    osd-nvme:
   #    prepareosd:
   #    crashcollector:
@@ -249,19 +257,15 @@ spec:
     nodes:
       - name: "virtworkerone"
         devices: # specific devices to use for storage can be specified for each node
-          - name: "sda"
-            config:
-              osdsPerDevice: "1"
-          - name: "vdc" # devices can be specified using full udev paths
-          - name: "vdd" # devices can be specified using full udev paths
+          - name: "nvme0n1"
+          - name: "nvme1n1"
+          - name: "sda" # devices can be specified using full udev paths
+          - name: "sdb" # devices can be specified using full udev paths
       - name: "proxmox-storage"
         devices: # specific devices to use for storage can be specified for each node
           - name: "nvme0n1"
-          #- name: "nvme1n1"
+          - name: "nvme1n1"
           - name: "sdc"
-          #- name: "vdc"
-          #- name: "vdd"
-          #- name: "vde"
       - name: "worker-three"
         devices:
           - name: nvme0n1

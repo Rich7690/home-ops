@@ -81,6 +81,8 @@ spec:
                       - mountPath: /media
                         mountPropagation: None
                         name: media
+                      - mountPath: /cache
+                        name: cache
             dnsPolicy: ClusterFirst
             enableServiceLinks: true
             nodeSelector:
@@ -100,6 +102,10 @@ spec:
                 - name: media
                   persistentVolumeClaim:
                       claimName: media-pvc
+                - name: cache
+                  emptyDir:
+                    sizeLimit: 20G
+
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy

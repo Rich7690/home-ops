@@ -23,9 +23,10 @@ spec:
             - kube-system
             - rook-ceph
     match:
-      resources:
-        kinds:
-        - Pod
+      any:
+        - resources:
+            kinds:
+             - Pod
     mutate:
       patchStrategicMerge:
         spec:

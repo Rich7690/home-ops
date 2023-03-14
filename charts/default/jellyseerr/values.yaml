@@ -1,15 +1,20 @@
 overseerr:
-  podAnnotations:
-    kyverno-skip: 'true'
   fullnameOverride: jellyseerr
   nodeSelector:
     feature.node.ceph: "true"
+  securityContext:
+    runAsUser: 65532
+    runAsGroup: 65532
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop: ["ALL"]
   controller:
     type: statefulset
     podManagementPolicy: Parallel
   env:
-    GUID: "997"
-    PUID: "998"
+    PUID: "65532"
     TZ: America/Los_Angeles
   image:
     repository: fallenbagel/jellyseerr

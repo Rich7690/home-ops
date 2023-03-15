@@ -9,3 +9,11 @@ victoria-metrics-single:
       configMap: "metrics-scrapeconfig"
     persistentVolume:
       existingClaim: vm-config
+    securityContext:
+      runAsUser: 65532
+      runAsGroup: 65532
+      readOnlyRootFilesystem: false
+      runAsNonRoot: true
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop: ["ALL"]

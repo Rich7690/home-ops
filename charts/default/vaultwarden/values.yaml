@@ -13,6 +13,14 @@ vaultwarden:
   envFrom:
     - secretRef:
         name: vaultwarden
+  securityContext:
+      runAsUser: 65532
+      runAsGroup: 65532
+      readOnlyRootFilesystem: false
+      runAsNonRoot: true
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop: ["ALL"]
   env:
     DATA_FOLDER: /config/vaultwarden
     GROUPID: 65532

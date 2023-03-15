@@ -5,7 +5,7 @@ overseerr:
   securityContext:
     runAsUser: 65532
     runAsGroup: 65532
-    readOnlyRootFilesystem: true
+    readOnlyRootFilesystem: false
     runAsNonRoot: true
     allowPrivilegeEscalation: false
     capabilities:
@@ -16,6 +16,7 @@ overseerr:
   env:
     PUID: "65532"
     TZ: America/Los_Angeles
+    YARN_CACHE_FOLDER: "/app/config/cache"
   image:
     repository: fallenbagel/jellyseerr
     tag: 1.4.1@sha256:a1384363937990b52f667598a099d2d550f35a2d3143167d8f3bbcff8db866f9

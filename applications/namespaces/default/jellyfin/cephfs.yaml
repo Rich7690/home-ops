@@ -3,6 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: media-pvc
   namespace: default
+  annotations:
+    reclaimspace.csiaddons.openshift.io/schedule: "3 0 * * 6"
 spec:
   storageClassName: rook-ceph-storagefs
   resources:

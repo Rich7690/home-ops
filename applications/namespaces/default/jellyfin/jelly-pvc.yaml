@@ -3,6 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: jelly-config
   namespace: default
+  annotations:
+    reclaimspace.csiaddons.openshift.io/schedule: "4 0 * * 6"
 spec:
   storageClassName: rook-ceph-block
   resources:

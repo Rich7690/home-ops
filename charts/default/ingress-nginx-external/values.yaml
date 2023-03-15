@@ -6,7 +6,7 @@ ingress-nginx:
       tag: v1.6.4
       digest: null
       runAsUser: "101"
-    replicaCount: 2
+    #replicaCount: 2
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
@@ -23,7 +23,7 @@ ingress-nginx:
     ingressClassResource:
       controllerValue: k8s.io/ingress-nginx-external
       name: nginx-external
-    kind: Deployment
+    kind: DaemonSet
     metrics:
       enabled: true
       service:

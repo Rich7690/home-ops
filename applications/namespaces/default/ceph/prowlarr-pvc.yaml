@@ -3,6 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: prowlarr-config
   namespace: default
+  annotations:
+    reclaimspace.csiaddons.openshift.io/schedule: "9 0 * * 6"
 spec:
   storageClassName: rook-ceph-block
   resources:

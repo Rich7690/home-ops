@@ -92,3 +92,5 @@ parameters:
 #mounter: rbd-nbd
 allowVolumeExpansion: true
 reclaimPolicy: Delete
+mountOptions:
+- discard

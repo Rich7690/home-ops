@@ -6,7 +6,7 @@ ingress-nginx:
       tag: v1.6.4
       digest: null
       runAsUser: "101"
-    replicaCount: 2
+    #replicaCount: 2
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
@@ -19,7 +19,7 @@ ingress-nginx:
     addHeaders:
       X-Frame-Options: SAMEORIGIN
     electionID: ingress-controller-leader
-    kind: Deployment
+    kind: DaemonSet
     metrics:
       enabled: true
       service:

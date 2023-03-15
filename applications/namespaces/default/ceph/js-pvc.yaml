@@ -3,6 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: js-config
   namespace: default
+  annotations:
+    reclaimspace.csiaddons.openshift.io/schedule: "11 0 * * 6"
 spec:
   storageClassName: rook-ceph-block
   resources:

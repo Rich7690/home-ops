@@ -3,6 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: paperless-data
   namespace: default
+  annotations:
+    reclaimspace.csiaddons.openshift.io/schedule: "10 0 * * 6"
 spec:
   storageClassName: rook-ceph-block
   resources:
@@ -17,6 +19,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: paperless-media
   namespace: default
+  annotations:
+    reclaimspace.csiaddons.openshift.io/schedule: "10 0 * * 6"
 spec:
   storageClassName: rook-ceph-block
   resources:
@@ -31,6 +35,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: paperless-consume
   namespace: default
+  annotations:
+    reclaimspace.csiaddons.openshift.io/schedule: "10 0 * * 6"
 spec:
   storageClassName: rook-ceph-storagefs
   resources:

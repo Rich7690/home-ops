@@ -2,6 +2,12 @@ victoria-metrics-single:
   rbac:
     pspEnabled: false
   server:
+    extraArgs:
+      envflag.enable: "true"
+      envflag.prefix: VM_
+      loggerFormat: json
+      usePromCompatibleNaming: "true"
+      influx.databaseNames: iotawatt
     podAnnotations:
       kyverno-skip: "true"
     scrape:

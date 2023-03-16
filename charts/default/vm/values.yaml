@@ -15,7 +15,7 @@ victoria-metrics-single:
       configMap: "metrics-scrapeconfig"
     persistentVolume:
       existingClaim: vm-config
-    securityContext:
+    podSecurityContext:
       runAsUser: 65532
       runAsGroup: 65532
       readOnlyRootFilesystem: false

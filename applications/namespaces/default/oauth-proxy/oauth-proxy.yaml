@@ -25,6 +25,18 @@ spec:
         spec:
             automountServiceAccountToken: true
             serviceAccount: oauth-proxy
+            affinity:
+                podAntiAffinity:
+                    preferredDuringSchedulingIgnoredDuringExecution:
+                      - podAffinityTerm:
+                            labelSelector:
+                              matchExpressions:
+                                - key: app
+                                  operator: In
+                                  values:
+                                  - oauth-proxy
+                            topologyKey: kubernetes.io/hostname
+                        weight: 100
             containers:
                 - envFrom:
                       - secretRef:
@@ -34,6 +46,8 @@ spec:
                             name: oauth-proxy
                             optional: false
                   image: quay.io/oauth2-proxy/oauth2-proxy:v7.4.0@sha256:f81637250eb3b5d902fba3c4ade3d3b1e34cc7f2350bc30402f1e62adfdf17aa
+                  args:
+                    - "--set-xauthrequest"
                   imagePullPolicy: IfNotPresent
                   livenessProbe:
                       failureThreshold: 3

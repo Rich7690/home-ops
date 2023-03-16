@@ -26,6 +26,10 @@ spec:
     spec:
       project: remote-apps
       ignoreDifferences:
+      - group: apps
+        kind: Deployment
+        jqPathExpressions:
+          - .spec.template.spec.containers[] | select(.name == "paperless") | .env[] | select(.name == "PAPERLESS_URL")
       - group: '*'
         kind: Secret
         namespace: kube-system

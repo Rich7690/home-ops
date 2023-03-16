@@ -10,7 +10,7 @@ paperless:
   controller:
     replicas: 1
   env:
-    PAPERLESS_HTTP_REMOTE_USER_HEADER_NAME: HTTP_X_AUTH_REQUEST_PREFERRED_USERNAME
+    PAPERLESS_HTTP_REMOTE_USER_HEADER_NAME: HTTP_X_AUTH_REQUEST_USER
     PAPERLESS_ENABLE_HTTP_REMOTE_USER: true
     PAPERLESS_REDIS: redis://redis:6379
     PAPERLESS_PORT: 8000
@@ -33,13 +33,13 @@ paperless:
       existingClaim: paperless-data
       type: pvc
       retain: false
-      accessMode: ReadWriteOne
+      accessMode: ReadWriteOnce
     media:
       enabled: true
       existingClaim: paperless-media
       type: pvc
       retain: false
-      accessMode: ReadWriteOne
+      accessMode: ReadWriteOnce
   resources:
     limits:
       memory: 4G

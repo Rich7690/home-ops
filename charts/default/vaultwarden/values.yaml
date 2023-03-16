@@ -21,6 +21,7 @@ vaultwarden:
       allowPrivilegeEscalation: false
       capabilities:
         drop: ["ALL"]
+        add: ["NET_BIND_SERVICE"]
   env:
     DATA_FOLDER: /config/vaultwarden
     GROUPID: 65532

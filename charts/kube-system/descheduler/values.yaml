@@ -1,7 +1,7 @@
 descheduler:
   fullnameOverride: descheduler
   image:
-    repository: k8s.gcr.io/descheduler/descheduler
+    repository: registry.k8s.io/descheduler/descheduler
     # Overrides the image tag whose default is the chart version
     tag: "v0.26.0@sha256:083d51d7295b7d4d0fa60c9f634d2877419a5b8fdc3a48590dd14c1e05467971"
     pullPolicy: IfNotPresent

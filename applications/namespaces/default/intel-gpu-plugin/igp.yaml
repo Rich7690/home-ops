@@ -24,7 +24,7 @@ spec:
             fieldRef:
               apiVersion: v1
               fieldPath: spec.nodeName
-        image: intel/intel-gpu-plugin:0.26.0
+        image: intel/intel-gpu-plugin:0.26.0@sha256:9f37623959fb936ad3f84ebc428d68ed08bb971f263e2d559b0f8fcfcdc003d1
         imagePullPolicy: IfNotPresent
         name: intel-gpu-plugin
         resources:
@@ -49,7 +49,7 @@ spec:
           name: kubeletsockets
       dnsPolicy: ClusterFirst
       initContainers:
-      - image: intel/intel-gpu-initcontainer:0.26.0
+      - image: intel/intel-gpu-initcontainer:0.26.0@sha256:a7de0925989f04edab0d5797457ec621b03f4c9fae4444e5a56d9dd3327db7a4
         imagePullPolicy: IfNotPresent
         name: intel-gpu-initcontainer
         resources: {}

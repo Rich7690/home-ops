@@ -5,6 +5,8 @@ metadata:
   namespace: default
   annotations:
     reclaimspace.csiaddons.openshift.io/schedule: "6 0 * * 6"
+    backup_schedule: "6 1 * * 6"
+    home.backup.io: "true"
 spec:
   storageClassName: rook-ceph-block
   resources:

@@ -10,5 +10,5 @@ kyverno:
   initImage:
     # -- Image repository
     repository: ghcr.io/kyverno/kyvernopre  # init: replaced in e2e tests
-    tag: v1.9.1@sha256:a58f70daa89d693456c681a3c2ab60cda0afa31cc824ce0ad5b090dd312223b4
+    tag: v1.9.2@sha256:6d1a1c0891ff254950d5fef628ef05b97db11ba3b3acbf7f227f525c56af3481
     pullPolicy: IfNotPresent

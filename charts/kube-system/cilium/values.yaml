@@ -9,7 +9,7 @@ cilium:
   rollOutCiliumPods: true
   loadBalancer:
     mode: hybrid
-    acceleration: native
+    acceleration: disabled
   bpf:
     masquerade: "true"
   ipam:

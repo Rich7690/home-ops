@@ -7,6 +7,9 @@ cilium:
   autoDirectNodeRoutes: true
   ipv4NativeRoutingCIDR: 10.244.0.0/16
   rollOutCiliumPods: true
+  loadbalancer:
+    mode: hybrid
+    acceleration: native
   bpf:
     masquerade: "true"
   ipam:

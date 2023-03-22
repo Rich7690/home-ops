@@ -8,10 +8,10 @@ cilium:
   ipv4NativeRoutingCIDR: 10.244.0.0/16
   rollOutCiliumPods: true
   loadBalancer:
-    mode: hybrid
+    mode: snat
     acceleration: disabled
   bpf:
-    masquerade: "true"
+    masquerade: "false"
   ipam:
     mode: "kubernetes"
   securityContext:

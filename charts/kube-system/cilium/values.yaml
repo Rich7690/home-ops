@@ -7,6 +7,8 @@ cilium:
   autoDirectNodeRoutes: true
   ipv4NativeRoutingCIDR: 10.244.0.0/16
   rollOutCiliumPods: true
+  bpf:
+    masquerade: "true"
   ipam:
     mode: "kubernetes"
   securityContext:

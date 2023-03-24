@@ -263,9 +263,8 @@ spec:
           - name: "sdb" # devices can be specified using full udev paths
       - name: "proxmox-storage"
         devices: # specific devices to use for storage can be specified for each node
-          - name: "nvme0n1"
           - name: "nvme1n1"
-          - name: "sdc"
+          - name: "sda"
       - name: "worker-three"
         devices:
           - name: nvme0n1

@@ -21,6 +21,8 @@ vaultwarden:
       allowPrivilegeEscalation: false
       capabilities:
         drop: ["ALL"]
+      seccompProfile:
+        type: RuntimeDefault
   env:
     DATA_FOLDER: /config/vaultwarden
     GROUPID: 65532

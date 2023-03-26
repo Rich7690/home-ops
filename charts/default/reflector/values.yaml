@@ -4,3 +4,18 @@ reflector:
     repository: emberstack/kubernetes-reflector
     pullPolicy: IfNotPresent
     tag: 7.0.151@sha256:94ef49638b3f7767d78fdb15c5dbf2663b8689a5915b607a8b85377e349a2869
+  podSecurityContext:
+    fsGroup: 2000
+    runAsGroup: 65532
+    runAsNonRoot: true
+    runAsUser: 65532
+    allowPrivilegeEscalation: false
+    seccompProfile:
+      type: RuntimeDefault
+  securityContext:
+    capabilities:
+      drop:
+      - ALL
+    readOnlyRootFilesystem: false
+    runAsNonRoot: true
+    runAsUser: 1000

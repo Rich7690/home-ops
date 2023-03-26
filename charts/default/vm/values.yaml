@@ -15,6 +15,9 @@ victoria-metrics-single:
       configMap: "metrics-scrapeconfig"
     persistentVolume:
       existingClaim: vm-config
+    securityContext:
+      seccompProfile:
+        type: RuntimeDefault
     podSecurityContext:
       runAsUser: 65532
       runAsGroup: 65532

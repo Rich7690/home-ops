@@ -4,7 +4,7 @@ metadata:
   labels:
     app: intel-gpu-plugin
   name: intel-gpu-plugin
-  namespace: default
+  namespace: kube-system
 spec:
   revisionHistoryLimit: 5
   selector:

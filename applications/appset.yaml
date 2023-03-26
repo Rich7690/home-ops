@@ -10,6 +10,8 @@ spec:
       revision: HEAD
       directories:
       - path: applications/namespaces/default/*
+      - path: applications/namespaces/rook-ceph/*
+      - path: applications/namespaces/kube-system/*
   template:
     metadata:
       name: '{{path.basename}}'

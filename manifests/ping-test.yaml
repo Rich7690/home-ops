@@ -62,12 +62,17 @@ spec:
                           cpu: 50m
                           memory: 64Mi
                   securityContext:
+                      capabilities:
+                        drop:
+                          - ALL
                       allowPrivilegeEscalation: false
                       privileged: false
                       readOnlyRootFilesystem: true
                       runAsGroup: 65532
                       runAsNonRoot: true
                       runAsUser: 65532
+                      seccompProfile:
+                        type: RuntimeDefault
                   terminationMessagePath: /dev/termination-log
                   terminationMessagePolicy: File
             dnsPolicy: ClusterFirst

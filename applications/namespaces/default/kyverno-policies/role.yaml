@@ -13,3 +13,15 @@ rules:
   - "*"
   verbs:
   - "*"
+- apiGroups:
+    - kubefledged.io
+  resources:
+    - "*"
+  verbs:
+    - "*"
+- apiGroups:
+    - "autoscaling.k8s.io"
+  resources:
+    - "*"
+  verbs:
+    - "*"

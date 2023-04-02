@@ -1,0 +1,35 @@
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: generate-image-cache
+spec:
+  background: true
+  generateExistingOnPolicyUpdate: true
+  rules:
+  - name: apps
+    match:
+      any:
+      - resources:
+          namespaces:
+            - "default"
+          kinds:
+          - Deployment
+          - StatefulSet
+
+    generate:
+      synchronize: true
+      apiVersion: "kubefledged.io/v1alpha2"
+      kind: ImageCache
+      name: "{{request.object.metadata.namespace}}-{{request.object.metadata.name}}-cache"
+      # generate the resource in the new namespace
+      namespace: "kube-fledged"
+      data:
+        kind: ImageCache
+        spec:
+          # The "cacheSpec" field allows a user to define a list of images and onto which worker nodes those images should be cached (i.e. pre-pulled).
+          cacheSpec:
+          - images:
+            - "{{request.object.spec.template.spec.containers[0].image}}"
+            nodeSelector:
+              feature.node.ceph: "true"

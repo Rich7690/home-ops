@@ -71,7 +71,7 @@ spec:
                       requests:
                           gpu.intel.com/i915: 1
                           cpu: "1"
-                          memory: 2Gi
+                          memory: 4Gi
                   terminationMessagePath: /dev/termination-log
                   terminationMessagePolicy: File
                   volumeMounts:

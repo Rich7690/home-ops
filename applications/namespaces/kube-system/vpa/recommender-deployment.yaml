@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vpa-recommender
+  namespace: kube-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vpa-recommender
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8942"
+      labels:
+        app: vpa-recommender
+    spec:
+      serviceAccountName: vpa-recommender
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534 # nobody
+      containers:
+      - name: recommender
+        image: registry.k8s.io/autoscaling/vpa-recommender:0.13.0
+        args:
+          - --storage=prometheus
+          - --prometheus-address=http://prom.default.svc:9090
+          - "--prometheus-cadvisor-job-name=kubernetes-nodes-cadvisor"
+          - "--pod-recommendation-min-memory-mb=64"
+          - --pod-label-prefix=""
+          - "--container-pod-name-label=pod"
+          - "--pod-name-label=pod"
+          - "--metric-for-pod-labels=kube_pod_labels[8d]"
+          - "--pod-namespace-label=kubernetes_namespace"
+          - -v=4
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: 1000Mi
+          requests:
+            cpu: 50m
+            memory: 500Mi
+        ports:
+        - name: prometheus
+          containerPort: 8942

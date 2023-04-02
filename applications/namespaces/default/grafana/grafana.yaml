@@ -33,10 +33,9 @@ spec:
                         protocol: TCP
                   resources:
                       limits:
-                          cpu: "4"
                           memory: 1G
                       requests:
-                          cpu: 250m
+                          cpu: 300m
                           memory: 256Mi
                   securityContext:
                       allowPrivilegeEscalation: false

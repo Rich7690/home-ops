@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: cni-plugin-install
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: cni-plugin-install
+  template:
+    metadata:
+      deletionGracePeriodSeconds: 5
+      labels:
+        app: cni-plugin-install
+    spec:
+      priorityClassName: system-node-critical
+      nodeSelector:
+        kubernetes.io/arch: amd64
+        kubernetes.io/os: linux
+      volumes:
+        - name: cni-bin
+          hostPath:
+            path: /opt/cni/bin
+            type: ""
+      tolerations:
+        - operator: Exists
+      containers:
+      - name: install
+        image: ghcr.io/k8snetworkplumbingwg/plugins:v1.2.0-amd64@sha256:11a5e3fbfa186a01faeae7d25800998a797c8ed669d6c105ba9659132e8452c9
+        volumeMounts:
+          - mountPath: /host/opt/cni/bin
+            name: cni-bin
+        securityContext:
+          privileged: true
+        resources:
+          requests:
+            cpu: 1m
+            memory: 64Mi

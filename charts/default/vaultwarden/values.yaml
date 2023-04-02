@@ -7,7 +7,7 @@ vaultwarden:
     type: statefulset
     podManagementPolicy: Parallel
   image:
-    repository: vaultwarden/server
+    repository: ghcr.io/dani-garcia/vaultwarden
     tag: 1.28.0-alpine@sha256:1ae74dabc3f8d26d11e26e9a07b4839a62039e964d1d3ee13a2b4cccbaaa219e
     pullPolicy: IfNotPresent
   envFrom:
@@ -21,6 +21,7 @@ vaultwarden:
       allowPrivilegeEscalation: false
       capabilities:
         drop: ["ALL"]
+        add: ["NET_BIND_SERVICE"]
       seccompProfile:
         type: RuntimeDefault
   env:

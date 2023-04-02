@@ -9441,7 +9441,7 @@ spec:
                 - command:
                       - /shared/argocd-dex
                       - rundex
-                  image: ghcr.io/dexidp/dex:v2.35.3@sha256:13964b29d63efcd1490d1a500c4332c642655fe4ca613683fa4dde9a205dd0f7
+                  image: ghcr.io/dexidp/dex:v2.36.0@sha256:1139d90561f8e12e6c1187e60097afd7d1096f7906776e450c1941890c3eae32
                   imagePullPolicy: IfNotPresent
                   name: dex
                   ports:

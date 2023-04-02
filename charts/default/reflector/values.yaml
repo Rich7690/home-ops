@@ -9,7 +9,6 @@ reflector:
     runAsGroup: 65532
     runAsNonRoot: true
     runAsUser: 65532
-    allowPrivilegeEscalation: false
     seccompProfile:
       type: RuntimeDefault
   securityContext:
@@ -18,4 +17,5 @@ reflector:
       - ALL
     readOnlyRootFilesystem: false
     runAsNonRoot: true
-    runAsUser: 1000
+    runAsUser: 65532
+    allowPrivilegeEscalation: false

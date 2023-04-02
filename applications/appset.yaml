@@ -12,6 +12,7 @@ spec:
       - path: applications/namespaces/default/*
       - path: applications/namespaces/rook-ceph/*
       - path: applications/namespaces/kube-system/*
+      - path: applications/namespaces/cert-manager/*
   template:
     metadata:
       name: '{{path.basename}}'

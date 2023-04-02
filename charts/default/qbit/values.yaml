@@ -93,7 +93,7 @@ qbittorrent:
     runAsUser: 998
   resources:
     limits:
-      memory: 1G
+      memory: 2G
     requests:
       cpu: 1
       memory: 200Mi

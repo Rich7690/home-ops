@@ -7,6 +7,8 @@ cilium:
   autoDirectNodeRoutes: true
   ipv4NativeRoutingCIDR: 10.244.0.0/16
   rollOutCiliumPods: true
+  bgpControlPlane:
+    enabled: true
   loadBalancer:
     mode: snat
     acceleration: disabled

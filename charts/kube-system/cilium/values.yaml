@@ -8,9 +8,9 @@ cilium:
   ipv4NativeRoutingCIDR: 10.244.0.0/16
   rollOutCiliumPods: true
   bgpControlPlane:
-    enabled: true
+    enabled: false
   loadBalancer:
-    mode: snat
+    mode: dsr
     acceleration: disabled
   bpf:
     masquerade: "false"

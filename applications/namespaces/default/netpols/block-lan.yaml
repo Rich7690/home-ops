@@ -1,0 +1,49 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+    name: block-egress-lan
+    namespace: default
+spec:
+    policyTypes:
+      - "Egress"
+    podSelector:
+        matchExpressions:
+          - key:  app.kubernetes.io/name
+            operator: In
+            values:
+              - "sonarr"
+              - "radarr"
+              - "prowlarr"
+              - "grafana"
+              - "overseerr"
+    egress:
+        - to:
+              - ipBlock:
+                    cidr: 0.0.0.0/0 # You can call out to internet for certain things, but it shouldn't access our local network ever
+                    except:
+                        - 192.168.0.0/16
+        - to:
+              - namespaceSelector: {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+    name: block-egress-lan
+    namespace: metrics
+spec:
+    policyTypes:
+      - "Egress"
+    podSelector:
+        matchExpressions:
+          - key:  app.kubernetes.io/name
+            operator: In
+            values:
+              - "prometheus-node-exporter"
+    egress:
+        - to:
+              - ipBlock:
+                    cidr: 0.0.0.0/0 # You can call out to internet for certain things, but it shouldn't access our local network ever
+                    except:
+                        - 192.168.0.0/16
+        - to:
+              - namespaceSelector: {}

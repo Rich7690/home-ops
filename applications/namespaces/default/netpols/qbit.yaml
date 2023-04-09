@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+    name: qbit
+    namespace: default
+spec:
+    policyTypes:
+      - "Egress"
+      - "Ingress"
+    podSelector:
+        matchExpressions:
+          - key:  app.kubernetes.io/name
+            operator: In
+            values:
+              - "qbittorrent"
+    ingress:
+      - from:
+           - podSelector:
+               matchExpressions:
+                 - key:  app.kubernetes.io/name
+                   operator: In
+                   values:
+                      - "radarr"
+                      - "sonarr"
+                      - "ingress-nginx"
+    egress:
+        - to:
+              - ipBlock:
+                  cidr: 38.240.226.68/32
+          ports:
+            - port: 51820
+              protocol: UDP

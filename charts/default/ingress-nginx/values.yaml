@@ -42,5 +42,5 @@ ingress-nginx:
         cpu: 100m
         memory: 200Mi
     service:
-      externalTrafficPolicy: Cluster
+      externalTrafficPolicy: Local
       loadBalancerIP: 192.168.5.10

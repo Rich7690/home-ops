@@ -1,0 +1,29 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: jellyfin
+  namespace: default
+spec:
+  endpointSelector:
+    matchLabels:
+      app: jelly
+  ingress:
+    - fromEndpoints:
+        - {}
+  egressDeny:
+    - toCIDR:
+        - "192.168.0.0/16"
+  egress:
+    - toEntities:
+        - all
+    - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+          rules:
+            dns:
+              - matchPattern: "*"

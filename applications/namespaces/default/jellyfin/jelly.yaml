@@ -65,11 +65,11 @@ spec:
                       timeoutSeconds: 1
                   resources:
                       limits:
-                          gpu.intel.com/i915: 1
+                          gpu.intel.com/i915: "1"
                           cpu: "12"
                           memory: 4Gi
                       requests:
-                          gpu.intel.com/i915: 1
+                          gpu.intel.com/i915: "1"
                           cpu: "1"
                           memory: 4Gi
                   terminationMessagePath: /dev/termination-log
@@ -106,35 +106,6 @@ spec:
                   emptyDir:
                     sizeLimit: 20G
 
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-    name: jellyfin
-    namespace: default
-spec:
-    podSelector:
-        matchLabels:
-            app: jelly
-    ingress:
-        - from:
-              - podSelector: {}
-    egress:
-        - to:
-              - ipBlock:
-                    cidr: 0.0.0.0/0 # jellyfin can call out to internet for certain things, but it shouldn't access our local network ever
-                    except:
-                        #- 10.0.0.0/8 TODO: this blocks kubernetes subnets
-                        - 192.168.0.0/16
-                        - 172.16.0.0/12
-        - to:
-              - namespaceSelector: {}
-                podSelector:
-                    matchLabels:
-                        k8s-app: kube-dns
-          ports:
-              - port: 53
-                protocol: UDP
 ---
 apiVersion: v1
 kind: Service

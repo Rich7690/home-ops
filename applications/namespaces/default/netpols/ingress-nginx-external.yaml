@@ -1,21 +1,45 @@
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
 metadata:
   name: ingress-nginx-external
   namespace: default
 spec:
-  podSelector:
+  endpointSelector:
     matchLabels:
       app.kubernetes.io/name: ingress-nginx
       app.kubernetes.io/instance: ingress-nginx-external
-  policyTypes:
-    - Ingress
   ingress:
-    - from:
-        - namespaceSelector: {}
-    - from:
-        - ipBlock:
-            cidr: 0.0.0.0/0
-      ports:
-        - port: 443
-        - port: 80
+    - fromEntities:
+        - all
+  egress:
+    - toEntities:
+        - kube-apiserver
+    - toEndpoints:
+        - matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+                - "overseerr"
+        - matchExpressions:
+            - key: app
+              operator: In
+              values:
+                - "jelly"
+    - toServices:
+        - k8sService:
+            namespace: default
+            serviceName: jelly
+        - k8sService:
+            namespace: default
+            serviceName: jellyseerr
+    - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+          rules:
+            dns:
+              - matchPattern: "*"

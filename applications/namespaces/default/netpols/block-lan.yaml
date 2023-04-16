@@ -11,10 +11,8 @@ spec:
           - key:  app.kubernetes.io/name
             operator: In
             values:
-              - "sonarr"
               - "radarr"
               - "prowlarr"
-              - "grafana"
               - "overseerr"
     egress:
         - to:

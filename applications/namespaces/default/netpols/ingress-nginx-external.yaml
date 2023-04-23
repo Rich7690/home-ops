@@ -25,6 +25,11 @@ spec:
               operator: In
               values:
                 - "jelly"
+        - matchExpressions:
+            - key: "app.kubernetes.io/name"
+              operator: In
+              values:
+                - "argocd-server"
     - toServices:
         - k8sService:
             namespace: default
@@ -32,6 +37,9 @@ spec:
         - k8sService:
             namespace: default
             serviceName: jellyseerr
+        - k8sService:
+            namespace: argocd
+            serviceName: argocd-server
     - toEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system

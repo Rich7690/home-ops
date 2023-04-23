@@ -1,29 +1,26 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: jellyfin
+  name: ping-test
   namespace: default
 spec:
   endpointSelector:
     matchLabels:
-      app: jelly
+      app: ping-test
   ingress:
     - fromEndpoints:
-        - {}
-  egressDeny:
-    - toCIDR:
-        - "192.168.0.0/16"
+        - matchLabels:
+            app.kubernetes.io/name: victoria-metrics-single
+            io.kubernetes.pod.namespace: default
+      toPorts:
+        - ports:
+            - port: "2112"
   egress:
     - toFQDNs:
-        - matchPattern: "*.jellyfin.org"
-        - matchName: "jellyfin.org"
-        - matchPattern: "*.opensubtitles.org"
-        - matchName: "opensubtitles.org"
-        - matchName: "api.trakt.tv"
-        - matchName: "api.thetvdb.com"
-        - matchName: "api.themoviedb.org"
-        - matchName: "image.tmdb.org"
-        - matchName: "www.omdbapi.com"
+        - matchName: checkip.amazonaws.com
+      toPorts:
+        - ports:
+            - port: "443"
     - toEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system

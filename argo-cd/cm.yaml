@@ -17,7 +17,7 @@ data:
     - apiGroups:
       - "cilium.io"
       kinds:
-      - "*"
+      - "CiliumIdentity"
       clusters:
       - "*"
     - apiGroups:

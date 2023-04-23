@@ -13,7 +13,7 @@ spec:
             values:
               - "radarr"
               - "prowlarr"
-              - "overseerr"
+
     egress:
         - to:
               - ipBlock:

@@ -1,29 +1,30 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: jellyfin
+  name: grafana
   namespace: default
 spec:
   endpointSelector:
     matchLabels:
-      app: jelly
+      app: grafana
   ingress:
     - fromEndpoints:
-        - {}
-  egressDeny:
-    - toCIDR:
-        - "192.168.0.0/16"
+        - matchLabels:
+            app.kubernetes.io/instance: ingress-nginx
+            io.kubernetes.pod.namespace: default
+      toPorts:
+        - ports:
+            - port: "3000"
   egress:
+    - toEntities:
+        - cluster
     - toFQDNs:
-        - matchPattern: "*.jellyfin.org"
-        - matchName: "jellyfin.org"
-        - matchPattern: "*.opensubtitles.org"
-        - matchName: "opensubtitles.org"
-        - matchName: "api.trakt.tv"
-        - matchName: "api.thetvdb.com"
-        - matchName: "api.themoviedb.org"
-        - matchName: "image.tmdb.org"
-        - matchName: "www.omdbapi.com"
+        - matchName: discordapp.com
+        - matchName: "github.com"
+        - matchPattern: "*.github.com"
+      toPorts:
+        - ports:
+            - port: "443"
     - toEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system

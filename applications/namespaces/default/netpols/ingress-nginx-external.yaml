@@ -20,6 +20,7 @@ spec:
               operator: In
               values:
                 - "overseerr"
+
         - matchExpressions:
             - key: app
               operator: In
@@ -30,6 +31,10 @@ spec:
               operator: In
               values:
                 - "argocd-server"
+            - key: "k8s:io.kubernetes.pod.namespace"
+              operator: In
+              values:
+                - "argocd"
     - toServices:
         - k8sService:
             namespace: default

@@ -24,8 +24,6 @@ cilium:
       loadbalancerIP: false
   hubble:
     tls:
-      ca:
-        cert:
       auto:
         enabled: true
         method: certmanager

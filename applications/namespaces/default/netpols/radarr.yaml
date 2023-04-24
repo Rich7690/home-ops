@@ -11,21 +11,25 @@ spec:
     - toCIDR:
         - "192.168.0.0/16"
   egress:
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: qbittorrent
+      toPorts:
+        - rules:
+            http:
+              - {}
+          ports:
+            - port: "8080"
+              protocol: TCP
     - toEntities:
         - cluster
+      toPorts:
+        - rules:
+            http:
+              - {}
     - toFQDNs:
         - matchPattern: "*.radarr.video"
-      toPorts:
-        - ports:
-            - port: "443"
-              protocol: TCP
-    - toFQDNs:
         - matchPattern: "*.tmdb.org"
-      toPorts:
-        - ports:
-            - port: "443"
-              protocol: TCP
-    - toFQDNs:
         - matchName: "radarr.servarr.com"
       toPorts:
         - ports:
@@ -42,3 +46,13 @@ spec:
           rules:
             dns:
               - matchPattern: "*"
+  ingress:
+    - fromEntities:
+       - cluster
+      toPorts:
+        - ports:
+           - port: "7878"
+             protocol: TCP
+          rules:
+            http:
+              - {}

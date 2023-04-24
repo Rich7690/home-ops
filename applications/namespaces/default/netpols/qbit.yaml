@@ -1,32 +1,28 @@
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
 metadata:
-    name: qbit
-    namespace: default
+  name: qbit
+  namespace: default
 spec:
-    policyTypes:
-      - "Egress"
-      - "Ingress"
-    podSelector:
-        matchExpressions:
-          - key:  app.kubernetes.io/name
-            operator: In
-            values:
-              - "qbittorrent"
-    ingress:
-      - from:
-           - podSelector:
-               matchExpressions:
-                 - key:  app.kubernetes.io/name
-                   operator: In
-                   values:
-                      - "radarr"
-                      - "sonarr"
-                      - "ingress-nginx"
-    egress:
-        - to:
-              - ipBlock:
-                  cidr: 38.240.226.68/32
-          ports:
-            - port: 51820
+  endpointSelector:
+    matchExpressions:
+      - key: app.kubernetes.io/name
+        operator: In
+        values:
+          - qbittorrent
+  ingress:
+    - fromEndpoints:
+        - matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+                - radarr
+                - sonarr
+                - ingress-nginx
+  egress:
+    - toCIDRSet:
+        - cidr: 38.240.226.68/32
+      toPorts:
+        - ports:
+            - port: "51820"
               protocol: UDP

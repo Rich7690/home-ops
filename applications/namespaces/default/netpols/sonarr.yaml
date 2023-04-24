@@ -11,6 +11,16 @@ spec:
     - toCIDR:
         - "192.168.0.0/16"
   egress:
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: qbittorrent
+      toPorts:
+        - rules:
+            http:
+              - {}
+          ports:
+            - port: "8080"
+              protocol: TCP
     - toEntities:
         - cluster
     - toFQDNs:
@@ -30,3 +40,13 @@ spec:
           rules:
             dns:
               - matchPattern: "*"
+  ingress:
+    - fromEntities:
+       - cluster
+      toPorts:
+        - ports:
+           - port: "8989"
+             protocol: TCP
+          rules:
+            http:
+              - {}

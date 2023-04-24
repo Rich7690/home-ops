@@ -24,6 +24,8 @@ cilium:
       loadbalancerIP: false
   hubble:
     tls:
+      ca:
+        cert:
       auto:
         enabled: true
         method: certmanager
@@ -31,7 +33,7 @@ cilium:
         certManagerIssuerRef:
           group: cert-manager.io
           kind: ClusterIssuer
-          name: selfsigned-issuer
+          name: my-ca-issuer
     relay:
       enabled: true
     ui:

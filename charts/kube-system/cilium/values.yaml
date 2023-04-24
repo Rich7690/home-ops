@@ -10,7 +10,7 @@ cilium:
   bgpControlPlane:
     enabled: false
   loadBalancer:
-    mode: dsr
+    mode: snat
     acceleration: disabled
   bpf:
     masquerade: "false"
@@ -26,12 +26,7 @@ cilium:
     tls:
       auto:
         enabled: true
-        method: certmanager
-        certValidityDuration: 1095
-        certManagerIssuerRef:
-          group: cert-manager.io
-          kind: ClusterIssuer
-          name: my-ca-issuer
+        method: cronJob
     relay:
       enabled: true
     ui:

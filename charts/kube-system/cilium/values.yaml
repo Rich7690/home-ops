@@ -26,7 +26,12 @@ cilium:
     tls:
       auto:
         enabled: true
-        method: helm #TODO: cronjob?
+        method: certmanager
+        certValidityDuration: 1095
+        certManagerIssuerRef:
+          group: cert-manager.io
+          kind: ClusterIssuer
+          name: selfsigned-issuer
     relay:
       enabled: true
     ui:

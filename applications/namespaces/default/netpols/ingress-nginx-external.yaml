@@ -13,7 +13,7 @@ spec:
         - all
   egress:
     - toEntities:
-        - kube-apiserver
+        - all
     - toEndpoints:
         - matchExpressions:
             - key: app.kubernetes.io/name

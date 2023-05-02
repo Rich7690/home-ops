@@ -13,14 +13,13 @@ spec:
         - all
   egress:
     - toEntities:
-        - all
+        - kube-apiserver
     - toEndpoints:
         - matchExpressions:
             - key: app.kubernetes.io/name
               operator: In
               values:
                 - "overseerr"
-
         - matchExpressions:
             - key: app
               operator: In

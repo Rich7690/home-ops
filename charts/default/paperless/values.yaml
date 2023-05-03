@@ -6,7 +6,7 @@ paperless:
         name: paperless
   image:
     repository: ghcr.io/paperless-ngx/paperless-ngx
-    tag: 1.14.2@sha256:d49c5d029e04a62d11c131a5d753b3895b45d23a1abc30759b2fc8a7c04dc847
+    tag: 1.14.3@sha256:5f20f9dd5a222672d293bcd7ffc6e4366c6f23f98262ec450c7197087826895a
   controller:
     replicas: 1
   env:

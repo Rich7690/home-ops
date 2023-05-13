@@ -25,6 +25,8 @@ spec:
         - cluster
     - toFQDNs:
         - matchPattern: "*.sonarr.tv"
+        - matchPattern: "*.thetvdb.com"
+        - matchName: "thexem.info"
       toPorts:
         - ports:
             - port: "443"

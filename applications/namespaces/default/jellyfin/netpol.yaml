@@ -24,6 +24,7 @@ spec:
         - matchName: "api.themoviedb.org"
         - matchName: "image.tmdb.org"
         - matchName: "www.omdbapi.com"
+        - matchName: "www.thetvdb.com"
     - toEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system

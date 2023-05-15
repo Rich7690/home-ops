@@ -21,6 +21,16 @@ spec:
           ports:
             - port: "8080"
               protocol: TCP
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: prowlarr
+      toPorts:
+        - rules:
+            http:
+              - {}
+          ports:
+            - port: "9696"
+              protocol: TCP
     - toEntities:
         - cluster
       toPorts:
@@ -31,6 +41,7 @@ spec:
         - matchPattern: "*.radarr.video"
         - matchPattern: "*.tmdb.org"
         - matchName: "radarr.servarr.com"
+        - matchName: "api.trakt.tv"
       toPorts:
         - ports:
             - port: "443"

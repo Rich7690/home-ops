@@ -59,7 +59,7 @@ spec:
                 - command:
                       - /kube-vip-cloud-provider
                       - --leader-elect-resource-name=kube-vip-cloud-controller
-                  image: ghcr.io/kube-vip/kube-vip-cloud-provider:v0.0.5@sha256:bbdd3f502e969a6683b0a567158058aeed8885ebc22e1e58a03e4b0041d5701d
+                  image: ghcr.io/kube-vip/kube-vip-cloud-provider:v0.0.6@sha256:f1896c17fc75626e6a0abfcd1ec119205d00fb891302f3e132644aa0abc65a47
                   name: kube-vip-cloud-provider
                   imagePullPolicy: IfNotPresent
                   resources: {}

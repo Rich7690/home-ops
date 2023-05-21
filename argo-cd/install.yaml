@@ -9369,7 +9369,7 @@ spec:
                         valueFrom:
                             fieldRef:
                                 fieldPath: metadata.namespace
-                  image: quay.io/argoproj/argocd:v2.6.7@sha256:a9a0c6b9360587d9786c0d84b0bf948d97a67cd3a2e9b669c1aa06c348a2bd09
+                  image: quay.io/argoproj/argocd:v2.7.2@sha256:9b867d3175815d6d253dbc817bb7da34a3ba49a99ffade9a36cad238cf78963e
                   imagePullPolicy: IfNotPresent
                   name: argocd-applicationset-controller
                   ports:
@@ -9466,7 +9466,7 @@ spec:
                       - -n
                       - /usr/local/bin/argocd
                       - /shared/argocd-dex
-                  image: quay.io/argoproj/argocd:v2.6.7@sha256:a9a0c6b9360587d9786c0d84b0bf948d97a67cd3a2e9b669c1aa06c348a2bd09
+                  image: quay.io/argoproj/argocd:v2.7.2@sha256:9b867d3175815d6d253dbc817bb7da34a3ba49a99ffade9a36cad238cf78963e
                   imagePullPolicy: IfNotPresent
                   name: copyutil
                   securityContext:
@@ -9506,7 +9506,7 @@ spec:
             containers:
                 - command:
                       - argocd-notifications
-                  image: quay.io/argoproj/argocd:v2.6.7@sha256:a9a0c6b9360587d9786c0d84b0bf948d97a67cd3a2e9b669c1aa06c348a2bd09
+                  image: quay.io/argoproj/argocd:v2.7.2@sha256:9b867d3175815d6d253dbc817bb7da34a3ba49a99ffade9a36cad238cf78963e
                   imagePullPolicy: IfNotPresent
                   livenessProbe:
                       tcpSocket:
@@ -9733,7 +9733,7 @@ spec:
                     - secretRef:
                         name: age-key
                         optional: false
-                  image: quay.io/argoproj/argocd:v2.6.7@sha256:a9a0c6b9360587d9786c0d84b0bf948d97a67cd3a2e9b669c1aa06c348a2bd09
+                  image: quay.io/argoproj/argocd:v2.7.2@sha256:9b867d3175815d6d253dbc817bb7da34a3ba49a99ffade9a36cad238cf78963e
                   imagePullPolicy: IfNotPresent
                   livenessProbe:
                       failureThreshold: 3
@@ -9789,7 +9789,7 @@ spec:
                       - -n
                       - /usr/local/bin/argocd
                       - /var/run/argocd/argocd-cmp-server
-                  image: quay.io/argoproj/argocd:v2.6.7@sha256:a9a0c6b9360587d9786c0d84b0bf948d97a67cd3a2e9b669c1aa06c348a2bd09
+                  image: quay.io/argoproj/argocd:v2.7.2@sha256:9b867d3175815d6d253dbc817bb7da34a3ba49a99ffade9a36cad238cf78963e
                   name: copyutil
                   securityContext:
                       allowPrivilegeEscalation: false
@@ -10045,7 +10045,7 @@ spec:
                                 key: otlp.address
                                 name: argocd-cmd-params-cm
                                 optional: true
-                  image: quay.io/argoproj/argocd:v2.6.7@sha256:a9a0c6b9360587d9786c0d84b0bf948d97a67cd3a2e9b669c1aa06c348a2bd09
+                  image: quay.io/argoproj/argocd:v2.7.2@sha256:9b867d3175815d6d253dbc817bb7da34a3ba49a99ffade9a36cad238cf78963e
                   imagePullPolicy: IfNotPresent
                   livenessProbe:
                       httpGet:
@@ -10247,7 +10247,7 @@ spec:
                                 key: otlp.address
                                 name: argocd-cmd-params-cm
                                 optional: true
-                  image: quay.io/argoproj/argocd:v2.6.7@sha256:a9a0c6b9360587d9786c0d84b0bf948d97a67cd3a2e9b669c1aa06c348a2bd09
+                  image: quay.io/argoproj/argocd:v2.7.2@sha256:9b867d3175815d6d253dbc817bb7da34a3ba49a99ffade9a36cad238cf78963e
                   imagePullPolicy: IfNotPresent
                   livenessProbe:
                       httpGet:

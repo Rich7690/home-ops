@@ -20,8 +20,8 @@ spec:
           args:
             - set -xe;
               echo "Installing KSOPS...";
-              mv ksops /custom-tools/;
-              mv $GOPATH/bin/kustomize /custom-tools/;
+              mv /usr/local/ksops /custom-tools/;
+              mv /usr/local/bin/kustomize /custom-tools/;
               echo "Done.";
           volumeMounts:
             - mountPath: /custom-tools

@@ -5,6 +5,6 @@ namespace: argocd
 resources:
 - github.com/argoproj/argo-cd/manifests/ha/cluster-install?ref=v2.7.2
 
-patchesStrategicMerge:
-  - "argocd-repo-server-ksops.yaml"
-  - "cm.yaml"
+patches:
+- path: argocd-repo-server-ksops.yaml
+- path: cm.yaml

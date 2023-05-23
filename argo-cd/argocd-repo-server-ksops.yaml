@@ -18,7 +18,8 @@ spec:
             runAsUser: 0
             runAsNonRoot: false
           args:
-            - echo "Installing KSOPS...";
+            - set -xe;
+              echo "Installing KSOPS...";
               mv ksops /custom-tools/;
               mv $GOPATH/bin/kustomize /custom-tools/;
               echo "Done.";

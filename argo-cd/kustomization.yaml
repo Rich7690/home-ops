@@ -3,7 +3,7 @@ kind: Kustomization
 
 namespace: argocd
 resources:
-- github.com/argoproj/argo-cd/manifests/ha?ref=v2.7.2
+- github.com/argoproj/argo-cd/manifests/ha/cluster-install?ref=v2.7.2
 
 patchesStrategicMerge:
   - "argocd-repo-server-ksops.yaml"

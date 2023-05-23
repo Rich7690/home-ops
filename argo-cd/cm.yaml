@@ -20,9 +20,3 @@ data:
       - "CiliumIdentity"
       clusters:
       - "*"
-    - apiGroups:
-      - cert-manager.io
-      kinds:
-      - "Certificate"
-      clusters:
-      - "*"

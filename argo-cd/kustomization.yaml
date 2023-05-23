@@ -7,3 +7,4 @@ resources:
 
 patchesStrategicMerge:
   - "argocd-repo-server-ksops.yaml"
+  - "cm.yaml"

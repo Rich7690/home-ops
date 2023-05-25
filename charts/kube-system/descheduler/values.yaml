@@ -5,3 +5,43 @@ descheduler:
     # Overrides the image tag whose default is the chart version
     tag: "v0.26.1@sha256:3d4981fd65c449455edc8bed14a010937112cb69ac30ddd90be4fd5203a777db"
     pullPolicy: IfNotPresent
+  deschedulerPolicy:
+    # nodeSelector: "key1=value1,key2=value2"
+    # maxNoOfPodsToEvictPerNode: 10
+    # maxNoOfPodsToEvictPerNamespace: 10
+    # ignorePvcPods: true
+    # evictLocalStoragePods: true
+    strategies:
+      RemoveDuplicates:
+        enabled: true
+      RemovePodsHavingTooManyRestarts:
+        enabled: true
+        params:
+          podsHavingTooManyRestarts:
+            podRestartThreshold: 20
+            includingInitContainers: true
+      RemovePodsViolatingNodeTaints:
+        enabled: true
+      RemovePodsViolatingNodeAffinity:
+        enabled: true
+        params:
+          nodeAffinityType:
+          - requiredDuringSchedulingIgnoredDuringExecution
+      RemovePodsViolatingInterPodAntiAffinity:
+        enabled: true
+      RemovePodsViolatingTopologySpreadConstraint:
+        enabled: true
+        params:
+          includeSoftConstraints: false
+      LowNodeUtilization:
+        enabled: true
+        params:
+          nodeResourceUtilizationThresholds:
+            thresholds:
+              cpu: 30
+              memory: 30
+              pods: 20
+            targetThresholds:
+              cpu: 50
+              memory: 50
+              pods: 50

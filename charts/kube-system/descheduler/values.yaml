@@ -32,7 +32,7 @@ descheduler:
       RemovePodsViolatingTopologySpreadConstraint:
         enabled: true
         params:
-          includeSoftConstraints: false
+          includeSoftConstraints: true
       LowNodeUtilization:
         enabled: true
         params:

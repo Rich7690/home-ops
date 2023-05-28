@@ -3,7 +3,7 @@ descheduler:
   image:
     repository: registry.k8s.io/descheduler/descheduler
     # Overrides the image tag whose default is the chart version
-    tag: "v0.26.1@sha256:3d4981fd65c449455edc8bed14a010937112cb69ac30ddd90be4fd5203a777db"
+    tag: "v0.27.0@sha256:491a2128d2603890f0b0892669fe6bf017a331444ad64a2adc3aa38d90138997"
     pullPolicy: IfNotPresent
   deschedulerPolicy:
     # nodeSelector: "key1=value1,key2=value2"

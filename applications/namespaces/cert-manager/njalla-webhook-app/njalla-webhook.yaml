@@ -16,7 +16,7 @@ spec:
       values: |-
         image:
           repository: ghcr.io/rich7690/cert-manager-webhook-njalla
-          tag: v0.3.9@sha256:16c6cbfa90fddbbfd20312c4d6814064c128e87e4a4968315206242f0a534b4f
+          tag: v0.4.0@sha256:691bb15052dd5a14a38ce8094a836b29f03f931a337a1cddcbcf477b56b057b5
           pullPolicy: IfNotPresent
     path: deploy/cert-manager-webhook-njalla
     repoURL: https://github.com/Rich7690/cert-manager-webhook-njalla.git

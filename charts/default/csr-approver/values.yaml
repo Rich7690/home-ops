@@ -1,2 +1,0 @@
-kubelet-csr-approver:
-  bypassDnsResolution: 'true'

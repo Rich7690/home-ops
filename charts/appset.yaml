@@ -4,6 +4,8 @@ metadata:
   name: charts
   namespace: argocd
 spec:
+  syncPolicy:
+    preserveResourcesOnDeletion: true
   generators:
   - git:
       repoURL: https://github.com/Rich7690/home-server-config.git

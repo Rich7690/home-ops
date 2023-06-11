@@ -10,8 +10,8 @@ paperless:
     seccompProfile:
       type: RuntimeDefault
   podSecurityContext:
-    runAsUser: 1000
-    runAsGroup: 1000
+    runAsUser: 998
+    runAsGroup: 997
   podAnnotations:
     kyverno-skip: 'true'
   envFrom:

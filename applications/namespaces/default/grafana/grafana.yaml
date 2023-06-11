@@ -60,7 +60,9 @@ spec:
                 feature.node.ceph: "true"
             restartPolicy: Always
             schedulerName: default-scheduler
-            securityContext: {}
+            securityContext:
+                seccompProfile:
+                  type: RuntimeDefault
             shareProcessNamespace: false
             terminationGracePeriodSeconds: 30
             volumes:

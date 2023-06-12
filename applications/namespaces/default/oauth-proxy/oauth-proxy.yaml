@@ -91,10 +91,15 @@ spec:
                       runAsGroup: 65532
                       runAsNonRoot: true
                       runAsUser: 65532
+                      seccompProfile:
+                        type: RuntimeDefault
                   terminationMessagePath: /dev/termination-log
                   terminationMessagePolicy: File
             dnsPolicy: ClusterFirst
             enableServiceLinks: true
+            securityContext:
+              seccompProfile:
+                type: RuntimeDefault
             nodeSelector:
                 kubernetes.io/arch: amd64
             restartPolicy: Always

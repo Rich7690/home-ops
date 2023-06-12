@@ -69,6 +69,8 @@ spec:
                       runAsGroup: 997
                       runAsNonRoot: true
                       runAsUser: 998
+                      seccompProfile:
+                        type: RuntimeDefault
                   terminationMessagePath: /dev/termination-log
                   terminationMessagePolicy: File
                   volumeMounts:

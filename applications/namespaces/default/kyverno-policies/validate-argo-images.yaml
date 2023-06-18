@@ -15,23 +15,14 @@ spec:
             kinds:
               - Pod
       verifyImages:
-      - imageReferences:
-        - "quay.io/argoproj/argocd*"
-        - "ghcr.io/argoproj/argo-cd/argocd*"
-        attestors:
-        - count: 1
-          entries:
-          - keyless:
-              subject: "https://github.com/argoproj/argo-cd/.github/workflows/image-reuse.yaml@refs/tags/v*"
-              issuer: "https://token.actions.githubusercontent.com"
-              rekor:
-                  url: https://rekor.sigstore.dev
-
-        conditions:
-          - all:
-            # This expression uses a regex pattern to ensure the builder.id in the attestation is equal to the official
-            # SLSA provenance generator workflow and uses a tagged release in semver format. If using a specific SLSA
-            # provenance generation workflow, you may need to adjust the first input as necessary.
-            - key: "{{ regex_match('^https://github.com/argoproj/argo-cd/.github/workflows/image-reuse.yaml@refs/tags/v[0-9].[0-9].[0-9]$','{{ builder.id}}') }}"
-              operator: Equals
-              value: true
+        - imageReferences:
+          - "quay.io/argoproj/argocd*"
+          - "ghcr.io/argoproj/argo-cd/argocd*"
+          attestors:
+            - count: 1
+              entries:
+              - keyless:
+                  subject: "https://github.com/argoproj/argo-cd/.github/workflows/image-reuse.yaml@refs/tags/v*"
+                  issuer: "https://token.actions.githubusercontent.com"
+                  rekor:
+                      url: https://rekor.sigstore.dev

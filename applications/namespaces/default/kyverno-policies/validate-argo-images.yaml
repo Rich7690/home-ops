@@ -17,12 +17,12 @@ spec:
       verifyImages:
       - imageReferences:
         - "quay.io/argoproj/argocd*"
+        - "ghcr.io/argoproj/argo-cd/argocd*"
         attestors:
         - count: 1
           entries:
-          - keys:
-              publicKeys: |-
-                -----BEGIN PUBLIC KEY-----
-                MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEesHEB7vX5Y2RxXypjMy1nI1z7iRG
-                JI9/gt/sYqzpsa65aaNP4npM43DDxoIy/MQBo9s/mxGxmA+8UXeDpVC9vw==
-                -----END PUBLIC KEY-----
+          - keyless:
+              subject: "https://github.com/argoproj/argo-cd/.github/workflows/image-reuse.yaml@refs/tags/v"
+              issuer: "https://token.actions.githubusercontent.com"
+              rekor:
+                  url: https://rekor.sigstore.dev

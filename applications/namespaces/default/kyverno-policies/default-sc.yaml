@@ -16,6 +16,10 @@ spec:
     exclude:
       any:
        - resources:
+           selector:
+             matchLabels:
+              app.kubernetes.io/created-by: volsync
+       - resources:
           annotations:
            kyverno-skip: "true"
        - resources:

@@ -27,13 +27,3 @@ locals {
   system_gid  = "997"
   combined_id = "${local.system_uid}:${local.system_gid}"
 }
-
-resource "kubernetes_namespace_v1" "argocd" {
-  metadata {
-    name = "argocd"
-    labels = {
-      "app" = "argocd"
-    }
-  }
-
-}

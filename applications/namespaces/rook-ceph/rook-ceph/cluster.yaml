@@ -228,7 +228,12 @@ spec:
          memory: 4Gi
        requests:
          memory: 1Gi
-  #    osd-nvme:
+     osd-nvme:
+        limits:
+         memory: 4Gi
+        requests:
+         memory: 1Gi
+
   #    prepareosd:
   #    crashcollector:
   #    logcollector:

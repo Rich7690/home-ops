@@ -6,7 +6,7 @@ ingress-nginx:
       prometheus.io/port: "10254"
     image:
       repository: registry.k8s.io/ingress-nginx/controller
-      tag: v1.8.0
+      tag: v1.8.1
       digest: null
       runAsUser: "101"
     containerSecurityContext:

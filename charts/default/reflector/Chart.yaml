@@ -24,5 +24,5 @@ appVersion: '1.0'
 
 dependencies:
   - name: reflector
-    version: 7.0.178
+    version: 7.0.183
     repository: https://emberstack.github.io/helm-charts

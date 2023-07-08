@@ -4,10 +4,10 @@ kind: Kustomization
 namespace: default
 
 helmCharts:
-  - name: kubelet-csr-approver
+  - name: radarr
     repo: https://k8s-at-home.com/charts
     namespace: default
     includeCRDs: true
-    releaseName: csr-approver
+    releaseName: radarr2
     version: 16.3.2
     valuesFile: values.yaml

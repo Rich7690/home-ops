@@ -21,7 +21,7 @@ spec:
     # versions running within the cluster. See tags available at https://hub.docker.com/r/ceph/ceph/tags/.
     # If you want to be more precise, you can always use a timestamp tag such quay.io/ceph/ceph:v17.2.3-20220805
     # This tag might not contain a new Ceph version, just security fixes from the underlying operating system, which will reduce vulnerabilities
-    image: quay.io/ceph/ceph:v17.2.6@sha256:682f0ca42ea0e757a8ad14f7f78989fafd30dc5dc2700694f5bc0b5da0d13905
+    image: quay.io/ceph/ceph:v18.1.2@sha256:82a380c8127c42da406b7ce1281c2f3c0a86d4ba04b1f4b5f8d1036b8c24784f
     # Whether to allow unsupported versions of Ceph. Currently `pacific` and `quincy` are supported.
     # Future versions such as `reef` (v18) would require this to be set to `true`.
     # Do not set to true in production.

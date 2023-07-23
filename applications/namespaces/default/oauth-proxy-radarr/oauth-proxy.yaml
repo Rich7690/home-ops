@@ -1,9 +1,10 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
     labels:
-        app: oauth-proxy
-    name: oauth-proxy
+        app: oauth-proxy-radarr
+    name: oauth-proxy-radarr
     namespace: default
 spec:
     progressDeadlineSeconds: 600
@@ -11,7 +12,7 @@ spec:
     revisionHistoryLimit: 3
     selector:
         matchLabels:
-            app: oauth-proxy
+            app: oauth-proxy-radarr
     strategy:
         rollingUpdate:
             maxSurge: 100%
@@ -20,7 +21,7 @@ spec:
     template:
         metadata:
             labels:
-                app: oauth-proxy
+                app: oauth-proxy-radarr
         spec:
             automountServiceAccountToken: true
             serviceAccount: oauth-proxy
@@ -33,7 +34,7 @@ spec:
                                 - key: app
                                   operator: In
                                   values:
-                                  - oauth-proxy
+                                  - oauth-proxy-radarr
                             topologyKey: kubernetes.io/hostname
                         weight: 100
             containers:
@@ -42,34 +43,44 @@ spec:
                             name: oauth-proxy
                             optional: false
                       - configMapRef:
-                            name: oauth-proxy
+                            name: oauth-proxy-radarr
                             optional: false
                   image: quay.io/oauth2-proxy/oauth2-proxy:v7.4.0@sha256:f81637250eb3b5d902fba3c4ade3d3b1e34cc7f2350bc30402f1e62adfdf17aa
                   args:
                     - "--set-xauthrequest"
+                    - "--tls-cert-file=/certs/tls.crt"
+                    - "--tls-key-file=/certs/tls.key"
+                    - "--https-address=:8443"
+                    - "--skip-auth-route=/api/v3"
                   imagePullPolicy: IfNotPresent
                   livenessProbe:
                       failureThreshold: 3
                       httpGet:
                           path: /ping
-                          port: 4180
-                          scheme: HTTP
-                      initialDelaySeconds: 15
+                          port: 8443
+                          scheme: HTTPS
+                      initialDelaySeconds: 5
                       periodSeconds: 10
                       successThreshold: 1
                       timeoutSeconds: 1
                   name: oauth-proxy
+                  volumeMounts:
+                    - mountPath: /certs
+                      name: cert
                   ports:
                       - containerPort: 4180
                         name: http
+                        protocol: TCP
+                      - containerPort: 8443
+                        name: https
                         protocol: TCP
                   readinessProbe:
                       failureThreshold: 3
                       httpGet:
                           path: /ping
-                          port: 4180
-                          scheme: HTTP
-                      initialDelaySeconds: 15
+                          port: 8443
+                          scheme: HTTPS
+                      initialDelaySeconds: 5
                       periodSeconds: 10
                       successThreshold: 1
                       timeoutSeconds: 1
@@ -105,6 +116,11 @@ spec:
             schedulerName: default-scheduler
             shareProcessNamespace: false
             terminationGracePeriodSeconds: 30
+            volumes:
+                - name: cert
+                  secret:
+                    secretName: prod-me-cert
+                    optional: false
 ---
 apiVersion: v1
 data:
@@ -119,18 +135,19 @@ data:
     OAUTH2_PROXY_GITHUB_ORG: rtdev7690
     OAUTH2_PROXY_REVERSE_PROXY: 'true'
     OAUTH2_PROXY_SCOPE: "read:user user:email read:org"
+    OAUTH2_PROXY_UPSTREAMS: http://radarr:7878
     #profile email openid
     OAUTH2_PROXY_SET_XAUTHREQUEST: 'true'
 kind: ConfigMap
 metadata:
     labels:
-        app: oauth-proxy
-    name: oauth-proxy
+        app: oauth-proxy-radarr
+    name: oauth-proxy-radarr
     namespace: default
 ---
 apiVersion: v1
 automountServiceAccountToken: true
 kind: ServiceAccount
 metadata:
-    name: oauth-proxy
+    name: oauth-proxy-radarr
     namespace: default

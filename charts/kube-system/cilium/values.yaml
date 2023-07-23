@@ -13,7 +13,7 @@ cilium:
     mode: snat
     acceleration: disabled
   bpf:
-    masquerade: "false"
+    masquerade: "true"
     vlanBypass:
       - 10
   ipam:

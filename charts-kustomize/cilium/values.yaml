@@ -1,3 +1,4 @@
+upgradeCompatibility: "1.13"
 kubeProxyReplacementHealthzBindAddr: "0.0.0.0:10256"
 l2announcements:
   enabled: "true"
@@ -6,7 +7,7 @@ externalIPs:
 kubeProxyReplacement: "disabled"
 k8sServiceHost: "192.168.48.2"
 k8sServicePort: "6443"
-tunnel: disabled
+routingMode: native
 autoDirectNodeRoutes: true
 ipv4NativeRoutingCIDR: 10.244.0.0/16
 rollOutCiliumPods: true

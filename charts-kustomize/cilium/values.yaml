@@ -1,4 +1,8 @@
 kubeProxyReplacementHealthzBindAddr: "0.0.0.0:10256"
+l2announcements:
+  enabled: "true"
+externalIPs:
+  enabled: "true"
 kubeProxyReplacement: "disabled"
 k8sServiceHost: "192.168.48.2"
 k8sServicePort: "6443"

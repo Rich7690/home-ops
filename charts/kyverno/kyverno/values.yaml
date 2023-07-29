@@ -5,7 +5,7 @@ kyverno:
     repository: ghcr.io/kyverno/kyverno # kyverno: replaced in e2e tests
     # -- Image tag
     # Defaults to appVersion in Chart.yaml if omitted
-    tag: v1.10.1@sha256:2afab1a7bf3a73ddb5c7a89604b9daafef560214d65f526be17a6d7ae2c3693d
+    tag: v1.10.2@sha256:7f3e73abc3e7ee05677ef76f0b3e3e7f1ef233bf6dd9a2b3871508a407ac1abb
     pullPolicy: IfNotPresent
   initImage:
     # -- Image repository

@@ -95,5 +95,5 @@ qbittorrent:
     limits:
       memory: 2G
     requests:
-      cpu: 1
+      cpu: 200m
       memory: 200Mi

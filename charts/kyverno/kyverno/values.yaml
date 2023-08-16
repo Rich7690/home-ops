@@ -9,6 +9,12 @@ kyverno:
     pullPolicy: IfNotPresent
   initImage:
     # -- Image repository
-    repository: ghcr.io/kyverno/kyvernopre  # init: replaced in e2e tests
+    repository: ghcr.io/kyverno/kyvernopre # init: replaced in e2e tests
     tag: v1.10.3@sha256:4022f4b828418df94f61627bdc0852207986c095be9dbff686b57cb22b4c20ad
     pullPolicy: IfNotPresent
+  resources:
+    limits:
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi

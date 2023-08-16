@@ -21,7 +21,7 @@ spec:
                 - ingress-nginx
   egress:
     - toCIDRSet:
-        - cidr: 38.240.226.68/32
+        - cidr: 199.229.250.59/32
       toPorts:
         - ports:
             - port: "51820"

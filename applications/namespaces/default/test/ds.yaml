@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: test
+  namespace: default
+  annotations:
+    "kyverno-skip": "true"
+spec:
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+      annotations:
+        "kyverno-skip": "true"
+    spec:
+        terminationGracePeriodSeconds: 5
+        priorityClassName: high-priority
+        tolerations:
+          - operator: Exists
+        hostNetwork: true
+        hostPID: true
+        securityContext:
+          runAsGroup: 0
+          runAsNonRoot: false
+          runAsUser: 0
+        containers:
+          - name: test
+            image: ubuntu:latest
+            imagePullPolicy: IfNotPresent
+            securityContext:
+              privileged: true
+            command:
+              - "bash"
+              - "-c"
+              - "sleep infinity"
+            resources:
+              requests:
+                cpu: 1m
+                memory: 1Mi

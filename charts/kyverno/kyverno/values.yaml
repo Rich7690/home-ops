@@ -13,16 +13,18 @@ kyverno:
     tag: v1.10.3@sha256:4022f4b828418df94f61627bdc0852207986c095be9dbff686b57cb22b4c20ad
     pullPolicy: IfNotPresent
   admissionController:
-    resources:
-      limits:
-        memory: 1Gi
-      requests:
-        cpu: 100m
-        memory: 256Mi
+    container:
+      resources:
+        limits:
+          memory: 1Gi
+        requests:
+          cpu: 100m
+          memory: 256Mi
   backgroundController:
-    resources:
-      limits:
-        memory: 512Mi
-      requests:
-        cpu: 100m
-        memory: 256Mi
+    container:
+      resources:
+        limits:
+          memory: 512Mi
+        requests:
+          cpu: 100m
+          memory: 256Mi

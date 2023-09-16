@@ -21,7 +21,7 @@ overseerr:
     YARN_CACHE_FOLDER: "/app/config/cache"
   image:
     repository: fallenbagel/jellyseerr
-    tag: 1.6.0@sha256:2ff7157b28b4161c3a21f5664b3e6e946ea329745795db288ce83702f80db47d
+    tag: 1.7.0@sha256:6dcdb5ba50913a14b2bd7df6388607ce175121f3416679c2746501256ac9f075
   persistence:
     config:
       enabled: true

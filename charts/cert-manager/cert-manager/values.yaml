@@ -1,6 +1,8 @@
 cert-manager:
   fullnameOverride: cert-manager
   installCRDs: true
+  dns01RecursiveNameservers: "https://1.1.1.1/dns-query,https://1.0.0.1/dns-query"
+  dns01RecursiveNameserversOnly: true
   image:
     repository: quay.io/jetstack/cert-manager-controller
 

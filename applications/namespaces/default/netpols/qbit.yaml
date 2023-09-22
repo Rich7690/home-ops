@@ -20,6 +20,8 @@ spec:
                 - sonarr
                 - ingress-nginx
   egress:
+    - toEntities:
+       - cluster
     - toCIDRSet:
         - cidr: 199.229.250.59/32
       toPorts:

@@ -74,6 +74,7 @@ spec:
                       readOnlyRootFilesystem: true
                       runAsNonRoot: true
             dnsPolicy: ClusterFirst
+            priorityClassName: system-cluster-critical
             restartPolicy: Always
             schedulerName: default-scheduler
             securityContext: {}

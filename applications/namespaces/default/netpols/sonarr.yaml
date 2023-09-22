@@ -15,9 +15,7 @@ spec:
         - matchLabels:
             app.kubernetes.io/name: qbittorrent
       toPorts:
-        - rules:
-            http:
-              - {}
+        -
           ports:
             - port: "8080"
               protocol: TCP
@@ -49,6 +47,3 @@ spec:
         - ports:
            - port: "8989"
              protocol: TCP
-          rules:
-            http:
-              - {}

@@ -16,26 +16,15 @@ qbittorrent:
         TZ: America/Los_Angeles
         IPTABLES_BACKEND: nft
       networkPolicy:
-        egress:
-          - to:
-              - ipBlock:
-                  cidr: 192.168.100.250/32
-          - ports:
-              - port: 51820
-                protocol: UDP
-            to:
-              - ipBlock:
-                  cidr: 0.0.0.0/0
-          - to:
-              - namespaceSelector: {}
         enabled: false
-      # livenessProbe: TODO: fix this
-      #   exec:
-      #     command:
-      #       - sh
-      #       - -c
-      #       - "if [ $(curl -s https://ipinfo.io/country) = 'CA' ]; then exit 0; else exit 1; fi"
+        livenessProbe: #TODO: fix this
+         exec:
+           command:
+             - sh
+             - -c
+             - "if [ $(curl -fs https://ifconfig.co/asn) = 'AS46562' ]; then exit 0; else exit 1; fi"
         initialDelaySeconds: 30
+        timeoutSeconds: 15
         periodSeconds: 60
         failureThreshold: 3
         successThreshold: 1

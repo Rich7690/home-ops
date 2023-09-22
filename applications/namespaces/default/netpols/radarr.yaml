@@ -15,9 +15,7 @@ spec:
         - matchLabels:
             app.kubernetes.io/name: qbittorrent
       toPorts:
-        - rules:
-            http:
-              - {}
+        -
           ports:
             - port: "8080"
               protocol: TCP
@@ -25,18 +23,12 @@ spec:
         - matchLabels:
             app.kubernetes.io/name: prowlarr
       toPorts:
-        - rules:
-            http:
-              - {}
+        -
           ports:
             - port: "9696"
               protocol: TCP
     - toEntities:
         - cluster
-      toPorts:
-        - rules:
-            http:
-              - {}
     - toFQDNs:
         - matchPattern: "*.radarr.video"
         - matchPattern: "*.tmdb.org"
@@ -64,6 +56,3 @@ spec:
         - ports:
            - port: "7878"
              protocol: TCP
-          rules:
-            http:
-              - {}

@@ -23,6 +23,7 @@ spec:
             labels:
                 app.kubernetes.io/name: kube-vip-ds
         spec:
+            priorityClassName: system-cluster-critical
             containers:
                 - args:
                       - manager
@@ -54,7 +55,6 @@ spec:
                   image: ghcr.io/kube-vip/kube-vip:v0.6.2@sha256:d54f230f5e9cba46623eeb2e115c20e200221971e59fd6895601c93dce1fcded
                   imagePullPolicy: IfNotPresent
                   name: kube-vip
-                  priorityClassName: system-cluster-critical
                   resources: {}
                   securityContext:
                       capabilities:

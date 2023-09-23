@@ -24,7 +24,7 @@ spec:
             fieldRef:
               apiVersion: v1
               fieldPath: spec.nodeName
-        image: intel/intel-gpu-plugin:0.27.1@sha256:116350e9d74d5da04352fa55244650a0323694dc94eadd0d51a11638bc89ec2b
+        image: intel/intel-gpu-plugin:0.28.0@sha256:a5f4bd2ebd62a57d59907ef3fb8bf56066f3ee27f20d9f03f0dd060090ff90b1
         args:
           - "-enable-monitoring"
           - "-shared-dev-num=3"

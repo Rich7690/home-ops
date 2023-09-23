@@ -52,7 +52,7 @@ spec:
           name: kubeletsockets
       dnsPolicy: ClusterFirst
       initContainers:
-      - image: intel/intel-gpu-initcontainer:0.27.1@sha256:76eb1490b9ad8c661c0524853ef955947e092932f59ab5980a6d334ca1649488
+      - image: intel/intel-gpu-initcontainer:0.28.0@sha256:b07a750b4c16a5a20b59986db06821f7d60e41b2c58e9383e953d1a10d3f2af7
         imagePullPolicy: IfNotPresent
         name: intel-gpu-initcontainer
         resources: {}

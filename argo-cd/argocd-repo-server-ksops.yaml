@@ -16,12 +16,13 @@ spec:
           command: ["/bin/sh", "-c"]
           securityContext:
             runAsUser: 0
+            runAsGroup: 0
             runAsNonRoot: false
           args:
-            - set -xe;
-              echo "Installing KSOPS...";
-              cp /usr/local/bin/ksops /custom-tools/;
-              cp /usr/local/bin/kustomize /custom-tools/;
+            - echo "Installing KSOPS...";
+              mv ksops /custom-tools/;
+              mv kustomize /custom-tools/;
+              chown -R 65532:65532 /custom-tools;
               echo "Done.";
           volumeMounts:
             - mountPath: /custom-tools
@@ -29,6 +30,10 @@ spec:
       # 3. Volume mount the custom binary to the bin directory (overriding the existing version)
       containers:
         - name: argocd-repo-server
+          envFrom:
+           - secretRef:
+               name: age-key
+               optional: false
           volumeMounts:
             - mountPath: /usr/local/bin/kustomize
               name: custom-tools

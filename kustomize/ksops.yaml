@@ -17,3 +17,5 @@ files:
   - ./secrets/njalla.enc.yaml
   - ./secrets/vpn.enc.yaml
   - ./secrets/paperless.enc.yaml
+  - ./secrets/restic-volsync-secrets.enc.yaml
+  - ./secrets/backup-generator.enc.yaml

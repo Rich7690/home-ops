@@ -13,9 +13,9 @@ k8sServicePort: "6443"
 tunnel: disabled
 autoDirectNodeRoutes: true
 envoyConfig:
-  enabled: true
+  enabled: false
 envoy:
-  enabled: true
+  enabled: false
   rollOutPods: true
   securityContext:
     runAsUser: 65532
@@ -34,7 +34,7 @@ envoy:
         - PERFMON
         - BPF
 ingressController:
-  enabled: true
+  enabled: false
   #loadbalancerMode: dedicated
   loadbalancerMode: shared
   ingressLBAnnotationPrefixes: ['service.beta.kubernetes.io', 'service.kubernetes.io', 'cloud.google.com', 'kube-vip.io']

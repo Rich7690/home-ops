@@ -7,7 +7,7 @@ spec:
     matchExpressions:
       - key: node-role.kubernetes.io/control-plane
         operator: DoesNotExist
-  externalIPs: true
+  externalIPs: false
   loadBalancerIPs: true
 ---
 apiVersion: "cilium.io/v2alpha1"

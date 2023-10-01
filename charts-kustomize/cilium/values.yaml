@@ -14,7 +14,7 @@ rollOutCiliumPods: true
 bgpControlPlane:
   enabled: false
 loadBalancer:
-  mode: snat
+  mode: hybrid
   acceleration: disabled
 bpf:
   masquerade: "true"

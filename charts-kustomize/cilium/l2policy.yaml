@@ -9,7 +9,7 @@ spec:
         operator: DoesNotExist
   serviceSelector:
     matchLabels:
-      cilium: l2arp
+      cilium.io/ingress: "true"
   externalIPs: false
   loadBalancerIPs: true
 ---

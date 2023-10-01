@@ -15,6 +15,10 @@ autoDirectNodeRoutes: true
 ingressController:
   enabled: true
   loadbalancerMode: dedicated
+  #loadbalancerMode: shared
+  ingressLBAnnotationPrefixes: ['service.beta.kubernetes.io', 'service.kubernetes.io', 'cloud.google.com', 'io.cilium']
+  #service:
+  #  loadBalancerIP: 192.168.48.10
 ipv4NativeRoutingCIDR: 10.244.0.0/16
 rollOutCiliumPods: true
 bgpControlPlane:

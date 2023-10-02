@@ -81,8 +81,6 @@ qbittorrent:
     runAsGroup: 568
     runAsUser: 998
   resources:
-    limits:
-      memory: 2G
     requests:
       cpu: 200m
       memory: 200Mi

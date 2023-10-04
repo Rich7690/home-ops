@@ -22,11 +22,11 @@ qbittorrent:
            command:
              - sh
              - -c
-             - "if [ $(curl -fs https://ifconfig.co/asn) = 'AS46562' ]; then exit 0; else exit 1; fi"
-        initialDelaySeconds: 30
+             - "if [ $(curl -fs https://ifconfig.co/country-iso) = 'CA' ]; then exit 0; else exit 1; fi"
+        initialDelaySeconds: 60
         timeoutSeconds: 15
         periodSeconds: 60
-        failureThreshold: 3
+        failureThreshold: 5
         successThreshold: 1
       scripts:
         down: |-

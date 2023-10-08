@@ -13,12 +13,13 @@ spec:
   ingress:
     - fromEndpoints:
         - matchExpressions:
-            - key: app.kubernetes.io/name
+            - key: app.kubernetes.io/instance
               operator: In
               values:
                 - radarr
                 - sonarr
                 - ingress-nginx
+                - readarr
   egress:
     - toEntities:
        - cluster

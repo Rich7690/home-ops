@@ -9,7 +9,14 @@ spec:
       app: jelly
   ingress:
     - fromEndpoints:
-        - {}
+        - matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+                - radarr
+                - sonarr
+                - ingress-nginx
+                - overseerr
   egressDeny:
     - toCIDR:
         - "192.168.0.0/16"

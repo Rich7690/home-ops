@@ -12,7 +12,6 @@ spec:
             operator: In
             values:
               - "vaultwarden"
-              - "reflector"
               - "paperless"
     egress:
         - to:

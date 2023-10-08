@@ -1,0 +1,18 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: reflector
+  namespace: default
+spec:
+  ingress:
+    - fromEntities:
+       - "health"
+  endpointSelector:
+    matchExpressions:
+      - key: app.kubernetes.io/name
+        operator: In
+        values:
+          - reflector
+  egress:
+    - toEntities:
+       - kube-apiserver

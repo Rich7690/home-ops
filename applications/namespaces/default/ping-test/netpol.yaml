@@ -15,6 +15,12 @@ spec:
       toPorts:
         - ports:
             - port: "2112"
+              protocol: TCP
+          rules:
+            http:
+              - method: GET
+                path: /metrics
+
   egress:
     - toFQDNs:
         - matchName: checkip.amazonaws.com

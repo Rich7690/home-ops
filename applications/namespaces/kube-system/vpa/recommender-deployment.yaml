@@ -23,7 +23,7 @@ spec:
         runAsUser: 65534 # nobody
       containers:
       - name: recommender
-        image: registry.k8s.io/autoscaling/vpa-recommender:0.14.0@sha256:68d0db198edb79c9c5cf81465bb1d0b691435b09929549164df173d9d87004ec
+        image: registry.k8s.io/autoscaling/vpa-recommender:1.0.0@sha256:bc0bd96faf0e4845afe653a2692cfcb34c47b7a9ec5d0ab330fec5160c21e963
         args:
           - --storage=prometheus
           - --prometheus-address=http://prom.default.svc:9090

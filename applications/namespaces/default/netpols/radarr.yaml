@@ -7,36 +7,31 @@ spec:
   endpointSelector:
     matchLabels:
       app.kubernetes.io/name: radarr
-  egressDeny:
-    - toCIDR:
-        - "192.168.0.0/16"
-  egress:
-    - toEndpoints:
-        - matchLabels:
-            app.kubernetes.io/name: qbittorrent
+  ingress:
+    - fromEndpoints:
+        - matchExpressions:
+            - key: app.kubernetes.io/instance
+              operator: In
+              values:
+                - ingress-nginx
+                - jellyseer
       toPorts:
-        -
-          ports:
-            - port: "8080"
-              protocol: TCP
+        - ports:
+            - port: "7878"
+  egress:
     - toEndpoints:
         - matchLabels:
             app.kubernetes.io/name: prowlarr
       toPorts:
-        -
-          ports:
+        - ports:
             - port: "9696"
               protocol: TCP
-    - toEntities:
-        - cluster
-    - toFQDNs:
-        - matchPattern: "*.radarr.video"
-        - matchPattern: "*.tmdb.org"
-        - matchName: "radarr.servarr.com"
-        - matchName: "api.trakt.tv"
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: qbittorrent
       toPorts:
         - ports:
-            - port: "443"
+            - port: "8080"
               protocol: TCP
     - toEndpoints:
         - matchLabels:
@@ -49,10 +44,27 @@ spec:
           rules:
             dns:
               - matchPattern: "*"
-  ingress:
-    - fromEntities:
-       - cluster
+    - toFQDNs:
+        - matchPattern: "*.radarr.video"
       toPorts:
         - ports:
-           - port: "7878"
-             protocol: TCP
+            - port: "443"
+              protocol: TCP
+    - toFQDNs:
+        - matchPattern: "*.tmdb.org"
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
+    - toFQDNs:
+        - matchName: api.trakt.tv
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
+    - toFQDNs:
+        - matchName: radarr.servarr.com
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP

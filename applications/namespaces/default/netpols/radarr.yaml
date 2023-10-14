@@ -21,6 +21,9 @@ spec:
   egress:
     - toEndpoints:
         - matchLabels:
+            app: "jelly"
+    - toEndpoints:
+        - matchLabels:
             app.kubernetes.io/name: prowlarr
       toPorts:
         - ports:

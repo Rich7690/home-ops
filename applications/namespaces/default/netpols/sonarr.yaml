@@ -20,13 +20,15 @@ spec:
             - port: "8989"
   egress:
     - toEndpoints:
+        - matchLabels:
+            app: "jelly"
+    - toEndpoints:
         - matchExpressions:
             - key: app.kubernetes.io/name
               operator: In
               values:
                - qbittorrent
                - prowlarr
-
       toPorts:
         - ports:
             - port: "8080"

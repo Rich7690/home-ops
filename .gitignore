@@ -14,3 +14,4 @@ pod2.yaml
 kustomize/ingress/*.yaml
 oracle-cluster/secrets/*
 preflight.yaml
+.gitleaks.toml

@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: https://github.com/Rich7690/home-server-config.git
+      repoURL: https://github.com/Rich7690/home-ops.git
       revision: HEAD
       directories:
       - path: applications/namespaces/default/*
@@ -28,7 +28,7 @@ spec:
         jqPathExpressions:
           - .spec.duration
       source:
-        repoURL: https://github.com/Rich7690/home-server-config.git
+        repoURL: https://github.com/Rich7690/home-ops.git
         targetRevision: HEAD
         path: '{{path}}'
       destination:

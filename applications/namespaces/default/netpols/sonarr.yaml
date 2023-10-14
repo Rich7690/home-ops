@@ -20,11 +20,18 @@ spec:
             - port: "8989"
   egress:
     - toEndpoints:
-        - matchLabels:
-            app.kubernetes.io/name: qbittorrent
+        - matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+               - qbittorrent
+               - prowlarr
+
       toPorts:
         - ports:
             - port: "8080"
+              protocol: TCP
+            - port: "9696"
               protocol: TCP
     - toEndpoints:
         - matchLabels:

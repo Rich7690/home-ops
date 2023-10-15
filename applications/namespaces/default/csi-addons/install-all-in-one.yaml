@@ -9,8 +9,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.11.3
-  creationTimestamp: null
+    controller-gen.kubebuilder.io/version: v0.12.0
   name: csiaddonsnodes.csiaddons.openshift.io
 spec:
   group: csiaddons.openshift.io
@@ -113,8 +112,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.11.3
-  creationTimestamp: null
+    controller-gen.kubebuilder.io/version: v0.12.0
   name: networkfences.csiaddons.openshift.io
 spec:
   group: csiaddons.openshift.io
@@ -293,8 +291,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.11.3
-  creationTimestamp: null
+    controller-gen.kubebuilder.io/version: v0.12.0
   name: reclaimspacecronjobs.csiaddons.openshift.io
 spec:
   group: csiaddons.openshift.io
@@ -405,6 +402,14 @@ spec:
                               PersistentVolumeClaim name.
                             type: string
                         type: object
+                      timeout:
+                        description: Timeout specifies the timeout in seconds for
+                          the grpc request sent to the CSI driver. If not specified,
+                          defaults to global reclaimspace timeout. Minimum allowed
+                          value is 60.
+                        format: int64
+                        minimum: 60
+                        type: integer
                     required:
                     - target
                     type: object
@@ -499,8 +504,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.11.3
-  creationTimestamp: null
+    controller-gen.kubebuilder.io/version: v0.12.0
   name: reclaimspacejobs.csiaddons.openshift.io
 spec:
   group: csiaddons.openshift.io
@@ -577,6 +581,13 @@ spec:
                       name.
                     type: string
                 type: object
+              timeout:
+                description: Timeout specifies the timeout in seconds for the grpc
+                  request sent to the CSI driver. If not specified, defaults to global
+                  reclaimspace timeout. Minimum allowed value is 60.
+                format: int64
+                minimum: 60
+                type: integer
             required:
             - target
             type: object
@@ -689,8 +700,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.11.3
-  creationTimestamp: null
+    controller-gen.kubebuilder.io/version: v0.12.0
   name: volumereplicationclasses.replication.storage.openshift.io
 spec:
   group: replication.storage.openshift.io
@@ -758,8 +768,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.11.3
-  creationTimestamp: null
+    controller-gen.kubebuilder.io/version: v0.12.0
   name: volumereplications.replication.storage.openshift.io
 spec:
   group: replication.storage.openshift.io
@@ -935,6 +944,11 @@ spec:
               lastStartTime:
                 format: date-time
                 type: string
+              lastSyncBytes:
+                format: int64
+                type: integer
+              lastSyncDuration:
+                type: string
               lastSyncTime:
                 format: date-time
                 type: string
@@ -1004,7 +1018,6 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  creationTimestamp: null
   name: csi-addons-manager-role
 rules:
 - apiGroups:
@@ -1020,6 +1033,14 @@ rules:
   - ""
   resources:
   - persistentvolumes
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
   verbs:
   - get
   - list
@@ -1260,6 +1281,7 @@ subjects:
 apiVersion: v1
 data:
   controller_manager_config.yaml: |
+    ---
     apiVersion: controller-runtime.sigs.k8s.io/v1alpha1
     kind: ControllerManagerConfig
     health:
@@ -1320,19 +1342,26 @@ spec:
   template:
     metadata:
       annotations:
+        kyverno-skip: "true"
         kubectl.kubernetes.io/default-container: manager
       labels:
         app.kubernetes.io/name: csi-addons
     spec:
       containers:
       - args:
+        - --namespace=$(POD_NAMESPACE)
         - --health-probe-bind-address=:8081
         - --metrics-bind-address=127.0.0.1:8080
         - --leader-elect
         - --enable-admission-webhooks=true
         command:
-        - /manager
-        image: quay.io/csiaddons/k8s-controller:v0.7.0@sha256:cadff9eeb19c35dd1579aaa11e31ed52d3bd42b970183a19e6f5f2ce6b1d79b9
+        - /csi-addons-manager
+        env:
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        image: quay.io/csiaddons/k8s-controller:v0.7.0
         livenessProbe:
           httpGet:
             path: /healthz
@@ -1359,9 +1388,6 @@ spec:
             memory: 64Mi
         securityContext:
           allowPrivilegeEscalation: false
-          capabilities:
-            drop:
-              - "ALL"
         volumeMounts:
         - mountPath: /tmp/k8s-webhook-server/serving-certs
           name: cert
@@ -1371,7 +1397,7 @@ spec:
         - --upstream=http://127.0.0.1:8080/
         - --logtostderr=true
         - --v=10
-        image: gcr.io/kubebuilder/kube-rbac-proxy:v0.14.1@sha256:928e64203edad8f1bba23593c7be04f0f8410c6e4feb98d9e9c2d00a8ff59048
+        image: gcr.io/kubebuilder/kube-rbac-proxy:v0.8.0
         name: kube-rbac-proxy
         ports:
         - containerPort: 8443
@@ -1384,15 +1410,8 @@ spec:
           requests:
             cpu: 10m
             memory: 64Mi
-        securityContext:
-          allowPrivilegeEscalation: false
-          capabilities:
-            drop:
-              - "ALL"
       securityContext:
         runAsNonRoot: true
-        seccompProfile:
-          type: RuntimeDefault
       serviceAccountName: csi-addons-controller-manager
       terminationGracePeriodSeconds: 10
       volumes:

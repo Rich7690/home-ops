@@ -12,7 +12,7 @@ spec:
       # 2. Use an init container to download/copy custom binaries into the emptyDir
       initContainers:
         - name: install-ksops
-          image: viaductoss/ksops:v4.2.4@sha256:cdf398b1e8d9271fc38669a4f4fbbab4e85d48da7c3828f1caa155293ffb64e8
+          image: viaductoss/ksops:v4.2.5@sha256:8a2dc8ab2383d97b140f9cf5803cf8c58a0421859d20bf86ce1c55b6b97a640f
           command: ["/bin/sh", "-c"]
           securityContext:
             runAsUser: 0

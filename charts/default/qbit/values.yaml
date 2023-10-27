@@ -18,6 +18,7 @@ qbittorrent:
       networkPolicy:
         enabled: false
         livenessProbe: #TODO: fix this
+         enabled: true
          exec:
            command:
              - sh

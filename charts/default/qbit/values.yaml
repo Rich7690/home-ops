@@ -11,13 +11,13 @@ qbittorrent:
       configFileSecret: vpn-config
       enabled: true
       env:
-        KILLSWITCH: "false"
+        KILLSWITCH: "true"
         KILLSWITCH_EXCLUDEDNETWORKS_IPV4: 10.244.0.0/16;192.168.5.0/24;10.96.0.0/12
         TZ: America/Los_Angeles
         IPTABLES_BACKEND: nft
       networkPolicy:
         enabled: false
-        livenessProbe: #TODO: fix this
+      livenessProbe: #TODO: fix this
          enabled: true
          exec:
            command:
@@ -44,7 +44,7 @@ qbittorrent:
           pullPolicy: IfNotPresent
           tag: v1.0.20210914@sha256:4dd54954cbd06d92d8c8fc6b10871eb07a0c1869edfe7a15029f1a7d3178d432
       securityContext:
-        runAsUser: 0
+        runAsUser: 568
         runAsGroup: 568
         privileged: true
         capabilities:
@@ -59,7 +59,7 @@ qbittorrent:
   image:
     pullPolicy: IfNotPresent
     repository: ghcr.io/onedr0p/qbittorrent
-    tag: 4.6.0@sha256:cb6259df3be61a5108bc4f85b09a523fc4b250589ca9b315ef927cbdf779afb6
+    tag: 4.5.5@sha256:30dffe7ad04ea0e39db0b50c0bd5e79362f99f7ff6b250526d2f389b58d96f14
   nodeSelector:
     feature.node.ceph: "true"
   persistence:

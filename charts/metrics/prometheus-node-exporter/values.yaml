@@ -3,7 +3,7 @@ prometheus-node-exporter:
   image:
     registry: "quay.io"
     repository: prometheus/node-exporter
-    tag: v1.6.1@sha256:81f94e50ea37a88dfee849d0f4acad25b96b397061f59e5095905f6bc5829637
+    tag: v1.6.1
   podAnnotations:
     prometheus.io/scrape: "true"
   resources:

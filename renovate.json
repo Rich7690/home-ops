@@ -35,7 +35,8 @@
     },
     {
       "matchPackagePatterns": [
-        "^registry.k8s.io\\/ingress-nginx\\/controller"
+        "^registry.k8s.io\\/ingress-nginx\\/controller",
+        "^quay.io\\/prometheus\\/node-exporter"
       ],
       "pinDigests": false
     },

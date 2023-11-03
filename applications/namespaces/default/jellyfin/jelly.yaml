@@ -47,7 +47,7 @@ spec:
                       initialDelaySeconds: 15
                       periodSeconds: 10
                       successThreshold: 1
-                      timeoutSeconds: 1
+                      timeoutSeconds: 2
                   name: jelly
                   ports:
                       - containerPort: 8096
@@ -59,10 +59,10 @@ spec:
                           path: /health
                           port: 8096
                           scheme: HTTP
-                      initialDelaySeconds: 15
+                      initialDelaySeconds: 1
                       periodSeconds: 10
                       successThreshold: 1
-                      timeoutSeconds: 1
+                      timeoutSeconds: 2
                   resources:
                       limits:
                           gpu.intel.com/i915: "1"
@@ -97,6 +97,15 @@ spec:
                   type: RuntimeDefault
             shareProcessNamespace: false
             terminationGracePeriodSeconds: 30
+            tolerations:
+                - effect: NoExecute
+                  key: node.kubernetes.io/not-ready
+                  operator: Exists
+                  tolerationSeconds: 60
+                - effect: NoExecute
+                  key: node.kubernetes.io/unreachable
+                  operator: Exists
+                  tolerationSeconds: 60
             volumes:
                 - persistentVolumeClaim:
                     claimName: jelly-config

@@ -10,7 +10,7 @@ kyverno:
   initImage:
     # -- Image repository
     repository: ghcr.io/kyverno/kyvernopre # init: replaced in e2e tests
-    tag: v1.10.3@sha256:4022f4b828418df94f61627bdc0852207986c095be9dbff686b57cb22b4c20ad
+    tag: v1.10.5@sha256:59b0bed6e351bc39e408089660927f01e6a1e0d27e4b15f17bdd30e8a556a654
     pullPolicy: IfNotPresent
   admissionController:
     container:

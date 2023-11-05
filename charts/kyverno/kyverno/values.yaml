@@ -1,4 +1,6 @@
 kyverno:
+  upgrade:
+    fromV2: true
   fullnameOverride: kyverno
   priorityClassName: system-cluster-critical
   image:
@@ -15,16 +17,44 @@ kyverno:
   admissionController:
     container:
       resources:
-        limits:
-          memory: 1Gi
+        limits: {}
         requests:
           cpu: 100m
           memory: 256Mi
   backgroundController:
+    rbac:
+      clusterRole:
+        extraResources:
+        - apiGroups:
+            - 'volsync.backube'
+          resources:
+            - "*"
+          verbs:
+            - create
+            - update
+            - delete
+            - patch
+        - apiGroups:
+            - ''
+          resources:
+            - "Secret"
+          verbs:
+            - create
+            - update
+            - delete
+            - patch
+        - apiGroups:
+            - 'kubefledged.io'
+          resources:
+            - "*"
+          verbs:
+            - create
+            - update
+            - delete
+            - patch
     container:
       resources:
-        limits:
-          memory: 512Mi
+        limits: {}
         requests:
           cpu: 100m
           memory: 256Mi

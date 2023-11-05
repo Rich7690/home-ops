@@ -21,7 +21,7 @@ kyverno:
           memory: 2Gi
         requests:
           cpu: 100m
-          memory: 256Mi
+          memory: 1Gi
   backgroundController:
     rbac:
       clusterRole:
@@ -53,9 +53,9 @@ kyverno:
               - update
               - delete
               - patch
-      resources:
+    resources:
         limits:
           memory: 2Gi
         requests:
           cpu: 100m
-          memory: 256Mi
+          memory: 1Gi

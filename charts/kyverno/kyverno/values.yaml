@@ -2,7 +2,6 @@ kyverno:
   upgrade:
     fromV2: true
   fullnameOverride: kyverno
-  priorityClassName: system-cluster-critical
   image:
     repository: ghcr.io/kyverno/kyverno # kyverno: replaced in e2e tests
     # -- Image tag
@@ -15,45 +14,44 @@ kyverno:
     tag: v1.10.5@sha256:59b0bed6e351bc39e408089660927f01e6a1e0d27e4b15f17bdd30e8a556a654
     pullPolicy: IfNotPresent
   admissionController:
-    container:
-      resources:
-        limits:
-          memory: 2Gi
-        requests:
-          cpu: 100m
-          memory: 256Mi
+    priorityClassName: system-cluster-critical
+    resources:
+      limits:
+        memory: 2Gi
+      requests:
+        cpu: 100m
+        memory: 256Mi
   backgroundController:
     rbac:
       clusterRole:
         extraResources:
-        - apiGroups:
-            - 'volsync.backube'
-          resources:
-            - "*"
-          verbs:
-            - create
-            - update
-            - delete
-            - patch
-        - apiGroups:
-            - ''
-          resources:
-            - "Secret"
-          verbs:
-            - create
-            - update
-            - delete
-            - patch
-        - apiGroups:
-            - 'kubefledged.io'
-          resources:
-            - "*"
-          verbs:
-            - create
-            - update
-            - delete
-            - patch
-    container:
+          - apiGroups:
+              - "volsync.backube"
+            resources:
+              - "*"
+            verbs:
+              - create
+              - update
+              - delete
+              - patch
+          - apiGroups:
+              - ""
+            resources:
+              - "Secret"
+            verbs:
+              - create
+              - update
+              - delete
+              - patch
+          - apiGroups:
+              - "kubefledged.io"
+            resources:
+              - "*"
+            verbs:
+              - create
+              - update
+              - delete
+              - patch
       resources:
         limits:
           memory: 2Gi

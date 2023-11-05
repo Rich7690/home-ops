@@ -15,12 +15,13 @@ kyverno:
     pullPolicy: IfNotPresent
   admissionController:
     priorityClassName: system-cluster-critical
-    resources:
-      limits:
-        memory: 2Gi
-      requests:
-        cpu: 100m
-        memory: 256Mi
+    container:
+      resources:
+        limits:
+          memory: 2Gi
+        requests:
+          cpu: 100m
+          memory: 256Mi
   backgroundController:
     rbac:
       clusterRole:

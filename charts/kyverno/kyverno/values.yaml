@@ -11,7 +11,7 @@ kyverno:
   initImage:
     # -- Image repository
     repository: ghcr.io/kyverno/kyvernopre # init: replaced in e2e tests
-    tag: v1.10.5@sha256:59b0bed6e351bc39e408089660927f01e6a1e0d27e4b15f17bdd30e8a556a654
+    tag: v1.11.0@sha256:5744bcdb88dfd820694cf74fee63089396f3a7b8fdeae147afb2f1a6c95f77c3
     pullPolicy: IfNotPresent
   admissionController:
     priorityClassName: system-cluster-critical

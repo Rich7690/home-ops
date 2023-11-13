@@ -1,0 +1,12 @@
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: ha
+  namespace: default
+subsets:
+  - addresses:
+     - ip: 192.168.5.219
+    ports:
+      - name: https
+        protocol: TCP
+        port: 443

@@ -39,10 +39,11 @@ spec:
             securityContext:
               privileged: true
             command:
-              - "/tmp/init.sh"
-            requests:
-                cpu: 1m
-                memory: 1Mi
+              - "/tmp/start/init.sh"
+            resources:
+              requests:
+                  cpu: 1m
+                  memory: 1Mi
             volumeMounts:
-              - mountPath: /tmp
+              - mountPath: /tmp/start
                 name: init

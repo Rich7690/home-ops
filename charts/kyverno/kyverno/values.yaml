@@ -44,15 +44,6 @@ kyverno:
               - update
               - delete
               - patch
-          - apiGroups:
-              - "kubefledged.io"
-            resources:
-              - "*"
-            verbs:
-              - create
-              - update
-              - delete
-              - patch
     resources:
         limits:
           memory: 2Gi

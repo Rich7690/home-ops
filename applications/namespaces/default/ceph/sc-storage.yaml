@@ -5,14 +5,13 @@ metadata:
   namespace: rook-ceph
 spec:
   metadataPool:
-    failureDomain: host
+    failureDomain: osd
     deviceClass: ssd
     replicated:
-      subFailureDomain: osd
       size: 2
   dataPools:
     - name: replicated
-      failureDomain: host
+      failureDomain: osd
       deviceClass: hdd
       replicated:
         size: 2

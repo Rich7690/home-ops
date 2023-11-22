@@ -1,4 +1,6 @@
 controller:
+  podAnnotations:
+    kyverno-skip: "true"
   enabled: true
   strategy: node
   externalProvisioner:
@@ -28,6 +30,8 @@ controller:
     - effect: NoSchedule
       operator: Exists
 node:
+  podAnnotations:
+    kyverno-skip: "true"
   nodeSelector:
     kubernetes.io/hostname: worker-one
   tolerations:

@@ -139,7 +139,7 @@ controller:
   # https://github.com/kubernetes-csi/external-health-monitor
   externalHealthMonitorController:
     enabled: false
-    image: registry.k8s.io/sig-storage/csi-external-health-monitor-controller:v0.9.0
+    image: registry.k8s.io/sig-storage/csi-external-health-monitor-controller:v0.10.0@sha256:9e581022a4e063b9d8b4f9466a36eabe4d0ced3badc8e353f13b700074ce4553
     args:
     - --v=5
     - --leader-election

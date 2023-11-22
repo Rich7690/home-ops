@@ -76,7 +76,7 @@ controller:
   # https://kubernetes-csi.github.io/docs/external-attacher.html
   externalAttacher:
     enabled: true
-    image: registry.k8s.io/sig-storage/csi-attacher:v4.3.0
+    image: registry.k8s.io/sig-storage/csi-attacher:v4.4.2@sha256:11b955fe4da278aa0e8ca9d6fd70758f2aec4b0c1e23168c665ca345260f1882
     args:
     - --v=5
     - --leader-election

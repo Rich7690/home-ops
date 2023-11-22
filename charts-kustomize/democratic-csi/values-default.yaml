@@ -124,7 +124,7 @@ controller:
     enabled: true
     # 1.20+ should use v4.0.0+
     # READ *before* updating from beta https://github.com/kubernetes-csi/external-snapshotter#usage
-    image: registry.k8s.io/sig-storage/csi-snapshotter:v6.2.2
+    image: registry.k8s.io/sig-storage/csi-snapshotter:v6.3.2@sha256:4c5a1b57e685b2631909b958487f65af7746361346fcd82a8635bea3ef14509d
     args:
     - --v=5
     - --leader-election

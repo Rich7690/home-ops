@@ -10,3 +10,6 @@ node:
   tolerations:
     - effect: NoSchedule
       operator: Exists
+csiDriver:
+  # should be globally unique for a given cluster
+  name: democratic-csi

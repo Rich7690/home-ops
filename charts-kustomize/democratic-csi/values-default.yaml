@@ -91,7 +91,7 @@ controller:
   # https://kubernetes-csi.github.io/docs/external-provisioner.html
   externalProvisioner:
     enabled: true
-    image: registry.k8s.io/sig-storage/csi-provisioner:v3.5.0
+    image: registry.k8s.io/sig-storage/csi-provisioner:v3.6.2@sha256:49b94f975603d85a1820b72b1188e5b351d122011b3e5351f98c49d72719aa78
     args:
     - --v=5
     - --leader-election

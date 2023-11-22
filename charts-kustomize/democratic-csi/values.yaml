@@ -46,7 +46,7 @@ storageClasses:
 - name: zfs-local-dataset
   defaultClass: false
   reclaimPolicy: Delete
-  volumeBindingMode: WaitForFirstConsumer
+  volumeBindingMode: Immediate
   # distributed support is not yet ready for expansion
   allowVolumeExpansion: true
   parameters:

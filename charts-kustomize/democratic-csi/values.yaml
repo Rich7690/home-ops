@@ -1,0 +1,12 @@
+controller:
+  nodeSelector:
+    kubernetes.io/hostname: worker-one
+  tolerations:
+    - effect: NoSchedule
+      operator: Exists
+node:
+  nodeSelector:
+    kubernetes.io/hostname: worker-one
+  tolerations:
+    - effect: NoSchedule
+      operator: Exists

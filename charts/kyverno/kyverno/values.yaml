@@ -28,6 +28,7 @@ kyverno:
         extraResources:
           - apiGroups:
               - "volsync.backube"
+              - "autoscaling.k8s.io"
             resources:
               - "*"
             verbs:

@@ -4,8 +4,6 @@ radarr:
   controller:
     type: statefulset
     podManagementPolicy: Parallel
-  nodeSelector:
-    feature.node.ceph: "true"
   securityContext:
     allowPrivilegeEscalation: false
     capabilities:

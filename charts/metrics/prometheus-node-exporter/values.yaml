@@ -11,7 +11,7 @@ prometheus-node-exporter:
       cpu: 8
       memory: 100Mi
     requests:
-      cpu: 100m
+      cpu: 50m
       memory: 50Mi
   service:
     annotations:

@@ -17,18 +17,18 @@ qbittorrent:
         IPTABLES_BACKEND: nft
       networkPolicy:
         enabled: false
-      livenessProbe: #TODO: fix this
-         enabled: false
-         exec:
-           command:
-             - sh
-             - -c
-             - "if [ $(curl -fs https://ifconfig.co/country-iso) = 'CA' ]; then exit 0; else exit 1; fi"
-         initialDelaySeconds: 60
-         timeoutSeconds: 15
-         periodSeconds: 60
-         failureThreshold: 5
-         successThreshold: 1
+      # livenessProbe: #TODO: fix this
+      #    enabled: false
+      #    exec:
+      #      command:
+      #        - sh
+      #        - -c
+      #        - "if [ $(curl -fs https://ifconfig.co/country-iso) = 'CA' ]; then exit 0; else exit 1; fi"
+      #    initialDelaySeconds: 60
+      #    timeoutSeconds: 15
+      #    periodSeconds: 60
+      #    failureThreshold: 5
+      #    successThreshold: 1
       scripts:
         down: |-
           #!/bin/bash

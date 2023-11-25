@@ -5,3 +5,4 @@ kind: Kustomization
 resources:
   - "github.com/openebs/zfs-localpv/deploy/yamls?ref=zfs-localpv-2.3.2"
   - storage-class.yaml
+  - snapshot.yaml

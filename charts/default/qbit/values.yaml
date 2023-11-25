@@ -71,7 +71,7 @@ qbittorrent:
       retain: true
     media:
       enabled: true
-      existingClaim: media-pvc
+      existingClaim: media-pvc-zfs
       mountPath: /media
       type: pvc
     shared:

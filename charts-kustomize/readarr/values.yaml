@@ -25,7 +25,7 @@ persistence:
   media:
     enabled: true
     mountPath: /media
-    existingClaim: media-pvc
+    existingClaim: media-pvc-zfs
     type: pvc
   config:
     enabled: true

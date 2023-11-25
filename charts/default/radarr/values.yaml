@@ -28,12 +28,12 @@ radarr:
     media:
       enabled: true
       mountPath: /media
-      existingClaim: media-pvc
+      existingClaim: media-pvc-zfs
       type: pvc
     config:
       enabled: true
       mountPath: /config
-      existingClaim: radarr-config
+      existingClaim: radarr-config-zfs
       type: pvc
       retain: true
   resources:

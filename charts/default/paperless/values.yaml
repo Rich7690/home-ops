@@ -60,5 +60,5 @@ paperless:
     limits:
       memory: 4G
     requests:
-      cpu: 1
+      cpu: 300m
       memory: 4G

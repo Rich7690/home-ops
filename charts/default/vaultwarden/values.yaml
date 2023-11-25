@@ -39,7 +39,7 @@ vaultwarden:
     config:
       enabled: true
       mountPath: /config/vaultwarden
-      existingClaim: vw-config
+      existingClaim: vw-config-zfs
       type: pvc
       retain: true
   resources:

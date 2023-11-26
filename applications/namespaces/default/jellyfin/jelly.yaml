@@ -109,7 +109,7 @@ spec:
                   tolerationSeconds: 60
             volumes:
                 - persistentVolumeClaim:
-                    claimName: jelly-config
+                    claimName: jelly-config-zfs
                   name: config
                 - name: media
                   persistentVolumeClaim:

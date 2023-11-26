@@ -23,6 +23,8 @@ spec:
             labels:
                 app.kubernetes.io/name: kube-vip-ds
         spec:
+            nodeSelector:
+              kubernetes.io/hostname: worker-one
             priorityClassName: system-cluster-critical
             containers:
                 - args:
@@ -64,3 +66,4 @@ spec:
             hostNetwork: true
             serviceAccountName: kube-vip
     updateStrategy: {}
+    minReadySeconds: 15

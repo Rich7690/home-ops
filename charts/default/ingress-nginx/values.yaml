@@ -29,14 +29,16 @@ ingress-nginx:
     addHeaders:
       X-Frame-Options: SAMEORIGIN
     electionID: ingress-controller-leader
-    kind: DaemonSet
+    kind: Deployment
+    minReadySeconds: 10
+    nodeSelector:
+      kubernetes.io/hostname: worker-one
     metrics:
       enabled: true
       service:
         annotations: {}
     resources:
       limits:
-        cpu: 4
         memory: 2G
       requests:
         cpu: 100m

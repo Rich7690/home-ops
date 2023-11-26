@@ -36,7 +36,10 @@ ingress-nginx:
     ingressClassResource:
       controllerValue: k8s.io/ingress-nginx-external
       name: nginx-external
-    kind: DaemonSet
+    kind: Deployment
+    minReadySeconds: 10
+    nodeSelector:
+      kubernetes.io/hostname: worker-one
     metrics:
       enabled: true
       service:

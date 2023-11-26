@@ -1,7 +1,5 @@
 overseerr:
   fullnameOverride: jellyseerr
-  nodeSelector:
-    feature.node.ceph: "true"
   securityContext:
     runAsUser: 65532
     runAsGroup: 65532

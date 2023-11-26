@@ -76,8 +76,6 @@ spec:
                         name: data
             dnsPolicy: ClusterFirst
             enableServiceLinks: true
-            nodeSelector:
-                feature.node.ceph: "true"
             restartPolicy: Always
             schedulerName: default-scheduler
             securityContext: {}

@@ -1,8 +1,6 @@
 vaultwarden:
   global:
     fullnameOverride: vaultwarden
-  nodeSelector:
-    feature.node.ceph: "true"
   controller:
     type: statefulset
     podManagementPolicy: Parallel

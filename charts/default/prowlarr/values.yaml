@@ -4,8 +4,6 @@ prowlarr:
   controller:
     type: statefulset
     podManagementPolicy: Parallel
-  nodeSelector:
-    feature.node.ceph: "true"
   securityContext:
     allowPrivilegeEscalation: false
     capabilities:
@@ -35,5 +33,5 @@ prowlarr:
     limits:
       memory: 1G
     requests:
-      cpu: 200m
+      cpu: 100m
       memory: 400Mi

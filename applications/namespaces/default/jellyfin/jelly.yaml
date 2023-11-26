@@ -91,6 +91,8 @@ spec:
             schedulerName: default-scheduler
             securityContext:
                 fsGroup: 997
+                supplementalGroups:
+                  - 105
                 fsGroupChangePolicy: OnRootMismatch
                 seccompProfile:
                   type: RuntimeDefault

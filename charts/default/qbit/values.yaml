@@ -66,7 +66,7 @@ qbittorrent:
     config:
       enabled: true
       mountPath: /config
-      existingClaim: qbit-config
+      existingClaim: qbit-config-zfs
       type: pvc
       retain: true
     media:

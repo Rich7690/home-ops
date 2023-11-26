@@ -26,7 +26,7 @@ prowlarr:
     config:
       enabled: true
       mountPath: /config
-      existingClaim: prowlarr-config
+      existingClaim: prowlarr-config-zfs
       type: pvc
       retain: true
   resources:

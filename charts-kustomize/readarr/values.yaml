@@ -29,7 +29,7 @@ persistence:
     enabled: true
     mountPath: /config
     type: pvc
-    retain: true
+    existingClaim: readarr-config-zfs
 resources:
   limits:
     memory: 1G

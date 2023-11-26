@@ -30,6 +30,11 @@ ingress-nginx:
       X-Frame-Options: SAMEORIGIN
     electionID: ingress-controller-leader
     kind: Deployment
+    updateStrategy:
+      rollingUpdate:
+        maxSurge: 100%
+        maxUnavailable: 0
+      type: RollingUpdate
     minReadySeconds: 10
     nodeSelector:
       kubernetes.io/hostname: worker-one

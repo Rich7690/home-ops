@@ -37,6 +37,11 @@ ingress-nginx:
       controllerValue: k8s.io/ingress-nginx-external
       name: nginx-external
     kind: Deployment
+    updateStrategy:
+      rollingUpdate:
+        maxSurge: 100%
+        maxUnavailable: 0
+      type: RollingUpdate
     minReadySeconds: 10
     nodeSelector:
       kubernetes.io/hostname: worker-one

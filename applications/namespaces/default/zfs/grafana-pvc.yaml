@@ -1,10 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: redis-zfs
+  name: grafana-config-zfs
   namespace: default
   # annotations:
-  #   reclaimspace.csiaddons.openshift.io/schedule: "5 0 * * 6"
+  #   reclaimspace.csiaddons.openshift.io/schedule: "15 0 * * 6"
+  #   backup_schedule: "1 10 * * 6"
+  #   home.backup.io: "true"
 spec:
   storageClassName: openebs-zfspv
   resources:

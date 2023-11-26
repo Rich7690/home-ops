@@ -1405,10 +1405,9 @@ spec:
           protocol: TCP
         resources:
           limits:
-            cpu: 500m
             memory: 128Mi
           requests:
-            cpu: 10m
+            cpu: 1m
             memory: 64Mi
       securityContext:
         runAsNonRoot: true

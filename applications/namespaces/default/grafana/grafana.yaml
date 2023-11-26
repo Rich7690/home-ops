@@ -68,7 +68,7 @@ spec:
             volumes:
                 - name: config
                   persistentVolumeClaim:
-                    claimName: grafana-config
+                    claimName: grafana-config-zfs
 ---
 apiVersion: v1
 kind: Service

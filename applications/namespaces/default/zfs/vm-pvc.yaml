@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: vm-config
+  name: vm-config-zfs
   namespace: default
-  annotations:
-    reclaimspace.csiaddons.openshift.io/schedule: "2 0 * * 6"
+  # annotations:
+  #   reclaimspace.csiaddons.openshift.io/schedule: "2 0 * * 6"
 spec:
-  storageClassName: rook-ceph-block
+  storageClassName: openebs-zfspv
   resources:
     requests:
       storage: 20Gi

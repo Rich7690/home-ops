@@ -40,19 +40,19 @@ paperless:
   persistence:
     consume:
       enabled: true
-      existingClaim: paperless-consume
+      existingClaim: paperless-consume-zfs
       type: pvc
       retain: true
       accessMode: ReadWriteMany
     data:
       enabled: true
-      existingClaim: paperless-data
+      existingClaim: paperless-data-zfs
       type: pvc
       retain: false
       accessMode: ReadWriteOnce
     media:
       enabled: true
-      existingClaim: paperless-media
+      existingClaim: paperless-media-zfs
       type: pvc
       retain: false
       accessMode: ReadWriteOnce

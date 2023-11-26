@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: prowlarr-config-zfs
+  namespace: default
+  # annotations:
+  #   reclaimspace.csiaddons.openshift.io/schedule: "9 0 * * 6"
+  #   backup_schedule: "1 4 * * 6"
+  #   home.backup.io: "true"
+spec:
+  storageClassName: openebs-zfspv
+  resources:
+    requests:
+      storage: 5Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce

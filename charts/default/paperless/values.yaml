@@ -43,7 +43,7 @@ paperless:
       existingClaim: paperless-consume-zfs
       type: pvc
       retain: true
-      accessMode: ReadWriteMany
+      accessMode: ReadWriteOnce
     data:
       enabled: true
       existingClaim: paperless-data-zfs

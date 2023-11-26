@@ -26,12 +26,12 @@ overseerr:
     config:
       enabled: true
       mountPath: /app/config
-      existingClaim: js-config
+      existingClaim: js-config-zfs
       type: pvc
       retain: true
   resources:
     limits:
       memory: 500Mi
     requests:
-      cpu: 300m
+      cpu: 100m
       memory: 250Mi

@@ -1,1 +1,7 @@
 bypassDnsResolution: 'true'
+replicas: 1
+image:
+  repository: ghcr.io/postfinance/kubelet-csr-approver
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v1.0.5@sha256:bafbb479878906bfb69d635144027b90d42e58fb52d12b0663f77a58dd4fe416"

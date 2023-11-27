@@ -11,10 +11,13 @@ spec:
   ingress:
     - fromEntities:
         - all
-  egressDeny:
-    - toCIDR:
-        - "192.168.0.0/16"
   egress:
+    - toCIDR:
+        - 192.168.5.219/32
+      toPorts:
+        - ports:
+            - port: '443'
+              protocol: TCP
     - toEntities:
         - kube-apiserver
     - toEndpoints:

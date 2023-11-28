@@ -11,7 +11,7 @@ spec:
     maxCount: 4
   schedule: "@weekly"
   snapshotTemplate:
-    snapshotClassName: csi-rbdplugin-snapclass  # optional
+    snapshotClassName: zfspv-snapclass  # optional
 ---
 apiVersion: snapscheduler.backube/v1
 kind: SnapshotSchedule
@@ -26,7 +26,7 @@ spec:
     maxCount: 4
   schedule: "@weekly"
   snapshotTemplate:
-    snapshotClassName: csi-rbdplugin-snapclass  # optional
+    snapshotClassName: zfspv-snapclass  # optional
 ---
 apiVersion: snapscheduler.backube/v1
 kind: SnapshotSchedule
@@ -41,4 +41,4 @@ spec:
     maxCount: 4
   schedule: "@weekly"
   snapshotTemplate:
-    snapshotClassName: csi-cephfsplugin-snapclass  # optional
+    snapshotClassName: zfspv-snapclass  # optional

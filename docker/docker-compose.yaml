@@ -1,7 +1,7 @@
 version: '3'
 services:
   swag:
-    image: ghcr.io/linuxserver/swag:2.7.4@sha256:6ad70db64de9a13f078188014e638c1399188f0ea0f0b2f46f5d12212ea8647e
+    image: ghcr.io/linuxserver/swag:2.7.4@sha256:c88e4a82ba5813f1efd85266126bfaa69e6568134d28864e2ac0dd043334c063
     container_name: swag
     cap_add:
       - NET_ADMIN

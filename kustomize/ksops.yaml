@@ -17,4 +17,3 @@ files:
   - ./secrets/njalla.enc.yaml
   - ./secrets/vpn.enc.yaml
   - ./secrets/paperless.enc.yaml
-  - ./secrets/backup-generator.enc.yaml

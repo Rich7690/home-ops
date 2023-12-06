@@ -13,7 +13,7 @@ spec:
         - all
   egress:
     - toCIDR:
-        - 192.168.5.219/32
+        - 192.168.5.220/32
       toPorts:
         - ports:
             - port: '443'

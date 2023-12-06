@@ -5,7 +5,7 @@ metadata:
   namespace: default
 subsets:
   - addresses:
-     - ip: 192.168.5.219
+     - ip: 192.168.5.220
     ports:
       - name: https
         protocol: TCP

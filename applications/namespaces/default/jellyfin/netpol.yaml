@@ -24,6 +24,7 @@ spec:
     - toFQDNs:
         - matchPattern: "*.jellyfin.org"
         - matchName: "jellyfin.org"
+        - matchName: "sfo1.mirror.jellyfin.org"
         - matchPattern: "*.opensubtitles.org"
         - matchName: "opensubtitles.org"
         - matchName: "api.trakt.tv"

@@ -11,7 +11,7 @@ kustomize/**/*.sops*
 pod.yaml
 pod2.yaml
 # temporary exclude until I decide how to handle this
-kustomize/ingress/*.yaml
+kustomize/ingress/**/*.yaml
 oracle-cluster/secrets/*
 preflight.yaml
 .gitleaks.toml

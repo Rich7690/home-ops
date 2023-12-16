@@ -20,3 +20,10 @@ spec:
               - matchPattern: "*"
     - toEntities:
         - all
+  ingress:
+    - fromEntities:
+        - cluster
+        - ingress
+        - health
+    - fromCIDR:
+        - "192.168.0.0/16"

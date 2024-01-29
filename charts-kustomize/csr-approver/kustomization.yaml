@@ -9,5 +9,5 @@ helmCharts:
     namespace: default
     includeCRDs: true
     releaseName: csr-approver
-    version: 1.0.6
+    version: 1.0.7
     valuesFile: values.yaml

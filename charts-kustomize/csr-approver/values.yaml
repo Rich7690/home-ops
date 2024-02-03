@@ -4,4 +4,4 @@ image:
   repository: ghcr.io/postfinance/kubelet-csr-approver
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v1.0.6@sha256:a7c3932ea4f17bba250fdca878b0530def7d9f7f3f88fa2cf53e8289024dc3ba"
+  tag: "v1.0.7@sha256:aedebb4b059da9528049dda7311d861c25cc8dac634f4f8c9561ffb9145c17c4"

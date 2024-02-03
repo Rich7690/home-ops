@@ -6,7 +6,7 @@ vaultwarden:
     podManagementPolicy: Parallel
   image:
     repository: ghcr.io/dani-garcia/vaultwarden
-    tag: 1.30.1-alpine@sha256:f68ffb194610ddbe5b8e01cdff9a0da2093d70f82e837e1bdc62bc99b076d6ab
+    tag: 1.30.3-alpine@sha256:93ec2af8745b0cdc0d9529108e3faeace48f96e08b9f5acff4dffdaeb4b5e8b4
     pullPolicy: IfNotPresent
   envFrom:
     - secretRef:

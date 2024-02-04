@@ -14,3 +14,13 @@ zfsNode:
       # Overrides the image tag whose default is the chart appVersion.
       tag: v2.10.0@sha256:c53535af8a7f7e3164609838c4b191b42b2d81238d75c1b2a2b582ada62a9780
   encrKeysDir: "/var/home/keys"
+zfsPlugin:
+  name: "openebs-zfs-plugin"
+  image:
+    # Make sure that registry name end with a '/'.
+    # For example : registry.k8s.io/ is a correct value here and quay.io is incorrect
+    registry:
+    repository: openebs/zfs-driver
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: 2.4.0

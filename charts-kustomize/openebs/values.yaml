@@ -1,0 +1,15 @@
+analytics:
+  enabled: false
+zfsNode:
+  componentName: openebs-zfs-node
+  driverRegistrar:
+    name: "csi-node-driver-registrar"
+    image:
+      # Make sure that registry name end with a '/'.
+      # For example : registry.k8s.io/ is a correct value here and quay.io is incorrect
+      registry: registry.k8s.io/
+      repository: sig-storage/csi-node-driver-registrar
+      pullPolicy: IfNotPresent
+      # Overrides the image tag whose default is the chart appVersion.
+      tag: v2.8.0
+  encrKeysDir: "/var/home/keys"

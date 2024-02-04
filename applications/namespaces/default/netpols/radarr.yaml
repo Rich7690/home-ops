@@ -15,6 +15,7 @@ spec:
               values:
                 - ingress-nginx
                 - jellyseerr
+                - prowlarr
       toPorts:
         - ports:
             - port: "7878"

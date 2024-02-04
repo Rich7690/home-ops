@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: pialert
+spec:
+  selector:
+    matchLabels:
+      app: pialert
+  serviceName: pialert
+  replicas: 1
+  podManagementPolicy: Parallel
+  revisionHistoryLimit: 3
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: pialert
+    spec:
+      hostNetwork: true
+      containers:
+      - name: pialert
+        image: jokobsk/pi.alert:23.12.16@sha256:2ad5552b5d1faf51026b09c39851a7eedbd88d3b123c85696b04c86685a0caa0
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          allowPrivilegeEscalation: false
+          seccompProfile:
+            type: RuntimeDefault
+        env:
+          - name: TZ
+            value: America/Los_Angeles
+          - name: PORT
+            value: "20211"
+        ports:
+        - containerPort: 20211
+          name: http
+        volumeMounts:
+        - name: pialert
+          subPath: config
+          mountPath: /home/pi/pialert/config
+        - name: pialert
+          subPath: db
+          mountPath: /home/pi/pialert/db
+  volumeClaimTemplates:
+  - metadata:
+      name: pialert
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 10Gi

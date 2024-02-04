@@ -1,3 +1,4 @@
+fullnameOverride: openebs-zfs
 analytics:
   enabled: false
 zfsNode:

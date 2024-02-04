@@ -3,10 +3,10 @@ kind: Kustomization
 
 
 helmCharts:
-  - name: openebs-zfslocalpv
+  - name: zfs-localpv
     namespace: kube-system
     includeCRDs: true
-    releaseName: openebs-zfslocalpv
+    releaseName: openebs-zfs
     repo: https://openebs.github.io/zfs-localpv
     valuesFile: values.yaml
     version: 2.4.1

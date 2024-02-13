@@ -44,7 +44,7 @@ spec:
                       - configMapRef:
                             name: oauth-proxy
                             optional: false
-                  image: quay.io/oauth2-proxy/oauth2-proxy:v7.5.1@sha256:e797b3934eb8d7cb2756b67e59be2ef29c18c2b45da763f540ece66d843cec85
+                  image: quay.io/oauth2-proxy/oauth2-proxy:v7.6.0@sha256:3da33b9670c67bd782277f99acadf7026f75b9507bfba2088eb2d497266ef7fc
                   args:
                     - "--set-xauthrequest"
                   imagePullPolicy: IfNotPresent

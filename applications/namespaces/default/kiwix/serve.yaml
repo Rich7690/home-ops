@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: kiwix-serve
+spec:
+  selector:
+    matchLabels:
+      app: kiwix-serve
+  serviceName: kiwix-serve
+  replicas: 1
+  podManagementPolicy: Parallel
+  revisionHistoryLimit: 3
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: kiwix-serve
+    spec:
+      securityContext:
+        runAsUser: 998
+        runAsNonRoot: true
+        runAsGroup: 568
+        seccompProfile:
+          type: RuntimeDefault
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: media-pvc-zfs
+      containers:
+      - name: kiwix-serve
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+              - "ALL"
+        image: ghcr.io/kiwix/kiwix-serve:3.6.0
+        args:
+          - "/data/Torrents/Completed/*.zim"
+        ports:
+        - containerPort: 8080
+          name: web
+        volumeMounts:
+        - name: data
+          mountPath: /data
+          readOnly: true
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kiwix-serve
+spec:
+  selector:
+    app: kiwix-serve
+  ports:
+  - port: 80
+    targetPort: web
+    appProtocol: http
+    name: web
+    protocol: TCP

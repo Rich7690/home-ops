@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: pe-backup
+spec:
+  selector:
+    matchLabels:
+      app: pe-backup
+  serviceName: pe-backup
+  replicas: 1
+  podManagementPolicy: Parallel
+  updateStrategy:
+    type: RollingUpdate
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
+  template:
+    metadata:
+      labels:
+        app: pe-backup
+    spec:
+      volumes:
+      - name: tmp
+        emptyDir:
+          medium: Memory
+          sizeLimit: 64Mi
+      containers:
+      - name: pe-backup
+        image: ayufan/proxmox-backup-server:v3.1@sha256:a6a4bf4a18cb631db542fc3787c7e72da9105fcdefc33d72b03edeb29f90af82
+        env:
+          - name: TZ
+            value: America/Los_Angeles
+        ports:
+        - containerPort: 8007
+          name: web
+        volumeMounts:
+        - name: data
+          mountPath: /backups
+        - name: config
+          mountPath: /var/lib/proxmox-backup
+          subPath: var/lib/proxmox-backup
+        - name: config
+          mountPath: /var/log/proxmox-backup
+          subPath: var/log/proxmox-backup
+        - name: config
+          mountPath: /etc/proxmox-backup
+          subPath: etc/proxmox-backup
+        - name: tmp
+          mountPath: /run
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: openebs-zfspv
+      volumeMode: Filesystem
+      resources:
+        requests:
+          storage: 200Gi
+  - metadata:
+      name: config
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: openebs-zfspv
+      volumeMode: Filesystem
+      resources:
+        requests:
+          storage: 20Gi

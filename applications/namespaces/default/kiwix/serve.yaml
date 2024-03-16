@@ -36,7 +36,7 @@ spec:
           capabilities:
             drop:
               - "ALL"
-        image: ghcr.io/kiwix/kiwix-serve:3.6.0
+        image: ghcr.io/kiwix/kiwix-serve:3.7.0@sha256:9b92d0ada7b6e0ad4b67f4e6e81e831f64933900ddccd2f54b2808aacb459376
         args:
           - "/data/Torrents/Completed/*.zim"
         ports:

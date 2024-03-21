@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: zfs-healthy
+spec:
+  schedule: "@daily"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 1
+  timeZone: America/Los_Angeles
+  jobTemplate:
+    spec:
+      completions: 1
+      backoffLimit: 3
+      template:
+        spec:
+          containers:
+          - name: healthy
+            envFrom:
+              - secretRef:
+                  name: zfs-healthy
+                  optional: false
+            image: ghcr.io/rich7690/home-ops/zfs-utils:latest
+            imagePullPolicy: Always
+            args:
+              - "--"
+              - "zpool"
+              - "status"
+              - "-x"
+            command:
+            - "/bin/runitor"
+          restartPolicy: Never

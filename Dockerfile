@@ -1,5 +1,8 @@
-FROM debian:bookworm-slim
+FROM ubuntu:22.04
 
-RUN apt-get -y update && apt-get -y install zfsutils-linux
+RUN  apt-get install python-software-properties && \
+ apt-add-repository ppa:zfs-native/stable && \
+ apt-get update && \
+ apt-get install ubuntu-zfs libzfs-dev
 
 ENTRYPOINT []

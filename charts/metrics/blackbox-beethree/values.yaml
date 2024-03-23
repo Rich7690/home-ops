@@ -1,0 +1,21 @@
+prometheus-blackbox-exporter:
+  nodeSelector:
+    kubernetes.io/hostname: beethree
+  image:
+    repository: prometheus/blackbox-exporter
+    tag: v0.24.0@sha256:3af31f8bd1ad2907b4b0f7c485fde3de0a8ee0b498d42fc971f0698885c03acb
+    pullPolicy: IfNotPresent
+  persistentVolume:
+    enabled: false
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+  securityContext:
+    runAsUser: 65532
+    runAsGroup: 65532
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop: ["ALL"]

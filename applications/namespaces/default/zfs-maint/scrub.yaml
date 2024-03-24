@@ -12,10 +12,10 @@ spec:
     spec:
       completions: 1
       backoffLimit: 3
-      nodeSelector:
-        kubernetes.io/hostname: worker-one
       template:
         spec:
+          nodeSelector:
+            kubernetes.io/hostname: worker-one
           volumes:
             - name: zfs
               hostPath:

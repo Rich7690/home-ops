@@ -18,7 +18,7 @@ env:
   TZ: America/Los_Angeles
 image:
   repository: ghcr.io/onedr0p/readarr-develop
-  tag: 0.3.21.2475@sha256:1b661283a46224b4c2266f554c7864f451d7e637336497a0f8503ad869db5e99
+  tag: 0.3.22.2499@sha256:53ad18bde065cb73508e67a9e59f3b9361f2aa8f48a42e5f44d14e7fe6d5ee41
 persistence:
   media:
     enabled: true

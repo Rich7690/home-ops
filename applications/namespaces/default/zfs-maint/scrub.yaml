@@ -27,7 +27,7 @@ spec:
               - secretRef:
                   name: zfs-scrub
                   optional: false
-            image: ghcr.io/rich7690/home-ops/zfs-utils:latest@sha256:da0a78a5ad14b043508cf951958dc695a7d4e5061d67578cb301d1a295dfe38a
+            image: ghcr.io/rich7690/home-ops/zfs-utils:latest@sha256:7054c6159453ea316551164a7202fff346f41c497d970a51daaf832ae9e90e6e
             imagePullPolicy: Always
             securityContext:
               privileged: true

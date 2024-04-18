@@ -6,7 +6,8 @@ prometheus-blackbox-exporter:
       effect: NoSchedule
       operator: Exists
   image:
-    repository: quay.io/prometheus/blackbox-exporter
+    registry: quay.io
+    repository: prometheus/blackbox-exporter
     tag: v0.25.0@sha256:b04a9fef4fa086a02fc7fcd8dcdbc4b7b35cc30cdee860fdc6a19dd8b208d63e
     pullPolicy: IfNotPresent
   persistentVolume:

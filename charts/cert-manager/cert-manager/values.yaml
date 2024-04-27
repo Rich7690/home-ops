@@ -8,6 +8,6 @@ cert-manager:
 
     # Override the image tag to deploy by setting this variable.
     # If no value is set, the chart's appVersion will be used.
-    tag: v1.14.4@sha256:5cffa969fd30ce6a760994d30e7cccb3626abc8015d813de52f8cfa9ff862de9
+    tag: v1.14.5@sha256:9c0527cab629b61bd60c20f0c25615a8593314d3504add968b42bc5b891b253a
 
     pullPolicy: IfNotPresent

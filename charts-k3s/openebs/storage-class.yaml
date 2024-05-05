@@ -1,0 +1,14 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: openebs-zfspv
+parameters:
+  dedup: "off"
+  fstype: "zfs"
+  poolname: "cache"
+  shared: "yes"
+  compression: "on"
+provisioner: zfs.csi.openebs.io
+allowVolumeExpansion: true
+reclaimPolicy: Delete
+volumeBindingMode: Immediate

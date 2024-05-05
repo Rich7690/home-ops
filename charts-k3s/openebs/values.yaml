@@ -1,0 +1,26 @@
+fullnameOverride: openebs-zfs
+analytics:
+  enabled: false
+zfsNode:
+  componentName: openebs-zfs-node
+  driverRegistrar:
+    name: "csi-node-driver-registrar"
+    image:
+      # Make sure that registry name end with a '/'.
+      # For example : registry.k8s.io/ is a correct value here and quay.io is incorrect
+      registry: registry.k8s.io/
+      repository: sig-storage/csi-node-driver-registrar
+      pullPolicy: IfNotPresent
+      # Overrides the image tag whose default is the chart appVersion.
+      tag: v2.10.1@sha256:f25af73ee708ff9c82595ae99493cdef9295bd96953366cddf36305f82555dac
+  encrKeysDir: "/var/home/keys"
+zfsPlugin:
+  name: "openebs-zfs-plugin"
+  image:
+    # Make sure that registry name end with a '/'.
+    # For example : registry.k8s.io/ is a correct value here and quay.io is incorrect
+    registry:
+    repository: openebs/zfs-driver
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: 2.5.0@sha256:9c59846c441c15e34092c099938c7631371b9c85e90cf6f331fb5529ae2be30a

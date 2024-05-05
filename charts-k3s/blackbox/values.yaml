@@ -1,10 +1,4 @@
 prometheus-blackbox-exporter:
-  nodeSelector:
-    kubernetes.io/hostname: beethree
-  tolerations:
-    - key: beethree
-      effect: NoSchedule
-      operator: Exists
   image:
     registry: quay.io
     repository: prometheus/blackbox-exporter

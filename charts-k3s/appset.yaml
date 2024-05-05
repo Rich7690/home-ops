@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: charts-kustomize
+  namespace: argocd
+spec:
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  generators:
+  - git:
+      repoURL: https://github.com/Rich7690/home-ops.git
+      revision: HEAD
+      directories:
+      - path: charts-k3s/*
+  template:
+    metadata:
+      name: '{{path.basename}}'
+      namespace: argocd
+      annotations:
+        # resolves to the directory
+        argocd.argoproj.io/manifest-generate-paths: .
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      project: remote-apps
+      source:
+        repoURL: https://github.com/Rich7690/home-ops.git
+        targetRevision: HEAD
+        path: '{{path}}'
+        kustomize:
+          commonAnnotations:
+            env: prod
+      destination:
+        server: https://172.23.1.186:6443
+        #namespace: '{{path[1]}}' Namespace provided by kustomize

@@ -16,9 +16,6 @@ spec:
     metadata:
       name: '{{path.basename}}-k3s'
       namespace: argocd
-      annotations:
-        # resolves to the directory
-        argocd.argoproj.io/manifest-generate-paths: .
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:

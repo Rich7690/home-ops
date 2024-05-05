@@ -14,7 +14,7 @@ spec:
       - path: charts-k3s/*
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: '{{path.basename}}-k3s'
       namespace: argocd
       annotations:
         # resolves to the directory

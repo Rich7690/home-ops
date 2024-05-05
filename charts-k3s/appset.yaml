@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: charts-kustomize
+  name: charts-k3s-kustomize
   namespace: argocd
 spec:
   syncPolicy:

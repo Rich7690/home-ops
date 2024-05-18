@@ -36,7 +36,7 @@ spec:
                         value: /config
                       - name: JELLYFIN_DATA_DIR
                         value: /config/data
-                  image: jellyfin/jellyfin:10.9.0@sha256:e2f9179a8e55f131a134ea100b0191b7c938558d4803295d22281151383ea7c7
+                  image: jellyfin/jellyfin:10.9.2@sha256:21e49baac0a05efd4822269e3d8ba2f693e741006a2f81aa397cf5f8445e48a9
                   imagePullPolicy: IfNotPresent
                   livenessProbe:
                       failureThreshold: 3

@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: media
+spec:
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 16Ti
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: generic
+  local:
+    path: /dev/disk/by-id/usb-WD_Elements_25A3_32474B5934334455-0:0-part1
+    fsType: xfs
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - proxmox-four
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: media
+spec:
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 16Ti
+  storageClassName: generic
+  volumeName: media
+  accessModes:
+    - ReadWriteOnce

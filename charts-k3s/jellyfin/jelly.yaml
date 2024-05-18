@@ -1,0 +1,122 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+    labels:
+        app: jelly
+    name: jelly
+    namespace: default
+spec:
+    serviceName: jelly
+    replicas: 1
+    revisionHistoryLimit: 3
+    podManagementPolicy: Parallel
+    volumeClaimTemplates:
+      - metadata:
+          name: jelly-config-zfs
+        spec:
+          volumeMode: Filesystem
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 10Gi
+          storageClassName: openebs-zfspv
+    selector:
+        matchLabels:
+            app: jelly
+    template:
+        metadata:
+            labels:
+                app: jelly
+        spec:
+            automountServiceAccountToken: true
+            containers:
+                - securityContext:
+                      allowPrivilegeEscalation: false
+                      capabilities:
+                          drop:
+                              - ALL
+                      privileged: false
+                      readOnlyRootFilesystem: false
+                      runAsGroup: 997
+                      runAsNonRoot: true
+                      runAsUser: 998
+                  env:
+                      - name: JELLYFIN_CONFIG_DIR
+                        value: /config
+                      - name: JELLYFIN_DATA_DIR
+                        value: /config/data
+                  image: jellyfin/jellyfin:10.8.13@sha256:05a9734d7e83086b957c5b7a16cbb5a60b5bb8d113ffb953e57547359dd05140
+                  imagePullPolicy: IfNotPresent
+                  livenessProbe:
+                      failureThreshold: 3
+                      httpGet:
+                          path: /health
+                          port: 8096
+                          scheme: HTTP
+                      initialDelaySeconds: 15
+                      periodSeconds: 10
+                      successThreshold: 1
+                      timeoutSeconds: 2
+                  name: jelly
+                  ports:
+                      - containerPort: 8096
+                        name: http
+                        protocol: TCP
+                  readinessProbe:
+                      failureThreshold: 3
+                      httpGet:
+                          path: /health
+                          port: 8096
+                          scheme: HTTP
+                      initialDelaySeconds: 1
+                      periodSeconds: 10
+                      successThreshold: 1
+                      timeoutSeconds: 2
+                  resources:
+                      limits:
+                          gpu.intel.com/i915: "1"
+                          memory: 4Gi
+                      requests:
+                          gpu.intel.com/i915: "1"
+                          cpu: "1"
+                          memory: 2Gi
+                  terminationMessagePath: /dev/termination-log
+                  terminationMessagePolicy: File
+                  volumeMounts:
+                      - mountPath: /config
+                        mountPropagation: None
+                        name: jelly-config-zfs
+                      - mountPath: /media
+                        mountPropagation: None
+                        name: media
+            dnsPolicy: ClusterFirst
+            enableServiceLinks: true
+            restartPolicy: Always
+            schedulerName: default-scheduler
+            securityContext:
+                fsGroup: 997
+                supplementalGroups:
+                  - 105
+                fsGroupChangePolicy: OnRootMismatch
+                seccompProfile:
+                  type: RuntimeDefault
+            shareProcessNamespace: false
+            terminationGracePeriodSeconds: 30
+            tolerations:
+                - effect: NoExecute
+                  key: node.kubernetes.io/not-ready
+                  operator: Exists
+                  tolerationSeconds: 60
+                - effect: NoExecute
+                  key: node.kubernetes.io/unreachable
+                  operator: Exists
+                  tolerationSeconds: 60
+            volumes:
+                # - persistentVolumeClaim:
+                #     claimName: jelly-config-zfs
+                #   name: config
+                - name: media
+                  persistentVolumeClaim:
+                      claimName: media

@@ -32,6 +32,7 @@ spec:
             - /mnt/media/
             - 192.168.5.209:/mnt/media/
             - -W
+            - "--exclude=Torrents/Completed/*"
             volumeMounts:
             - mountPath: /mnt/media
               name: media

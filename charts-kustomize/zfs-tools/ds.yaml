@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    app: zfs-tools
+  name: zfs-tools
+  namespace: default
+spec:
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: zfs-tools
+  template:
+    metadata:
+      labels:
+        app: zfs-tools
+    spec:
+      restartPolicy: Always
+      volumes:
+        - name: zfs
+          hostPath:
+            path: /dev/zfs
+            type: ""
+      nodeSelector:
+        kubernetes.io/hostname: worker-one
+      tolerations:
+        - operator: Exists
+      terminationGracePeriodSeconds: 5
+      hostNetwork: true
+      hostPID: true
+      securityContext:
+        runAsGroup: 0
+        runAsNonRoot: false
+        runAsUser: 0
+      containers:
+        - name: test
+          image: ghcr.io/rich7690/home-ops/zfs-utils:latest@sha256:7054c6159453ea316551164a7202fff346f41c497d970a51daaf832ae9e90e6e
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /dev/zfs
+              name: zfs
+          securityContext:
+            privileged: true
+          command:
+            - "bash"
+            - "-c"
+            - "tail -f /dev/null"
+  updateStrategy:
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 0
+    type: RollingUpdate

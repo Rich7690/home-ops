@@ -28,11 +28,12 @@ spec:
         - matchPattern: "*.opensubtitles.org"
         - matchName: "opensubtitles.org"
         - matchName: "api.trakt.tv"
-        - matchName: "api.thetvdb.com"
+        - matchPattern: "*.thetvdb.com"
         - matchName: "api.themoviedb.org"
         - matchName: "image.tmdb.org"
         - matchName: "www.omdbapi.com"
         - matchName: "www.thetvdb.com"
+        - matchName: "raw.github.com"
     - toEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system

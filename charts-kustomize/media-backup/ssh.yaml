@@ -29,16 +29,9 @@ spec:
               runAsUser: 0
               privileged: true
             command:
-            - rsync
-            args:
-            - -ahv
-            - --info=progress2
-            - "-e 'ssh -i /mnt/rclone/backup_key -l ubuntu -p 2222 -o StrictHostKeyChecking=no'"
-            - --progress
-            - /mnt/media/
-            - 192.168.5.209:/mnt/media/
-            - -W
-            - "--exclude=Torrents/Completed/*"
+            - "bash"
+            - "-c"
+            - "rsync -ahv --info=progress2 -e 'ssh -i /mnt/rclone/backup_key -l ubuntu -p 2222 -o StrictHostKeyChecking=no' --progress /mnt/media/ 192.168.5.209:/mnt/media/ -W --exclude=Torrents/Completed/*"
             volumeMounts:
             - mountPath: /mnt/media
               name: media

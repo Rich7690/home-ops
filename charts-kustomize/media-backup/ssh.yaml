@@ -1,0 +1,40 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: sync-media
+spec:
+  schedule: "@daily"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 1
+  timeZone: America/Los_Angeles
+  jobTemplate:
+    spec:
+      backoffLimit: 3
+      template:
+        spec:
+          volumes:
+            - name: media
+              persistentVolumeClaim:
+                claimName: media-pvc-zfs
+            - name: rclone
+              persistentVolumeClaim:
+                claimName: rclone-conf
+          containers:
+          - name: main
+            image: ghcr.io/rich7690/home-ops/zfs-utils:latest
+            command:
+            - rsync
+            - -ahv
+            - --info=progress2
+            - -e 'ssh -i /mnt/rclone/backup_key -l ubuntu -p 2222 -o StrictHostKeyChecking=no'
+            - --progress
+            - /mnt/media/
+            - 192.168.5.209:/mnt/media/
+            - -W
+            volumeMounts:
+            - mountPath: /mnt/media
+              name: media
+            - mountPath: /mnt/rclone
+              name: rclone
+          restartPolicy: OnFailure

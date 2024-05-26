@@ -1,0 +1,126 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ssh-server
+spec:
+  minReadySeconds: 5
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: ssh-server
+  template:
+    metadata:
+      labels:
+        app: ssh-server
+    spec:
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - name: media
+          persistentVolumeClaim:
+            claimName: media
+        - name: config
+          persistentVolumeClaim:
+            claimName: ssh-server-config
+      containers:
+        - name: test
+          image: lscr.io/linuxserver/openssh-server:9.6_p1-r0-ls156@sha256:bd738dd7a7012fe38f2f6829a8511cd980c05f1ed511390e38b14c3164518445
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 2222
+              name: ssh
+          env:
+            - name: TZ
+              value: "America/Los_Angeles"
+            - name: PUID
+              value: "998"
+            - name: PGID
+              value: "997"
+            - name: PASSWORD_ACCESS
+              value: "false"
+            - name: SUDO_ACCESS
+              value: "false"
+            - name: PUBLIC_KEY
+              value: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE7G3jAQnVyvWw2DlUiwDN4kUIUv/xVBauhZVPYCQapN ubuntu@ubuntu-dev"
+            - name: DOCKER_MODS
+              value: "linuxserver/mods:openssh-server-rsync"
+            - name: USER_NAME
+              value: "ubuntu"
+          volumeMounts:
+            - mountPath: /mnt/media
+              name: media
+            - mountPath: /config
+              name: config
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ssh-server-config
+  namespace: default
+spec:
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: openebs-zfspv
+  accessModes:
+    - ReadWriteOnce
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: media
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 16Ti
+  local:
+    fsType: xfs
+    path: /dev/disk/by-id/usb-WD_Elements_25A3_32474B5934334455-0:0-part1
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - proxmox-four
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: generic
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: media
+  namespace: default
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 16Ti
+  storageClassName: generic
+  volumeMode: Filesystem
+  volumeName: media
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ssh-server
+  labels:
+    app: ssh-server
+spec:
+  sessionAffinity: ClientIP
+  type: LoadBalancer
+  selector:
+    app: ssh-server
+  ports:
+  - port: 2222
+    targetPort: 2222
+    name: ssh

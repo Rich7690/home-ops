@@ -11,6 +11,7 @@ spec:
   jobTemplate:
     spec:
       backoffLimit: 3
+      ttlSecondsAfterFinished: 0
       template:
         spec:
           volumes:
@@ -25,9 +26,10 @@ spec:
             image: ghcr.io/rich7690/home-ops/zfs-utils:latest
             command:
             - rsync
+            args:
             - -ahv
             - --info=progress2
-            - -e 'ssh -i /mnt/rclone/backup_key -l ubuntu -p 2222 -o StrictHostKeyChecking=no'
+            - "-e 'ssh -i /mnt/rclone/backup_key -l ubuntu -p 2222 -o StrictHostKeyChecking=no'"
             - --progress
             - /mnt/media/
             - 192.168.5.209:/mnt/media/

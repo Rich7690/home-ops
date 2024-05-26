@@ -71,45 +71,6 @@ spec:
     - ReadWriteOnce
 ---
 apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: media
-spec:
-  accessModes:
-  - ReadWriteOnce
-  capacity:
-    storage: 16Ti
-  local:
-    fsType: xfs
-    path: /dev/disk/by-id/usb-WD_Elements_25A3_32474B5934334455-0:0-part1
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/hostname
-          operator: In
-          values:
-          - proxmox-four
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: generic
-  volumeMode: Filesystem
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: media
-  namespace: default
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 16Ti
-  storageClassName: generic
-  volumeMode: Filesystem
-  volumeName: media
----
-apiVersion: v1
 kind: Service
 metadata:
   name: ssh-server

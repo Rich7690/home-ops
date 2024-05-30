@@ -22,7 +22,7 @@ spec:
                 claimName: rclone-conf
           containers:
           - name: main
-            image: ghcr.io/rich7690/home-ops/zfs-utils:latest
+            image: ghcr.io/rich7690/home-ops/zfs-utils:latest@sha256:a244d9a40cca314f39915305f6afb8448516db507c465723cf94cd4b409c1547
             securityContext: # TODO: fix root
               runAsGroup: 0
               runAsNonRoot: false

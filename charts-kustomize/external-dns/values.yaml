@@ -6,7 +6,7 @@ image:
   # -- Image repository for the `external-dns` container.
   repository: registry.k8s.io/external-dns/external-dns
   # -- (string) Image tag for the `external-dns` container, this will default to `.Chart.AppVersion` if not set.
-  tag: v0.14.2
+  tag: v0.14.2@sha256:3fcad62c4a9a8a72cb2db5ce7adeb121be66cac5f7f5ddad43684c2b20c72aa5
   # -- Image pull policy for the `external-dns` container.
   pullPolicy: IfNotPresent
 provider:
@@ -14,7 +14,7 @@ provider:
   webhook:
     image:
       repository: ghcr.io/muhlba91/external-dns-provider-adguard
-      tag: v5.0.1
+      tag: v5.0.1@sha256:d9539a976405f1faa4d27c5c11da2154cd3a65b3cdb7c174668ea4e8845e2755
       pullPolicy: IfNotPresent
     livenessProbe:
       httpGet:

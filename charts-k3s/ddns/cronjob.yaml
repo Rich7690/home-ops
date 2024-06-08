@@ -1,0 +1,44 @@
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: ddns
+  namespace: default
+  labels:
+    app: ddns
+spec:
+  schedule: "@hourly"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 3
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+          - name: ddns
+            image: ubuntu:24.04
+            imagePullPolicy: IfNotPresent
+            command: ["/bin/bash", "-c"]
+            args: ["curl -i $PREFIX?h=$DOMAIN&k=$KEY&a=$HOST_IP"]
+            env:
+            - name: PREFIX
+              valueFrom:
+                secretKeyRef:
+                  name: ddns-config
+                  key: prefix
+            - name: DOMAIN
+              valueFrom:
+                secretKeyRef:
+                  name: ddns-config
+                  key: domain
+            - name: KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ddns-config
+                  key: key
+            - name: HOST_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP

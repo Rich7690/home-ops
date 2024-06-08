@@ -18,7 +18,7 @@ spec:
           restartPolicy: Never
           containers:
           - name: ddns
-            image: curlimages/curl:8.8.0
+            image: curlimages/curl:8.8.0@sha256:73e4d532ea62d7505c5865b517d3704966ffe916609bedc22af6833dc9969bcd
             imagePullPolicy: IfNotPresent
             command: ["/bin/ash", "-xec"]
             args: ['curl -i "$PREFIX?h=$DOMAIN&k=$KEY&a=$HOST_IP"']

@@ -18,10 +18,10 @@ spec:
           restartPolicy: Never
           containers:
           - name: ddns
-            image: ubuntu:24.04
+            image: curlimages/curl:8.8.0
             imagePullPolicy: IfNotPresent
-            command: ["/bin/bash", "-c"]
-            args: ["curl -i $PREFIX?h=$DOMAIN&k=$KEY&a=$HOST_IP"]
+            command: ["/bin/ash", "-xec"]
+            args: ['curl -i "$PREFIX?h=$DOMAIN&k=$KEY&a=$HOST_IP"']
             env:
             - name: PREFIX
               valueFrom:

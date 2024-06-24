@@ -91,6 +91,8 @@ spec:
                       - mountPath: /media
                         mountPropagation: None
                         name: media
+                      - mountPath: /dev/dri/renderD128
+                        name: render-device
             dnsPolicy: ClusterFirst
             enableServiceLinks: true
             restartPolicy: Always
@@ -98,7 +100,7 @@ spec:
             securityContext:
                 fsGroup: 997
                 supplementalGroups:
-                  - 105
+                  - 104
                 fsGroupChangePolicy: OnRootMismatch
                 seccompProfile:
                   type: RuntimeDefault
@@ -115,8 +117,11 @@ spec:
                   tolerationSeconds: 60
             volumes:
                 # - persistentVolumeClaim:
-                #     claimName: jelly-config-zfs
+                #      claimName: jelly-config-zfs-jelly-0
                 #   name: config
                 - name: media
                   persistentVolumeClaim:
                       claimName: media
+                - name: "render-device"
+                  hostPath:
+                    path: /dev/dri/renderD128

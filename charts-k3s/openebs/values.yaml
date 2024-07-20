@@ -12,7 +12,7 @@ zfsNode:
       repository: sig-storage/csi-node-driver-registrar
       pullPolicy: IfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
-      tag: v2.10.1@sha256:f25af73ee708ff9c82595ae99493cdef9295bd96953366cddf36305f82555dac
+      tag: v2.11.1@sha256:e01facb9fb9cffaf52d0053bdb979fbd8c505c8e411939a6e026dd061a6b4fbe
   encrKeysDir: "/var/home/keys"
 zfsPlugin:
   name: "openebs-zfs-plugin"

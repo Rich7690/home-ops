@@ -28,5 +28,5 @@ spec:
           commonAnnotations:
             env: prod
       destination:
-        server: https://172.23.1.186:6443
+        server: https://10.0.0.3:6443
         #namespace: '{{path[1]}}' Namespace provided by kustomize

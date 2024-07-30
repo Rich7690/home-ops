@@ -91,8 +91,6 @@ spec:
                       - mountPath: /media
                         mountPropagation: None
                         name: media
-                      - mountPath: /dev/dri/renderD128
-                        name: render-device
             dnsPolicy: ClusterFirst
             enableServiceLinks: true
             restartPolicy: Always
@@ -122,6 +120,3 @@ spec:
                 - name: media
                   persistentVolumeClaim:
                       claimName: media
-                - name: "render-device"
-                  hostPath:
-                    path: /dev/dri/renderD128

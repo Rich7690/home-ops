@@ -31,7 +31,7 @@ spec:
             command:
             - "bash"
             - "-c"
-            - "rsync -ahv --info=progress2 -e 'ssh -i /mnt/rclone/backup_key -l ubuntu -p 2222 -o StrictHostKeyChecking=no' --progress /mnt/media/ 10.0.0.3:/mnt/media/ -W --exclude=Torrents/Completed/*"
+            - "rsync -ahv --info=progress2 -e 'ssh -i /mnt/rclone/backup_key -l ubuntu -p 2222 -o StrictHostKeyChecking=no' --progress /mnt/media/ 10.0.0.3:/mnt/media/ -W --delete --exclude=Torrents/Completed/* --exclude=Kids-TV/*"
             volumeMounts:
             - mountPath: /mnt/media
               name: media

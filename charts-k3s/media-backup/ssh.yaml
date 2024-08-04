@@ -28,7 +28,7 @@ spec:
             claimName: ssh-server-config
       containers:
         - name: test
-          image: lscr.io/linuxserver/openssh-server:9.6_p1-r0-ls156@sha256:bd738dd7a7012fe38f2f6829a8511cd980c05f1ed511390e38b14c3164518445
+          image: lscr.io/linuxserver/openssh-server:9.7_p1-r4-ls165@sha256:451b9fa4acee8ec9d7b4620aa91dc8e6a827923fc7b7be16517f35994b2b69c6
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 2222

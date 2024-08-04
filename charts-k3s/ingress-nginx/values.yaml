@@ -1,51 +1,49 @@
-ingress-nginx:
-  fullnameOverride: ingress-nginx
-  controller:
-    extraArgs:
-      enable-ssl-passthrough: "true"
-    podAnnotations:
-      prometheus.io/scrape: "true"
-      prometheus.io/port: "10254"
-    image:
-      repository: registry.k8s.io/ingress-nginx/controller
-      tag: v1.11.1
-      digest: null
-      runAsUser: "101"
-    containerSecurityContext:
-      allowPrivilegeEscalation: false
-      capabilities:
-        add:
-          - NET_BIND_SERVICE
-        drop:
-          - ALL
-      runAsUser: 101
-    podSecurityContext:
-      runAsNonRoot: true
-      runAsUser: 101
-      runAsGroup: 65532
-      fsGroup: 65532
-      seccompProfile:
-        type: RuntimeDefault
-    config:
-      use-http2: "true"
-    addHeaders:
-      X-Frame-Options: SAMEORIGIN
-    kind: Deployment
-    updateStrategy:
-      rollingUpdate:
-        maxSurge: 100%
-        maxUnavailable: 0
-      type: RollingUpdate
-    minReadySeconds: 10
-    metrics:
-      enabled: true
-      service:
-        annotations: {}
-    resources:
-      limits:
-        memory: 2G
-      requests:
-        cpu: 100m
-        memory: 200Mi
+controller:
+  extraArgs:
+    enable-ssl-passthrough: "true"
+  podAnnotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "10254"
+  image:
+    repository: registry.k8s.io/ingress-nginx/controller
+    tag: v1.11.1
+    digest: null
+    runAsUser: "101"
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      add:
+        - NET_BIND_SERVICE
+      drop:
+        - ALL
+    runAsUser: 101
+  podSecurityContext:
+    runAsNonRoot: true
+    runAsUser: 101
+    runAsGroup: 65532
+    fsGroup: 65532
+    seccompProfile:
+      type: RuntimeDefault
+  config:
+    use-http2: "true"
+  addHeaders:
+    X-Frame-Options: SAMEORIGIN
+  kind: Deployment
+  updateStrategy:
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 0
+    type: RollingUpdate
+  minReadySeconds: 10
+  metrics:
+    enabled: true
     service:
-      externalTrafficPolicy: Cluster
+      annotations: {}
+  resources:
+    limits:
+      memory: 2G
+    requests:
+      cpu: 100m
+      memory: 200Mi
+  service:
+    externalTrafficPolicy: Cluster

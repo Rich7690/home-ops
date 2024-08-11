@@ -91,5 +91,5 @@ securityContext:
     cleanCiliumState: [NET_ADMIN, SYS_ADMIN, SYS_RESOURCE]
 cgroup:
   autoMount:
-    enabled: "false"
+    enabled: false
   hostRoot: /sys/fs/cgroup

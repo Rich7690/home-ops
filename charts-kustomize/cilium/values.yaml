@@ -1,13 +1,13 @@
 upgradeCompatibility: "1.14"
 kubeProxyReplacementHealthzBindAddr: "0.0.0.0:10256"
 l2announcements:
-  enabled: "false"
+  enabled: false
   leaseDuration: 300s
   leaseRenewDeadline: 60s
   leaseRetryPeriod: 10s
 externalIPs:
-  enabled: "true"
-kubeProxyReplacement: "true"
+  enabled: true
+kubeProxyReplacement: true
 k8sServiceHost: "192.168.48.2"
 k8sServicePort: "6443"
 routingMode: native

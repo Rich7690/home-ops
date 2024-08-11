@@ -48,7 +48,7 @@ loadBalancer:
   mode: hybrid
   acceleration: disabled
 bpf:
-  masquerade: "true"
+  masquerade: true
   vlanBypass:
     - 10
 ipam:

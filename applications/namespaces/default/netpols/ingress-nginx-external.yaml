@@ -10,7 +10,22 @@ spec:
       app.kubernetes.io/instance: ingress-nginx-external
   ingress:
     - fromEntities:
-        - all
+        - cluster
+        - health
+        - ingress
+    - fromCIDR:
+        - 10.0.0.0/8
+        - 192.168.0.0/16
+    - toPorts:
+        - ports:
+            - port: '80'
+              protocol: TCP
+            - port: '443'
+              protocol: TCP
+            - port: '8443'
+              protocol: TCP
+            - port: '10254'
+              protocol: TCP
   egress:
     - toCIDR:
         - 192.168.5.220/32
@@ -31,15 +46,6 @@ spec:
               operator: In
               values:
                 - "jelly"
-        - matchExpressions:
-            - key: "app.kubernetes.io/name"
-              operator: In
-              values:
-                - "argocd-server"
-            - key: "k8s:io.kubernetes.pod.namespace"
-              operator: In
-              values:
-                - "argocd"
     - toServices:
         - k8sService:
             namespace: default
@@ -47,9 +53,6 @@ spec:
         - k8sService:
             namespace: default
             serviceName: jellyseerr
-        - k8sService:
-            namespace: argocd
-            serviceName: argocd-server
     - toEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system

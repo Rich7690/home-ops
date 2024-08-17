@@ -1,0 +1,20 @@
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: homebox-config-backup
+  namespace: default
+spec:
+  restic:
+    copyMethod: Snapshot
+    pruneIntervalDays: 14
+    repository: restic-config-homebox-config
+    retain:
+      daily: 0
+      hourly: 0
+      monthly: 0
+      weekly: 4
+      yearly: 0
+    volumeSnapshotClassName: zfspv-snapclass
+  sourcePVC: homebox-data-homebox-0
+  trigger:
+    schedule: 1 11 * * 6

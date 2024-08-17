@@ -24,7 +24,7 @@ spec:
     - toEntities:
        - cluster
     - toCIDRSet:
-        - cidr: 104.193.135.100/32
+        - cidr: 149.102.254.78/32
       toPorts:
         - ports:
             - port: "51820"

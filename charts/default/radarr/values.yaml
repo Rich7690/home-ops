@@ -21,7 +21,7 @@ radarr:
     TZ: America/Los_Angeles
   image:
     repository: ghcr.io/onedr0p/radarr
-    tag: 5.9.1.9070@sha256:f43d8769d48a201061b7e3d45887b4d80e0baa9a85f3f0f9ae60d0240ba39875
+    tag: 5.10.4.9218@sha256:642c996151fdc1038e4627ec61eb58d64233259bc6f45b233bbf861c8b4603e0
   persistence:
     media:
       enabled: true

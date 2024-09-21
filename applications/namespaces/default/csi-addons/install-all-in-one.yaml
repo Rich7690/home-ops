@@ -1361,7 +1361,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: quay.io/csiaddons/k8s-controller:v0.9.1@sha256:77e92e86ce530f947dfd4cd2b5c44585c3905e208d41b10996fd8582251eeacc
+        image: quay.io/csiaddons/k8s-controller:v0.10.0@sha256:83ac14ee6edfb30852c774281edc8fb25cff515ca6271dc95a3c8d16a5e28607
         livenessProbe:
           httpGet:
             path: /healthz

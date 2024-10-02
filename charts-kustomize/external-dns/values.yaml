@@ -14,7 +14,7 @@ provider:
   webhook:
     image:
       repository: ghcr.io/muhlba91/external-dns-provider-adguard
-      tag: v5.1.2@sha256:06db50d51efe12112e1cca6d0a1fc2648f2ebbb8c4b81a0ee9112a3125b7bf2a
+      tag: v7.0.1@sha256:12ba21c06ef26a53ccc9d764bbcf932661bb04ec1e481853013f7d09a1ac714a
       pullPolicy: IfNotPresent
     livenessProbe:
       httpGet:

@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: homebox
-        image: ghcr.io/sysadminsmedia/homebox:0.14.2-rootless@sha256:c398d635ed223e639d136ef13f963f995cd55dfe821831f3ff8357b933071d4a
+        image: ghcr.io/sysadminsmedia/homebox:0.15.0-rootless@sha256:cfce8a13b757fc5931d97095b026fa35a150f64c13b44a739ed6286aec984df8
         env:
           - name: TZ
             value: "America/Los_Angeles"

@@ -8,5 +8,5 @@ helmCharts:
     namespace: default
     includeCRDs: true
     releaseName: prometheus-blackbox-exporter
-    version: 9.0.1
+    version: 9.1.0
     valuesFile: values.yaml

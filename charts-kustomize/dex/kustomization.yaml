@@ -4,5 +4,4 @@ kind: Kustomization
 namespace: dex
 
 resources:
-  - "ns.yaml"
   - "dex.yaml"

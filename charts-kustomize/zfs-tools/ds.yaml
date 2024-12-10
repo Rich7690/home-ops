@@ -17,10 +17,14 @@ spec:
     spec:
       restartPolicy: Always
       volumes:
-        - name: zfs
+        - name: device-dir
           hostPath:
-            path: /dev/zfs
-            type: ""
+            path: /dev/
+            type: "Directory"
+        - name: host-root
+          hostPath:
+            path: /
+            type: "Directory"
       nodeSelector:
         kubernetes.io/hostname: worker-one
       tolerations:
@@ -37,8 +41,12 @@ spec:
           image: ghcr.io/rich7690/home-ops/zfs-utils:latest@sha256:a244d9a40cca314f39915305f6afb8448516db507c465723cf94cd4b409c1547
           imagePullPolicy: IfNotPresent
           volumeMounts:
-            - mountPath: /dev/zfs
-              name: zfs
+            - mountPath: /dev/
+              name: device-dir
+            - mountPath: /host
+              mountPropagation: HostToContainer
+              name: host-root
+              readOnly: true
           securityContext:
             privileged: true
           command:

@@ -4,6 +4,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: qbittorrent-vpn
+  namespace: default
   labels:
     app.kubernetes.io/name: qbittorrent
     app.kubernetes.io/instance: qbit
@@ -22,6 +23,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: qbittorrent
+  namespace: default
   labels:
     app.kubernetes.io/instance: qbit
     app.kubernetes.io/name: qbittorrent
@@ -41,6 +43,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: qbittorrent
+  namespace: default
   labels:
     app.kubernetes.io/instance: qbit
     app.kubernetes.io/name: qbittorrent

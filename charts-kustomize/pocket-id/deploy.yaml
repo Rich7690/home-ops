@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: pocket-id
+spec:
+  selector:
+    matchLabels:
+      app: pocket-id
+  serviceName: pocket-id
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: pocket-id
+    spec:
+      volumes:
+        - name: temp
+          emptyDir: {}
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: main
+        image: ghcr.io/stonith404/pocket-id:v0.26.0@sha256:56e63ebf2542d1899a6139b668288b7cae8cb957ee80d5dec0bf83daa4feb1b4
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+            add:
+            - NET_BIND_SERVICE
+        livenessProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+          httpGet:
+           path: /health
+           port: 80
+           scheme: HTTP
+        readinessProbe:
+          failureThreshold: 2
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+          httpGet:
+           path: /health
+           port: 80
+           scheme: HTTP
+        envFrom:
+          - secretRef:
+              name: pocket-id
+        env:
+          - name: TRUST_PROXY
+            value: "true"
+          - name: PUID
+            value: "65532"
+          - name: PGID
+            value: "65532"
+        ports:
+        - containerPort: 80
+          name: http
+        volumeMounts:
+        - name: data
+          mountPath: /app/backend/data
+        - name: temp
+          mountPath: /.config
+          subPath: .config
+        - name: temp
+          mountPath: /.local
+          subPath: .local
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: openebs-zfspv
+      volumeMode: Filesystem
+      resources:
+        requests:
+          storage: 5Gi

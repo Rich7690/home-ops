@@ -10,8 +10,6 @@ spec:
   podManagementPolicy: Parallel
   updateStrategy:
     type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 1
   replicas: 1
   template:
     metadata:

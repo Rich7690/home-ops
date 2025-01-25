@@ -26,7 +26,7 @@ spec:
           type: RuntimeDefault
       containers:
       - name: main
-        image: ghcr.io/stonith404/pocket-id:v0.26.0@sha256:56e63ebf2542d1899a6139b668288b7cae8cb957ee80d5dec0bf83daa4feb1b4
+        image: ghcr.io/stonith404/pocket-id:v0.27.1@sha256:fcb68d40da2b13d0ddd16a502a0c6add5c9d24e2599612b2c4f93d6c12fa3cbb
         imagePullPolicy: IfNotPresent
         securityContext:
           allowPrivilegeEscalation: false

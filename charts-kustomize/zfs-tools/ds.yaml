@@ -55,6 +55,5 @@ spec:
             - "tail -f /dev/null"
   updateStrategy:
     rollingUpdate:
-      maxSurge: 100%
-      maxUnavailable: 0
+      maxUnavailable: 1
     type: RollingUpdate

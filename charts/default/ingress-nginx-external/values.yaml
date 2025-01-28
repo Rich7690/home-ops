@@ -26,9 +26,6 @@ ingress-nginx:
         type: RuntimeDefault
     config:
       use-http2: "true"
-      enable-real-ip: "true" # This is safe because we are forwarding traffic ONLY from cloudflare ip ranges at the router level. If we weren't, we should set proxy-real-ip-cidr
-      server-snippet: |
-        real_ip_header CF-Connecting-IP;
     addHeaders:
       X-Frame-Options: SAMEORIGIN
     electionID: ingress-external-controller-leader
@@ -58,4 +55,4 @@ ingress-nginx:
         memory: 200Mi
     service:
       externalTrafficPolicy: Cluster
-      loadBalancerIP: 192.168.48.11
+      loadBalancerIP: 192.168.5.11

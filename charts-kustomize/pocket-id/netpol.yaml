@@ -1,23 +1,25 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: block-egress
+  name: pocket-id
   namespace: default
 spec:
   endpointSelector:
-    matchExpressions:
-      - key: app.kubernetes.io/name
-        operator: In
-        values:
-          - vaultwarden
-          - paperless
+    matchLabels:
+      app: pocket-id
   ingress:
-    - fromEntities:
-        - health
-    - fromEndpoints:
-        - matchLabels:
-            app.kubernetes.io/instance: ingress-nginx
+  - fromEndpoints:
+        - matchExpressions:
+            - key: app.kubernetes.io/instance
+              operator: In
+              values:
+                - ingress-nginx
   egress:
+    - toFQDNs:
+        - matchName: "api.github.com"
+      toPorts:
+        - ports:
+            - port: "443"
     - toEntities:
         - cluster
     - toEndpoints:

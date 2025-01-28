@@ -1,7 +1,7 @@
 ---
 apiVersion: v1
 data:
-    range-global: 192.168.48.10-192.168.48.49
+    range-global: 192.168.5.10-192.168.5.49
 kind: ConfigMap
 metadata:
     name: kubevip

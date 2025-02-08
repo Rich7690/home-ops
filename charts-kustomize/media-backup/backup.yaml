@@ -1,0 +1,97 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: sync-backups
+spec:
+  schedule: "0 4 * * *"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 1
+  timeZone: America/Los_Angeles
+  jobTemplate:
+    spec:
+      backoffLimit: 3
+      template:
+        spec:
+          restartPolicy: Never
+          volumes:
+            - name: sync-script
+              configMap:
+                name: zfs-sync-script
+                defaultMode: 0744
+            - name: device-dir
+              hostPath:
+                path: /dev/
+                type: "Directory"
+            - name: host-root
+              hostPath:
+                path: /
+                type: "Directory"
+          nodeSelector:
+            kubernetes.io/hostname: worker-one
+          tolerations:
+            - operator: Exists
+          terminationGracePeriodSeconds: 5
+          hostNetwork: true
+          hostPID: true
+          securityContext:
+            runAsGroup: 0
+            runAsNonRoot: false
+            runAsUser: 0
+          containers:
+            - name: main
+              image: ghcr.io/rich7690/home-ops/zfs-utils:latest@sha256:a244d9a40cca314f39915305f6afb8448516db507c465723cf94cd4b409c1547
+              command:
+                 - "/root/scripts/script.sh"
+              securityContext:
+                privileged: true
+              imagePullPolicy: IfNotPresent
+              volumeMounts:
+                - mountPath: /dev/
+                  name: device-dir
+                - mountPath: /host
+                  mountPropagation: HostToContainer
+                  name: host-root
+                - mountPath: /root/scripts
+                  name: sync-script
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zfs-sync-script
+data:
+  script.sh: |
+    #!/bin/bash
+    set -e -o pipefail
+    set -x
+    echo "Running zfs sync script"
+
+    targetpool="backup"
+    targetfs=storage
+
+    newdate=$(date +%Y%m%d)
+    newsnap="storage@$newdate"
+    homesnap=$(zfs list -r -t snapshot -H -o name storage | grep storage@ | tail -n1)
+
+    if [ "$newsnap" == "$homesnap" ]; then
+      echo "Found existing snapshot for today: $homesnap"
+    else
+      echo "Create snapshot $newsnap"
+      zfs snapshot -r $newsnap
+      homesnap=$(zfs list -r -t snapshot -H -o name storage | grep storage@ | tail -n1)
+    fi
+
+    # Ensure that backup pool (${targetpool}) is actually there
+    (zpool list -Ho name | grep -q ${targetpool}) || (echo 'Error: Pool ${targetpool} not found!'  && exit 1)
+
+    backupsnap=$(zfs list -r -t snapshot -H -o name ${targetpool}/${targetfs}/backup | egrep -o 'backup@.+' | tail -n1 | sed -e 's/backup/storage/g')
+
+    if [ "$homesnap" != "$backupsnap" ];  then
+      echo "zfs send --raw -RI $backupsnap $homesnap | pv | zfs recv -Fu ${targetpool}/${targetfs}/backup"
+      zfs send --raw -RI $backupsnap $homesnap | pv | zfs recv -Fu ${targetpool}/${targetfs}/backup
+
+      # Cleanup old snapshots
+      zfs list -r -t snapshot -H -o name | grep -v $newdate | xargs -n1 zfs destroy -r
+    else
+      echo "Backup ($targetpool) already contains snapshot $backupsnap"
+    fi

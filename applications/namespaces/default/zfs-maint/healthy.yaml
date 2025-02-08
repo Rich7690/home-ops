@@ -27,7 +27,7 @@ spec:
               - secretRef:
                   name: zfs-healthy
                   optional: false
-            image: ghcr.io/rich7690/home-ops/zfs-utils:latest@sha256:2167a4881ae646023dea1b1dcef6ffc34fb18f5825e0621b25bc3e6cf2525caf
+            image: ghcr.io/rich7690/home-ops/zfs-utils:latest@sha256:87c9aafe0b96d3782dc15766c7d943b1d87573ac2caaf389efc87cff12af0097
             imagePullPolicy: Always
             securityContext:
               privileged: true

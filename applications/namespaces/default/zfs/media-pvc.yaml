@@ -9,7 +9,7 @@ spec:
   storageClassName: openebs-zfspv
   resources:
     requests:
-      storage: 10Ti
+      storage: 12Ti
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce

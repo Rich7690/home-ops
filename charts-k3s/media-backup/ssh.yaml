@@ -43,7 +43,7 @@ spec:
             - name: PASSWORD_ACCESS
               value: "false"
             - name: SUDO_ACCESS
-              value: "false"
+              value: "true"
             - name: PUBLIC_KEY
               value: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE7G3jAQnVyvWw2DlUiwDN4kUIUv/xVBauhZVPYCQapN ubuntu@ubuntu-dev"
             - name: DOCKER_MODS

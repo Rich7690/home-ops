@@ -91,7 +91,8 @@ data:
       zfs send --raw -RI $backupsnap $homesnap | pv | zfs recv -Fu ${targetpool}/${targetfs}/backup
 
       # Cleanup old snapshots
-      zfs list -r -t snapshot -H -o name | grep -v $newdate | xargs -n1 zfs destroy -r
+      zfs list -t snapshot -H -o name storage | grep -v $newdate | xargs -n1 zfs destroy -r
+      zfs list -t snapshot -o name | grep "^backup/storage/backup@" |  grep -v $newdate | xargs -n1 zfs destroy -r
     else
       echo "Backup ($targetpool) already contains snapshot $backupsnap"
     fi

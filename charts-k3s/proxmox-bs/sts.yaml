@@ -56,7 +56,7 @@ spec:
       volumeMode: Filesystem
       resources:
         requests:
-          storage: 50Gi
+          storage: 100Gi
   - metadata:
       name: config
     spec:

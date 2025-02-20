@@ -20,6 +20,7 @@ spec:
                 - sonarr
                 - ingress-nginx
                 - readarr
+                - prowlarr
   egress:
     - toEntities:
        - cluster

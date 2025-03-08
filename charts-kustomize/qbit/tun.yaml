@@ -15,6 +15,7 @@ spec:
       labels:
         app.kubernetes.io/name: generic-device-plugin
     spec:
+      nodeName: worker-one
       priorityClassName: system-node-critical
       tolerations:
       - operator: "Exists"
@@ -31,6 +32,13 @@ spec:
             - count: 1000
               paths:
                 - path: /dev/net/tun
+        - --device
+        - |
+          name: zwave
+          groups:
+            - count: 3
+              paths:
+                - path: /dev/serial/by-id/usb-Zooz_800_Z-Wave_Stick_533D004242-if00
         name: generic-device-plugin
         resources:
           requests:

@@ -1,0 +1,61 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/refs/heads/main/charts/other/app-template/values.schema.json
+controllers:
+  zwave:
+    containers:
+      app:
+        image:
+          repository: ghcr.io/zwave-js/zwave-js-ui
+          tag: 9.31.0@sha256:361c8c958cf75b731cb73127a403c0750084b8e9b414244d80a1f1bef6bcf460
+        env:
+          TZ: America/Los_Angeles
+          PORT: &port 80
+        probes:
+          liveness: &probes
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /health
+                port: *port
+              initialDelaySeconds: 0
+              periodSeconds: 10
+              timeoutSeconds: 1
+              failureThreshold: 3
+          readiness: *probes
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities: { drop: ["ALL"] }
+        resources:
+          requests:
+            squat.ai/zwave: "1"
+            cpu: 10m
+          limits:
+            squat.ai/zwave: "1"
+            memory: 512Mi
+defaultPodOptions:
+  securityContext:
+    runAsNonRoot: false
+    runAsUser: 0
+    runAsGroup: 0
+    fsGroup: 0
+    fsGroupChangePolicy: OnRootMismatch
+service:
+  app:
+    controller: zwave
+    ports:
+      http:
+        port: *port
+      websocket:
+        port: 3000
+persistence:
+  config:
+    existingClaim: zwave
+    globalMounts:
+      - path: /usr/src/app/store
+  config-cache:
+    existingClaim: zwave-cache
+    globalMounts:
+      - path: /usr/src/app/store/.config-db
+  tmp:
+    type: emptyDir

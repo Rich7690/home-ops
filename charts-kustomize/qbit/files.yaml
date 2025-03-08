@@ -98,12 +98,15 @@ spec:
             - name: shared
               mountPath: /shared
           livenessProbe:
-            tcpSocket:
-              port: 8080
-            initialDelaySeconds: 0
+            exec:
+              command:
+                - /bin/bash
+                - -c
+                - "set -e -o pipefail; OUT=$(/usr/bin/curl -sf --max-time 5 https://ifconfig.co/asn); set +e; if [ \"$OUT\" = \"AS209\" ]; then echo \"Failure: $OUT\"; exit 1; fi"
+            initialDelaySeconds: 10
             failureThreshold: 3
-            timeoutSeconds: 1
-            periodSeconds: 10
+            timeoutSeconds: 10
+            periodSeconds: 60
           readinessProbe:
             tcpSocket:
               port: 8080
@@ -114,7 +117,7 @@ spec:
           startupProbe:
             tcpSocket:
               port: 8080
-            initialDelaySeconds: 0
+            initialDelaySeconds: 5
             failureThreshold: 30
             timeoutSeconds: 1
             periodSeconds: 5

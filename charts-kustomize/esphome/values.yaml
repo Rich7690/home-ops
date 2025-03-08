@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/refs/heads/main/charts/other/app-template/values.schema.json
+controllers:
+  esphome:
+    pod:
+      hostNetwork: true
+    containers:
+      app:
+        image:
+          repository: ghcr.io/esphome/esphome
+          tag: "2025.2.2"
+        env:
+          TZ: America/Los_Angeles
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities: { drop: ["ALL"] }
+        resources:
+          requests:
+            cpu: 10m
+          limits:
+            memory: 256Mi
+defaultPodOptions:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 1000
+    fsGroup: 1000
+    fsGroupChangePolicy: OnRootMismatch
+    seccompProfile:
+      type: RuntimeDefault
+service:
+  app:
+    controller: esphome
+    ports:
+      http:
+        port: 6052
+persistence:
+  config:
+    enabled: true
+    existingClaim: esphome
+    globalMounts:
+      - path: /config
+  localtime:
+    hostPath: /etc/localtime
+    hostPathType: ""
+    type: hostPath
+    globalMounts:
+      - path: /etc/localtime
+        readOnly: true

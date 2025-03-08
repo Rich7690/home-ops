@@ -16,3 +16,4 @@ oracle-cluster/secrets/*
 preflight.yaml
 .gitleaks.toml
 .env
+charts-kustomize/**/charts/

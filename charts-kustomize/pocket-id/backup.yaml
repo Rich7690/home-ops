@@ -1,0 +1,20 @@
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: pocket-id-data-backup
+  namespace: default
+spec:
+  restic:
+    copyMethod: Snapshot
+    pruneIntervalDays: 14
+    repository: restic-config-pocket-id-config
+    retain:
+      daily: 0
+      hourly: 0
+      monthly: 0
+      weekly: 4
+      yearly: 0
+    volumeSnapshotClassName: zfspv-snapclass
+  sourcePVC: data-pocket-id-0
+  trigger:
+    schedule: 2 11 * * 5

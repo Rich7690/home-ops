@@ -1,0 +1,23 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: esphome
+  namespace: default
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/instance: esphome
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/instance: ingress-nginx
+            io.kubernetes.pod.namespace: default
+        - matchLabels:
+            app.kubernetes.io/instance: home-assistant
+            io.kubernetes.pod.namespace: default
+      toPorts:
+        - ports:
+            - port: "6052"
+  egress:
+    - toEntities:
+        - all

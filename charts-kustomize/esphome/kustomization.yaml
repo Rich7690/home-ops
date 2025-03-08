@@ -11,5 +11,5 @@ helmCharts:
   - name: app-template
     repo: https://bjw-s.github.io/helm-charts
     releaseName: esphome
-    version: 3.7.1
+    version: 3.7.2
     valuesFile: values.yaml

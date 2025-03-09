@@ -1,0 +1,20 @@
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: home-assistant-data-backup
+  namespace: default
+spec:
+  restic:
+    copyMethod: Snapshot
+    pruneIntervalDays: 14
+    repository: restic-config-home-assistant-data
+    retain:
+      daily: 0
+      hourly: 0
+      monthly: 0
+      weekly: 4
+      yearly: 0
+    volumeSnapshotClassName: zfspv-snapclass
+  sourcePVC: home-assistant
+  trigger:
+    schedule: 3 11 * * 5

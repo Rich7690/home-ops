@@ -1,0 +1,25 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: mosquitto
+  namespace: default
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/instance: mosquitto
+  ingress:
+    - fromCIDR:
+        - 192.168.5.129/32
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/instance: home-assistant
+            io.kubernetes.pod.namespace: default
+        - matchLabels:
+            app.kubernetes.io/instance: ring-mqtt
+            io.kubernetes.pod.namespace: default
+      toPorts:
+        - ports:
+            - port: "1883"
+  egress:
+    - toEntities:
+        - all

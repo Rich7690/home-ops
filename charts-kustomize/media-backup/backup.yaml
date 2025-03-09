@@ -40,7 +40,7 @@ spec:
             runAsUser: 0
           containers:
             - name: main
-              image: ghcr.io/rich7690/home-ops/zfs-utils:latest@sha256:87c9aafe0b96d3782dc15766c7d943b1d87573ac2caaf389efc87cff12af0097
+              image: ghcr.io/rich7690/home-ops/zfs-utils:latest@sha256:ac46582a0a5878973e62fdc7e8669b441b34671f17009c5b411462e0146b15fe
               command:
                  - "/root/scripts/script.sh"
               securityContext:

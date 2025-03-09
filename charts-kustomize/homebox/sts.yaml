@@ -16,6 +16,9 @@ spec:
       labels:
         app: homebox
     spec:
+      volumes:
+        - name: temp
+          emptyDir: {}
       securityContext:
         runAsNonRoot: true
         runAsUser: 65532
@@ -42,6 +45,8 @@ spec:
         volumeMounts:
         - name: homebox-data
           mountPath: /data
+        - name: temp
+          mountPath: /tmp
   volumeClaimTemplates:
   - metadata:
       name: homebox-data

@@ -47,7 +47,9 @@ spec:
             - name: PUBLIC_KEY
               value: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE7G3jAQnVyvWw2DlUiwDN4kUIUv/xVBauhZVPYCQapN ubuntu@ubuntu-dev"
             - name: DOCKER_MODS
-              value: "linuxserver/mods:openssh-server-rsync"
+              value: "linuxserver/mods:openssh-server-rsync|universal-package-install"
+            - name: INSTALL_PACKAGES
+              value: "rsync"
             - name: USER_NAME
               value: "ubuntu"
           volumeMounts:

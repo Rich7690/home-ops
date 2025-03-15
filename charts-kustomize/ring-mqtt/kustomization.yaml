@@ -10,5 +10,5 @@ helmCharts:
   - name: app-template
     repo: https://bjw-s.github.io/helm-charts
     releaseName: ring-mqtt
-    version: 3.7.2
+    version: 3.7.3
     valuesFile: values.yaml

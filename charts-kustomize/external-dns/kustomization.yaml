@@ -9,4 +9,4 @@ helmCharts:
     releaseName: external-dns-adguard
     repo: https://kubernetes-sigs.github.io/external-dns/
     valuesFile: values.yaml
-    version: 1.15.2
+    version: 1.16.0

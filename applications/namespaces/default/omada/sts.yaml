@@ -28,7 +28,7 @@ spec:
       hostNetwork: true
       containers:
       - name: omada
-        image: mbentley/omada-controller:5.15@sha256:cd0b2a8f798755bf6f0f14c9369d780b6368aaed73eb6f4afb7673cbcc4db743
+        image: mbentley/omada-controller:5.15@sha256:f72484353f22b79242d25f78f9a7ac958c16a1be8209924c5354d9b3ffeb068c
         imagePullPolicy: IfNotPresent
         env:
           - name: TZ

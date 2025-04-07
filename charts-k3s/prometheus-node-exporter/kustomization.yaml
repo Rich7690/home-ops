@@ -8,5 +8,5 @@ helmCharts:
     namespace: default
     includeCRDs: true
     releaseName: prometheus-node-exporter
-    version: 4.45.0
+    version: 4.45.2
     valuesFile: values.yaml

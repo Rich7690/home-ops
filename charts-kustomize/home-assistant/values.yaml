@@ -6,7 +6,7 @@ controllers:
     containers:
       app:
         image:
-          repository: ghcr.io/onedr0p/home-assistant
+          repository: ghcr.io/home-operations/home-assistant
           tag: 2025.3.3@sha256:16f8597335dde4ab385069b23f3fbfd46911a4ff356c7f2acf3680c429e2d8d7
         env:
           TZ: America/Los_Angeles

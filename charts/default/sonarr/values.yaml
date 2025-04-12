@@ -20,7 +20,7 @@ sonarr:
   env:
     TZ: America/Los_Angeles
   image:
-    repository: ghcr.io/onedr0p/sonarr
+    repository: ghcr.io/home-operations/sonarr
     tag: 4.0.14.2938@sha256:598ed8f25c799f25674a882fa9dd2325bbc1b5fe33e8fbfac33046dc30d28d68
   persistence:
     media:

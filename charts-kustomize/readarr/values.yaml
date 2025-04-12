@@ -17,7 +17,7 @@ podSecurityContext:
 env:
   TZ: America/Los_Angeles
 image:
-  repository: ghcr.io/onedr0p/readarr-develop
+  repository: ghcr.io/home-operations/readarr
   tag: 0.3.32.2587@sha256:df32d1acc943577c781c90afd86394a5fddf807d0f41c35717cba2c21492f865
 persistence:
   media:

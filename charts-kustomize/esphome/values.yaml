@@ -1,8 +1,6 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/refs/heads/main/charts/other/app-template/values.schema.json
 controllers:
   esphome:
-    pod:
-      hostNetwork: true
     containers:
       app:
         image:
@@ -16,10 +14,11 @@ controllers:
           capabilities: { drop: ["ALL"] }
         resources:
           requests:
-            cpu: 10m
+            cpu: 100m
           limits:
-            memory: 256Mi
+            memory: 4Gi
 defaultPodOptions:
+  hostNetwork: true
   securityContext:
     runAsNonRoot: true
     runAsUser: 1000
@@ -35,6 +34,14 @@ service:
       http:
         port: 6052
 persistence:
+  cache:
+    enabled: true
+    type: persistentVolumeClaim
+    storageClass: openebs-zfspv
+    size: 10Gi
+    accessMode: ReadWriteOnce
+    globalMounts:
+      - path: /cache
   config:
     enabled: true
     existingClaim: esphome

@@ -1,69 +1,71 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/refs/heads/main/charts/other/app-template/values.schema.json
-    controllers:
-      ring-mqtt:
-        initContainers:
-          copy-config:
-            image:
-              repository: busybox
-              tag: 1.37.0@sha256:498a000f370d8c37927118ed80afe8adc38d1edcbfc071627d17b25c88efcab0
-            command:
-              - sh
-              - -c
-              - |
-                if [ ! -f /data/config.json ]; then
-                  cp /config/config.json /data/config.json
-                fi
-                if [ ! -f /data/ring-state.json ]; then
-                  cp /config/ring-state.json /data/ring-state.json
-                fi
-        containers:
-          app:
-            env:
-              TZ: America/Los_Angeles
-              S6_READ_ONLY_ROOT: "true"
-            image:
-              repository: tsightler/ring-mqtt
-              tag: 5.8.0@sha256:43717ab265a9c97dbb1fc029bfcbc8925e82a0f6bc2b28280dfd673c7f902541
-            ports:
-              - name: rtsp
-                containerPort: &port 8554
-                protocol: TCP
-            probes:
-              liveness:
-                enabled: false
-              readiness:
-                enabled: false
-              startup:
-                enabled: false
-            # securityContext:
-            #   allowPrivilegeEscalation: false
-            #   readOnlyRootFilesystem: true
-            #   capabilities: { drop: ["ALL"] }
-        # pod:
-        #   securityContext:
-        #     runAsUser: 65534
-        #     runAsGroup: 65534
-        #     runAsNonRoot: true
-    service:
+defaultPodOptions:
+  hostUsers: false
+controllers:
+  ring-mqtt:
+    initContainers:
+      copy-config:
+        image:
+          repository: busybox
+          tag: 1.37.0@sha256:498a000f370d8c37927118ed80afe8adc38d1edcbfc071627d17b25c88efcab0
+        command:
+          - sh
+          - -c
+          - |
+            if [ ! -f /data/config.json ]; then
+              cp /config/config.json /data/config.json
+            fi
+            if [ ! -f /data/ring-state.json ]; then
+              cp /config/ring-state.json /data/ring-state.json
+            fi
+    containers:
       app:
-        controller: ring-mqtt
+        env:
+          TZ: America/Los_Angeles
+          S6_READ_ONLY_ROOT: "true"
+        image:
+          repository: tsightler/ring-mqtt
+          tag: 5.8.0@sha256:43717ab265a9c97dbb1fc029bfcbc8925e82a0f6bc2b28280dfd673c7f902541
         ports:
-          http:
-            port: *port
-    persistence:
-      data:
-        existingClaim: ring-mqtt-data
-        globalMounts:
-          - path: /data
-      credentials:
-        type: secret
-        name: ring-mqtt-config
-        advancedMounts:
-          ring-mqtt:
-            copy-config:
-              - path: /config/config.json
-                subPath: config.json
-                readOnly: true
-              - path: /config/ring-state.json
-                subPath: ring-state.json
-                readOnly: true
+          - name: rtsp
+            containerPort: &port 8554
+            protocol: TCP
+        probes:
+          liveness:
+            enabled: false
+          readiness:
+            enabled: false
+          startup:
+            enabled: false
+        # securityContext:
+        #   allowPrivilegeEscalation: false
+        #   readOnlyRootFilesystem: true
+        #   capabilities: { drop: ["ALL"] }
+    # pod:
+    #   securityContext:
+    #     runAsUser: 65534
+    #     runAsGroup: 65534
+    #     runAsNonRoot: true
+service:
+  app:
+    controller: ring-mqtt
+    ports:
+      http:
+        port: *port
+persistence:
+  data:
+    existingClaim: ring-mqtt-data
+    globalMounts:
+      - path: /data
+  credentials:
+    type: secret
+    name: ring-mqtt-config
+    advancedMounts:
+      ring-mqtt:
+        copy-config:
+          - path: /config/config.json
+            subPath: config.json
+            readOnly: true
+          - path: /config/ring-state.json
+            subPath: ring-state.json
+            readOnly: true

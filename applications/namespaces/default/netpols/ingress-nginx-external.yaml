@@ -27,12 +27,6 @@ spec:
             - port: '10254'
               protocol: TCP
   egress:
-    - toCIDR:
-        - 192.168.5.220/32
-      toPorts:
-        - ports:
-            - port: '443'
-              protocol: TCP
     - toEntities:
         - kube-apiserver
     - toEndpoints:
@@ -41,15 +35,13 @@ spec:
               operator: In
               values:
                 - "overseerr"
+                - "home-assistant"
         - matchExpressions:
             - key: app
               operator: In
               values:
-                - "jelly"
+                - "whoami"
     - toServices:
-        - k8sService:
-            namespace: default
-            serviceName: jelly
         - k8sService:
             namespace: default
             serviceName: jellyseerr

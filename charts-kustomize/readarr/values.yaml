@@ -18,7 +18,7 @@ env:
   TZ: America/Los_Angeles
 image:
   repository: ghcr.io/home-operations/readarr
-  tag: 0.3.32.2587@sha256:df32d1acc943577c781c90afd86394a5fddf807d0f41c35717cba2c21492f865
+  tag: 0.4.13.2760@sha256:2fc04945fb840bc4f35e2f21c87be850c0fcd9b56fad4150381d482616675c32
 persistence:
   media:
     enabled: true

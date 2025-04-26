@@ -10,25 +10,22 @@ spec:
       app.kubernetes.io/instance: ingress-nginx-external
   ingress:
     - fromEntities:
-        - cluster
-        - health
-        - ingress
-    - fromCIDR:
-        - 10.0.0.0/8
-        - 192.168.0.0/16
-    - toPorts:
-        - ports:
-            - port: '80'
-              protocol: TCP
-            - port: '443'
-              protocol: TCP
-            - port: '8443'
-              protocol: TCP
-            - port: '10254'
-              protocol: TCP
+        - all
   egress:
+    - toCIDR:
+        - "192.168.5.252/32"
+      toPorts:
+        - ports:
+            - port: "8123"
+              protocol: TCP
     - toEntities:
         - kube-apiserver
+    - toEntities:
+        - host
+      toPorts:
+        - ports:
+            - port: "8123"
+              protocol: TCP
     - toEndpoints:
         - matchExpressions:
             - key: app.kubernetes.io/name
@@ -45,6 +42,9 @@ spec:
         - k8sService:
             namespace: default
             serviceName: jellyseerr
+        - k8sService:
+            namespace: default
+            serviceName: "home-assistant"
     - toEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system

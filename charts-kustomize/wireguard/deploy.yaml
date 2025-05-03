@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wireguard
+  labels:
+    app: wireguard
+spec:
+  replicas: 1
+  minReadySeconds: 5
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: wireguard
+  template:
+    metadata:
+      labels:
+        app: wireguard
+    spec:
+      hostNetwork: true
+      containers:
+      - name: wireguard
+        image: lscr.io/linuxserver/wireguard:latest
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          privileged: true
+          capabilities:
+            add:
+              - NET_ADMIN
+              - SYS_MODULE
+        ports:
+        - containerPort: 51821
+          protocol: UDP
+          name: wireguard
+        env:
+        - name: TZ
+          value: "America/Los_Angeles"
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: SERVERURL
+          value: "auto"  # Replace with your server's public IP or domain
+        - name: SERVERPORT
+          value: "51821" # Port for WireGuard
+        - name: PEERS
+          value: "k3s"     # Number of peer configurations to generate
+        - name: INTERNAL_SUBNET
+          value: "10.0.0.1/24" # Internal subnet for WireGuard
+        - name: ALLOWEDIPS
+          value: "10.0.0.1/24" # Allowed IPs for the peer
+        - name: PERSISTENTKEEPALIVE_PEERS
+          value: "all"
+        volumeMounts:
+        - mountPath: /config
+          name: config
+        - mountPath: /lib/modules
+          name: modules
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: wireguard-config
+      - name: modules
+        hostPath:
+          path: "/lib/modules"
+          type: Directory

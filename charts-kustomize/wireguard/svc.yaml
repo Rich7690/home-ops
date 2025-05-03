@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wireguard-to-nginx
+  labels:
+    app: wireguard
+spec:
+  selector:
+    app.kubernetes.io/instance: ingress-nginx-external
+  externalIPs:
+    - 10.0.0.1
+  ports:
+    - port: 443
+      targetPort: 443
+      protocol: TCP
+      name: https
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http

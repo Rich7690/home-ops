@@ -1,5 +1,6 @@
-upgradeCompatibility: "1.14"
 kubeProxyReplacementHealthzBindAddr: "0.0.0.0:10256"
+cni:
+  exclusive: false
 l2announcements:
   enabled: false
   leaseDuration: 300s
@@ -52,8 +53,8 @@ loadBalancer:
   acceleration: disabled
 bpf:
   masquerade: true
-  vlanBypass:
-    - 10
+  preallocateMaps: true
+  # datapathMode: netkit TODO: roll out netkit in the future
 ipam:
   mode: "kubernetes"
 bgp:

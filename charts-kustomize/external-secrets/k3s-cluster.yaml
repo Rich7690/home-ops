@@ -1,0 +1,23 @@
+kind: ClusterSecretStore
+apiVersion: external-secrets.io/v1beta1
+metadata:
+  name: k3s-cluster
+spec:
+  provider:
+    kubernetes:
+      server:
+        url: "https://10.0.0.3:6443"
+        caBundle: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJkekNDQVIyZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQWpNU0V3SHdZRFZRUUREQmhyTTNNdGMyVnkKZG1WeUxXTmhRREUzTVRRNU5EWTNPRFV3SGhjTk1qUXdOVEExTWpJd05qSTFXaGNOTXpRd05UQXpNakl3TmpJMQpXakFqTVNFd0h3WURWUVFEREJock0zTXRjMlZ5ZG1WeUxXTmhRREUzTVRRNU5EWTNPRFV3V1RBVEJnY3Foa2pPClBRSUJCZ2dxaGtqT1BRTUJCd05DQUFTeXp1L0wrbjZrNHZMN0RzOW9XL093VEh1c1oxVGJzTTVKKzNHcVUxV2IKelVpUEJkekplREtYV2dHRGd5Rm1sNXBZdHpUdVV4eFlKS1U4T3RuNnlpSklvMEl3UURBT0JnTlZIUThCQWY4RQpCQU1DQXFRd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFRmdRVTNkeUlQdWtiU3ZmbzZzRVVtN29VClo0OHBuMDB3Q2dZSUtvWkl6ajBFQXdJRFNBQXdSUUlnSXluSUluTTRzK1VwN2ozb0JxODhjaDVUdk05NGEzbE8KSitNNzVvR28yYTRDSVFDNWZ3ZXlOSFQwVzloTG9hSVFVNWR1dUFsaXhBOExXWEsvRi92allVd2YxZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
+      auth:
+        cert:
+          clientCert:
+            name: "tls-secret"
+            namespace: "external-secrets"
+            key: "tls.crt"
+          clientKey:
+            name: "tls-secret"
+            key: "tls.key"
+            namespace: "external-secrets"
+  conditions:
+    - namespaces:
+        - "external-secrets"

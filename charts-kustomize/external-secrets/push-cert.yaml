@@ -1,0 +1,29 @@
+apiVersion: external-secrets.io/v1alpha1
+kind: PushSecret
+metadata:
+  name: prod-cert
+  namespace: external-secrets
+spec:
+  refreshInterval: 1h
+  secretStoreRefs:
+    - name: k3s-cluster
+      kind: ClusterSecretStore
+  selector:
+    secret:
+      name: prod-cert
+  template:
+    metadata:
+      annotations:
+        external-secrets.io/cluster-secret-store: k3s-cluster
+    type: kubernetes.io/tls
+  data:
+    - match:
+        secretKey: tls.crt
+        remoteRef:
+          remoteKey: prod-cert
+          property: tls.crt
+    - match:
+        secretKey: tls.key
+        remoteRef:
+          remoteKey: prod-cert
+          property: tls.key

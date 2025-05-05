@@ -10,10 +10,16 @@ metadata:
         exec:
           path: ksops
 files:
-  - ./secrets/oauth-proxy.enc.yaml
-  - ./secrets/vaultwarden.enc.yaml
-  - ./secrets/backup.enc.yaml
   - ./configmap/prometheus.enc.yaml
+  - ./secrets/backup.enc.yaml
+  - ./secrets/homebox.enc.yaml
   - ./secrets/njalla.enc.yaml
-  - ./secrets/vpn.enc.yaml
+  - ./secrets/oauth-proxy.enc.yaml
   - ./secrets/paperless.enc.yaml
+  - ./secrets/pid-backup-secret.enc.yaml
+  - ./secrets/pocket-id.enc.yaml
+  - ./secrets/rclone.enc.yaml
+  - ./secrets/restic-ha.enc.yaml
+  - ./secrets/ring-mqtt.enc.yaml
+  - ./secrets/vaultwarden.enc.yaml
+  - ./secrets/vpn.enc.yaml

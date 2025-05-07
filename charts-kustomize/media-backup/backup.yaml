@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: sync-backups
 spec:
-  schedule: "0 4 * * *"
+  schedule: "@weekly"
   concurrencyPolicy: Forbid
   failedJobsHistoryLimit: 1
   successfulJobsHistoryLimit: 1

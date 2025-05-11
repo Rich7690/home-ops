@@ -21,7 +21,7 @@ prowlarr:
     TZ: America/Los_Angeles
   image:
     repository: ghcr.io/home-operations/prowlarr
-    tag: 1.35.1.5034@sha256:866e9f26acc49b49ce18f650c145eb36cc5211fbf3fdfb3d629683319af8cb41
+    tag: 1.36.0.5044@sha256:ad966d1ac6e16c012a26ae6411378802d377b952fc94dd5c6afad5d0d77c62b4
   persistence:
     config:
       enabled: true

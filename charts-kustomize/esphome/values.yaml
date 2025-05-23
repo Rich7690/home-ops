@@ -8,6 +8,7 @@ controllers:
           tag: "2025.5.0@sha256:5429ecc3e9cc9d7a446321c0879fee12fc2a98f02f278ade983b37cdfb13f6f9"
         env:
           TZ: America/Los_Angeles
+          PLATFORMIO_CORE_DIR: /cache/.platformio
         securityContext:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true

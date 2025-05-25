@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+
+helmCharts:
+  - name: rke2-multus
+    repo: https://rke2-charts.rancher.io
+    releaseName: multus
+    version: 4.2.001
+    valuesFile: values.yaml
+    includeCRDs: true
+    namespace: kube-system

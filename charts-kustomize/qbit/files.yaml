@@ -70,7 +70,7 @@ spec:
       enableServiceLinks: true
       containers:
         - name: qbittorrent
-          image: "ghcr.io/home-operations/qbittorrent:5.1.0@sha256:d28de21b80e231578b600ce47335733df55ca2058e75361becfb1b252569f0c8"
+          image: "ghcr.io/home-operations/qbittorrent:5.1.0@sha256:37aefd713ba31d51255995261616f1144378887bc5f21665a0ebf851fb85f69a"
           imagePullPolicy: IfNotPresent
           securityContext:
             runAsGroup: 568

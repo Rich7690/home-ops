@@ -9,7 +9,7 @@ helmCharts:
     releaseName: openebs-zfs
     repo: https://openebs.github.io/zfs-localpv
     valuesFile: values.yaml
-    version: 2.7.1
+    version: 2.8.0
 
 resources:
   - storage-class.yaml

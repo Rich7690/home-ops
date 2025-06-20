@@ -67,12 +67,14 @@ spec:
             value: "65532"
           - name: DISABLE_UPDATE_CHECK
             value: "true"
+          - name: "ANALYTICS_DISABLED"
+            value: "true"
         ports:
         - containerPort: 1411
           name: http
         volumeMounts:
         - name: data
-          mountPath: /app/backend/data
+          mountPath: /app/data
         - name: temp
           mountPath: /.config
           subPath: .config

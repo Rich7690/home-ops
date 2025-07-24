@@ -20,7 +20,7 @@ spec:
       hostNetwork: true
       containers:
       - name: wireguard
-        image: lscr.io/linuxserver/wireguard:latest@sha256:b5010a1c2eca2cde4f287d65d31e6562032399c59d06c3ac2487d06586b6c10f
+        image: lscr.io/linuxserver/wireguard:latest@sha256:ee2db24277b43ec4e7529e93967dc3cea00a02bf81b749c680b2b102a6e4aa5b
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true

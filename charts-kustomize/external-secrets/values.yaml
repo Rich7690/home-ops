@@ -2,7 +2,7 @@ image:
   repository:  ghcr.io/external-secrets/external-secrets
   pullPolicy: IfNotPresent
   # -- The image tag to use. The default is the chart appVersion.
-  tag: "v0.18.2@sha256:87615c878c0528ea994538d2a6ed87931f8389b9e145f4422891b3ba06430cd7"
+  tag: "v0.19.0@sha256:55a8984f7b88518eb9cf2e598b438f65dfae486f92936716f3c17e7012f55491"
   # -- The flavour of tag you want to use
   # There are different image flavours available, like distroless and ubi.
   # Please see GitHub release notes for image tags for these flavors.

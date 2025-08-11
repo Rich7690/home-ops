@@ -26,7 +26,7 @@ spec:
           sizeLimit: 64Mi
       containers:
       - name: pe-backup
-        image: ayufan/proxmox-backup-server:v3.4@sha256:13216d75b98966f19f385a59ad04e8293df8bfbdf196974f743a5f164f6a7020
+        image: ayufan/proxmox-backup-server:v4.0@sha256:c232397a05b3a302b37ecd0f8e9f5baa8b5e50f1a2498d446bef6a81aa9a5feb
         env:
           - name: TZ
             value: America/Los_Angeles

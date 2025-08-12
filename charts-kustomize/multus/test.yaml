@@ -13,5 +13,5 @@ spec:
   containers:
   - name: samplepod
     command: ["/bin/bash", "-c", "trap : TERM INT; sleep infinity & wait"]
-    image: ubuntu #dougbtv/centos-network
+    image: ubuntu@sha256:7c06e91f61fa88c08cc74f7e1b7c69ae24910d745357e0dfe1d2c0322aaf20f9 #dougbtv/centos-network
     imagePullPolicy: IfNotPresent

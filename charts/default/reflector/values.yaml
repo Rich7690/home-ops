@@ -3,7 +3,7 @@ reflector:
   image:
     repository: emberstack/kubernetes-reflector
     pullPolicy: IfNotPresent
-    tag: 9.1.25@sha256:0591d18d2ad85ad3ad8206b420f67f4277c0012d63570d982fad40cbe495abf7
+    tag: 9.1.27@sha256:29c2be17f82ae2c0bc1de75996875b80bf9e791e88456f54f919bf39c540407c
   podSecurityContext:
     fsGroup: 2000
     runAsGroup: 65532

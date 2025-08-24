@@ -29,7 +29,7 @@ spec:
           type: RuntimeDefault
       containers:
       - name: main
-        image: ghcr.io/pocket-id/pocket-id:v1.8.0-distroless@sha256:55c37dc1756477ca976c77f46102ecbfd66b30e9d23f8876c088b3e9c6daf48a
+        image: ghcr.io/pocket-id/pocket-id:v1.8.1-distroless@sha256:4cd2878d05beb151e2bfa1da6c9da3f72b8a21bd8f5130fc51795edf85612365
         imagePullPolicy: IfNotPresent
         securityContext:
           allowPrivilegeEscalation: false

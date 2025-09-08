@@ -31,7 +31,7 @@ jobs:
           working_directory: ./terraform
 
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@e8893c57a1f3a2b659b6b55564fdfdbbd2982911 # v2
+        uses: github/codeql-action/upload-sarif@f1f6e5f6af878fb37288ce1c627459e94dbf7d01 # v2
         with:
           # Path to SARIF file relative to the root of the repository
           sarif_file: tfsec.sarif

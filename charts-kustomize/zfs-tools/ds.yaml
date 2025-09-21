@@ -38,7 +38,7 @@ spec:
         runAsUser: 0
       containers:
         - name: test
-          image: ghcr.io/rich7690/home-ops/zfs-utils:latest@sha256:87c9aafe0b96d3782dc15766c7d943b1d87573ac2caaf389efc87cff12af0097
+          image: ghcr.io/rich7690/home-ops/zfs-utils:latest@sha256:b8c3956055f30dd3ef36a6367f4c7db377274fd381957029b42fd7ba37cb3b6d
           imagePullPolicy: IfNotPresent
           volumeMounts:
             - mountPath: /dev/

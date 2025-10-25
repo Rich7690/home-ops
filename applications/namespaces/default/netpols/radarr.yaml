@@ -61,6 +61,12 @@ spec:
             - port: "443"
               protocol: TCP
     - toFQDNs:
+        - matchName: api.themoviedb.org
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
+    - toFQDNs:
         - matchName: api.trakt.tv
       toPorts:
         - ports:

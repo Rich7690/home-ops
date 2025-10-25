@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ns.yaml
   - k3s-cluster.yaml
+  - push-cert.yaml
 
 helmCharts:
   - name: external-secrets

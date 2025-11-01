@@ -6,7 +6,7 @@ controller:
     prometheus.io/port: "10254"
   image:
     repository: registry.k8s.io/ingress-nginx/controller
-    tag: v1.13.3
+    tag: v1.14.0
     digest: null
   config:
     use-http2: "true"

@@ -20,7 +20,7 @@ spec:
       hostNetwork: true
       containers:
       - name: pialert
-        image: jokobsk/pi.alert:23.12.16@sha256:2ad5552b5d1faf51026b09c39851a7eedbd88d3b123c85696b04c86685a0caa0
+        image: jokobsk/pi.alert:25.2.8@sha256:ff036c6bdd2f183140efb8feeac376dcd7c1c72bae0cfbaaa45735d1bea1d2e6
         imagePullPolicy: IfNotPresent
         securityContext:
           allowPrivilegeEscalation: false

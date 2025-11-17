@@ -65,10 +65,10 @@ spec:
                       timeoutSeconds: 2
                   resources:
                       limits:
-                          gpu.intel.com/i915: "1"
+                          amd.com/gpu: "1"
                           memory: 4Gi
                       requests:
-                          gpu.intel.com/i915: "1"
+                          amd.com/gpu: "1"
                           cpu: "1"
                           memory: 2Gi
                   terminationMessagePath: /dev/termination-log
@@ -86,7 +86,6 @@ spec:
             enableServiceLinks: true
             nodeSelector:
                 kubernetes.io/hostname: "worker-one"
-                intel.feature.node.kubernetes.io/gpu: "true"
             restartPolicy: Always
             schedulerName: default-scheduler
             securityContext:

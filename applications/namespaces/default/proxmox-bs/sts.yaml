@@ -48,7 +48,18 @@ spec:
           subPath: etc/proxmox-backup
         - name: tmp
           mountPath: /run
+        - name: cache
+          mountPath: /tmp/cache
   volumeClaimTemplates:
+  - metadata:
+      name: cache
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: openebs-zfspv
+      volumeMode: Filesystem
+      resources:
+        requests:
+          storage: 100Gi
   - metadata:
       name: data
     spec:

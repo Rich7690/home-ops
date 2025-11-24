@@ -3,7 +3,7 @@ kind: Kustomization
 
 namespace: default
 resources:
-  - fa-middleware.yaml
+  # - fa-middleware.yaml #TODO: fix this
   - error-middleware.yaml
   - tls-option.yaml
 

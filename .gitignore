@@ -19,3 +19,4 @@ preflight.yaml
 .env
 charts-kustomize/**/charts/
 *.bak
+fa-middleware.yaml

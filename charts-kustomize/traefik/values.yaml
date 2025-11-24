@@ -5,7 +5,7 @@ image:  # @schema additionalProperties: false
   repository: traefik
   # -- defaults to appVersion. It's used for version checking, even prefixed with experimental- or latest-.
   # When a digest is required, `versionOverride` can be used to set the version.
-  tag: "3.6.2" # @schema type:[string, null]
+  tag: "3.6.2@sha256:aaf0f6185419a50c74651448c1a5bf4606bd2d2ddb7b8749eed505d55bf8b8ea" # @schema type:[string, null]
   # -- Traefik image pull policy
   pullPolicy: IfNotPresent
 

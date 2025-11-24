@@ -16,6 +16,7 @@ spec:
                 - ingress-nginx
                 - jellyseerr
                 - prowlarr
+                - traefik-default
       toPorts:
         - ports:
             - port: "7878"

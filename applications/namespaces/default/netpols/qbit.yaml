@@ -21,6 +21,7 @@ spec:
                 - ingress-nginx
                 - readarr
                 - prowlarr
+                - traefik-default
   egress:
     - toEntities:
        - cluster

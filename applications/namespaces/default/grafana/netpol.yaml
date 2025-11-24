@@ -15,6 +15,13 @@ spec:
       toPorts:
         - ports:
             - port: "3000"
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/instance: traefik-default
+            io.kubernetes.pod.namespace: default
+      toPorts:
+        - ports:
+            - port: "3000"
   egress:
     - toEntities:
         - cluster

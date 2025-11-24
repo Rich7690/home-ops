@@ -13,6 +13,10 @@ spec:
             matchLabels:
               app.kubernetes.io/instance: ingress-nginx
               app.kubernetes.io/name: ingress-nginx
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/instance: traefik-default
+              app.kubernetes.io/name: traefik
   podSelector:
     matchLabels:
       app.kubernetes.io/name: paperless

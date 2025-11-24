@@ -17,6 +17,7 @@ spec:
                 - sonarr
                 - ingress-nginx
                 - overseerr
+                - traefik
   egressDeny:
     - toCIDR:
         - "192.168.0.0/16"

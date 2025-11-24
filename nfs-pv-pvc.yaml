@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-external-pv
+spec:
+  capacity:
+    storage: 14Ti
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs-external
+  mountOptions:
+    - nfsvers=4.1
+    - hard
+    - intr
+  nfs:
+    path: /mnt/external
+    server: 192.168.5.147
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-external-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: nfs-external
+  resources:
+    requests:
+      storage: 14Ti
+  volumeName: nfs-external-pv

@@ -17,6 +17,10 @@ spec:
     - fromEndpoints:
         - matchLabels:
             app.kubernetes.io/instance: ingress-nginx
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/instance: traefik-default
+
   egress:
     - toEntities:
         - cluster

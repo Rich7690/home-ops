@@ -15,6 +15,9 @@ spec:
         - matchLabels:
             app.kubernetes.io/instance: home-assistant
             io.kubernetes.pod.namespace: default
+        - matchLabels:
+            app.kubernetes.io/instance: traefik-default
+            io.kubernetes.pod.namespace: default
       toPorts:
         - ports:
             - port: "80"

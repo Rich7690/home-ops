@@ -37,6 +37,6 @@ jobs:
           skip-files: 'manifests/generic-kuberouter-all-features.yaml,apps/templates/kube-vip-ha.yaml,apps/templates/kube-vip.yaml'
 
       - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@192325c86100d080feab897ff886c34abd4c83a3 # v2
+        uses: github/codeql-action/upload-sarif@e12f0178983d466f2f6028f5cc7a6d786fd97f4b # v2
         with:
           sarif_file: 'trivy-results.sarif'

@@ -12,5 +12,5 @@ helmCharts:
   - name: app-template
     repo: https://bjw-s-labs.github.io/helm-charts
     releaseName: home-assistant
-    version: 3.7.3
+    version: 4.5.0
     valuesFile: values.yaml

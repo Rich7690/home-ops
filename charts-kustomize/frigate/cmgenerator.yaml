@@ -1,0 +1,10 @@
+apiVersion: builtin
+kind: ConfigMapGenerator
+behavior: replace
+metadata:
+  name: frigate
+  namespace: default
+files:
+  - config.yml
+options:
+  disableNameSuffixHash: true

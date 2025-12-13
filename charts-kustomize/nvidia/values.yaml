@@ -1,0 +1,6 @@
+runtimeClassName: nvidia
+image:
+  repository: nvcr.io/nvidia/k8s-device-plugin
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "0.18.0"

@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: default
+
+resources:
+  - netpol.yaml
+
+helmCharts:
+  - name: frigate
+    repo: https://blakeblackshear.github.io/blakeshome-charts/
+    releaseName: frigate
+    version: 7.8.0
+    valuesFile: values.yaml
+
+configMapGenerator:
+  - name: trusted-headers
+    behavior: create
+    options:
+      disableNameSuffixHash: true
+    files:
+      - proxy_trusted_headers.conf
+
+generators:
+  - cmgenerator.yaml

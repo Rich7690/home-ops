@@ -1,0 +1,40 @@
+kind: CiliumNetworkPolicy
+apiVersion: cilium.io/v2
+metadata:
+  name: frigate
+  namespace: default
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: frigate
+  ingress:
+  - fromEntities:
+      - ingress
+      - health
+  - fromEndpoints:
+    - matchLabels:
+        app.kubernetes.io/instance: traefik-default
+    toPorts:
+    - ports:
+      - port: "8971"
+        protocol: TCP
+  egress:
+  - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+    toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+          rules:
+            dns:
+              - matchPattern: "*"
+  - toCIDR:
+      - "192.168.5.1/24"
+  - toFQDNs:
+      - matchName: "huggingface.co"
+      - matchName: "github.com"
+    toPorts:
+        - ports:
+            - port: "443"

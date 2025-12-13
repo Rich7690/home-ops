@@ -1,4 +1,4 @@
-FROM python:3.11 AS build
+FROM python:3.11@sha256:38639aa0267125ab0def2778f0aa8453043178ec67bf494c5af11f75a8392d9d AS build
 RUN apt-get update && apt-get install --no-install-recommends -y libgl1 && rm -rf /var/lib/apt/lists/*
 COPY --from=ghcr.io/astral-sh/uv:0.9.17@sha256:5cb6b54d2bc3fe2eb9a8483db958a0b9eebf9edff68adedb369df8e7b98711a2 /uv /bin/
 WORKDIR /yolov9

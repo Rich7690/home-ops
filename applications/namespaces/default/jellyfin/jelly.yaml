@@ -65,10 +65,8 @@ spec:
                       timeoutSeconds: 2
                   resources:
                       limits:
-                          amd.com/gpu: "1"
                           memory: 4Gi
                       requests:
-                          amd.com/gpu: "1"
                           cpu: "1"
                           memory: 2Gi
                   terminationMessagePath: /dev/termination-log
@@ -96,6 +94,7 @@ spec:
                 seccompProfile:
                   type: RuntimeDefault
             shareProcessNamespace: false
+            runtimeClassName: nvidia
             terminationGracePeriodSeconds: 30
             tolerations:
                 - effect: NoExecute

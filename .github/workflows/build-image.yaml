@@ -27,7 +27,7 @@ jobs:
             - name: Log in to GitHub Container Registry
               uses: docker/login-action@5e57cd118135c172c3672efd75eb46360885c0ef # v3
               with:
-                registry: ghcr.io/rich7690/home-ops
+                registry: ${{ vars.registry}}/${{ github.repository_owner }}/home-ops
                 username: ${{ github.repository_owner }}
                 password: ${{ secrets.GITHUB_TOKEN }}
 
@@ -36,4 +36,4 @@ jobs:
               with:
                 context: .
                 push: true
-                tags: ghcr.io/rich7690/home-ops/zfs-utils:latest
+                tags: ${{ vars.registry}}/${{ github.repository_owner }}/home-ops/zfs-utils:latest

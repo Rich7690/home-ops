@@ -11,6 +11,7 @@
     ":skipStatusChecks",
     "schedule:automergeWeekends"
   ],
+  "gitAuthor": "Renovate Bot <renovate-bot@no-reply.com>",
   "kubernetes": {
     "managerFilePatterns": [
       "/\\.yaml$/"

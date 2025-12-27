@@ -21,6 +21,8 @@ jobs:
         env:
             LOG_LEVEL: debug
             GITHUB_COM_TOKEN: ${{ secrets.GH_COM_TOKEN }}
+            RENOVATE_REPOSITORIES: ${{ github.repository }}
         with:
           token: ${{ secrets.PAT }}
           renovate-version: "42.66.9"
+          configurationFile: renovate.json

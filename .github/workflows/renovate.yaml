@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Run Renovate
         uses: https://github.com/renovatebot/github-action@f7fad228a053c69a98e24f8e4f6cf40db8f61e08 # v44.2.1
+        env:
+            LOG_LEVEL: debug
+            GITHUB_COM_TOKEN: ${{ secrets.GH_COM_TOKEN }}
         with:
           token: ${{ secrets.PAT }}
           renovate-version: "42.66.9"

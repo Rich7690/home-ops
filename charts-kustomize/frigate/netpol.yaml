@@ -8,6 +8,9 @@ spec:
     matchLabels:
       app.kubernetes.io/name: frigate
   ingress:
+  - fromEndpoints:
+      - matchLabels:
+          app.kubernetes.io/instance: frigate-snap-sync
   - fromEntities:
       - ingress
       - health
@@ -19,6 +22,12 @@ spec:
       - port: "8971"
         protocol: TCP
   egress:
+  - toEndpoints:
+      - matchLabels:
+          app.kubernetes.io/instance: mosquitto
+    toPorts:
+        - ports:
+            - port: "1883"
   - toEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system
@@ -35,6 +44,7 @@ spec:
   - toFQDNs:
       - matchName: "huggingface.co"
       - matchName: "github.com"
+      - matchName: "raw.githubusercontent.com"
     toPorts:
         - ports:
             - port: "443"

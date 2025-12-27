@@ -23,3 +23,11 @@ configMapGenerator:
 
 generators:
   - cmgenerator.yaml
+
+patches:
+  - path: frigate-deploy-patch.yaml
+    target:
+      kind: Deployment
+      name: frigate
+      group: apps
+      version: v1

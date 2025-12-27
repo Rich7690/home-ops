@@ -17,6 +17,12 @@ spec:
         - matchLabels:
             app.kubernetes.io/instance: ring-mqtt
             io.kubernetes.pod.namespace: default
+        - matchLabels:
+            app.kubernetes.io/instance: frigate
+            io.kubernetes.pod.namespace: default
+        - matchLabels:
+            app.kubernetes.io/instance: frigate-snap-sync
+            io.kubernetes.pod.namespace: default
       toPorts:
         - ports:
             - port: "1883"

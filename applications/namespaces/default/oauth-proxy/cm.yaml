@@ -8,7 +8,7 @@ data:
     OAUTH2_PROXY_REVERSE_PROXY: 'true'
     OAUTH2_PROXY_SCOPE: "profile email openid groups"
     OAUTH2_PROXY_SET_XAUTHREQUEST: 'true'
-    OAUTH2_PROXY_ALLOWED_GROUPS: 'admin'
+    OAUTH2_PROXY_ALLOWED_GROUPS: 'admin,viewer'
 kind: ConfigMap
 metadata:
     labels:

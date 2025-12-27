@@ -43,6 +43,7 @@ persistence:
     accessMode: ReadWriteOnce
     globalMounts:
       - path: /cache
+      - path: /.cache
   config:
     enabled: true
     existingClaim: esphome

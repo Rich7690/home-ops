@@ -28,7 +28,7 @@ spec:
             claimName: ssh-server-config
       containers:
         - name: test
-          image: donswanson/rsync-docker:1.0.11@sha256:6aecb49135e39ca591094f2c397c3191aaa5fe71cd1d497d47abd9f6b100915b
+          image: donswanson/rsync-docker:1.0.12@sha256:373eb827286042fd036540cdd5cbf7db77ed518e4985fe0cc2f2874918ce7986
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 2222

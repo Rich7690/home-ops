@@ -6,8 +6,6 @@
     namespace: 'argocd',
   },
   spec: {
-    goTemplate: true,
-    goTemplateOptions: ['missingkey=error'],
     syncPolicy: {
       preserveResourcesOnDeletion: true,
     },

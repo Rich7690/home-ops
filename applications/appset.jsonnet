@@ -6,6 +6,10 @@
     namespace: 'argocd',
   },
   spec: {
+    syncPolicy: {
+      preserveResourcesOnDeletion: true,
+      applicationsSync: 'create-update'
+    },
     generators: [
       {
         git: {

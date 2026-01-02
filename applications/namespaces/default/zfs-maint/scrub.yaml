@@ -39,7 +39,6 @@ spec:
               - "scrub"
               - "-w"
               - "storage"
-              - "backup"
             command:
             - "/bin/runitor"
             volumeMounts:

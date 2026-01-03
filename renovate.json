@@ -29,6 +29,12 @@
   },
   "packageRules": [
     {
+      "matchPackageNames": [
+        "viaductoss/ksops"
+      ],
+      "enabled": false
+    },
+    {
       "matchCategories": [
         "docker"
       ],

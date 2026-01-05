@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: default
+
+resources:
+  - rbac.yaml
+  - deploy.yaml
+
+configMapGenerator:
+  - name: rclone-sync-script
+    behavior: create
+    options:
+      disableNameSuffixHash: true
+    files:
+      - exporter-loop.sh

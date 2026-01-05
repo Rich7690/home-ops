@@ -12,6 +12,8 @@ metadata:
 files:
   - ./configmap/prometheus.enc.yaml
   - ./secrets/backup.enc.yaml
+  - ./secrets/frigate-backup-secret.enc.yaml
+  - ./secrets/frigate-snap-sync.enc.yaml
   - ./secrets/homebox.enc.yaml
   - ./secrets/njalla.enc.yaml
   - ./secrets/oauth-proxy.enc.yaml

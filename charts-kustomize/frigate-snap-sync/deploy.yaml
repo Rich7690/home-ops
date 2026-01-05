@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frigate-snap-sync
+  labels:
+    app.kubernetes.io/name: frigate-snap-sync
+    app.kubernetes.io/instance: frigate-snap-sync
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: frigate-snap-sync
+      app.kubernetes.io/instance: frigate-snap-sync
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: frigate-snap-sync
+        app.kubernetes.io/instance: frigate-snap-sync
+    spec:
+      hostUsers: false
+      serviceAccountName: frigate-snap-sync
+      containers:
+        - name: frigate-snap-sync
+          image: rclone/rclone:1.72.0@sha256:0eb18825ac9732c21c11d654007170572bbd495352bb6dbb624f18e4f462c496
+          command:
+            - /files/exporter-loop.sh
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+            readOnlyRootFilesystem: false
+            runAsNonRoot: false
+            runAsUser: 0
+            runAsGroup: 0
+            capabilities:
+              drop:
+                - ALL
+          envFrom:
+            - secretRef:
+                name: frigate-snap-sync-env
+                optional: false
+          env:
+            - name: TZ
+              value: "America/Los_Angeles"
+          volumeMounts:
+            - name: rclone-conf
+              mountPath: /config
+            - name: rclone-sync-script
+              mountPath: /files/exporter-loop.sh
+              subPath: exporter-loop.sh
+              readOnly: true
+            - name: frigate-media
+              mountPath: /media/frigate/recordings
+              subPath: frigate/recordings
+              readOnly: true
+            - name: frigate-media
+              mountPath: /media/frigate-snap
+              subPath: frigate-snap
+            - name: tmp
+              mountPath: /tmp
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              memory: 1Gi
+      volumes:
+        - name: rclone-conf
+          persistentVolumeClaim:
+            claimName: rclone-conf
+        - name: rclone-sync-script
+          configMap:
+            name: rclone-sync-script
+            defaultMode: 0755
+            items:
+              - key: exporter-loop.sh
+                path: exporter-loop.sh
+        - name: frigate-media
+          persistentVolumeClaim:
+            claimName: frigate-media
+        - name: tmp
+          emptyDir: {}
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 15

@@ -24,8 +24,11 @@ spec:
       serviceAccountName: frigate-snap-sync
       containers:
         - name: frigate-snap-sync
-          image: rclone/rclone:1.72.0@sha256:0eb18825ac9732c21c11d654007170572bbd495352bb6dbb624f18e4f462c496
+          image: weikinhuang/rclone-backup:1.72@sha256:b17a25f269a294243764e0d9ec3859a1dea09de85b856821015657c7d75bac89
           command:
+            - tini
+          args:
+            - "--"
             - /files/exporter-loop.sh
           imagePullPolicy: IfNotPresent
           securityContext:
@@ -36,9 +39,9 @@ spec:
             runAsNonRoot: false
             runAsUser: 0
             runAsGroup: 0
-            capabilities:
-              drop:
-                - ALL
+          #  capabilities:
+          #    drop:
+          #      - ALL
           envFrom:
             - secretRef:
                 name: frigate-snap-sync-env

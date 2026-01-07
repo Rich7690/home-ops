@@ -1,5 +1,5 @@
-#!/bin/ash
-apk update && apk add inotify-tools ca-certificates # TODO: Move this to Dockerfile
+#!/usr/bin/bash
+apt update && apt install -y inotify-tools ca-certificates # TODO: Move this to Dockerfile
 
 echo "Sleeping while we wait for rclone-conf to be created..."
 # Wait for rclone config to be created
@@ -87,7 +87,7 @@ while true; do
 
    if [ $SYNC_TIME_DIFF -ge $SYNC_INTERVAL ]; then
       echo "Running scheduled sync (last sync was ${SYNC_TIME_DIFF} seconds ago)..."
-      rclone --config /config/rclone.conf sync "${DIR_TO_WATCH}" ${REMOTE_NAME}:${REMOTE_BUCKET_NAME} -v --fast-list --stats-one-line-date --stats 5s 2>&1
+      rclone --config /config/rclone.conf sync "${DIR_TO_WATCH}" ${REMOTE_NAME}:${REMOTE_BUCKET_NAME} -v --fast-list --b2-hard-delete --stats-one-line-date --stats 5s 2>&1
 
       # Update state file with current sync time
       NEW_SYNC_TIME=$(date +%s)

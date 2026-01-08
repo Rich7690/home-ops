@@ -1,21 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: zwave-cache
+  name: zwave2
 spec:
-  accessModes: ["ReadWriteOnce"]
-  resources:
-    requests:
-      storage: 1Gi
-  storageClassName: openebs-zfspv
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: zwave
-spec:
-  accessModes: ["ReadWriteOnce"]
   resources:
     requests:
       storage: 10Gi
-  storageClassName: openebs-zfspv
+  storageClassName: openebs-zfspv-nvme-generic
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce

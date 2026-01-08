@@ -39,6 +39,7 @@ spec:
               - "scrub"
               - "-w"
               - "storage"
+              - "rpool"
             command:
             - "/bin/runitor"
             volumeMounts:

@@ -55,12 +55,8 @@ service:
         port: 3000
 persistence:
   config:
-    existingClaim: zwave
+    existingClaim: zwave2
     globalMounts:
       - path: /usr/src/app/store
-  config-cache:
-    existingClaim: zwave-cache
-    globalMounts:
-      - path: /usr/src/app/store/.config-db
   tmp:
     type: emptyDir

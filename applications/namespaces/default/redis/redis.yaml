@@ -83,7 +83,7 @@ spec:
             volumes:
                 - name: data
                   persistentVolumeClaim:
-                    claimName: redis-zfs
+                    claimName: redis
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy

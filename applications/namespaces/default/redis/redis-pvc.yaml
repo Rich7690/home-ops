@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: redis-zfs
+  name: redis
   namespace: default
   # annotations:
   #   reclaimspace.csiaddons.openshift.io/schedule: "5 0 * * 6"
 spec:
-  storageClassName: openebs-zfspv
+  storageClassName: openebs-zfspv-nvme-generic
   resources:
     requests:
       storage: 5Gi

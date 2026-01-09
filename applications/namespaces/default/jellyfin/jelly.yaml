@@ -107,15 +107,22 @@ spec:
                   tolerationSeconds: 60
             volumes:
                 - persistentVolumeClaim:
-                    claimName: jelly-config-zfs
+                    claimName: jelly-config
                   name: config
                 - name: media
                   persistentVolumeClaim:
                       claimName: media-pvc-zfs
-                - name: cache
-                  emptyDir:
-                    sizeLimit: 20G
-
+    volumeClaimTemplates:
+        - metadata:
+            name: cache
+          spec:
+            accessModes:
+                - ReadWriteOnce
+            resources:
+                requests:
+                    storage: 20Gi
+            storageClassName: openebs-zfspv-nvme-generic
+            volumeMode: Filesystem
 ---
 apiVersion: v1
 kind: Service

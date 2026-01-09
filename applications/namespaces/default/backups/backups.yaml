@@ -37,7 +37,7 @@ items:
         weekly: 4
         yearly: 0
       volumeSnapshotClassName: zfspv-snapclass
-    sourcePVC: jelly-config-zfs
+    sourcePVC: jelly-config
     trigger:
       schedule: 1 9 * * 6
 - apiVersion: volsync.backube/v1alpha1

@@ -49,22 +49,24 @@ spec:
           env:
             - name: TZ
               value: "America/Los_Angeles"
+            - name: SYNC_INTERVAL
+              value: "3600"
           volumeMounts:
-            - name: rclone-conf
-              mountPath: /config
-            - name: rclone-sync-script
-              mountPath: /files/exporter-loop.sh
-              subPath: exporter-loop.sh
-              readOnly: true
-            - name: frigate-media
-              mountPath: /media/frigate/recordings
-              subPath: frigate/recordings
-              readOnly: true
-            - name: frigate-media
-              mountPath: /media/frigate-snap
-              subPath: frigate-snap
-            - name: tmp
-              mountPath: /tmp
+          - mountPath: /config
+            name: rclone-conf
+          - mountPath: /files/exporter-loop.sh
+            name: rclone-sync-script
+            readOnly: true
+            subPath: exporter-loop.sh
+          - mountPath: /media/frigate/recordings
+            name: frigate-media
+            readOnly: true
+            subPath: frigate/recordings
+          - mountPath: /media/frigate-snap
+            name: frigate-media
+            subPath: frigate-snap
+          - mountPath: /tmp
+            name: tmp
           resources:
             requests:
               cpu: 100m
@@ -72,20 +74,20 @@ spec:
             limits:
               memory: 1Gi
       volumes:
-        - name: rclone-conf
-          persistentVolumeClaim:
-            claimName: rclone-conf
-        - name: rclone-sync-script
-          configMap:
-            name: rclone-sync-script
-            defaultMode: 0755
-            items:
-              - key: exporter-loop.sh
-                path: exporter-loop.sh
-        - name: frigate-media
-          persistentVolumeClaim:
-            claimName: frigate-media
-        - name: tmp
-          emptyDir: {}
+      - name: rclone-conf
+        persistentVolumeClaim:
+          claimName: rclone-conf
+      - configMap:
+          defaultMode: 0755
+          items:
+          - key: exporter-loop.sh
+            path: exporter-loop.sh
+          name: rclone-sync-script
+        name: rclone-sync-script
+      - name: frigate-media
+        persistentVolumeClaim:
+          claimName: frigate-media
+      - emptyDir: {}
+        name: tmp
       restartPolicy: Always
       terminationGracePeriodSeconds: 15

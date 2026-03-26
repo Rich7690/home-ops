@@ -7,7 +7,7 @@ spec:
     matchLabels:
       app: pialert
   serviceName: pialert
-  replicas: 1
+  replicas: 0
   podManagementPolicy: Parallel
   revisionHistoryLimit: 3
   updateStrategy:

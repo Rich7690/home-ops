@@ -27,8 +27,8 @@ STATE_DIR=${STATE_DIR:-"/media/frigate-snap"}
 LAST_SYNC_FILE=${STATE_DIR}/last-sync-time
 LAST_COPY_FILE=${STATE_DIR}/last-copy-time
 
-# Sync interval (24 hours in seconds)
-SYNC_INTERVAL=${SYNC_INTERVAL:-86400}
+# Sync interval (12 hours in seconds)
+SYNC_INTERVAL=${SYNC_INTERVAL:-43200}
 
 # Create state directory if it doesn't exist
 mkdir -p ${STATE_DIR}

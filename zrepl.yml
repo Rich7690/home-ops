@@ -1,0 +1,29 @@
+global:
+  logging:
+    - type: stdout
+      level: info
+      format: human
+
+jobs:
+  # Snap job: takes periodic snapshots and prunes them locally (no replication)
+  - name: snap-and-prune
+    type: snap
+
+    filesystems:
+      # Snapshot all datasets
+      "<": true
+
+    snapshotting:
+      type: periodic
+      prefix: zrepl_
+      interval: 1d
+
+    pruning:
+      keep:
+        # Keep manually created snapshots indefinitely
+        - type: regex
+          regex: "^manual_.*"
+        # Thin out zrepl-created snapshots using a retention grid
+        - type: last_n
+          count: 14
+          regex: "^zrepl_.*"

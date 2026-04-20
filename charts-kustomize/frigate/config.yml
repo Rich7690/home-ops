@@ -1,10 +1,10 @@
 # Frigate configuration file
 telemetry:
-  version_check: False
+  version_check: false
 auth:
-  enabled: False
+  enabled: false
 tls:
-  enabled: False
+  enabled: false
 proxy:
   header_map:
     user: X-Auth-Request-Preferred-Username
@@ -16,11 +16,11 @@ detectors:
     type: onnx
 model:
   model_type: yolo-generic
-  width: 320 # <--- should match the imgsize set during model export
-  height: 320 # <--- should match the imgsize set during model export
+  width: 640 # <--- should match the imgsize set during model export
+  height: 640 # <--- should match the imgsize set during model export
   input_tensor: nchw
   input_dtype: float
-  path: /config/model_cache/yolov9-s-320.onnx
+  path: /config/model_cache/yolov9-m-640.onnx
   labelmap_path: /labelmap/coco-80.txt
 semantic_search:
   enabled: false
@@ -37,14 +37,23 @@ classification:
     enabled: false
 mqtt:
   enabled: false
+  host: mosquitto.default.svc.cluster.local
+  port: 1883
+  user: ""
+  password: ""
+  qos: 1
 audio:
   enabled: false
 birdseye:
   enabled: false
 go2rtc:
   streams:
+    doorbell:
+      - "ffmpeg:http://192.168.5.68/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=frigate&password=FzQBq%fKy6k2w4Fb#video=copy#audio=copy#audio=opus"
     office:
       - rtspx://192.168.5.1:7441/qX68ANZhKnf4rA3T
+    officeTwo:
+      - rtsp://user:Password123456@192.168.5.114:554/cam/realmonitor?channel=1&subtype=0
 detect:
   enabled: true
 objects:
@@ -57,18 +66,51 @@ record:
   enabled: true
   retain:
     mode: motion
-    days: 3
+    days: 1
+  alerts:
+    retain:
+      days: 14
+      mode: active_objects
 snapshots:
   enabled: true
   retain:
     mode: motion
-    default: 30
+    default: 14
 ffmpeg:
   hwaccel_args: preset-nvidia
   output_args:
     record: preset-record-generic
 cameras:
   # Define at least one camera
+  doorbell:
+    ffmpeg:
+      inputs:
+        - path: 'rtsp://frigate:FzQBq%fKy6k2w4F@192.168.5.68:8554/channel1'
+          input_args: preset-rtsp-restream
+          roles:
+            - record
+        - path: 'rtsp://frigate:FzQBq%fKy6k2w4F@192.168.5.68:8554/channel0'
+          input_args: preset-rtsp-restream
+          roles:
+            - detect
+  officeTwo:
+    ffmpeg:
+      inputs:
+        - path: rtsp://user:Password123456@192.168.5.114:554/cam/realmonitor?channel=1&subtype=2
+          roles:
+            - detect
+        - path: rtsp://user:Password123456@192.168.5.114:554/cam/realmonitor?channel=1&subtype=0
+          roles:
+            - record
+    motion:
+      mask:
+        - 0.676,0.094,0.674,0.006,0.993,0.011,0.992,0.107
+        - 0.482,0.344,0.482,0.253,0.39,0.264,0.367,0.338
+        - 0.092,0.101,0.073,0.29,0.097,0.485,0.142,1,0,1,0,0,0.195,0
+        - 0.538,0.354,0.539,0.244,0.71,0.259,0.764,0.296,0.775,0.303,0.705,0.386
+    objects:
+      filters:
+        person: {}
   office:
     ffmpeg:
       inputs:
@@ -82,6 +124,12 @@ cameras:
       mask:
         - 0.293,0.041,0,0.038,0,0,0.295,0
         - 0.219,0.249,0.223,0.131,0.29,0.134,0.282,0.246
-        - 0.293,0.07,0.299,0.006,0.465,0.013,0.461,0.087
-        - 0.69,1,0.829,0.591,0.863,0.242,0.867,0,1,0,1,1
+        - 0.216,0.106,0.216,0,0.461,0,0.628,0,0.571,0.032,0.458,0.093
+        - 0.671,1,0.783,0.606,0.838,0.272,0.845,0.098,0.651,0.058,0.638,0.023,0.628,0,1,0,1,1
+        - 0.11,0.318,0.083,0.183,0.094,0.095,0.154,0.077,0.153,0.199,0.163,0.294
     zones: {}
+    objects:
+      filters:
+        person:
+          mask: 0.071,0.287,0.068,0.217,0.102,0.213,0.105,0.282
+version: 0.16-0

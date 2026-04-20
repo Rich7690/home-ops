@@ -46,15 +46,6 @@ audio:
   enabled: false
 birdseye:
   enabled: false
-go2rtc:
-  streams:
-    doorbell:
-      - "ffmpeg:http://192.168.5.68/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=frigate&password=FzQBqfKy6k2w4Fb#video=copy#audio=copy#audio=opus"
-      - 'rtsp://frigate:FzQBqfKy6k2w4Fb@192.168.5.68:8554/h264Preview_01_main'
-    office:
-      - rtspx://192.168.5.1:7441/qX68ANZhKnf4rA3T
-    officeTwo:
-      - rtsp://user:Password123456@192.168.5.114:554/cam/realmonitor?channel=1&subtype=0
 detect:
   enabled: true
 objects:
@@ -81,16 +72,28 @@ ffmpeg:
   hwaccel_args: preset-nvidia
   output_args:
     record: preset-record-generic
+go2rtc:
+  streams:
+    doorbell:
+      - "rtsp://frigate:FzQBqfKy6k2w4Fb@192.168.5.68:554/"
+      - "ffmpeg:http://192.168.5.68/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=frigate&password=FzQBqfKy6k2w4Fb#video=copy#audio=copy#audio=opus"
+    doorbell_sub:
+      - "rtsp://frigate:FzQBqfKy6k2w4Fb@192.168.5.68:554/h264Preview_01_sub"
+      - "ffmpeg:http://192.168.5.68/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=frigate&password=FzQBqfKy6k2w4Fb#video=copy#audio=copy#audio=opus"
+    office:
+      - rtspx://192.168.5.1:7441/qX68ANZhKnf4rA3T
+    officeTwo:
+      - rtsp://user:Password123456@192.168.5.114:554/cam/realmonitor?channel=1&subtype=0
 cameras:
   # Define at least one camera
   doorbell:
     ffmpeg:
       inputs:
-        - path: 'rtsp://frigate:FzQBqfKy6k2w4Fb@192.168.5.68:8554/doorbell_camera_main'
+        - path: "rtsp://127.0.0.1:8554/doorbell?video&audio=aac"
           input_args: preset-rtsp-restream
           roles:
             - record
-        - path: 'rtsp://frigate:FzQBqfKy6k2w4Fb@192.168.5.68:8554/doorbell_camera_sub'
+        - path: "rtsp://127.0.0.1:8554/doorbell_sub?video=copy"
           input_args: preset-rtsp-restream
           roles:
             - detect

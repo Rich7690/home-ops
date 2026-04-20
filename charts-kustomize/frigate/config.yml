@@ -49,7 +49,7 @@ birdseye:
 go2rtc:
   streams:
     doorbell:
-      - "ffmpeg:http://192.168.5.68/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=frigate&password=FzQBq%fKy6k2w4Fb#video=copy#audio=copy#audio=opus"
+      - "ffmpeg:http://192.168.5.68/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=frigate&password=FzQBqfKy6k2w4Fb#video=copy#audio=copy#audio=opus"
     office:
       - rtspx://192.168.5.1:7441/qX68ANZhKnf4rA3T
     officeTwo:
@@ -85,11 +85,11 @@ cameras:
   doorbell:
     ffmpeg:
       inputs:
-        - path: 'rtsp://frigate:FzQBq%fKy6k2w4F@192.168.5.68:8554/channel1'
+        - path: 'rtsp://frigate:FzQBqfKy6k2w4Fb@192.168.5.68:8554/channel1'
           input_args: preset-rtsp-restream
           roles:
             - record
-        - path: 'rtsp://frigate:FzQBq%fKy6k2w4F@192.168.5.68:8554/channel0'
+        - path: 'rtsp://frigate:FzQBqfKy6k2w4Fb@192.168.5.68:8554/channel0'
           input_args: preset-rtsp-restream
           roles:
             - detect

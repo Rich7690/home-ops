@@ -85,11 +85,11 @@ cameras:
   doorbell:
     ffmpeg:
       inputs:
-        - path: 'rtsp://frigate:FzQBqfKy6k2w4Fb@192.168.5.68:8554/channel1'
+        - path: 'rtsp://192.168.5.68:8554/doorbell_camera_main'
           input_args: preset-rtsp-restream
           roles:
             - record
-        - path: 'rtsp://frigate:FzQBqfKy6k2w4Fb@192.168.5.68:8554/channel0'
+        - path: 'rtsp://192.168.5.68:8554/doorbell_camera_sub'
           input_args: preset-rtsp-restream
           roles:
             - detect

@@ -50,6 +50,7 @@ go2rtc:
   streams:
     doorbell:
       - "ffmpeg:http://192.168.5.68/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=frigate&password=FzQBqfKy6k2w4Fb#video=copy#audio=copy#audio=opus"
+      - 'rtsp://frigate:FzQBqfKy6k2w4Fb@192.168.5.68:8554/h264Preview_01_main'
     office:
       - rtspx://192.168.5.1:7441/qX68ANZhKnf4rA3T
     officeTwo:
@@ -85,11 +86,11 @@ cameras:
   doorbell:
     ffmpeg:
       inputs:
-        - path: 'rtsp://192.168.5.68:8554/doorbell_camera_main'
+        - path: 'rtsp://frigate:FzQBqfKy6k2w4Fb@192.168.5.68:8554/doorbell_camera_main'
           input_args: preset-rtsp-restream
           roles:
             - record
-        - path: 'rtsp://192.168.5.68:8554/doorbell_camera_sub'
+        - path: 'rtsp://frigate:FzQBqfKy6k2w4Fb@192.168.5.68:8554/doorbell_camera_sub'
           input_args: preset-rtsp-restream
           roles:
             - detect
